@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS
+namespace SIMS.Pacijent
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPatientWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPatientWindow : Window
     {
-        public MainWindow()
+        public MainPatientWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click_Patient(object sender, RoutedEventArgs e)
-        {
-            Pacijent.MainPatientWindow patientWindow = new Pacijent.MainPatientWindow();
-            patientWindow.Show();
-
         }
     }
 }

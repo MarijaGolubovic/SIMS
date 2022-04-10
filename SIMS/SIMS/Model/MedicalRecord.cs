@@ -1,6 +1,7 @@
+using SIMS.Models;
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
     public class MedicalRecord
     {
