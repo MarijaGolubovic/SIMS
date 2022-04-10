@@ -2,10 +2,10 @@ using System;
 
 namespace Model
 {
-   public class Patient : User
-   {
-      public MedicalRecord medicalRecord;
-      public AccountStatus accountStatus;
-   
-   }
+    public class Patient : User
+    {
+        public MedicalRecord medicalRecord;
+        public AccountStatus accountStatus;
+
+    }
 }

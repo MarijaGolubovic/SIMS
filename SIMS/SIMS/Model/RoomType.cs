@@ -4,9 +4,9 @@ namespace Model
 {
    public enum RoomType
    {
-      operatingRoom,
-      examinationRoom,
-      hospitalRoom,
-      warehouse
+      OPPERATING_ROOM,
+      EXAMINATION_ROOM,
+      HOSPITAL_ROOM,
+      WAREHOUSE
    }
 }

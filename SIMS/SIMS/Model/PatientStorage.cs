@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 
 namespace Model
 {
-    public class MedicalRecordStorage
+    public class PatientStorage
     {
-        public List<MedicalRecord> GetAll()
+        public List<Patient> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public MedicalRecord GetOne(String jmbg)
+        public Patient GetOne(String jmbg)
         {
             throw new NotImplementedException();
         }
@@ -19,12 +19,12 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public Boolean Create(MedicalRecord medicalRecord)
+        public Boolean Create(String jmbg, AccountStatus acountStatus)
         {
             throw new NotImplementedException();
         }
 
-        public Boolean Update(MedicalRecord medicalRecord)
+        public Boolean Update(String jmbg, AccountStatus accountStatus)
         {
             throw new NotImplementedException();
         }
