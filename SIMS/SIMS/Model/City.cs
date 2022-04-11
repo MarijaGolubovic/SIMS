@@ -4,14 +4,23 @@ namespace SIMS.Model
 {
    public class City:Serialization.Serializable
    {
+        private String _name;
       public String Name
         {
-            get;set;
+            get { return _name; } 
+            set { if (value != _name) {
+                    _name = value;
+                } 
+            }
         }
 
         public City(string name)
         {
             Name = name;
+        }
+
+        public City()
+        {
         }
 
         public void fromCSV(string[] values)

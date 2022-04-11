@@ -11,6 +11,10 @@ namespace SIMS.Model
             Name = name;
         }
 
+        public Country()
+        {
+        }
+
         public void fromCSV(string[] values)
         {
             Name = values[0];
