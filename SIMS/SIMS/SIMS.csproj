@@ -61,6 +61,9 @@
     <Compile Include="Menager\MainWindowMenager.xaml.cs">
       <DependentUpon>MainWindowMenager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menager\RoomsList.xaml.cs">
+      <DependentUpon>RoomsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\Serializable.cs" />
     <Compile Include="Serialization\Serializer.cs" />
     <Page Include="MainWindow.xaml">
@@ -80,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menager\MainWindowMenager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menager\RoomsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

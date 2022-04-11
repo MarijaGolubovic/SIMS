@@ -24,6 +24,12 @@ namespace SIMS.Menager
             InitializeComponent();
         }
 
-        
+        private void Button_Click_OK(object sender, RoutedEventArgs e)
+        {
+            Menager.RoomsList roomList = new Menager.RoomsList();
+            roomList.Show();
+            this.Close();
+        }
+
     }
 }

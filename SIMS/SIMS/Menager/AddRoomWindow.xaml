@@ -15,9 +15,9 @@
                     FontWeight="Bold" Margin="321,33,351,247"
              />
             <Label Content="Room ID:" Margin="165,78,554,212"/>
-            <TextBox Width="200" Height="30" Margin="194,78,300,212"/>
+            <TextBox x:Name="IDInput" Width="200" Height="30" Margin="194,78,300,212" Text="{Binding ElementName=IDInput, Mode=TwoWay, Path = Id, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Size:" Margin="165,132,554,158"/>
-            <TextBox Width="200" Height="30" Margin="243,132,349,158"/>
+            <TextBox x:Name="SizeInput" Width="200" Height="30" Margin="243,132,349,158" Text="{Binding ElementName=SizeInput, Mode=TwoWay, Path=Size, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Type:" Margin="165,189,554,107" RenderTransformOrigin="0.418,2.509"/>
             <ComboBox Margin="243,189,349,107">
                 <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
@@ -25,7 +25,7 @@
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button Width="80" Height="25" Content="OK" Margin="542,266,170,24"/>
+            <Button Width="80" Height="25" Content="OK" Margin="542,266,170,24" Click="Button_Click_OK"/>
             <Button Width="80" Height="25" Content="CANCEL" Margin="648,268,64,26" />
         </Grid>
     </Grid>
