@@ -10,8 +10,8 @@
         <Grid Height="90" VerticalAlignment="Top">
             <Border BorderThickness="1" BorderBrush="Black" Background="LightGray"/>
             <Button Width="80" Height="25" Margin="32,50,660,10" Name="AddRoom" Content="Add room" Background="White" Click="AddRoom_Click"/>
-            <Button Width="80" Height="25" Margin="159,52,553,12" Name="UpdateRoom" Content="Update room" Background="White"/>
-            <Button Width="80" Height="25" Margin="275,52,437,12" Name="DeleteRoom" Content="Delete room" Background="White"/>
+            <Button Width="80" Height="25" Margin="192,52,520,12" Name="UpdateRoom" Content="Update room" Background="White" Click="UpdateRoom_Click"/>
+            <Button Width="80" Height="25" Margin="337,52,375,12" Name="DeleteRoom" Content="Delete room" Background="White" RenderTransformOrigin="1.259,0.607"/>
         </Grid>
     </Grid>
 </Window>

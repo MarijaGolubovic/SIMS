@@ -30,5 +30,12 @@ namespace SIMS.Menager
             addRoomWindow.Show();
             this.Close();
         }
+
+        private void UpdateRoom_Click(object sender, RoutedEventArgs e)
+        {
+            Menager.RoomsList roomsList = new Menager.RoomsList();
+            roomsList.Show();
+            this.Close();
+        }
     }
 }

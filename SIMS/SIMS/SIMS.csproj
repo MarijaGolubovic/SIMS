@@ -58,6 +58,9 @@
     <Compile Include="Menager\AddRoomWindow.xaml.cs">
       <DependentUpon>AddRoomWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menager\DeleteRoom.xaml.cs">
+      <DependentUpon>DeleteRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menager\MainWindowMenager.xaml.cs">
       <DependentUpon>MainWindowMenager.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Menager\AddRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menager\DeleteRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

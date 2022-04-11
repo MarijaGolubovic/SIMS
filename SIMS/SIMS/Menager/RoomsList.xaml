@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Hello Clinic" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>

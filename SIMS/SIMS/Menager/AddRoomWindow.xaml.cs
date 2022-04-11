@@ -26,6 +26,9 @@ namespace SIMS.Menager
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
+           
+            //RoomsList.Rooms.Add(new Model.Room { Id=IDInput.Text, Size = Double.Parse(SizeInput.Text), Type=Model.RoomType.HOSPITAL_ROOM});
+
             Menager.RoomsList roomList = new Menager.RoomsList();
             roomList.Show();
             this.Close();

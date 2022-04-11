@@ -22,7 +22,7 @@ namespace SIMS.Menager
     public partial class RoomsList : Window
     {
 
-        public ObservableCollection<Room> Rooms
+        public static ObservableCollection<Room> Rooms
         {
             get;
             set;
@@ -36,6 +36,7 @@ namespace SIMS.Menager
             Rooms = new ObservableCollection<Room>();
             Rooms.Add(new Room { Id="opb", Size=12.1, Type=Model.RoomType.OPPERATING_ROOM});
             Rooms.Add(new Room { Id = "h21", Size =15.2 , Type = Model.RoomType.HOSPITAL_ROOM });
+            Rooms.Add(new Room { Id = "h2", Size = 15.2, Type = Model.RoomType.HOSPITAL_ROOM });
 
         }
     }

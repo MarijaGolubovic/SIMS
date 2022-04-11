@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace SIMS.Model
 {
-    public class Room : INotifyPropertyChanged
+    public class Room : INotifyPropertyChanged, Serialization.Serializable
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -14,7 +14,24 @@ namespace SIMS.Model
             }
         }
 
+        public string[] toCSV()
+        {
+            string[] csvValues =
+                {
+                Id,
+                Size.ToString(),
+                Type.ToString()
 
+            };
+            return csvValues;
+        }
+
+        public void fromCSV(string[] values)
+        {
+            Id = values[0];
+            Size = double.Parse(values[1]);
+            Type = (RoomType)int.Parse(values[2]);
+        }
 
         String _Id;
         Double _size;
@@ -82,7 +99,7 @@ namespace SIMS.Model
         {
             Id = values[0];
             Size = double.Parse(values[1]);
-            Type = (RoomType)int.Parse(values[3]);
+            Type = (RoomType)int.Parse(values[2]);
 
         }
 
