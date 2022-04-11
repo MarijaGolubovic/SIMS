@@ -19,6 +19,7 @@ namespace SIMS.Serialization
                     string line = string.Join("|", obj.toCSV());
                     streamWriter.WriteLine(line);
                 }
+            streamWriter.Close();
             }
 
             public List<T> fromCSV(string fileName)

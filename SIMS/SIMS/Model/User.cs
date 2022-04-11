@@ -3,14 +3,23 @@ using System;
 namespace SIMS.Model
 {
    public class User : Serialization.Serializable
-   {
+    {
       public String Username { get; set; }
       public String Password { get; set; }
       public UserType Type { get; set; }
 
       public Person Person { get; set; }
 
+        public User(string username, string password, UserType type, Person person)
+        {
+            Username = username;
+            Password = password;
+            Type = type;
+            Person = person;
+        }
+
         public void fromCSV(string[] values)
+
         {
             Username = values[0];
             Password = values[1];
@@ -21,7 +30,7 @@ namespace SIMS.Model
         public string[] toCSV()
         {
             string[] csvValues =
-{
+            {
                 Username,
                 Password,
                 Type.ToString(),
