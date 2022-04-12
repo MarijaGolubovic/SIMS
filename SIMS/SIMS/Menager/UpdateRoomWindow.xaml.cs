@@ -46,8 +46,7 @@ namespace SIMS.Menager
 
         private void UpdateBack_Click(object sender, RoutedEventArgs e)
         {
-            Menager.MainWindowMenager mainWindow = new MainWindowMenager();
-            mainWindow.Show();
+            
             this.Close();
 
         }

@@ -97,7 +97,7 @@ namespace SIMS.Menager
 
             Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
             updateRoomWindow.Show();
-
+            this.Close();
         }
     }
 }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-    public class RoomStorage
-    {
-        public static List<Room> GetAll()
-        {
+
+   public class RoomStorage
+   {
+      public static List<Room> GetAll()
+      {
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
-            rooms = roomSerijalization.fromCSV("Room.csv");
-
+            rooms = roomSerijalization.fromCSV("Room.txt");
+           
             return rooms;
         }
 
@@ -19,7 +20,7 @@ namespace SIMS.Model
             Room room = new Room();
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
-            rooms = roomSerijalization.fromCSV("Room.csv");
+            rooms = roomSerijalization.fromCSV("Room.txt");
 
             foreach (Room roomInput in rooms)
             {
@@ -37,8 +38,10 @@ namespace SIMS.Model
             Boolean status = false;
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
-            rooms = roomSerijalization.fromCSV("Room.csv");
-            foreach (Room roomInput in rooms)
+
+            rooms = roomSerijalization.fromCSV("Room.txt");
+            foreach(Room roomInput in rooms)
+
             {
                 if (roomID.Equals(roomInput.Id))
                 {
@@ -54,9 +57,9 @@ namespace SIMS.Model
             Boolean status = false;
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
-            rooms = roomSerijalization.fromCSV("Room.csv");
+            rooms = roomSerijalization.fromCSV("Room.txt");
             rooms.Add(room);
-            roomSerijalization.toCSV("Room.csv", rooms);
+            roomSerijalization.toCSV("Room.txt", rooms);
             status = true;
             return status;
         }
@@ -70,9 +73,11 @@ namespace SIMS.Model
         {
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
-            rooms = roomSerijalization.fromCSV("Room.csv");
-            List<Room> room = new List<Room>();
-            foreach (Room inputRoom in rooms)
+
+            rooms = roomSerijalization.fromCSV("Room.txt");
+            List <Room> room = new List<Room>();
+            foreach(Room inputRoom in rooms)
+
             {
                 if (type == inputRoom.Type)
                 {

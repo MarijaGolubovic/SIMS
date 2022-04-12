@@ -30,7 +30,7 @@ namespace SIMS.Model
         {
             Id = values[0];
             Size = double.Parse(values[1]);
-            Type = (RoomType)int.Parse(values[2]);
+            Type = (RoomType)Enum.Parse(typeof(RoomType), values[2]);
         }
 
         String _Id;
@@ -96,28 +96,11 @@ namespace SIMS.Model
             Type = type;
         }
 
+
         public Room()
         {
         }
 
-        /*public void fromCSV(string[] values)
-        {
-            Id = values[0];
-            Size = double.Parse(values[1]);
-            Type = (RoomType)int.Parse(values[2]);
-
-        }
-
-        public string[] toCSV()
-        {
-            string[] csvValues =
-             {
-                Id,
-                Size.ToString(),
-                Type.ToString()
-
-            };
-            return csvValues;
-        } */
+        
     }
 }
