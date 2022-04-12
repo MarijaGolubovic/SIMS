@@ -79,5 +79,13 @@ namespace SIMS.Menager
            
             
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+
+            Menager.MainWindowMenager mainWindow = new MainWindowMenager();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

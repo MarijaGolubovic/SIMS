@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
-        Title="Hello Clinic" Height="450" Width="800">
+        Title="Hello Clinic" Height="400" Width="800" VerticalAlignment="Top">
     <Grid>
-        <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGridRooms_MouseDoubleClick">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
-                <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
-            </DataGrid.Columns>
-            
-        </DataGrid>
-        
+        <Grid Margin="0,24,0,60">
+            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGridRooms_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                    <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+
+        <Button x:Name="Back" Width="100" Height="24" Margin="581,315,110,12" Content="BACK" Click="Back_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722"/>
+
     </Grid>
 </Window>
