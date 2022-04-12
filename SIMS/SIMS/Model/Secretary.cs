@@ -1,8 +1,8 @@
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
-   public class Secretary : User
+   public class Secretary //: User
    {
    }
 }

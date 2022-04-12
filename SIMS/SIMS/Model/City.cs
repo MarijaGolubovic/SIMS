@@ -1,10 +1,14 @@
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
-   public class City
-   {
-      public String name;
-   
-   }
+    public class City
+    {
+        public String name; public String Name { get; set; }
+
+        public City(string name)
+        {
+            Name = name;
+        }
+    }
 }

@@ -1,10 +1,15 @@
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
    public class Country
    {
-      public String name;
-   
-   }
+        public String Name { get; set; }
+
+        public Country(string name)
+        {
+            Name = name;
+        }
+
+    }
 }

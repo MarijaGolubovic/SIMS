@@ -1,6 +1,6 @@
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
    public enum UserType
    {

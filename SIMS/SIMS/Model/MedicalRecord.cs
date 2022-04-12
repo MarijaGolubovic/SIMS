@@ -1,13 +1,24 @@
+using SIMS.Models;
 using System;
+using System.Collections.Generic;
 
-namespace Model
+namespace SIMS.Model
 {
     public class MedicalRecord
     {
-        public Double height;
-        public Double weight;
-        public String allergies;
-        public BloodType bloodType;
+        public Double Height { get; set; }
+        public Double Weight { get; set; }
+        public String Allergies { get; set; }
+        public BloodType BloodType { get; set; }
+
+        public MedicalRecord(double height, double weight, string allergies, BloodType bloodType, List<Medicine> medicine)
+        {
+            Height = height;
+            Weight = weight;
+            Allergies = allergies;
+            BloodType = bloodType;
+            Medicine = medicine;
+        }
 
         public System.Collections.Generic.List<Medicine> medicine;
 
@@ -30,6 +41,9 @@ namespace Model
             }
         }
 
+        public MedicalRecord()
+        {
+        }
 
         public void AddMedicine(Medicine newMedicine)
         {
@@ -60,4 +74,5 @@ namespace Model
         public Patient patient;
 
     }
+
 }

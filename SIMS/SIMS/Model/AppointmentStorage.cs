@@ -1,6 +1,7 @@
 using System;
+using System.Collections.Generic;
 
-namespace Model
+namespace SIMS.Model
 {
    public class AppointmentStorage
    {

@@ -1,23 +1,15 @@
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
    public class Doctor : User
    {
-      public Specialization specialization;
-      
-      
-      public Specialization Specialization
-      {
-         get
-         {
-            return specialization;
-         }
-         set
-         {
-            this.specialization = value;
-         }
-      }
-   
-   }
+        public Specialization Specialization { get; set; }
+
+        public Doctor(User user, Specialization specialization) : base(user.Username, user.Password, user.Type, user.Person)
+        {
+            this.Specialization = specialization;
+        }
+
+    }
 }

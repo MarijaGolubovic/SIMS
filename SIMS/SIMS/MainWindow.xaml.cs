@@ -24,5 +24,19 @@ namespace SIMS
         {
             InitializeComponent();
         }
+
+        private void Button_Click_Patient(object sender, RoutedEventArgs e)
+        {
+            Pacijent.MainPatientWindow patientWindow = new Pacijent.MainPatientWindow();
+            patientWindow.Show();
+
+        }
+
+        private void Button_Click_Secretary(object sender, RoutedEventArgs e)
+        {
+            Sekretar.MainSecretaryWindow secretaryWindow = new Sekretar.MainSecretaryWindow();
+            secretaryWindow.Show();
+
+        }
     }
 }

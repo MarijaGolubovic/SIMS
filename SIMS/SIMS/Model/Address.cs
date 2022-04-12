@@ -1,14 +1,22 @@
 using System;
 
-namespace Model
+namespace SIMS.Model
 {
    public class Address
    {
-      public String street;
-      public String number;
-      
-      public City city;
-      public Country country;
-   
-   }
+        public String Street { get; set; }
+        public String Number { get; set; }
+
+        public City City { get; set; }
+        public Country Country { get; set; }
+
+        public Address(string street, string number, City city, Country country)
+        {
+            Street = street;
+            Number = number;
+            City = city;
+            Country = country;
+        }
+
+    }
 }
