@@ -39,5 +39,31 @@ namespace SIMS.Menager
             Rooms.Add(new Room { Id = "h2", Size = 15.2, Type = Model.RoomType.HOSPITAL_ROOM });
 
         }
+
+        private void dataGridRooms_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            String messageText = "Do you want to delete room?";
+            String caption = "Delete room";
+            MessageBoxButton messageButton = MessageBoxButton.YesNo;
+            MessageBoxImage initBox = MessageBoxImage.Question;
+            MessageBoxResult messageResult = MessageBox.Show(messageText, caption,messageButton,initBox);
+            Room room = (Room)dataGridRooms.SelectedItem;
+
+            switch (messageResult)
+            {
+                case MessageBoxResult.Yes:
+                    Rooms.Remove(room);
+                    break;
+                case MessageBoxResult.No:
+                    Menager.MainWindowMenager mainWindow = new MainWindowMenager();
+                    mainWindow.Show();
+                    this.Close();
+                    break;
+
+
+            }
+           
+            
+        }
     }
 }
