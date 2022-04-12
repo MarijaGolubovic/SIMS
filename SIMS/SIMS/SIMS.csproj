@@ -67,6 +67,15 @@
     <Compile Include="Menager\RoomsList.xaml.cs">
       <DependentUpon>RoomsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pacijent\AddAppointment.xaml.cs">
+      <DependentUpon>AddAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pacijent\AllAppointments.xaml.cs">
+      <DependentUpon>AllAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pacijent\EditAppintment.xaml.cs">
+      <DependentUpon>EditAppintment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\Serializable.cs" />
     <Compile Include="Serialization\Serializer.cs" />
     <Page Include="MainWindow.xaml">
@@ -82,18 +91,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Menager\AddRoomWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Menager\DeleteRoom.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Menager\MainWindowMenager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Menager\RoomsList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pacijent\AddAppointment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Menager\RoomsList.xaml">
+    <Page Include="Pacijent\AllAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pacijent\EditAppintment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

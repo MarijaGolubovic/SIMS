@@ -88,14 +88,14 @@ namespace SIMS.Model
          }
        
 
-     /*   public Room(string id, double size, RoomType type)
+       public Room(string id, double size, RoomType type)
         {
             Id = id;
             Size = size;
             Type = type;
         }
 
-        public void fromCSV(string[] values)
+        /*public void fromCSV(string[] values)
         {
             Id = values[0];
             Size = double.Parse(values[1]);

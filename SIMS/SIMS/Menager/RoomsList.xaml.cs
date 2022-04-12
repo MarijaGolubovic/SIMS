@@ -34,10 +34,10 @@ namespace SIMS.Menager
             this.DataContext = this;
 
             Rooms = new ObservableCollection<Room>();
-            Rooms.Add(new Room { Id="opb", Size=12.1, Type=Model.RoomType.OPPERATING_ROOM});
-            Rooms.Add(new Room { Id = "h21", Size =15.2 , Type = Model.RoomType.HOSPITAL_ROOM });
-            Rooms.Add(new Room { Id = "h2", Size = 15.2, Type = Model.RoomType.HOSPITAL_ROOM });
-
+            //Room room = new Room("1", 5,Model.RoomType.EXAMINATION_ROOM);
+            Rooms.Add(new Room("opb",12.1,Model.RoomType.OPPERATING_ROOM));
+            Rooms.Add(new Room("h21",15.2,Model.RoomType.HOSPITAL_ROOM));
+            Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
         }
 
         private void dataGridRooms_MouseDoubleClick(object sender, MouseButtonEventArgs e)

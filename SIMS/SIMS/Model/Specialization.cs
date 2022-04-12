@@ -4,7 +4,11 @@ namespace SIMS.Model
 {
    public class Specialization
    {
-      public String name;
-   
-   }
+      public String Name { get; set; }
+
+        public Specialization(string name)
+        {
+            Name = name;
+        }
+    }
 }

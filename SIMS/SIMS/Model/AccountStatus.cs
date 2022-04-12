@@ -6,6 +6,11 @@ namespace SIMS.Model
    {
       public Boolean initialAccount;
       public Boolean activatedAccount;
-   
-   }
+
+        public AccountStatus(bool initialAccount, bool activatedAccount)
+        {
+            this.initialAccount = initialAccount;
+            this.activatedAccount = activatedAccount;
+        }
+    }
 }
