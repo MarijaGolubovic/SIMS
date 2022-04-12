@@ -2,8 +2,10 @@ using System;
 
 namespace SIMS.Model
 {
-   public class Address
-   {
+
+    public class Address
+    {
+
         public String Street { get; set; }
         public String Number { get; set; }
 

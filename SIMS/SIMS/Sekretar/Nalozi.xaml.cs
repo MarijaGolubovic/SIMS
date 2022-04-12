@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
-using SIMS.Models;
+
 
 namespace SIMS.Sekretar
 {
@@ -29,6 +29,12 @@ namespace SIMS.Sekretar
         {
             InitializeComponent();
             this.DataContext = this;
+
+            Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
+            List<User> users = userSerializer.fromCSV("user.txt");
+
+            Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+            List<Patient> patientSer = patientSerializer.fromCSV("patients.txt");
 
             City city = new City("Novi Sad");
             Country country = new Country("Srbija");
@@ -70,6 +76,19 @@ namespace SIMS.Sekretar
             patients.Add(patient);
             patients.Add(patient1);
             patients.Add(patient2);
+            ObservableCollection<Patient> patientsBlock = new ObservableCollection<Patient>();
+
+            foreach (User item in users)
+            {
+                if (patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.activatedAccount)
+                {
+                    patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus (patientSer.Find(p=> p.Person.JMBG == item.Person.JMBG).AccountStatus.initialAccount, patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.activatedAccount)));
+                }
+                else
+                {
+                    patientsBlock.Add(new Patient(item, new MedicalRecord(), new AccountStatus(patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.initialAccount, patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.activatedAccount)));
+                }
+            }
 
             Patients = patients;
 
@@ -84,7 +103,7 @@ namespace SIMS.Sekretar
             List<Medicine> medicines3 = new List<Medicine> { medicine3 };
             MedicalRecord medicalRecord3 = new MedicalRecord(1.65, 55, "none", BloodType.abNegative, medicines3);
             Patient patient3 = new Patient(user3, medicalRecord3, accountStatus3);
-            ObservableCollection<Patient> patientsBlock = new ObservableCollection<Patient>();
+           
             patientsBlock.Add(patient3);
             PatientsBlock = patientsBlock;
 
@@ -109,7 +128,7 @@ namespace SIMS.Sekretar
             Patient selectedRow = AktivniNalazi.SelectedItem as Patient;
             if (selectedRow != null)
             {
-                selectedRow.accountStatus.activatedAccount = false;
+                selectedRow.AccountStatus.activatedAccount = false;
                 PatientsBlock.Add(selectedRow);
                 Patients.Remove(selectedRow);
             }
@@ -132,7 +151,7 @@ namespace SIMS.Sekretar
             Patient selectedRow = BlokiraniNalozi.SelectedItem as Patient;
             if (selectedRow != null)
             {
-                selectedRow.accountStatus.activatedAccount = true;
+                selectedRow.AccountStatus.activatedAccount = true;
                 Patients.Add(selectedRow);
                 PatientsBlock.Remove(selectedRow);
             }

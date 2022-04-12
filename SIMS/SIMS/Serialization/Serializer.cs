@@ -16,9 +16,10 @@ namespace SIMS.Serialization
 
                 foreach (Serializable obj in objects)
                 {
-                    string line = string.Join("|", obj.ToCSV());
+                    string line = string.Join("|", obj.toCSV());
                     streamWriter.WriteLine(line);
                 }
+            streamWriter.Close();
             }
 
             public List<T> fromCSV(string fileName)

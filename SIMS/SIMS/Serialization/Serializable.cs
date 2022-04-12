@@ -8,8 +8,11 @@ namespace SIMS.Serialization
 {
     interface Serializable
     {
-        public string[] ToCSV();
 
-        public void fromCSV(string[] values);
+        string[] toCSV();
+
+        void fromCSV(string[] values);
     }
+
+
 }

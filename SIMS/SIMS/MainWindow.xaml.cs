@@ -32,11 +32,18 @@ namespace SIMS
 
         }
 
+
         private void Button_Click_Secretary(object sender, RoutedEventArgs e)
         {
             Sekretar.MainSecretaryWindow secretaryWindow = new Sekretar.MainSecretaryWindow();
             secretaryWindow.Show();
+        }
 
+        private void Button_Click_Menager(object sender, RoutedEventArgs e)
+        {
+            Menager.MainWindowMenager menagerWindow = new Menager.MainWindowMenager();
+            menagerWindow.Show();
+            this.Close();
         }
     }
 }

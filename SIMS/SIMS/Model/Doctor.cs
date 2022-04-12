@@ -6,10 +6,13 @@ namespace SIMS.Model
    {
         public Specialization Specialization { get; set; }
 
-        public Doctor(User user, Specialization specialization) : base(user.Username, user.Password, user.Type, user.Person)
+
+        public Doctor(User user, Specialization specialization):base(user.Username,user.Password,user.Type,user.Person)
+
         {
             this.Specialization = specialization;
         }
 
     }
+
 }

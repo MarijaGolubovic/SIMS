@@ -45,15 +45,15 @@ namespace SIMS.Sekretar
         {
             if (jmbgE.Text==selected.Person.JMBG || !Nalozi.Patients.Any(p => p.Person.JMBG == jmbgE.Text))
             {
-                if (selected.accountStatus.activatedAccount)
+                if (selected.AccountStatus.activatedAccount)
                 {
                 Nalozi.Patients.Remove(selected);
-                Patient patient = new Patient(new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text)))), new MedicalRecord(), selected.accountStatus);
+                Patient patient = new Patient(new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text)))), new MedicalRecord(), selected.AccountStatus);
                 Nalozi.Patients.Add(patient);
                 } else
                 {
                     Nalozi.PatientsBlock.Remove(selected);
-                    Patient patient = new Patient(new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text)))), new MedicalRecord(), selected.accountStatus);
+                    Patient patient = new Patient(new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text)))), new MedicalRecord(), selected.AccountStatus);
                     Nalozi.PatientsBlock.Add(patient);
                 }
                 

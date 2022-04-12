@@ -9,8 +9,11 @@
     <Grid>
         <Button Content="Pacijent" HorizontalAlignment="Left" Margin="148,174,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Patient"/>
         <Button Content="Lekar" HorizontalAlignment="Left" Margin="148,222,0,0" VerticalAlignment="Top" Width="75" />
+
         <Button Content="Sekretar" HorizontalAlignment="Left" Margin="148,273,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Secretary"/>
-        <Button Content="Direktor" HorizontalAlignment="Left" Margin="148,325,0,0" VerticalAlignment="Top" Width="75" />
+
+        <Button Content="Direktor" HorizontalAlignment="Left" Margin="148,325,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menager" />
+
 
 
     </Grid>
