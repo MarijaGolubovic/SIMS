@@ -72,5 +72,12 @@ namespace SIMS.Menager
             this.Close();
         }
 
+        private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
+        {
+            Menager.MainWindowMenager mainWindow = new MainWindowMenager();
+            mainWindow.Show();
+            this.Close();
+
+        }
     }
 }

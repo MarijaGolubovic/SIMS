@@ -33,7 +33,10 @@ namespace SIMS.Menager
 
         private void UpdateRoom_Click(object sender, RoutedEventArgs e)
         {
-           
+            Menager.UpdateRoomWindow updateWindow = new UpdateRoomWindow();
+            updateWindow.Show();
+            
+            
         }
 
         private void DeleteRoom_Click(object sender, RoutedEventArgs e)
