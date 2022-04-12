@@ -8,8 +8,8 @@
         Title="Hello Clinic" Height="450" Width="800">
     <Grid>
 
-        <Grid Margin="0,24,0,60">
-            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick">
+        <Grid Margin="0,24,0,60" >
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick" SelectionChanged="DataGridUpdate_SelectionChanged" Margin="0,0,0,25">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -19,7 +19,7 @@
             </DataGrid>
         </Grid>
 
-        <Button x:Name="UpdateBack" Width="100" Height="24" Margin="581,315,110,12" Content="BACK" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722"/>
+        <Button x:Name="UpdateBack" Width="100" Height="24" Margin="584,365,108,0" Content="BACK" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722"/>
 
 
     </Grid>

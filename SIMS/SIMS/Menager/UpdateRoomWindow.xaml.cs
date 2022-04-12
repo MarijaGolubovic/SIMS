@@ -50,5 +50,10 @@ namespace SIMS.Menager
             this.Close();
 
         }
+
+        private void DataGridUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
