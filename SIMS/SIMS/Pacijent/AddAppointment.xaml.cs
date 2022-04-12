@@ -59,7 +59,7 @@ namespace SIMS.Pacijent
             //trebaju mi da mogu da napravim objekat Appointment
             //kasnije  cu traziti doktora po jmbg
 
-            Room room = new Room(1, Model.RoomType.EXAMINATION_ROOM, 5);
+            Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
             Doctor doctorTmp = DoctorStorage.GetByUsername(selectedDoctor);
 
             string dateTime = DatePicker.Text;

@@ -47,7 +47,7 @@ namespace SIMS.Pacijent
             string selectedDoctor = DoctorComboBox.SelectedItem.ToString();
 
             //Dumy podaci
-            Room room = new Room(1, Model.RoomType.EXAMINATION_ROOM, 5);
+            Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
             Doctor doctorTmp = DoctorStorage.GetByUsername(selectedDoctor);
 
             string dateTime = DatePicker.Text;

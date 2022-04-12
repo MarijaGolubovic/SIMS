@@ -31,5 +31,12 @@ namespace SIMS
             patientWindow.Show();
 
         }
+
+        private void Button_Click_Menager(object sender, RoutedEventArgs e)
+        {
+            Menager.MainWindowMenager menagerWindow = new Menager.MainWindowMenager();
+            menagerWindow.Show();
+            this.Close();
+        }
     }
 }
