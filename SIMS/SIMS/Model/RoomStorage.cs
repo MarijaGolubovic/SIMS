@@ -5,7 +5,7 @@ namespace SIMS.Model
 {
     public class RoomStorage
     {
-        public List<Room> GetAll()
+        public static List<Room> GetAll()
         {
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();

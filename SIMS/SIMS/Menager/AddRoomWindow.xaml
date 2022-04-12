@@ -15,11 +15,11 @@
                     FontWeight="Bold" Margin="321,33,351,247"
              />
             <Label Content="Room ID:" Margin="165,78,554,212"/>
-            <TextBox x:Name="IDInput" Width="200" Height="30" Margin="194,78,300,212" Text="{Binding ElementName=IDInput, Mode=TwoWay, Path = Id, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="IDInput" Width="200" Height="30" Margin="194,78,300,212" Text=""/>
             <Label Content="Size:" Margin="165,132,554,158"/>
-            <TextBox x:Name="SizeInput" Width="200" Height="30" Margin="243,132,349,158" Text="{Binding ElementName=SizeInput, Mode=TwoWay, Path=Size, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="SizeInput" Width="200" Height="30" Margin="243,132,349,158" Text=""/>
             <Label Content="Type:" Margin="165,189,554,107" RenderTransformOrigin="0.418,2.509"/>
-            <ComboBox Margin="243,189,349,107" >
+            <ComboBox Margin="243,189,349,107" x:Name="comboboxField" >
                 <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
                 <ComboBoxItem IsSelected="True">EXAMINATION ROOM</ComboBoxItem>
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>

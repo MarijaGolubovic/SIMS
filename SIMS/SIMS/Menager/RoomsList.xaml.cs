@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using SIMS.Model;
@@ -12,22 +14,27 @@ namespace SIMS.Menager
     public partial class RoomsList : Window
     {
 
-        public static ObservableCollection<Room> Rooms
-        {
-            get;
-            set;
-        }
+        public static ObservableCollection<Model.Room> Rooms { get; set; }
 
         public RoomsList()
         {
             InitializeComponent();
             this.DataContext = this;
-
+    
+            Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
+            List<Room> rooms = roomSerializer.fromCSV("Room.txt");
             Rooms = new ObservableCollection<Room>();
             //Room room = new Room("1", 5,Model.RoomType.EXAMINATION_ROOM);
-            Rooms.Add(new Room("opb", 12.1, Model.RoomType.OPPERATING_ROOM));
-            Rooms.Add(new Room("h21", 15.2, Model.RoomType.HOSPITAL_ROOM));
-            Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
+
+           // Rooms.Add(new Room("opb",12.1,Model.RoomType.OPPERATING_ROOM));
+           // Rooms.Add(new Room("h21",15.2,Model.RoomType.HOSPITAL_ROOM));
+           // Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
+
+            foreach(Room roomItem in rooms)
+            {
+                Rooms.Add(roomItem);
+            }
+
         }
 
         private void dataGridRooms_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -36,13 +43,23 @@ namespace SIMS.Menager
             String caption = "Delete room";
             MessageBoxButton messageButton = MessageBoxButton.YesNo;
             MessageBoxImage initBox = MessageBoxImage.Question;
-            MessageBoxResult messageResult = MessageBox.Show(messageText, caption, messageButton, initBox);
-            Room room = (Room)dataGridRooms.SelectedItem;
+
+            MessageBoxResult messageResult = MessageBox.Show(messageText, caption,messageButton,initBox);
+            
+         
+
 
             switch (messageResult)
             {
                 case MessageBoxResult.Yes:
-                    Rooms.Remove(room);
+                    Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
+                    List<Room> rooms = roomSerializer.fromCSV("Room.txt");
+
+
+
+
+                    Rooms.Remove((Room)dataGridRooms.SelectedItem);
+                    roomSerializer.toCSV("Room.txt", Rooms.ToList());
                     break;
                 case MessageBoxResult.No:
                     Menager.MainWindowMenager mainWindow = new MainWindowMenager();
