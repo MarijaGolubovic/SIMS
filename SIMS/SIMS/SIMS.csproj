@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Menager\UpdateForm.xaml.cs">
+      <DependentUpon>UpdateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menager\UpdateRoomWindow.xaml.cs">
+      <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sekretar\CreatePatient.xaml.cs">
       <DependentUpon>CreatePatient.xaml</DependentUpon>
     </Compile>
@@ -102,6 +108,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Menager\UpdateForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Menager\UpdateRoomWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pacijent\MainPatientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
