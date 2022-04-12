@@ -25,8 +25,8 @@
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button Width="80" Height="25" Content="OK" Margin="513,268,199,26" Click="Button_Click_OK"/>
-            <Button Width="80" Height="25" Content="CANCEL" Margin="648,268,64,26" Click="Button_Click_CANCEL" />
+            <Button Width="80" Height="25" Content="OK" Margin="487,268,225,26" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467"/>
+            <Button Width="80" Height="25" Content="CANCEL" Margin="633,268,79,26" Click="Button_Click_CANCEL" />
         </Grid>
     </Grid>
 </Window>
