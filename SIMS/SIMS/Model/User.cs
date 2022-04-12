@@ -3,28 +3,35 @@ using System;
 namespace SIMS.Model
 {
 
-   public class User : Serialization.Serializable
+    public class User : Serialization.Serializable
     {
-      public String Username { get; set; }
-      public String Password { get; set; }
-      public UserType Type { get; set; }
+        public String Username { get; set; }
+        public String Password { get; set; }
+        public UserType Type { get; set; }
 
-      public Person Person { get; set; }
+        public Person Person { get; set; }
 
         public User(string username, string password, UserType type, Person person)
         {
-            Username = username;
-            Password = password;
+            this.Username = username;
+            this.Password = password;
             Type = type;
             Person = person;
         }
 
         public void fromCSV(string[] values)
-
         {
             Username = values[0];
             Password = values[1];
-            Type = (UserType)int.Parse(values[2]);
+            if (values[2].Contains("patient"))
+                Type = UserType.patient;
+            if (values[2].Contains("doctor"))
+                Type = UserType.doctor;
+            if (values[2].Contains("secretary"))
+                Type = UserType.secretary;
+            if (values[2].Contains("menager"))
+                Type = UserType.menager;
+
 
             Person = new Person(values[3], values[4], values[5], values[6], DateTime.Parse(values[7]), values[8], new Address(values[9], values[10], new City(values[11]), new Country(values[12])));
 

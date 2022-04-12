@@ -73,9 +73,10 @@ namespace SIMS.Model
             }
         }
 
-        public RoomType Type {
+        public RoomType Type
+        {
             get
-            { return  _type; }
+            { return _type; }
 
             set
             {
@@ -85,10 +86,10 @@ namespace SIMS.Model
                     OnPropertyChanged("Type");
                 }
             }
-         }
-       
+        }
 
-       public Room(string id, double size, RoomType type)
+
+        public Room(string id, double size, RoomType type)
         {
             Id = id;
             Size = size;

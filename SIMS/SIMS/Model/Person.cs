@@ -2,10 +2,10 @@ using System;
 
 namespace SIMS.Model
 {
-   public class Person
-   {
+    public class Person
+    {
 
-      public String Name { get; set; }
+        public String Name { get; set; }
         public String Surname { get; set; }
         public String JMBG { get; set; }
         public String Telephone { get; set; }

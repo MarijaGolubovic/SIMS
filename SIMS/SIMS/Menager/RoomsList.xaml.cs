@@ -1,18 +1,8 @@
-﻿using SIMS.Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using SIMS.Model;
 
 namespace SIMS.Menager
 {
@@ -35,8 +25,8 @@ namespace SIMS.Menager
 
             Rooms = new ObservableCollection<Room>();
             //Room room = new Room("1", 5,Model.RoomType.EXAMINATION_ROOM);
-            Rooms.Add(new Room("opb",12.1,Model.RoomType.OPPERATING_ROOM));
-            Rooms.Add(new Room("h21",15.2,Model.RoomType.HOSPITAL_ROOM));
+            Rooms.Add(new Room("opb", 12.1, Model.RoomType.OPPERATING_ROOM));
+            Rooms.Add(new Room("h21", 15.2, Model.RoomType.HOSPITAL_ROOM));
             Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
         }
 
@@ -46,7 +36,7 @@ namespace SIMS.Menager
             String caption = "Delete room";
             MessageBoxButton messageButton = MessageBoxButton.YesNo;
             MessageBoxImage initBox = MessageBoxImage.Question;
-            MessageBoxResult messageResult = MessageBox.Show(messageText, caption,messageButton,initBox);
+            MessageBoxResult messageResult = MessageBox.Show(messageText, caption, messageButton, initBox);
             Room room = (Room)dataGridRooms.SelectedItem;
 
             switch (messageResult)
@@ -62,8 +52,8 @@ namespace SIMS.Menager
 
 
             }
-           
-            
+
+
         }
     }
 }

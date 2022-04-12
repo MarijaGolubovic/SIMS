@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SIMS.Model;
 
 namespace SIMS.Pacijent
@@ -23,7 +13,7 @@ namespace SIMS.Pacijent
     {
         public static ObservableCollection<Model.Appointment> AppointmentsCollceciton { get; set; }
         public static Appointment SelectedItem { get; set; }
-        
+
         public AllAppointments()
         {
             InitializeComponent();
@@ -39,7 +29,7 @@ namespace SIMS.Pacijent
             AppointmentsCollceciton = new ObservableCollection<Appointment>();
 
             //ucitavam podatke u kolekciju
-            foreach(Appointment item in appointments)
+            foreach (Appointment item in appointments)
             {
                 AppointmentsCollceciton.Add(item);
             }

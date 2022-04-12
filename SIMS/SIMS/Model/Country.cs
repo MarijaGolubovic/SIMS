@@ -2,10 +2,10 @@ using System;
 
 namespace SIMS.Model
 {
-   public class Country:Serialization.Serializable
-   {
+    public class Country : Serialization.Serializable
+    {
 
-      public String Name { get; set; }
+        public String Name { get; set; }
 
 
         public Country(string name)

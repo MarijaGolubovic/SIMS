@@ -3,15 +3,18 @@ using System;
 namespace SIMS.Model
 {
 
-   public class City:Serialization.Serializable
-   {
+    public class City : Serialization.Serializable
+    {
         private String _name;
-      public String Name
+        public String Name
         {
-            get { return _name; } 
-            set { if (value != _name) {
+            get { return _name; }
+            set
+            {
+                if (value != _name)
+                {
                     _name = value;
-                } 
+                }
             }
         }
 
@@ -32,7 +35,7 @@ namespace SIMS.Model
 
         public string[] toCSV()
         {
-            String[] csvValues = { 
+            String[] csvValues = {
                 Name
             };
             return csvValues;

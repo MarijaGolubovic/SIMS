@@ -2,16 +2,16 @@ using System;
 
 namespace SIMS.Model
 {
-   public class Appointment : Serialization.Serializable
-   {
-      public DateTime DateAndTime { get; set; }
-      public int Id { get; set; }
-      
-      public Room Room { get; set; }
-      
-      public Patient Patient { get; set; }
+    public class Appointment : Serialization.Serializable
+    {
+        public DateTime DateAndTime { get; set; }
+        public int Id { get; set; }
 
-      public Doctor Doctor { get; set; }
+        public Room Room { get; set; }
+
+        public Patient Patient { get; set; }
+
+        public Doctor Doctor { get; set; }
 
         public Appointment(DateTime dateAndTime, int id, Room room, Patient patient, Doctor doctor)
         {

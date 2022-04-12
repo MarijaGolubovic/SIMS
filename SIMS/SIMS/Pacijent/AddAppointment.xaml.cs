@@ -2,18 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SIMS.Model;
-using System.Linq;
 
 namespace SIMS.Pacijent
 {
@@ -31,11 +22,11 @@ namespace SIMS.Pacijent
             Doctors = new ObservableCollection<Doctor>();
 
             //Popunjavanje kolekcije dokora
-            foreach(Doctor item in DoctorStorage.GetAll())
+            foreach (Doctor item in DoctorStorage.GetAll())
             {
                 Doctors.Add(item);
             }
-            
+
         }
 
         private void NewAppointment(object sender, RoutedEventArgs e)
@@ -66,13 +57,13 @@ namespace SIMS.Pacijent
             DateTime dateTimeTmp = DateTime.Parse(dateTime);
 
             //pravim novi objekat appintment
-            Appointment appointment = new Appointment(dateTimeTmp, 1, room, PatientStorage.GetOne("12345"),doctorTmp);
+            Appointment appointment = new Appointment(dateTimeTmp, 1, room, PatientStorage.GetOne("12345"), doctorTmp);
 
             //dodajem ga u kolekciju
             AllAppointments.AppointmentsCollceciton.Add(appointment);
-            
+
             //pozivam serijalizaciju zbog promijena
-            appointmentSerializer.toCSV("appointments.txt",AllAppointments.AppointmentsCollceciton.ToList());
+            appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
 
             //zatvaram prozor
             this.Close();

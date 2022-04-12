@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-   public class CountryStorage
-   {
-      public List<Country> GetAll()
-      {
+    public class CountryStorage
+    {
+        public List<Country> GetAll()
+        {
             List<Country> countries = new List<Country>();
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
             countries = countrySerijalization.fromCSV("Country.csv");
             return countries;
         }
-      
-      public Country GetOne(String name)
-      {
+
+        public Country GetOne(String name)
+        {
             List<Country> countries = new List<Country>();
             Country country = new Country();
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
             countries = countrySerijalization.fromCSV("Country.csv");
-            foreach(Country inputCountry in countries)
+            foreach (Country inputCountry in countries)
             {
                 if (name.Equals(inputCountry.Name))
                 {
@@ -28,14 +28,14 @@ namespace SIMS.Model
             }
             return country;
         }
-      
-      public Boolean Delete(String name)
-      {
+
+        public Boolean Delete(String name)
+        {
             List<Country> countries = new List<Country>();
             Boolean status = false;
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
             countries = countrySerijalization.fromCSV("Country.csv");
-            foreach(Country inputCountry in countries)
+            foreach (Country inputCountry in countries)
             {
                 if (name.Equals(inputCountry.Name))
                 {
@@ -45,9 +45,9 @@ namespace SIMS.Model
             }
             return status;
         }
-      
-      public Boolean Create(Country country)
-      {
+
+        public Boolean Create(Country country)
+        {
             List<Country> countries = new List<Country>();
             Boolean status = false;
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
@@ -57,13 +57,13 @@ namespace SIMS.Model
             status = true;
             return status;
         }
-      
-      public Boolean Update(Country country)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public String fileName;
-   
-   }
+
+        public Boolean Update(Country country)
+        {
+            throw new NotImplementedException();
+        }
+
+        public String fileName;
+
+    }
 }

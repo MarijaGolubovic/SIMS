@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SIMS.Model;
 
 namespace SIMS.Pacijent
@@ -19,11 +10,12 @@ namespace SIMS.Pacijent
     /// <summary>
     /// Interaction logic for EditAppintment.xaml
     /// </summary>
-    public partial class EditAppintment : Window { 
+    public partial class EditAppintment : Window
+    {
 
-    //u ovu kolekciju treba kasnije ucitati doktore iz fajla
-    public static ObservableCollection<Model.Doctor> Doctors { get; set; }
-    
+        //u ovu kolekciju treba kasnije ucitati doktore iz fajla
+        public static ObservableCollection<Model.Doctor> Doctors { get; set; }
+
         public EditAppintment()
         {
             InitializeComponent();

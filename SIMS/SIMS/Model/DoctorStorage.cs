@@ -28,7 +28,7 @@ namespace SIMS.Model
         public static Doctor GetByID(String jmbg)
         {
             //Pravim dumy podatke
-            Room room = new Room("1", 5,Model.RoomType.EXAMINATION_ROOM);
+            Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
             City city = new City("Banjaluka");
             Country country = new Country("BIH");
             Specialization specialization = new Specialization("pedijatar");

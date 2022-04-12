@@ -6,6 +6,11 @@ namespace SIMS.Model
     {
         public MedicalRecord MedicalRecord { get; set; }
         public AccountStatus AccountStatus { get; set; }
+
+        public String JMBGP { get; set; }
+        public Boolean InitialAccount { get; set; }
+        public Boolean ActivatedAccount { get; set; }
+
         public Patient(User user, MedicalRecord medicalRecord, AccountStatus accountStatus) : base(user.Username, user.Password, user.Type, user.Person)
         {
             this.MedicalRecord = medicalRecord;
@@ -17,15 +22,18 @@ namespace SIMS.Model
         public void fromCSV(string[] values)
 
         {
-            Person.JMBG = values[0];
-            Boolean InitialAccoun = false;
-            Boolean ActivatedAccount = false;
-
+            JMBGP = values[0];
             if (values[1].Contains("True"))
-                InitialAccoun = true;
+                InitialAccount = true;
+            else
+                InitialAccount = false;
+
             if (values[2].Contains("True"))
                 ActivatedAccount = true;
-            new AccountStatus(InitialAccoun, ActivatedAccount);
+            else
+                ActivatedAccount = false;
+
+
 
         }
         public string[] toCSV()

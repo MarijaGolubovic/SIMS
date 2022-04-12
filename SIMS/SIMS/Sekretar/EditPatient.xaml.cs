@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SIMS.Model;
 
 namespace SIMS.Sekretar
@@ -43,23 +33,34 @@ namespace SIMS.Sekretar
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (jmbgE.Text==selected.Person.JMBG || !Nalozi.Patients.Any(p => p.Person.JMBG == jmbgE.Text))
+            if (jmbgE.Text == selected.Person.JMBG || !Nalozi.Patients.Any(p => p.Person.JMBG == jmbgE.Text))
             {
                 if (selected.AccountStatus.activatedAccount)
                 {
-                Nalozi.Patients.Remove(selected);
-                Patient patient = new Patient(new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text)))), new MedicalRecord(), selected.AccountStatus);
-                Nalozi.Patients.Add(patient);
-                } else
+                    Nalozi.Patients.Remove(selected);
+                    Nalozi.users.Remove(Nalozi.users.Find(u => u.Person.JMBG.Equals(selected.Person.JMBG)));
+                    User user = new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text))));
+                    Patient patient = new Patient(user, new MedicalRecord(), selected.AccountStatus);
+                    Nalozi.Patients.Add(patient);
+                    Nalozi.users.Add(user);
+                }
+                else
                 {
                     Nalozi.PatientsBlock.Remove(selected);
-                    Patient patient = new Patient(new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text)))), new MedicalRecord(), selected.AccountStatus);
+                    Nalozi.users.Remove(Nalozi.users.Find(u => u.Person.JMBG.Equals(selected.Person.JMBG)));
+                    User user = new User(korisnikE.Text, lozinkaE.Text, UserType.patient, new Person(imeE.Text, prezimeE.Text, jmbgE.Text, telefonE.Text, DateTime.Parse(datumE.Text), emailE.Text, new Address(ulicaE.Text, brojE.Text, new City(gradE.Text), new Country(drzavaE.Text))));
+                    Patient patient = new Patient(user, new MedicalRecord(), selected.AccountStatus);
                     Nalozi.PatientsBlock.Add(patient);
+                    Nalozi.users.Add(user);
                 }
-                
+                Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
+                userSerializer.toCSV("user.txt", Nalozi.users);
+                Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+                patientSerializer.toCSV("patients.txt", Nalozi.Patients.Concat(Nalozi.PatientsBlock).ToList());
+
                 this.Close();
             }
-           else
+            else
             {
                 string messageBoxText = "Korisnik sa ovim JMBG već postoji";
                 string caption = "Greška";
@@ -70,7 +71,7 @@ namespace SIMS.Sekretar
                 result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
 
             }
-          
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

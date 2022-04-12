@@ -1,16 +1,14 @@
-using System;
-
 namespace SIMS.Model
 {
-   public enum BloodType
-   {
-      aPositive,
-      aNegative,
-      bPositive,
-      bNegative,
-      abPositive,
-      abNegative,
-      oPositive,
-      oNegative
-   }
+    public enum BloodType
+    {
+        aPositive,
+        aNegative,
+        bPositive,
+        bNegative,
+        abPositive,
+        abNegative,
+        oPositive,
+        oNegative
+    }
 }

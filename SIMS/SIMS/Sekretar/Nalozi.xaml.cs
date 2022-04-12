@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SIMS.Model;
 
 
@@ -25,87 +15,50 @@ namespace SIMS.Sekretar
 
         public static ObservableCollection<Patient> Patients { get; set; }
         public static ObservableCollection<Patient> PatientsBlock { get; set; }
+
+        public static List<User> users;
         public Nalozi()
         {
             InitializeComponent();
             this.DataContext = this;
 
             Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
-            List<User> users = userSerializer.fromCSV("user.txt");
+            users = userSerializer.fromCSV("user.txt");
 
             Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
             List<Patient> patientSer = patientSerializer.fromCSV("patients.txt");
+            Patients = new ObservableCollection<Patient>();
+            PatientsBlock = new ObservableCollection<Patient>();
 
-            City city = new City("Novi Sad");
-            Country country = new Country("Srbija");
-            Address address = new Address("Strazilovska", "15", city, country);
-            Person person = new Person("Dejan", "Gloginjic", "123456789", "065087003", DateTime.Parse("10-10-2000"), "deki555@hotmail.com", address);
-            User user = new User("dejan", "dejan123", UserType.patient, person);
-            AccountStatus accountStatus = new AccountStatus(false, true);
-            List<String> ingredians = new List<string> { "sastojak1", "sastojak2" };
-            Medicine medicine = new Medicine("bromazepan", ingredians);
-            List<Medicine> medicines = new List<Medicine> { medicine };
-            MedicalRecord medicalRecord = new MedicalRecord(1.65, 55, "none", BloodType.abNegative, medicines);
-            Patient patient = new Patient(user, medicalRecord, accountStatus);
 
-            City city1 = new City("Mrkonjic Grad");
-            Country country1 = new Country("BiH");
-            Address address1 = new Address("Sportska", "15", city1, country1);
-            Person person1 = new Person("Marija", "Mirkovic", "124567893", "065087003", DateTime.Parse("08-08-2000"), "deki555@hotmail.com", address1);
-            User user1 = new User("dejan", "dejan123", UserType.patient, person1);
-            AccountStatus accountStatus1 = new AccountStatus(false, true);
-            List<String> ingredians1 = new List<string> { "sastojak1", "sastojak2" };
-            Medicine medicine1 = new Medicine("bromazepan", ingredians1);
-            List<Medicine> medicines1 = new List<Medicine> { medicine1 };
-            MedicalRecord medicalRecord1 = new MedicalRecord(1.65, 55, "none", BloodType.abNegative, medicines1);
-            Patient patient1 = new Patient(user1, medicalRecord1, accountStatus1);
-
-            City city2 = new City("Mrkonjic Grad");
-            Country country2 = new Country("BiH");
-            Address address2 = new Address("Sportska", "15", city2, country2);
-            Person person2 = new Person("Mirko", "Mirkovic", "321654987", "065087003", DateTime.Parse("24-12-2000"), "deki555@hotmail.com", address2);
-            User user2 = new User("dejan", "dejan123", UserType.patient, person2);
-            AccountStatus accountStatus2 = new AccountStatus(false, true);
-            List<String> ingredians2 = new List<string> { "sastojak1", "sastojak2" };
-            Medicine medicine2 = new Medicine("bromazepan", ingredians2);
-            List<Medicine> medicines2 = new List<Medicine> { medicine2 };
-            MedicalRecord medicalRecord2 = new MedicalRecord(1.65, 55, "none", BloodType.abNegative, medicines2);
-            Patient patient2 = new Patient(user2, medicalRecord2, accountStatus2);
-
-            ObservableCollection<Patient> patients = new ObservableCollection<Patient>();
-            patients.Add(patient);
-            patients.Add(patient1);
-            patients.Add(patient2);
-            ObservableCollection<Patient> patientsBlock = new ObservableCollection<Patient>();
-
-            foreach (User item in users)
+            if (patientSer.ToList().Any())
             {
-                if (patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.activatedAccount)
+                foreach (User item in users)
                 {
-                    patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus (patientSer.Find(p=> p.Person.JMBG == item.Person.JMBG).AccountStatus.initialAccount, patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.activatedAccount)));
-                }
-                else
-                {
-                    patientsBlock.Add(new Patient(item, new MedicalRecord(), new AccountStatus(patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.initialAccount, patientSer.Find(p => p.Person.JMBG == item.Person.JMBG).AccountStatus.activatedAccount)));
+                    foreach (Patient itemP in patientSer)
+                    {
+                        if (itemP.JMBGP.Equals(item.Person.JMBG))
+                        {
+                            if (itemP.ActivatedAccount)
+                            {
+                                Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true)));
+                            }
+                            else
+                            {
+                                PatientsBlock.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false)));
+                            }
+                        }
+                    }
                 }
             }
 
-            Patients = patients;
+            Patients = Patients;
 
-            City city3 = new City("Novi Sad");
-            Country country3 = new Country("Srbija");
-            Address address3 = new Address("Strazilovska", "15", city3, country3);
-            Person person3 = new Person("Danijela", "Kralus", "123456781", "065087003", DateTime.Parse("02-05-1995"), "daca@hotmail.com", address3);
-            User user3 = new User("daca", "daca123", UserType.patient, person3);
-            AccountStatus accountStatus3 = new AccountStatus(false, false);
-            List<String> ingredians3 = new List<string> { "sastojak1", "sastojak2" };
-            Medicine medicine3 = new Medicine("bromazepan", ingredians3);
-            List<Medicine> medicines3 = new List<Medicine> { medicine3 };
-            MedicalRecord medicalRecord3 = new MedicalRecord(1.65, 55, "none", BloodType.abNegative, medicines3);
-            Patient patient3 = new Patient(user3, medicalRecord3, accountStatus3);
-           
-            patientsBlock.Add(patient3);
-            PatientsBlock = patientsBlock;
+            PatientsBlock = PatientsBlock;
+
+            userSerializer.toCSV("user.txt", users);
+            patientSerializer.toCSV("patients.txt", Nalozi.Patients.Concat(Nalozi.PatientsBlock).ToList());
+
 
 
         }
@@ -131,6 +84,9 @@ namespace SIMS.Sekretar
                 selectedRow.AccountStatus.activatedAccount = false;
                 PatientsBlock.Add(selectedRow);
                 Patients.Remove(selectedRow);
+                Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+                patientSerializer.toCSV("patients.txt", Nalozi.Patients.Concat(Nalozi.PatientsBlock).ToList());
+
             }
         }
 
@@ -154,6 +110,9 @@ namespace SIMS.Sekretar
                 selectedRow.AccountStatus.activatedAccount = true;
                 Patients.Add(selectedRow);
                 PatientsBlock.Remove(selectedRow);
+                Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+                patientSerializer.toCSV("patients.txt", Nalozi.Patients.Concat(Nalozi.PatientsBlock).ToList());
+
             }
 
         }
