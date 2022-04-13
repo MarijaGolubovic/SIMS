@@ -30,8 +30,7 @@ namespace SIMS.Menager
             InitializeComponent();
             IDInput.Text = roomItem.Id;
             SizeInput.Text = roomItem.Size.ToString();
-            //comboboxField.SelectedItem = roomItem.Type;
-            //int selectedItem = -1;
+            
 
             if(roomItem.Type.Equals( Model.RoomType.OPPERATING_ROOM))
             {
@@ -88,12 +87,11 @@ namespace SIMS.Menager
                 roomType = Model.RoomType.WAREHOUSE;
             }
 
-
-
-            // Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
-            Model.Room newRoom = new Model.Room(IDInput.Text, Double.Parse(SizeInput.Text),roomType);
+            
+            Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
+            RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
             RoomsList.Rooms.Add(newRoom);
-            RoomsList.Rooms.Remove(roomItem);
+
             roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
             
 
