@@ -9,7 +9,7 @@
     <Grid>
 
         <Grid Margin="0,24,0,60" >
-            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick" SelectionChanged="DataGridUpdate_SelectionChanged" Margin="0,0,0,25">
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick"  Margin="0,0,0,25">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>

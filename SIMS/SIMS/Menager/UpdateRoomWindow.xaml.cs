@@ -44,6 +44,7 @@ namespace SIMS.Menager
             indexSelected = DataGridUpdate.SelectedIndex;
             Menager.UpdateForm updateForm = new Menager.UpdateForm();
             updateForm.Show();
+            this.Close();
         }
 
         private void UpdateBack_Click(object sender, RoutedEventArgs e)
@@ -53,9 +54,5 @@ namespace SIMS.Menager
 
         }
 
-        private void DataGridUpdate_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
