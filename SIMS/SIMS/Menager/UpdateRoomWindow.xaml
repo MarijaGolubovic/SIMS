@@ -1,0 +1,26 @@
+﻿<Window x:Class="SIMS.Menager.UpdateRoomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.Menager"
+        mc:Ignorable="d"
+        Title="Hello Clinic" Height="450" Width="800">
+    <Grid>
+
+        <Grid Margin="0,24,0,60" >
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick"  Margin="0,0,0,25">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                    <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+
+        <Button x:Name="UpdateBack" Width="100" Height="24" Margin="584,365,108,0" Content="BACK" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722"/>
+
+
+    </Grid>
+</Window>
