@@ -22,6 +22,7 @@ namespace SIMS.Menager
     {
         public static ObservableCollection<Model.Room> Rooms { get; set; }
         public static Model.Room selectedRoom;
+        public static int indexSelected = -1;
         public UpdateRoomWindow()
         {
             InitializeComponent();
@@ -40,8 +41,10 @@ namespace SIMS.Menager
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
            selectedRoom= (Model.Room) DataGridUpdate.SelectedItem;
+            indexSelected = DataGridUpdate.SelectedIndex;
             Menager.UpdateForm updateForm = new Menager.UpdateForm();
             updateForm.Show();
+            this.Close();
         }
 
         private void UpdateBack_Click(object sender, RoutedEventArgs e)
@@ -50,5 +53,6 @@ namespace SIMS.Menager
             this.Close();
 
         }
+
     }
 }
