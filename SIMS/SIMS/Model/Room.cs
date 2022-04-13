@@ -96,10 +96,9 @@ namespace SIMS.Model
             Type = type;
         }
 
+        public Room() { }
 
-        public Room()
-        {
-        }
+
 
         
     }

@@ -32,5 +32,12 @@ namespace SIMS
             menagerWindow.Show();
             this.Close();
         }
+
+        private void Button_Click_Doctor(object sender, RoutedEventArgs e)
+        {
+            Doctor.MainDoctorWindow doctorWindow = new Doctor.MainDoctorWindow();   
+            doctorWindow.Show();
+            this.Close();
+        }
     }
 }

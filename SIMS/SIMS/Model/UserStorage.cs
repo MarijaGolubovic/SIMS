@@ -7,7 +7,9 @@ namespace SIMS.Model
     {
         public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
+            List<User> users = userSerializer.fromCSV("user.txt");
+            return users;
         }
 
         public User GetOne(String jmbg)

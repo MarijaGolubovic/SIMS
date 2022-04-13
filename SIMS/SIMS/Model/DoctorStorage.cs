@@ -5,54 +5,51 @@ namespace SIMS.Model
 {
     public class DoctorStorage
     {
-        public static List<Doctor> GetAll()         //static
+        public static List<Doctor> GetAll()     
         {
-            //Privremeni dumy podaci za listu doktora
-            //Kasnije treba da dobavljaju listu iz fajla
-            List<Doctor> doctors = new List<Doctor>();
+            Serialization.Serializer<DoctorSpecialization> doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
+            List<DoctorSpecialization> doctorStorage = doctorSerializer.fromCSV("doctors.txt");
 
-            City city = new City("Banjaluka");
-            Country country = new Country("BIH");
-            Specialization specialization = new Specialization("pedijatar");
-            Address address = new Address("Stefanova", "5", city, country);
-            Person person = new Person("Tamara", "Antic", "123456789", "065087003", DateTime.Parse("10-10-2020"), "tasaantic00@gmail.com", address);
-            User user = new User("tasa", "tasa123", UserType.doctor, person);
-            Doctor doctor = new Doctor(user, specialization);
-            Doctor doctor1 = new Doctor(user, specialization);
+            Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
+            List<User> users = userSerializer.fromCSV("user.txt");
 
-            doctors.Add(doctor);
-            doctors.Add(doctor1);
-            return doctors;
+            List<Model.Doctor> Doctors = new List<Doctor>();
+
+            foreach (User u in users) {
+                foreach (DoctorSpecialization ds in doctorStorage) {
+                    if (u.Person.JMBG.Equals(ds.JMBG)) {
+                        Model.Doctor doc = new Model.Doctor(u, new Specialization(ds.Spec));
+                        Doctors.Add(doc);
+                    }
+                }
+            }
+
+            return Doctors;
         }
 
         public static Doctor GetByID(String jmbg)
         {
-            //Pravim dumy podatke
-            Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
-            City city = new City("Banjaluka");
-            Country country = new Country("BIH");
-            Specialization specialization = new Specialization("pedijatar");
-            Address address = new Address("Stefanova", "5", city, country);
-            Person person = new Person("Tamara", "Antic", jmbg, "065087003", DateTime.Parse("10-10-2020"), "tasaantic00@gmail.com", address);
-            User user = new User("tasa", "tasa123", UserType.doctor, person);
-            Doctor doctor = new Doctor(user, specialization);
-
-            return doctor;
+            List<Model.Doctor> Doctors = GetAll();
+            Doctor doc = new Doctor();
+            foreach (Doctor d in Doctors) {
+                if (d.Person.JMBG.Equals(jmbg)) {
+                    doc = d;
+                }
+            }
+            return doc;
         }
 
         public static Doctor GetByUsername(String username)
         {
-            //Pravim dumy podatke
-            Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
-            City city = new City("Banjaluka");
-            Country country = new Country("BIH");
-            Specialization specialization = new Specialization("pedijatar");
-            Address address = new Address("Stefanova", "5", city, country);
-            Person person = new Person("Tamara", "Antic", "123456789", "065087003", DateTime.Parse("10-10-2020"), "tasaantic00@gmail.com", address);
-            User user = new User(username, "tasa123", UserType.doctor, person);
-            Doctor doctor = new Doctor(user, specialization);
-
-            return doctor;
+            List<Doctor> Doctors = GetAll();
+            Doctor doc = new Doctor();
+            foreach (Doctor d in Doctors) {
+                if (d.ToString().Equals(username)) {
+                    doc = d;
+                    break;
+                }
+            }
+            return doc;
         }
 
         public Boolean Delete(String jmbg)
@@ -76,6 +73,7 @@ namespace SIMS.Model
         }
 
         public String fileName;
+
 
     }
 }

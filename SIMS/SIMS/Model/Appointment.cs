@@ -33,13 +33,15 @@ namespace SIMS.Model
                 DateAndTime.ToString(),
                 Id.ToString(),
                 Patient.Person.JMBG,    //upisujem samo jmbg pacijenta
-                Doctor.Person.JMBG
+                Doctor.Person.JMBG,
             };
             return csvValues;
         }
 
         public void fromCSV(string[] values)
         {
+            if (values[0] == "")
+                return;
             DateAndTime = DateTime.Parse(values[0]);
             Id = int.Parse(values[1]);
             Patient = PatientStorage.GetOne(values[2]);

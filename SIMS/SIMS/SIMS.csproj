@@ -61,6 +61,7 @@
     <Compile Include="Menager\UpdateRoomWindow.xaml.cs">
       <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\DoctorSpecialization.cs" />
     <Compile Include="Sekretar\CreatePatient.xaml.cs">
       <DependentUpon>CreatePatient.xaml</DependentUpon>
     </Compile>
@@ -72,6 +73,18 @@
     </Compile>
     <Compile Include="Sekretar\Nalozi.xaml.cs">
       <DependentUpon>Nalozi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\AddApointmentWindow.xaml.cs">
+      <DependentUpon>AddApointmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\AllAppointmentsWindow.xaml.cs">
+      <DependentUpon>AllAppointmentsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\EditAppointmentWindow.xaml.cs">
+      <DependentUpon>EditAppointmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\MainDoctorWindow.xaml.cs">
+      <DependentUpon>MainDoctorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menager\AddRoomWindow.xaml.cs">
       <DependentUpon>AddRoomWindow.xaml</DependentUpon>
@@ -96,6 +109,22 @@
     </Compile>
     <Compile Include="Serialization\Serializable.cs" />
     <Compile Include="Serialization\Serializer.cs" />
+    <Page Include="Doctor\AddApointmentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Doctor\AllAppointmentsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Doctor\EditAppointmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Doctor\MainDoctorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

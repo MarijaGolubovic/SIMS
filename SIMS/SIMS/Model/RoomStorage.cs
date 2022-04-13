@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-
    public class RoomStorage
    {
       public static List<Room> GetAll()
@@ -77,7 +76,6 @@ namespace SIMS.Model
             rooms = roomSerijalization.fromCSV("Room.txt");
             List <Room> room = new List<Room>();
             foreach(Room inputRoom in rooms)
-
             {
                 if (type == inputRoom.Type)
                 {

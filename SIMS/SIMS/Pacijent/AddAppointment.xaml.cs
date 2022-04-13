@@ -19,10 +19,10 @@ namespace SIMS.Pacijent
             InitializeComponent();
             this.DataContext = this;
 
-            Doctors = new ObservableCollection<Doctor>();
+            Doctors = new ObservableCollection<Model.Doctor>();
 
             //Popunjavanje kolekcije dokora
-            foreach (Doctor item in DoctorStorage.GetAll())
+            foreach(Model.Doctor item in DoctorStorage.GetAll())
             {
                 Doctors.Add(item);
             }
@@ -51,7 +51,7 @@ namespace SIMS.Pacijent
             //kasnije  cu traziti doktora po jmbg
 
             Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
-            Doctor doctorTmp = DoctorStorage.GetByUsername(selectedDoctor);
+            Model.Doctor doctorTmp = DoctorStorage.GetByUsername(selectedDoctor);
 
             string dateTime = DatePicker.Text;
             DateTime dateTimeTmp = DateTime.Parse(dateTime);
