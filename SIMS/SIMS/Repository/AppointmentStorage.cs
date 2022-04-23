@@ -7,7 +7,8 @@ namespace SIMS.Model
 {
     public class AppointmentStorage
     {
-        public static List<Appointment> GetAll()
+        public AppointmentStorage() { }
+        public List<Appointment> GetAll()
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
             List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");

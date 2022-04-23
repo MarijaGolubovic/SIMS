@@ -1,3 +1,4 @@
+using SIMS.Controller;
 using System;
 
 namespace SIMS.Model
@@ -12,6 +13,8 @@ namespace SIMS.Model
         public Patient Patient { get; set; }
 
         public Doctor Doctor { get; set; }
+
+        private readonly PatientController patientController = new PatientController();
 
         public Appointment(DateTime dateAndTime, int id, Room room, Patient patient, Doctor doctor)
         {
@@ -32,6 +35,7 @@ namespace SIMS.Model
             {
                 DateAndTime.ToString(),
                 Id.ToString(),
+                Room.Id.ToString(),
                 Patient.Person.JMBG,    //upisujem samo jmbg pacijenta
                 Doctor.Person.JMBG,
             };
@@ -44,8 +48,9 @@ namespace SIMS.Model
                 return;
             DateAndTime = DateTime.Parse(values[0]);
             Id = int.Parse(values[1]);
-            Patient = PatientStorage.GetOne(values[2]);
-            Doctor = DoctorStorage.GetByID(values[3]);
+            Room = RoomStorage.GetOne(values[2]);
+            Patient = patientController.GetOne(values[3]);
+            Doctor = DoctorStorage.GetByID(values[4]);
         }
     }
 }

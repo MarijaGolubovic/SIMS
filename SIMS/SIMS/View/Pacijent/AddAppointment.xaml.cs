@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Controller;
 using SIMS.Model;
 
 namespace SIMS.Pacijent
@@ -14,6 +15,8 @@ namespace SIMS.Pacijent
     public partial class AddAppointment : Window
     {
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
+
+        private readonly PatientController patientController;
         public AddAppointment()
         {
             InitializeComponent();
@@ -57,7 +60,7 @@ namespace SIMS.Pacijent
             DateTime dateTimeTmp = DateTime.Parse(dateTime);
 
             //pravim novi objekat appintment
-            Appointment appointment = new Appointment(dateTimeTmp, 1, room, PatientStorage.GetOne("12345"), doctorTmp);
+            Appointment appointment = new Appointment(dateTimeTmp, 1, room, patientController.GetOne("12345"), doctorTmp);
 
             //dodajem ga u kolekciju
             AllAppointments.AppointmentsCollceciton.Add(appointment);

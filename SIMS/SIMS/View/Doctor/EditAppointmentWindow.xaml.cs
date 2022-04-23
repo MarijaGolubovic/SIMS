@@ -1,4 +1,5 @@
-﻿using SIMS.Model;
+﻿using SIMS.Controller;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,6 +27,7 @@ namespace SIMS.Doctor
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
         public static ObservableCollection<Model.Room> Rooms { get; set; }
 
+        private readonly PatientController patientController;
         public EditAppointmentWindow()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace SIMS.Doctor
             //dami podaci
 
             Patients = new ObservableCollection<Patient>();
-            foreach (Patient p in PatientStorage.GetAll())
+            foreach (Patient p in patientController.GetAll())
             {
                 Patients.Add(p);
             }

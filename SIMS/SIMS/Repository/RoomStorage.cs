@@ -14,7 +14,7 @@ namespace SIMS.Model
             return rooms;
         }
 
-        public Room GetOne(int roomID)
+        public static Room GetOne(String roomID)
         {
             Room room = new Room();
             List<Room> rooms = new List<Room>();

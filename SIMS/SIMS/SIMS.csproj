@@ -55,6 +55,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\AllergyController.cs" />
+    <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\MedicineContoller.cs" />
+    <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Controller\TherapyContoller.cs" />
+    <Compile Include="Model\Allergy.cs" />
+    <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
+    <Compile Include="Model\Therapy.cs" />
+    <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\MedicineStorage.cs" />
+    <Compile Include="Repository\TherapyStorage.cs" />
+    <Compile Include="Service\AllergyService.cs" />
+    <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\MedicineService.cs" />
+    <Compile Include="Service\PatientService.cs" />
+    <Compile Include="Service\TherapyService.cs" />
+    <Compile Include="View\Doctor\AllAppointmentsPage.xaml.cs">
+      <DependentUpon>AllAppointmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
     </Compile>
@@ -109,9 +131,17 @@
     </Compile>
     <Compile Include="Serialization\Serializable.cs" />
     <Compile Include="Serialization\Serializer.cs" />
+    <Page Include="Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Doctor\AddApointmentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Doctor\AllAppointmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Doctor\AllAppointmentsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +167,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Doctor\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\UpdateForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -242,6 +276,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Orbitron-Medium.ttf" />
+    <Resource Include="Fonts\Roboto-Light.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -250,9 +286,36 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Service\" />
+    <Resource Include="Assets\img_about.png" />
+    <Resource Include="Assets\img_acoustic.png" />
+    <Resource Include="Assets\img_album.png" />
+    <Resource Include="Assets\img_arrow.png" />
+    <Resource Include="Assets\img_artist.png" />
+    <Resource Include="Assets\img_electronic.png" />
+    <Resource Include="Assets\img_exit.png" />
+    <Resource Include="Assets\img_folder.png" />
+    <Resource Include="Assets\img_genre.png" />
+    <Resource Include="Assets\img_hiphop.png" />
+    <Resource Include="Assets\img_history.png" />
+    <Resource Include="Assets\img_home.png" />
+    <Resource Include="Assets\img_hotkey.png" />
+    <Resource Include="Assets\img_input.png" />
+    <Resource Include="Assets\img_jazz.png" />
+    <Resource Include="Assets\img_metal.png" />
+    <Resource Include="Assets\img_movies.png" />
+    <Resource Include="Assets\img_music.png" />
+    <Resource Include="Assets\img_playlist.png" />
+    <Resource Include="Assets\img_pop.png" />
+    <Resource Include="Assets\img_rock.png" />
+    <Resource Include="Assets\img_search.png" />
+    <Resource Include="Assets\img_setting.png" />
+    <Resource Include="Assets\img_songs.png" />
+    <Resource Include="Assets\max_def.png" />
+    <Resource Include="Assets\max_mo.png" />
+    <Resource Include="Assets\shutdown_def.png" />
+    <Resource Include="Assets\shutdown_mo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

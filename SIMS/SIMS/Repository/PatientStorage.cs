@@ -6,7 +6,7 @@ namespace SIMS.Model
 {
     public class PatientStorage
     {
-        public static List<Patient> GetAll()
+        public List<Patient> GetAll()
         {
             Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
             List<User> users = userSerializer.fromCSV("user.txt");
@@ -40,7 +40,7 @@ namespace SIMS.Model
             return Patients;
         }
 
-        public static Patient GetOne(String jmbg)
+        public Patient GetOne(String jmbg)
         {
             List<Patient> Patients = GetAll();
             Patient patient = new Patient();

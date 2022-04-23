@@ -31,10 +31,10 @@ namespace SIMS.Doctor
             InitializeComponent();
             this.DataContext = this;
 
-            Appointments = new ObservableCollection<Model.Appointment>();
-            foreach (Appointment a in AppointmentStorage.GetAll()) { 
+            /*Appointments = new ObservableCollection<Model.Appointment>();
+            foreach (Appointment a in appointmentStorage.GetAll()) { 
                     Appointments.Add(a);
-            }
+            }*/
         }
 
         private void OtkaziPregled(object sender, RoutedEventArgs e)

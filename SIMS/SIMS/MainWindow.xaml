@@ -14,5 +14,7 @@
         <Button Content="Lekar" HorizontalAlignment="Left" Margin="148,222,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Doctor"/>
 
         <Button Content="Direktor" HorizontalAlignment="Left" Margin="148,325,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menager" />
+
+        <Button Content="Lekar2" HorizontalAlignment="Left" Margin="348,227,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Doctor2"/>
     </Grid>
 </Window>

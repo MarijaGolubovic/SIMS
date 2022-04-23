@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Controller;
 using SIMS.Model;
 
 namespace SIMS.Pacijent
@@ -15,6 +16,8 @@ namespace SIMS.Pacijent
 
         //u ovu kolekciju treba kasnije ucitati doktore iz fajla
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
+
+        private readonly PatientController patientController;
 
         public EditAppintment()
         {
@@ -46,7 +49,7 @@ namespace SIMS.Pacijent
             DateTime dateTimeTmp = DateTime.Parse(dateTime);
 
             //pravim objekat Appointment
-            Appointment appointment = new Appointment(dateTimeTmp, 1, room, PatientStorage.GetOne("123456789"), doctorTmp);
+            Appointment appointment = new Appointment(dateTimeTmp, 1, room, patientController.GetOne("123456789"), doctorTmp);
 
             //brisem stari i ubacujem novi termin u kolekciju
             AllAppointments.AppointmentsCollceciton.Add(appointment);
