@@ -32,8 +32,8 @@ namespace SIMS.Model
             {
                 DateAndTime.ToString(),
                 Id.ToString(),
-                Patient.Person.JMBG,    //upisujem samo jmbg pacijenta
-                Doctor.Person.JMBG,
+                Patient.Person.JMBG.ToString(),    //upisujem samo jmbg pacijenta
+                Doctor.Person.JMBG.ToString(),
             };
             return csvValues;
         }
@@ -41,7 +41,7 @@ namespace SIMS.Model
         public void fromCSV(string[] values)
         {
             if (values[0] == "")
-                return;
+               return;
             DateAndTime = DateTime.Parse(values[0]);
             Id = int.Parse(values[1]);
             Patient = PatientStorage.GetOne(values[2]);

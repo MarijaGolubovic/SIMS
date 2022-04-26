@@ -12,6 +12,7 @@ namespace SIMS.Pacijent
     public partial class AllAppointments : Window
     {
         public static ObservableCollection<Model.Appointment> AppointmentsCollceciton { get; set; }
+        public static List<Model.Appointment> AppointmentsCollceciton2 { get; set; }
         public static Appointment SelectedItem { get; set; }
 
         public AllAppointments()
@@ -27,6 +28,7 @@ namespace SIMS.Pacijent
 
             //inicijalizujem kolekciju
             AppointmentsCollceciton = new ObservableCollection<Appointment>();
+            AppointmentsCollceciton2 = new List<Model.Appointment>();
 
             //ucitavam podatke u kolekciju
             foreach (Appointment item in appointments)

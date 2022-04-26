@@ -46,18 +46,34 @@ namespace SIMS.Pacijent
             DateTime dateTimeTmp = DateTime.Parse(dateTime);
 
             //pravim objekat Appointment
-            Appointment appointment = new Appointment(dateTimeTmp, 1, room, PatientStorage.GetOne("123456789"), doctorTmp);
+            Appointment appointment = new Appointment(dateTimeTmp, 1, room, PatientStorage.GetRegistrated(), doctorTmp);
 
-            //brisem stari i ubacujem novi termin u kolekciju
-            AllAppointments.AppointmentsCollceciton.Add(appointment);
-            AllAppointments.AppointmentsCollceciton.Remove(AllAppointments.SelectedItem);
+            //provjeravam da li je odabrani termin zauzet 
+            int control = 0;
 
-            //pozivam serijalizaciju zbog promijena
-            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
-            appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
+            for (int i = 0; i < AllAppointments.AppointmentsCollceciton.Count; i++)
+            {
+                if (appointment.DateAndTime == AllAppointments.AppointmentsCollceciton[i].DateAndTime)
+                {
+                    control = 1;
+                    MessageBox.Show("Termin je zauzet.");
+                    break;
+                }
+            }
+            if (control == 0)
+            {
+                //brisem stari i ubacujem novi termin u kolekciju
+                AllAppointments.AppointmentsCollceciton.Add(appointment);
+                AllAppointments.AppointmentsCollceciton.Remove(AllAppointments.SelectedItem);
 
-            //zatvaram prozor
-            this.Close();
+                //pozivam serijalizaciju zbog promijena
+                Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+                appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
+
+                //zatvaram prozor
+                this.Close();
+
+            }
 
         }
     }
