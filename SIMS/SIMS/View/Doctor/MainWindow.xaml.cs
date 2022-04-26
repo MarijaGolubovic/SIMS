@@ -19,11 +19,15 @@ namespace SIMS.View.Doctor
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Frame frame { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             View.Doctor.AllAppointmentsPage allAppointmentsPage = new View.Doctor.AllAppointmentsPage();
-            MainFrame.Content = allAppointmentsPage;
+            frame = MainFrame;
+            frame.Content = allAppointmentsPage;
+            
         }
+
     }
 }

@@ -20,5 +20,9 @@ namespace SIMS.Service
             return storage.GetAll();
         }
 
+        public Appointment GetOne(int appointmentID)
+        {
+            return storage.GetOne(appointmentID);
+        }
     }
 }

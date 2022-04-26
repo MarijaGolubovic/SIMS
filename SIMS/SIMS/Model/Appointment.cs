@@ -36,7 +36,7 @@ namespace SIMS.Model
                 DateAndTime.ToString(),
                 Id.ToString(),
                 Room.Id.ToString(),
-                Patient.Person.JMBG,    //upisujem samo jmbg pacijenta
+                Patient.Person.JMBG,    
                 Doctor.Person.JMBG,
             };
             return csvValues;

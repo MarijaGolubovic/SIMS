@@ -18,7 +18,19 @@ namespace SIMS.Model
 
         public Appointment GetOne(int appointmentID)
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+            List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
+            Appointment app = new Appointment();
+
+            foreach (Appointment a in appointments) 
+            {
+                if (a.Id.Equals(appointmentID)) 
+                {
+                    app = a;
+                    break;
+                }
+            }
+            return app;
         }
 
         public Boolean Delete(int appointmentID)

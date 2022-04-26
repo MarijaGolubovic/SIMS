@@ -31,12 +31,17 @@ namespace SIMS.Controller
                 String date = array[0];
                 String time = a.DateAndTime.TimeOfDay.ToString();
                 String roomId = a.Room.Id;
-                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(name, surname, date, time, roomId);
+                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId);
 
                 appointmentsForDoctorDTOs.Add(pom);
             }
 
             return appointmentsForDoctorDTOs;
+        }
+
+        public Appointment GetOne(int appointmentID)
+        {
+            return appointmentService.GetOne(appointmentID);
         }
 
     }
