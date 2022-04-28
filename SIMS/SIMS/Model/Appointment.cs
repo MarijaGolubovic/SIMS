@@ -15,6 +15,7 @@ namespace SIMS.Model
         public Doctor Doctor { get; set; }
 
         private readonly PatientController patientController = new PatientController();
+        private readonly RoomController roomController = new RoomController();
 
         public Appointment(DateTime dateAndTime, int id, Room room, Patient patient, Doctor doctor)
         {
@@ -48,9 +49,9 @@ namespace SIMS.Model
                 return;
             DateAndTime = DateTime.Parse(values[0]);
             Id = int.Parse(values[1]);
-            Room = RoomStorage.GetOne(values[2]);
+            Room = roomController.GetOne(values[2]);
             Patient = patientController.GetOne(values[3]);
-            Doctor = DoctorStorage.GetByID(values[4]);
+            Doctor = Repository.DoctorStorage.GetByID(values[4]);
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using SIMS.Repository;
 
 namespace SIMS.Doctor
 {
@@ -30,7 +31,7 @@ namespace SIMS.Doctor
             }
 
             Doctors = new ObservableCollection<Model.Doctor>();
-            foreach (Model.Doctor doc in Model.DoctorStorage.GetAll()) {
+            foreach (Model.Doctor doc in Repository.DoctorStorage.GetAll()) {
                 Doctors.Add(doc);
             }
 

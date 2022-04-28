@@ -11,11 +11,11 @@ namespace SIMS.Controller
     public class AppointmentController
     {
 
-        private AppointmentService appointmentService;
+        private readonly AppointmentService appointmentService = new AppointmentService();
+        private readonly PatientController patientController = new PatientController();
 
         public AppointmentController() 
         {
-            appointmentService = new AppointmentService();
         }
 
         public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor() 
@@ -44,5 +44,26 @@ namespace SIMS.Controller
             return appointmentService.GetOne(appointmentID);
         }
 
+        public Boolean Create(Appointment appointment)
+        {
+            return appointmentService.Create(appointment);
+        }
+
+        public List<Appointment> findSuggestedAppointments(Model.Doctor doctorTmp, bool doctorPriority, bool appointemntPriority, DateTime dateTimeTmp)
+        {
+            //porvjera da li je jedno od polja prioriteta oznaceno
+            if (doctorPriority == false && appointemntPriority == false)
+            {
+                //javi gresku korisniku
+            }
+            //ovo su sad predlozeni termini
+            List<Appointment> suggestedAppointments = appointmentService.findSuggestedAppointments(doctorTmp, doctorPriority, appointemntPriority, dateTimeTmp);
+            List<Appointment> createdAppointemnt = new List<Appointment>();
+            //ako lista predlozenih termina sadrzi tacno zeljeni termin onda je termin vec kreiran
+
+            return suggestedAppointments;
+        }
+
+        
     }
 }

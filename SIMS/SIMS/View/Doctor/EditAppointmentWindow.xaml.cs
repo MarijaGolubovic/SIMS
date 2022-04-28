@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Repository;
 
 namespace SIMS.Doctor
 {
@@ -42,7 +43,7 @@ namespace SIMS.Doctor
             }
 
             Doctors = new ObservableCollection<Model.Doctor>();
-            foreach (Model.Doctor doc in Model.DoctorStorage.GetAll())
+            foreach (Model.Doctor doc in Repository.DoctorStorage.GetAll())
             {
                 Doctors.Add(doc);
             }

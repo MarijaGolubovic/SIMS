@@ -39,16 +39,18 @@ namespace SIMS.Model
 
             return Patients;
         }
-
+        //2212010103158
         public Patient GetOne(String jmbg)
         {
             List<Patient> Patients = GetAll();
             Patient patient = new Patient();
-            foreach (Patient p in Patients) {
-                if (p.Person.JMBG.Equals(jmbg)) {
+            foreach (Patient p in Patients)
+            {
+                if (p.Person.JMBG.Equals(jmbg))
+                {
                     patient = p;
                 }
-            }
+            }    
             return patient;
         }
 

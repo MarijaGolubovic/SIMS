@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using SIMS.Model;
 
-namespace SIMS.Model
+namespace SIMS.Repository
 {
     public class AppointmentStorage
     {
         public AppointmentStorage() { }
-        public List<Appointment> GetAll()
+        public static List<Appointment> GetAll()
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
             List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
@@ -37,7 +38,7 @@ namespace SIMS.Model
         {
             throw new NotImplementedException();
         }
-        public static Boolean Create(Appointment appointment)
+        public Boolean Create(Appointment appointment)
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
             List<Appointment> appointments = new List<Appointment>();

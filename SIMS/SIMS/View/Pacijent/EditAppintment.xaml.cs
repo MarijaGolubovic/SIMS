@@ -14,25 +14,25 @@ namespace SIMS.Pacijent
     public partial class EditAppintment : Window
     {
 
-        //u ovu kolekciju treba kasnije ucitati doktore iz fajla
+        
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
 
-        private readonly PatientController patientController;
+        private readonly PatientController patientController = new PatientController();
 
         public EditAppintment()
         {
             InitializeComponent();
             this.DataContext = this;
-
-            //Privremeni dumy podaci za listu doktora
+            
             Doctors = new ObservableCollection<Model.Doctor>();
 
-            //Popunjavanje kolekcije dokora
-            foreach (Model.Doctor item in DoctorStorage.GetAll())
+            //Popunjavanje kolekcije dokora iz fajla
+            foreach (Model.Doctor item in DoctorController.GetAll())
             {
                 Doctors.Add(item);
             }
 
+            //inicijalizujem vrijednosti u formi
             DoctorComboBox.SelectedItem = AllAppointments.SelectedItem.Doctor.Username;
             DatePicker.SelectedDate = AllAppointments.SelectedItem.DateAndTime;
         }
@@ -43,24 +43,54 @@ namespace SIMS.Pacijent
 
             //Dumy podaci
             Room room = new Room("1", 5, Model.RoomType.EXAMINATION_ROOM);
-            Model.Doctor doctorTmp = DoctorStorage.GetByUsername(selectedDoctor);
 
-            string dateTime = DatePicker.Text;
-            DateTime dateTimeTmp = DateTime.Parse(dateTime);
+            //dobavljanje doktora prema indeksu izabranog item-a iz comboBox-a
 
-            //pravim objekat Appointment
-            Appointment appointment = new Appointment(dateTimeTmp, 1, room, patientController.GetOne("123456789"), doctorTmp);
+            string jmbg = "";
 
-            //brisem stari i ubacujem novi termin u kolekciju
-            AllAppointments.AppointmentsCollceciton.Add(appointment);
-            AllAppointments.AppointmentsCollceciton.Remove(AllAppointments.SelectedItem);
+            int index = DoctorComboBox.SelectedIndex;
+            if (index == 0)
+            {
+                jmbg = "2408000103256";
+            }
+            else if (index == 1)
+            {
+                jmbg = "2408010103256";
+            }
+            else if (index == 2)
+            {
+                jmbg = "2408010103156";
+            }
+            else if (index == 3)
+            {
+                jmbg = "2108010103158";
+            }
 
-            //pozivam serijalizaciju zbog promijena
-            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
-            appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
+            Model.Doctor doctorTmp = DoctorController.GetByID(jmbg);
 
-            //zatvaram prozor
-            this.Close();
+            //poredim stari datum sa novim zeljenim datumom
+            DateTime dateTimeOld = AllAppointments.SelectedItem.DateAndTime;  //stari datum
+            string dateTime = DatePicker.Text;                                //novi datum
+            DateTime dateTimeNew = DateTime.Parse(dateTime);
+
+            double dateDiference = (dateTimeNew - dateTimeOld).TotalDays;
+
+            if (dateDiference < 10)
+            {
+                //pravim objekat Appointment
+                Appointment appointment = new Appointment(dateTimeNew, 1, room, patientController.GetOne("2408010222156"), doctorTmp); ;
+
+                //brisem stari i ubacujem novi termin u kolekciju
+                AllAppointments.AppointmentsCollceciton.Add(appointment);
+                AllAppointments.AppointmentsCollceciton.Remove(AllAppointments.SelectedItem);
+
+                //pozivam serijalizaciju zbog promijena
+                Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+                appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
+
+                //zatvaram prozor
+                this.Close();
+            }
 
         }
     }
