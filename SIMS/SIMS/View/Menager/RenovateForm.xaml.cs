@@ -15,30 +15,16 @@ using System.Windows.Shapes;
 namespace SIMS.View.Menager
 {
     /// <summary>
-    /// Interaction logic for RenovateWindow.xaml
+    /// Interaction logic for RenovateForm.xaml
     /// </summary>
-    public partial class RenovateWindow : Window
+    public partial class RenovateForm : Window
     {
-        public RenovateWindow()
+        public RenovateForm()
         {
             InitializeComponent();
         }
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
-        {
-            Menager.RoomsPanel roomsPanel = new RoomsPanel();
-            roomsPanel.Show();
-            
-        }
-
-        private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
-        {
-            SIMS.Menager.MainWindowMenager mainWindowMenager = new SIMS.Menager.MainWindowMenager();
-            mainWindowMenager.Show();
-            this.Close();
-        }
-
-        private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
             Menager.RenovateForm renovateForm = new RenovateForm();
             renovateForm.Show();

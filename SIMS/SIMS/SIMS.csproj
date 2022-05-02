@@ -86,6 +86,9 @@
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\RenovateForm.xaml.cs">
+      <DependentUpon>RenovateForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\RenovateWindow.xaml.cs">
       <DependentUpon>RenovateWindow.xaml</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Doctor\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\RenovateForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

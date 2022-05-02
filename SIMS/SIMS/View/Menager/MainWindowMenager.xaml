@@ -8,8 +8,8 @@
         Topmost="True"
         Title="Hello Clinic" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.495,0.386">
-       
-        <Grid Height="90" VerticalAlignment="Top">
+        <Border BorderThickness="2" BorderBrush="Black"  Margin="0,0,0,328"/>
+        <Grid Height="92" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -69,7 +69,7 @@
                 My account
             </Label>
         </Grid>
-       
+
 
     </Grid>
 </Window>
