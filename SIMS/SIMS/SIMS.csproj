@@ -86,6 +86,12 @@
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\RenovateWindow.xaml.cs">
+      <DependentUpon>RenovateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\RoomsPanel.xaml.cs">
+      <DependentUpon>RoomsPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
     </Compile>
@@ -181,6 +187,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Doctor\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\RenovateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\RoomsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -299,7 +313,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\hospital.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\img_about.png" />
     <Resource Include="Assets\img_acoustic.png" />
@@ -329,6 +345,24 @@
     <Resource Include="Assets\max_mo.png" />
     <Resource Include="Assets\shutdown_def.png" />
     <Resource Include="Assets\shutdown_mo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\sign-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\add_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\renovate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
