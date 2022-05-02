@@ -13,7 +13,8 @@ namespace SIMS.Model
         public List<Allergy> Allergies { get; set; }
         public BloodType BloodType { get; set; }
 
-        private readonly PatientController patientController;
+        private readonly PatientController patientController = new PatientController();
+        private readonly TherapyContoller therapyContoller = new TherapyContoller();
         public MedicalRecord(double height, double weight, List<Allergy> allergies, BloodType bloodType, List<Therapy> therapies)
         {
             Height = height;
@@ -98,12 +99,20 @@ namespace SIMS.Model
 
         public void fromCSV(string[] values)
         {
+            if (values == null)
+                return;
             Height = Double.Parse(values[0]);
             Weight = Double.Parse(values[1]);
             BloodType = (BloodType)Enum.Parse(typeof(BloodType), values[2]);
             patient = patientController.GetOne(values[3]);
+            therapies = therapyContoller.GetById(values[4]);
 
-            
+            int i;
+            for (i = 5; i < values.Length; i++) 
+            {
+                Allergies.Add(new Allergy(values[i]));
+            }
+
         }
 
         public Patient patient;

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
-namespace SIMS.Model
+using SIMS.Model;
+namespace SIMS.Repository
 {
     public class DoctorStorage
     {
-        public static List<Doctor> GetAll()     
+        public static List<SIMS.Model.Doctor> GetAll()     
         {
             Serialization.Serializer<DoctorSpecialization> doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
             List<DoctorSpecialization> doctorStorage = doctorSerializer.fromCSV("doctors.txt");
@@ -13,7 +13,7 @@ namespace SIMS.Model
             Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
             List<User> users = userSerializer.fromCSV("user.txt");
 
-            List<Model.Doctor> Doctors = new List<Doctor>();
+            List<Model.Doctor> Doctors = new List<SIMS.Model.Doctor>();
 
             foreach (User u in users) {
                 foreach (DoctorSpecialization ds in doctorStorage) {
@@ -27,11 +27,11 @@ namespace SIMS.Model
             return Doctors;
         }
 
-        public static Doctor GetByID(String jmbg)
+        public static SIMS.Model.Doctor GetByID(String jmbg)
         {
             List<Model.Doctor> Doctors = GetAll();
-            Doctor doc = new Doctor();
-            foreach (Doctor d in Doctors) {
+            SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
+            foreach (SIMS.Model.Doctor d in Doctors) {
                 if (d.Person.JMBG.Equals(jmbg)) {
                     doc = d;
                 }
@@ -39,11 +39,11 @@ namespace SIMS.Model
             return doc;
         }
 
-        public static Doctor GetByUsername(String username)
+        public static SIMS.Model.Doctor GetByUsername(String username)
         {
-            List<Doctor> Doctors = GetAll();
-            Doctor doc = new Doctor();
-            foreach (Doctor d in Doctors) {
+            List<SIMS.Model.Doctor> Doctors = GetAll();
+            SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
+            foreach (SIMS.Model.Doctor d in Doctors) {
                 if (d.ToString().Equals(username)) {
                     doc = d;
                     break;
@@ -67,7 +67,7 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        public List<Doctor> GetBySpecialization(Specialization specialization)
+        public List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
         {
             throw new NotImplementedException();
         }

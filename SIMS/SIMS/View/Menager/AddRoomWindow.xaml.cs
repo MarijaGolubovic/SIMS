@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Repository;
 
 
 namespace SIMS.Menager
@@ -28,7 +29,7 @@ namespace SIMS.Menager
             InitializeComponent();
             this.DataContext = this;
             Rooms = new ObservableCollection<Model.Room>();
-            foreach(Model.Room roomItem in Model.RoomStorage.GetAll())
+            foreach(Model.Room roomItem in RoomStorage.GetAll())
             {
                 Rooms.Add(roomItem);
             }

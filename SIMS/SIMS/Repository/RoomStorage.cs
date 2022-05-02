@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using SIMS.Model;
 
-namespace SIMS.Model
+namespace SIMS.Repository
 {
    public class RoomStorage
    {
@@ -14,7 +15,7 @@ namespace SIMS.Model
             return rooms;
         }
 
-        public static Room GetOne(String roomID)
+        public Room GetOne(String roomID)
         {
             Room room = new Room();
             List<Room> rooms = new List<Room>();

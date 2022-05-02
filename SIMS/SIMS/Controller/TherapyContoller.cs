@@ -22,9 +22,9 @@ namespace SIMS.Controller
             return therapyService.GetAll();
         }
 
-        public Therapy GetOne(string id)
+        public List<Therapy> GetById(string id)
         {
-            return therapyService.GetOne(id);
+            return therapyService.GetById(id);
         }
     }
 }

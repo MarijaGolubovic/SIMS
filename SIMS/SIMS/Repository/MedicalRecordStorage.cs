@@ -7,12 +7,25 @@ namespace SIMS.Model
     {
         public List<MedicalRecord> GetAll()
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<MedicalRecord> medicalRecordSerializer = new Serialization.Serializer<MedicalRecord>();
+            List<MedicalRecord> medicalRecords = medicalRecordSerializer.fromCSV("medicalRecords.txt");
+
+            return medicalRecords;
         }
 
         public MedicalRecord GetOne(String jmbg)
         {
-            throw new NotImplementedException();
+            List<MedicalRecord> medicalRecords = GetAll();
+            MedicalRecord medicalRecord = new MedicalRecord();
+            foreach (MedicalRecord mr in medicalRecords)
+            {
+                if (mr.patient.Person.JMBG.Equals(jmbg))
+                { 
+                    medicalRecord = mr;
+                    break;
+                }
+            }
+            return medicalRecord;
         }
 
         public Boolean Delete(String jmbg)

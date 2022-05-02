@@ -86,6 +86,7 @@
 
                         <MenuItem Header="Prikaži sve"
                                   Template="{StaticResource Item_Template}">
+                                  
 
                             <MenuItem.Icon>
                                 <Image Source="Assets/img_home.png"
@@ -240,7 +241,7 @@
 
             </StackPanel>
 
-            <Frame x:Name="MainFrame" DockPanel.Dock="Right" />
+            <Frame x:Name="MainFrame" DockPanel.Dock="Right" NavigationUIVisibility="Hidden" />
 
         </DockPanel>
     </Grid>

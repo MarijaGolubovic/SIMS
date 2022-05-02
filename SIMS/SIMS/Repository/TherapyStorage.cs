@@ -17,20 +17,19 @@ namespace SIMS.Repository
             return therapies;
         }
 
-        public Therapy GetOne(String id)
+        public List<Therapy> GetById(String id)
         {
             List<Therapy> therapies = GetAll();
-            Therapy therapy = new Therapy();
+            List<Therapy> therapyForDoctor = new List<Therapy>();
 
             foreach (Therapy t in therapies)
             {
                 if (t.PatientId.Equals(id))
                 {
-                    therapy = t;
-                    break;
+                    therapyForDoctor.Add(t);
                 }
             }
-            return therapy;
+            return therapyForDoctor;
 
         }
 

@@ -22,6 +22,8 @@ namespace SIMS.View.Doctor
     {
         public List<AppointmentsForDoctorDTO> Appointments { get; set; }
         private AppointmentController appointmentController { get; set; }
+        public static AppointmentsForDoctorDTO SelectedItem { get; set; }
+
         public AllAppointmentsPage()
         {
             InitializeComponent();
@@ -29,6 +31,21 @@ namespace SIMS.View.Doctor
 
             appointmentController = new AppointmentController();
             Appointments = appointmentController.GetAppointmentsForDoctor();
+        }
+
+        private void Button_Click_Detaljnije(object sender, RoutedEventArgs e)
+        {
+            if (allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO == null) 
+            {
+                return;
+            }
+            SelectedItem = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
+            MainWindow.frame.Content = new DetailedAppointmentPage();
+        }
+
+        private void Button_Click_Pristupi(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

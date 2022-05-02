@@ -36,12 +36,14 @@ namespace SIMS.Model
 
             return Patients;
         }
-
+        //2212010103158
         public Patient GetOne(String jmbg)
         {
             List<Patient> Patients = GetAll();
             Patient patient = new Patient();
+
             patient = Patients.Find(u => u.Person.JMBG.Equals(jmbg));
+
             return patient;
         }
 
