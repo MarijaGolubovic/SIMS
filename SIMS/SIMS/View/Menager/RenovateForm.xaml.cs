@@ -30,5 +30,17 @@ namespace SIMS.View.Menager
             renovateForm.Show();
             this.Close();
         }
+
+        private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
+        {
+            Menager.RenovateWindow renovateWindow = new RenovateWindow();
+            renovateWindow.Show();
+            this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

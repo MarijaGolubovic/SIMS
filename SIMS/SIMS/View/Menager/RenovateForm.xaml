@@ -70,6 +70,39 @@
         </Grid>
 
 
+        <Label  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="348,108,335,260" FontWeight="Black" Width="109" Height="52">Renovate</Label>
+        <Image RenderTransformOrigin="0.482,0.735" Height="70" Margin="279,95,449,255">
+            <Image.Source >
+                <BitmapImage  UriSource="/Assets/renovate.png"  />
+            </Image.Source>
+        </Image>
 
+        <Label VerticalAlignment="Center" Height="38" Margin="216,172,531,210" RenderTransformOrigin="1.939,0.433">ID:</Label>
+        <Label  VerticalAlignment="Center" Margin="216,213,531,176" RenderTransformOrigin="0.039,0.489" Height="31">Size:</Label>
+        <Label  VerticalAlignment="Center" Margin="216,249,531,140" RenderTransformOrigin="0.039,0.489" Height="31">Type:</Label>
+        <Label  VerticalAlignment="Center" Margin="216,286,531,108" RenderTransformOrigin="0.039,0.489" Height="26">Period:</Label>
+        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Height="23" Margin="304,287,0,0"  VerticalAlignment="Top" Width="153"/>
+        <Label  VerticalAlignment="Center" Margin="216,325,516,69" RenderTransformOrigin="0.039,0.489" Height="26">Method:</Label>
+        <TextBox Width="150" Margin="304,325,338,69"/>
+        <Grid VerticalAlignment="Bottom" Height="45">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="132*"></ColumnDefinition>
+                <ColumnDefinition Width="101*"></ColumnDefinition>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="132*"></ColumnDefinition>
+                <ColumnDefinition Width="132*"></ColumnDefinition>
+                <ColumnDefinition Width="132*"></ColumnDefinition>
+                <ColumnDefinition Width="132*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Height="25" Width="80">Split room</Button>
+            <Button Grid.Column="1" Height="25" Width="80">Merge room</Button>
+            <Button  Grid.Column="5" Height="25" Width="80"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">OK</Button>
+            <Button  Grid.Column="6" Height="25" Width="80" Click="Button_Click_CANCEL"  HorizontalAlignment="Center" VerticalAlignment="Center">CANCEL</Button>
+        </Grid>
     </Grid>
+
+
 </Window>
