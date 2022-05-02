@@ -16,8 +16,6 @@ namespace SIMS.Model
 
             List<Patient> Patients = new List<Patient>();
 
-            if (patientSer.ToList().Any())
-            {
                 foreach (User item in users)
                 {
                     foreach (Patient itemP in patientSer)
@@ -35,7 +33,6 @@ namespace SIMS.Model
                         }
                     }
                 }
-            }
 
             return Patients;
         }
@@ -44,11 +41,7 @@ namespace SIMS.Model
         {
             List<Patient> Patients = GetAll();
             Patient patient = new Patient();
-            foreach (Patient p in Patients) {
-                if (p.Person.JMBG.Equals(jmbg)) {
-                    patient = p;
-                }
-            }
+            patient = Patients.Find(u => u.Person.JMBG.Equals(jmbg));
             return patient;
         }
 
@@ -57,15 +50,47 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        public Boolean Create(String jmbg, AccountStatus acountStatus)
+        public Boolean Create(Patient patient)
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+            List<Patient> patients = new List<Patient>();
+            foreach (Patient p in patientSerializer.fromCSV("patients.txt"))
+            {
+                patients.Add(p);
+            }
+            patients.Add(patient);
+            patientSerializer.toCSV("patients.txt", patients);
+            return true;
         }
 
         public Boolean Update(String jmbg, AccountStatus accountStatus)
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+            List<Patient> patients = new List<Patient>();
+            foreach (Patient p in patientSerializer.fromCSV("patients.txt"))
+            {
+                patients.Add(p);
+            }
+            patients.Remove(patients.Find(p => p.JMBGP.Equals(jmbg)));
+            patients.Add(new Patient(jmbg, accountStatus.initialAccount, accountStatus.activatedAccount));
+            patientSerializer.toCSV("patients.txt", patients);
+            return true;
         }
+        public Boolean UpdateJMBG(String jmbgOld, String jmbgNew)
+        {
+            Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+            List<Patient> patients = new List<Patient>();
+            foreach (Patient p in patientSerializer.fromCSV("patients.txt"))
+            {
+                patients.Add(p);
+            }
+            patients.Add(new Patient(jmbgNew, patients.Find(p => p.JMBGP.Equals(jmbgOld)).InitialAccount, patients.Find(p => p.JMBGP.Equals(jmbgOld)).ActivatedAccount));
+            patients.Remove(patients.Find(p => p.JMBGP.Equals(jmbgOld)));
+
+            patientSerializer.toCSV("patients.txt", patients);
+            return true;
+        }
+
 
         public String fileName;
 

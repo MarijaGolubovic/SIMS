@@ -26,5 +26,32 @@ namespace SIMS.Controller
         {
             return patientService.GetOne(jmbg);
         }
+
+        public List<Patient> GetAllActiv()
+        {
+            return patientService.GetAllActiv();
+        }
+
+        public List<Patient> GetAllBlock()
+        {
+            return patientService.GetAllBlock();
+        }
+
+        public void Update(Patient patient)
+        {
+            patientService.Update(patient.Person.JMBG, patient.AccountStatus);
+        }
+
+        public Boolean Create (Patient patient)
+        {
+            return patientService.Create(patient);
+        }
+
+        public Boolean UpdateJMBG(String jmbgOld, String jmbgNew)
+        {
+            return patientService.UpdateJMBG(jmbgOld, jmbgNew);
+        }
+
+
     }
 }
