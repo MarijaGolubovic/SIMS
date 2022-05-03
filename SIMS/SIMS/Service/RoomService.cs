@@ -42,12 +42,5 @@ namespace SIMS.Service
 
         }
 
-        public String RenovateRoom(Model.Room room, DateTime begin, DateTime end, String method)
-        {
-            List<RoomOccupacy> roomOccupacies = roomStorage.GetAll();
-
-        }
-
-
     }
 }

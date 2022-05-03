@@ -21,7 +21,8 @@ namespace SIMS.View.Menager
     {
         public static System.Collections.ObjectModel.ObservableCollection<Model.Room> RoomRenovate { get; set; }
         Model.Room roomItem;
-        Service.OccupacyRoomService occupacyRoomService = new Service.OccupacyRoomService();
+        private static readonly Service.OccupacyRoomService occupacyRoomService = new Service.OccupacyRoomService();
+       
 
         public RenovateForm()
         {
@@ -50,12 +51,9 @@ namespace SIMS.View.Menager
 
         private void Button_ClickOK(object sender, RoutedEventArgs e)
         {
-            
-            
-
-           
-
-           
+            string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
+            MessageBox.Show(message);
+            this.Close();
         }
     }
 }
