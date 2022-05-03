@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,19 @@ namespace SIMS.View.Menager
     /// <summary>
     /// Interaction logic for MovingWindow.xaml
     /// </summary>
+   
+    
     public partial class MovingWindow : Window
     {
+
+        public static ObservableCollection<Model.Room> MovingEquipment { get; set; }
+        Model.Room roomItem;
         public MovingWindow()
         {
+            
             InitializeComponent();
+           
+
         }
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)

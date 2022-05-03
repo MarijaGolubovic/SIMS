@@ -52,5 +52,7 @@ namespace SIMS.Model
         public RoomEqupment()
         {
         }
+
+       
     }
 }

@@ -69,7 +69,7 @@
             </Label>
         </Grid>
 
-        <DataGrid x:Name="dataMovingEquipment" ItemsSource="{Binding Equipment}" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,97,578,0" >
+        <DataGrid x:Name="DataMovingEquipment" ItemsSource="{Binding MovingEquipment}" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,97,578,0" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Equipment" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Size}" Width="*"/>
@@ -86,7 +86,7 @@
 
         <Label  VerticalAlignment="Center" Margin="287,184,416,205" RenderTransformOrigin="0.039,0.489" Height="31">Room ID:</Label>
         <Button Height="25" Width="120" Margin="606,184,66,211" Click="Button_Click_Start">Choose room</Button>
-        <TextBox Height="25" Margin="412,184,233,211"/>
+        <TextBox x:Name="roomIdChoose1" IsReadOnly="True" Height="25" Margin="412,184,233,211"/>
         <Label  VerticalAlignment="Center" Margin="287,220,416,169" RenderTransformOrigin="0.039,0.489" Height="31">Equipment:</Label>
         <TextBox Height="25" Margin="412,226,235,169" RenderTransformOrigin="0.5,0.5">
             <TextBox.RenderTransform>

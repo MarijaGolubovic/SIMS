@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.Controller;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SIMS.View.Menager
 {
@@ -21,12 +23,18 @@ namespace SIMS.View.Menager
     public partial class Rooms : Window
     {
         public static ObservableCollection<Model.Room> RoomsChoose { get; set; }
-        public static Model.Room roomItem;
+        
+        internal RoomEquipmentController RoomEquipmentController { get => roomEquipmentController; set => roomEquipmentController = value; }
+
+        public static Model.Room roomItemSelected;
+        private Controller.RoomEquipmentController roomEquipmentController = new Controller.RoomEquipmentController();
         public Rooms()
         {
             InitializeComponent();
             this.DataContext = this;
-
+            //roomItemSelected =(Model.Room) DataGridRoomsChose.SelectedItem;
+            //string id = roomItemSelected.Id;
+            //MovingWindow.roomIdChoose1.Text = id;
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             RoomsChoose = new ObservableCollection<Model.Room>();
@@ -60,7 +68,19 @@ namespace SIMS.View.Menager
 
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            roomItem = (Model.Room)DataGridRoomsChose.SelectedItem;
+            roomItemSelected = (Model.Room)DataGridRoomsChose.SelectedItem;
+            List<Model.RoomEqupment> roomEqupments = RoomEquipmentController.GetAll();
+            List<Model.Equpment> equpments = new List<Model.Equpment>();
+            foreach(Model.RoomEqupment roomEq in roomEqupments)
+            {
+                if (roomEq.RoomId.Equals(roomItemSelected.Id))
+                {
+                    equpments.Add((Model.Equpment)roomEq.roomEquipment);
+                }
+            }
+
+
+
             this.Close();
         }
 
