@@ -24,12 +24,13 @@ namespace SIMS.Menager
     public partial class AddRoomWindow : Window
     {
         public static ObservableCollection<Model.Room> Rooms { get; set; }
+        public static Controller.RoomController roomController = new Controller.RoomController();
         public AddRoomWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             Rooms = new ObservableCollection<Model.Room>();
-            foreach(Model.Room roomItem in RoomStorage.GetAll())
+            foreach(Model.Room roomItem in roomController.GetAll())
             {
                 Rooms.Add(roomItem);
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,20 @@ namespace SIMS.View.Menager
     /// </summary>
     public partial class Rooms : Window
     {
+        public static ObservableCollection<Model.Room> Roomss { get; set; }
         public Rooms()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
+            List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
+            Roomss = new ObservableCollection<Model.Room>();
+
+            foreach (Model.Room roomItem in rooms)
+            {
+                Roomss.Add(roomItem);
+            }
         }
 
         private void UpdateBack_Click_Moving(object sender, RoutedEventArgs e)

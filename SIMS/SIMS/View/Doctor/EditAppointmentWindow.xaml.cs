@@ -29,6 +29,7 @@ namespace SIMS.Doctor
         public static ObservableCollection<Model.Room> Rooms { get; set; }
 
         private readonly PatientController patientController;
+        public static Controller.RoomController roomController = new Controller.RoomController();
         public EditAppointmentWindow()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace SIMS.Doctor
             }
 
             Rooms = new ObservableCollection<Room>();
-            foreach (Room r in RoomStorage.GetAll())
+            foreach (Room r in roomController.GetAll())
             {
                 Rooms.Add(r);
             }

@@ -58,6 +58,7 @@
     <Compile Include="Controller\AllergyController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
+    <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineContoller.cs" />
     <Compile Include="Controller\PatientController.cs" />
@@ -66,13 +67,17 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
+    <Compile Include="Model\Equpment.cs" />
+    <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\Therapy.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\EquipmentStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\PatientService.cs" />

@@ -17,6 +17,7 @@ namespace SIMS.Doctor
         public static ObservableCollection<Patient> Patients { get; set; }
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
         public static ObservableCollection<Model.Room> Rooms { get; set; }
+        public static Controller.RoomController roomController = new Controller.RoomController();
 
         private readonly PatientController patientController;
 
@@ -37,7 +38,7 @@ namespace SIMS.Doctor
             }
 
             Rooms = new ObservableCollection<Room>();
-            foreach (Room r in RoomStorage.GetAll()) {
+            foreach (Room r in roomController.GetAll()) {
                 Rooms.Add(r);
             }
         }
