@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Model;
 
 namespace SIMS.Service
@@ -11,12 +8,12 @@ namespace SIMS.Service
     {
         private UserStorage userStorage;
 
-        public UserService ()
+        public UserService()
         {
             userStorage = new UserStorage();
         }
 
-        public List <User> GetAll()
+        public List<User> GetAll()
         {
             return userStorage.GetAll();
         }
@@ -26,9 +23,9 @@ namespace SIMS.Service
             return userStorage.GetOne(jmbg);
         }
 
-        public Boolean Create (User user)
+        public Boolean Create(User user)
         {
-            if (userStorage.GetOne(user.Person.JMBG)==null)
+            if (userStorage.GetOne(user.Person.JMBG) == null)
             {
                 userStorage.Create(user);
                 return true;
@@ -37,16 +34,17 @@ namespace SIMS.Service
             {
                 return false;
             }
-            
+
         }
 
-        public Boolean Update (User newUser, User oldUser)
+        public Boolean Update(User newUser, User oldUser)
         {
-            if (oldUser.Person.JMBG==newUser.Person.JMBG || userStorage.GetOne(newUser.Person.JMBG)==null)
+            if (oldUser.Person.JMBG == newUser.Person.JMBG || userStorage.GetOne(newUser.Person.JMBG) == null)
             {
                 userStorage.Update(newUser, oldUser);
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }

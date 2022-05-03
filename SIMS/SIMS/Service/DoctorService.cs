@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
 
 namespace SIMS.Service
 {
@@ -29,5 +27,10 @@ namespace SIMS.Service
         {
             return Repository.DoctorStorage.GetByUsername(username);
         }
+        public static List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        {
+            return Repository.DoctorStorage.GetBySpecialization(specialization);
+        }
+
     }
 }

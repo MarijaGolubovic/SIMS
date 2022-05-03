@@ -24,8 +24,8 @@ namespace SIMS.Menager
 
             Menager.UpdateRoomWindow updateWindow = new UpdateRoomWindow();
             updateWindow.Show();
-            
-            
+
+
         }
 
         private void DeleteRoom_Click(object sender, RoutedEventArgs e)

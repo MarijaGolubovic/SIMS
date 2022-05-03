@@ -1,5 +1,5 @@
-using SIMS.Controller;
 using System;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {
@@ -37,7 +37,7 @@ namespace SIMS.Model
                 DateAndTime.ToString(),
                 Id.ToString(),
                 Room.Id.ToString(),
-                Patient.Person.JMBG,    
+                Patient.Person.JMBG,
                 Doctor.Person.JMBG,
             };
             return csvValues;

@@ -1,9 +1,6 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
 
 namespace SIMS.Service
 {
@@ -11,7 +8,7 @@ namespace SIMS.Service
     {
         private readonly MedicalRecordStorage storage;
 
-        public MedicalRecordService() 
+        public MedicalRecordService()
         {
             storage = new MedicalRecordStorage();
         }
@@ -24,6 +21,11 @@ namespace SIMS.Service
         public MedicalRecord GetOne(String jmbg)
         {
             return storage.GetOne(jmbg);
+        }
+
+        public void Update(String jmbg, MedicalRecord medicalRecord)
+        {
+            storage.Update(jmbg, medicalRecord);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SIMS.Model
 
         public Patient(User user, MedicalRecord medicalRecord, AccountStatus accountStatus) : base(user.Username, user.Password, user.Type, user.Person)
         {
-            
+
             this.MedicalRecord = medicalRecord;
             this.AccountStatus = accountStatus;
             this.JMBGP = Person.JMBG;

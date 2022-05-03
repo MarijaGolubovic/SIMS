@@ -1,10 +1,6 @@
-﻿using SIMS.Model;
+﻿using System.Collections.Generic;
+using SIMS.Model;
 using SIMS.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Service
 {
@@ -12,12 +8,12 @@ namespace SIMS.Service
     {
         private MedicineStorage medicineStorage { get; set; }
 
-        public MedicineService() 
+        public MedicineService()
         {
             medicineStorage = new MedicineStorage();
         }
 
-        public List<Medicine> GetAll() 
+        public List<Medicine> GetAll()
         {
             return medicineStorage.GetAll();
         }

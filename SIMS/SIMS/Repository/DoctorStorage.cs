@@ -5,7 +5,7 @@ namespace SIMS.Repository
 {
     public class DoctorStorage
     {
-        public static List<SIMS.Model.Doctor> GetAll()     
+        public static List<SIMS.Model.Doctor> GetAll()
         {
             Serialization.Serializer<DoctorSpecialization> doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
             List<DoctorSpecialization> doctorStorage = doctorSerializer.fromCSV("doctors.txt");
@@ -15,9 +15,12 @@ namespace SIMS.Repository
 
             List<Model.Doctor> Doctors = new List<SIMS.Model.Doctor>();
 
-            foreach (User u in users) {
-                foreach (DoctorSpecialization ds in doctorStorage) {
-                    if (u.Person.JMBG.Equals(ds.JMBG)) {
+            foreach (User u in users)
+            {
+                foreach (DoctorSpecialization ds in doctorStorage)
+                {
+                    if (u.Person.JMBG.Equals(ds.JMBG))
+                    {
                         Model.Doctor doc = new Model.Doctor(u, new Specialization(ds.Spec));
                         Doctors.Add(doc);
                     }
@@ -31,8 +34,10 @@ namespace SIMS.Repository
         {
             List<Model.Doctor> Doctors = GetAll();
             SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
-            foreach (SIMS.Model.Doctor d in Doctors) {
-                if (d.Person.JMBG.Equals(jmbg)) {
+            foreach (SIMS.Model.Doctor d in Doctors)
+            {
+                if (d.Person.JMBG.Equals(jmbg))
+                {
                     doc = d;
                 }
             }
@@ -43,8 +48,10 @@ namespace SIMS.Repository
         {
             List<SIMS.Model.Doctor> Doctors = GetAll();
             SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
-            foreach (SIMS.Model.Doctor d in Doctors) {
-                if (d.ToString().Equals(username)) {
+            foreach (SIMS.Model.Doctor d in Doctors)
+            {
+                if (d.ToString().Equals(username))
+                {
                     doc = d;
                     break;
                 }
@@ -67,9 +74,17 @@ namespace SIMS.Repository
             throw new NotImplementedException();
         }
 
-        public List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        public static List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
         {
-            throw new NotImplementedException();
+            List<SIMS.Model.Doctor> doctors = new List<Model.Doctor>();
+            foreach (SIMS.Model.Doctor d in GetAll())
+            {
+                if (d.Specialization.Name.Equals(specialization.Name))
+                {
+                    doctors.Add(d);
+                }
+            }
+            return doctors;
         }
 
         public String fileName;

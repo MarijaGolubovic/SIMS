@@ -20,17 +20,17 @@ namespace SIMS.Menager
         {
             InitializeComponent();
             this.DataContext = this;
-    
+
             Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
             List<Room> rooms = roomSerializer.fromCSV("Room.txt");
             Rooms = new ObservableCollection<Room>();
             //Room room = new Room("1", 5,Model.RoomType.EXAMINATION_ROOM);
 
-           // Rooms.Add(new Room("opb",12.1,Model.RoomType.OPPERATING_ROOM));
-           // Rooms.Add(new Room("h21",15.2,Model.RoomType.HOSPITAL_ROOM));
-           // Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
+            // Rooms.Add(new Room("opb",12.1,Model.RoomType.OPPERATING_ROOM));
+            // Rooms.Add(new Room("h21",15.2,Model.RoomType.HOSPITAL_ROOM));
+            // Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
 
-            foreach(Room roomItem in rooms)
+            foreach (Room roomItem in rooms)
             {
                 Rooms.Add(roomItem);
             }
@@ -44,9 +44,9 @@ namespace SIMS.Menager
             MessageBoxButton messageButton = MessageBoxButton.YesNo;
             MessageBoxImage initBox = MessageBoxImage.Question;
 
-            MessageBoxResult messageResult = MessageBox.Show(messageText, caption,messageButton,initBox);
-            
-         
+            MessageBoxResult messageResult = MessageBox.Show(messageText, caption, messageButton, initBox);
+
+
 
 
             switch (messageResult)

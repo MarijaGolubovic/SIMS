@@ -1,10 +1,7 @@
-﻿using SIMS.Model;
-using SIMS.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
+using SIMS.Service;
 
 namespace SIMS.Controller
 {
@@ -14,16 +11,16 @@ namespace SIMS.Controller
         private readonly AppointmentService appointmentService = new AppointmentService();
         private readonly PatientController patientController = new PatientController();
 
-        public AppointmentController() 
+        public AppointmentController()
         {
         }
 
-        public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor() 
+        public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor()
         {
             List<AppointmentsForDoctorDTO> appointmentsForDoctorDTOs = new List<AppointmentsForDoctorDTO>();
             List<Appointment> appointments = appointmentService.GetAll();
 
-            foreach(Appointment a in appointments) 
+            foreach (Appointment a in appointments)
             {
                 String name = a.Patient.Person.Name;
                 String surname = a.Patient.Person.Surname;
@@ -37,6 +34,30 @@ namespace SIMS.Controller
             }
 
             return appointmentsForDoctorDTOs;
+        }
+
+        public List<AppointmentsForSecretaryDTO> GetAppointmentsForSecretary(DateTime dateTime)
+        {
+            List<AppointmentsForSecretaryDTO> appointmentsForSecretaryDTOs = new List<AppointmentsForSecretaryDTO>();
+            List<Appointment> appointments = appointmentService.GetAll();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.DateAndTime.Date == dateTime.Date)
+                {
+                    String NameSurnameDoctor = a.Doctor.Person.Name + " " + a.Doctor.Person.Surname;
+                    String NameSurnamePatient = a.Patient.Person.Name + " " + a.Patient.Person.Surname;
+                    String date = a.DateAndTime.ToShortDateString();
+                    String time = a.DateAndTime.ToShortTimeString();
+                    String roomId = a.Room.Id;
+                    AppointmentsForSecretaryDTO pom = new AppointmentsForSecretaryDTO(a.Id, NameSurnameDoctor, NameSurnamePatient, date, time, roomId);
+
+                    appointmentsForSecretaryDTOs.Add(pom);
+
+                }
+            }
+
+            return appointmentsForSecretaryDTOs;
         }
 
         public Appointment GetOne(int appointmentID)
@@ -64,6 +85,6 @@ namespace SIMS.Controller
             return suggestedAppointments;
         }
 
-        
+
     }
 }

@@ -1,10 +1,6 @@
-﻿using SIMS.Model;
+﻿using System.Collections.Generic;
+using SIMS.Model;
 using SIMS.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Service
 {
@@ -12,7 +8,7 @@ namespace SIMS.Service
     {
         private AllergyStorage allergyStorage;
 
-        public AllergyService() 
+        public AllergyService()
         {
             allergyStorage = new AllergyStorage();
         }

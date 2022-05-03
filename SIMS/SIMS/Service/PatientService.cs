@@ -1,9 +1,6 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
 
 namespace SIMS.Service
 {
@@ -11,17 +8,17 @@ namespace SIMS.Service
     {
         private PatientStorage patientStorage;
 
-        public PatientService() 
+        public PatientService()
         {
             patientStorage = new PatientStorage();
         }
 
-        public List<Patient> GetAll() 
+        public List<Patient> GetAll()
         {
             return patientStorage.GetAll();
         }
 
-        public Patient GetOne(String jmbg) 
+        public Patient GetOne(String jmbg)
         {
             return patientStorage.GetOne(jmbg);
         }
@@ -60,15 +57,16 @@ namespace SIMS.Service
 
         public Boolean Create(Patient patient)
         {
-            if (patientStorage.GetOne(patient.Person.JMBG)==null)
+            if (patientStorage.GetOne(patient.Person.JMBG) == null)
             {
                 patientStorage.Create(patient);
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }
-            
+
         }
 
         public void Update(String jmbg, AccountStatus accountStatus)
@@ -78,7 +76,7 @@ namespace SIMS.Service
 
         public Boolean UpdateJMBG(String jmbgOld, String jmbgNew)
         {
-           return patientStorage.UpdateJMBG(jmbgOld, jmbgNew);
+            return patientStorage.UpdateJMBG(jmbgOld, jmbgNew);
         }
 
     }

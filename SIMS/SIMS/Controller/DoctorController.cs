@@ -1,9 +1,7 @@
-﻿using SIMS.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
+using SIMS.Service;
 
 namespace SIMS.Controller
 {
@@ -29,5 +27,11 @@ namespace SIMS.Controller
         {
             return DoctorService.GetByUsername(username);
         }
+
+        public static List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        {
+            return DoctorService.GetBySpecialization(specialization);
+        }
+
     }
 }

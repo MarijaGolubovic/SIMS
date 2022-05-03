@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SIMS.View.Sekretar;
 
 namespace SIMS.Sekretar
 {
@@ -16,6 +17,13 @@ namespace SIMS.Sekretar
         {
             Nalozi nalozi = new Nalozi();
             nalozi.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AppointmentView appointmentView = new AppointmentView();
+            appointmentView.Show();
+
         }
     }
 }

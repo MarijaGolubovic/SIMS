@@ -1,9 +1,8 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using SIMS.Controller;
+using SIMS.Model;
 using SIMS.Repository;
 
 namespace SIMS.Doctor
@@ -27,17 +26,20 @@ namespace SIMS.Doctor
 
             Patients = new ObservableCollection<Patient>();
             patientController = new PatientController();
-            foreach (Patient p in patientController.GetAll()) { 
+            foreach (Patient p in patientController.GetAll())
+            {
                 Patients.Add(p);
             }
 
             Doctors = new ObservableCollection<Model.Doctor>();
-            foreach (Model.Doctor doc in Repository.DoctorStorage.GetAll()) {
+            foreach (Model.Doctor doc in Repository.DoctorStorage.GetAll())
+            {
                 Doctors.Add(doc);
             }
 
             Rooms = new ObservableCollection<Room>();
-            foreach (Room r in RoomStorage.GetAll()) {
+            foreach (Room r in RoomStorage.GetAll())
+            {
                 Rooms.Add(r);
             }
         }
@@ -49,7 +51,7 @@ namespace SIMS.Doctor
             this.Close();
         }
 
-        
+
 
         private void ShowApointments(object sender, RoutedEventArgs e)
         {

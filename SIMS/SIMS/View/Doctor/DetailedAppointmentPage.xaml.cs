@@ -1,19 +1,6 @@
-﻿using SIMS.Controller;
+﻿using System.Windows.Controls;
+using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Doctor
 {
@@ -22,7 +9,7 @@ namespace SIMS.View.Doctor
     /// </summary>
     public partial class DetailedAppointmentPage : Page
     {
-        
+
         public static Appointment SelectedItem { get; set; }
         public string date { get; set; }
         public MedicalRecord medicalRecrod { get; set; }
