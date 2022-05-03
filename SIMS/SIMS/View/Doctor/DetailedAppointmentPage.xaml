@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.View.Doctor"
+      xmlns:local="clr-namespace:SIMS.View.Doctor" xmlns:model="clr-namespace:SIMS.Model" d:DataContext="{d:DesignInstance Type=model:Room}"
       mc:Ignorable="d" 
       d:DesignHeight="742" d:DesignWidth="1290"
       Title="DetailedAppointment">
@@ -12,6 +12,7 @@
         <Border Background="AliceBlue">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -47,6 +48,7 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
+                        <RowDefinition Height="200"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -59,7 +61,7 @@
                                Grid.Row="0"
                                Grid.Column="0"
                                HorizontalAlignment="Center"/>
-                    
+
                     <TextBlock Text="Ime: " 
                                FontFamily="Roboto Light"
                                FontSize="20" 
@@ -138,7 +140,7 @@
                                Grid.Row="1"
                                Grid.Column="1"/>
 
-                    <TextBlock Text="{Binding Path = medicalRecrod.BloodType}"
+                    <TextBlock Text="{Binding Path = MedicalRecrod.BloodType}"
                                Grid.Row="1"
                                Grid.Column="1" 
                                Margin="118,0,0,0"
@@ -151,7 +153,7 @@
                                Grid.Row="2"
                                Grid.Column="1"/>
 
-                    <TextBlock Text="{Binding Path = medicalRecrod.Height}"
+                    <TextBlock Text="{Binding Path = MedicalRecrod.Height}"
                                Grid.Row="2"
                                Grid.Column="1" 
                                Margin="63,0,0,0"
@@ -164,12 +166,59 @@
                                Grid.Row="3"
                                Grid.Column="1"/>
 
-                    <TextBlock Text="{Binding Path = medicalRecrod.Weight}"
+                    <TextBlock Text="{Binding Path = MedicalRecrod.Weight}"
                                Grid.Row="3"
                                Grid.Column="1" 
                                Margin="64,0,0,0"
                                FontFamily="Roboto Light"
                                FontSize="20"/>
+
+                    <TextBlock Text="Alergije: " 
+                               FontFamily="Roboto Light"
+                               FontSize="20" 
+                               Grid.Row="4"
+                               Grid.Column="1"/>
+
+                    <ComboBox Name="Allergy_Combobox"
+                              Grid.Row="4"
+                              Grid.Column="1"
+                              Width="100"
+                              HorizontalAlignment="Left" Margin="83,0,0,0"
+                              Height="25"
+                              VerticalAlignment="Top">
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+
+                    </ComboBox>
+
+                    <TextBlock Text="Terapije: " 
+                               FontFamily="Roboto Light"
+                               FontSize="20" 
+                               Grid.Row="5"
+                               Grid.Column="1"/>
+
+                    <ComboBox Name="Therapy_Combobox" 
+                              Grid.Row="5"
+                              Grid.Column="1"
+                              Width="100"
+                              HorizontalAlignment="Left" Margin="83,0,0,0"
+                              Height="25"
+                              VerticalAlignment="Top">
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Medicine.Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+
+                    </ComboBox>
+
+                    <Button Content="Nazad" Grid.Column="1" Grid.Row="6" Width="70" Height="30" Click="Button_Click_Back" HorizontalAlignment="Right" Margin="0,0,130,0"/>
+
                 </Grid>
             </Grid>
         </Border>

@@ -79,7 +79,9 @@ namespace SIMS.Model
         public string[] toCSV()
         {
 
-            string[] csvValues =  {
+
+            string[] csvValues = {
+
                 Height.ToString(),
                 Weight.ToString(),
                 BloodType.ToString(),
@@ -90,7 +92,7 @@ namespace SIMS.Model
             foreach (Allergy a in Allergies)
             {
                 Array.Resize(ref csvValues, i + 1);
-                csvValues[i] = a.allergy;
+                csvValues[i] = a.Name;
                 i++;
             }
 
@@ -108,10 +110,12 @@ namespace SIMS.Model
             patient = patientController.GetOne(values[3]);
             //  therapies = therapyContoller.GetById(values[4]);
 
-            int i;
-            for (i = 4; i < values.Length; i++)
+
+            Allergies = new List<Allergy>();
+            for (int i = 4; i < values.Length; i++)
             {
-                Allergies.Add(new Allergy(values[i]));
+                Allergy al = new Allergy(values[i]);
+                Allergies.Add(al);
             }
 
         }

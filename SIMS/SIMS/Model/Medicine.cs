@@ -10,7 +10,6 @@ namespace SIMS.Model
 
         public List<String> Ingredients { get; set; }
 
-        private int numOdIndgredients;
         public Medicine(string name, List<string> ingredients)
         {
             Name = name;
@@ -36,6 +35,8 @@ namespace SIMS.Model
         {
             Name = values[0];
 
+
+            Ingredients = new List<String>();
             for (int i = 1; i < values.Length; i++)
             {
                 Ingredients.Add(values[i]);

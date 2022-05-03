@@ -5,7 +5,9 @@ namespace SIMS.Repository
 {
     public class DoctorStorage
     {
-        public static List<SIMS.Model.Doctor> GetAll()
+
+
+        public List<SIMS.Model.Doctor> GetAll()     
         {
             Serialization.Serializer<DoctorSpecialization> doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
             List<DoctorSpecialization> doctorStorage = doctorSerializer.fromCSV("doctors.txt");
@@ -30,7 +32,7 @@ namespace SIMS.Repository
             return Doctors;
         }
 
-        public static SIMS.Model.Doctor GetByID(String jmbg)
+        public SIMS.Model.Doctor GetByID(String jmbg)
         {
             List<Model.Doctor> Doctors = GetAll();
             SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
@@ -44,7 +46,7 @@ namespace SIMS.Repository
             return doc;
         }
 
-        public static SIMS.Model.Doctor GetByUsername(String username)
+        public SIMS.Model.Doctor GetByUsername(String username)
         {
             List<SIMS.Model.Doctor> Doctors = GetAll();
             SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
@@ -74,7 +76,7 @@ namespace SIMS.Repository
             throw new NotImplementedException();
         }
 
-        public static List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        public  List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
         {
             List<SIMS.Model.Doctor> doctors = new List<Model.Doctor>();
             foreach (SIMS.Model.Doctor d in GetAll())

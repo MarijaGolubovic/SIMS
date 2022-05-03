@@ -11,7 +11,9 @@ namespace SIMS.Model
         public String Time { get; set; }
         public String roomId { get; set; }
 
-        public AppointmentsForDoctorDTO(int appointmentId, string name, string surname, string date, string time, string roomId)
+        public String DoctorId { get; set; }
+
+        public AppointmentsForDoctorDTO(int appointmentId, string name, string surname, string date, string time, string roomId, string doctorId)
         {
             this.appointmentId = appointmentId;
             Name = name;
@@ -19,6 +21,7 @@ namespace SIMS.Model
             Date = date;
             Time = time;
             this.roomId = roomId;
+            DoctorId = doctorId;
         }
     }
 }

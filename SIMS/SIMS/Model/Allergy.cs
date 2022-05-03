@@ -4,25 +4,25 @@ namespace SIMS.Model
 {
     public class Allergy : Serialization.Serializable
     {
-        public String allergy { get; set; }
+        public String Name { get; set; }
 
-        public Allergy(string allergy)
+        public Allergy(String allergy)
         {
-            this.allergy = allergy;
+            this.Name = allergy;
         }
 
         public string[] toCSV()
         {
             string[] csvValues =
             {
-                allergy
+                Name
             };
             return csvValues;
         }
 
         public void fromCSV(string[] values)
         {
-            allergy = values[0];
+            Name = values[0];
         }
 
         public Allergy() { }

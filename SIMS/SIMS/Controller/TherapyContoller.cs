@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using SIMS.Model;
 using SIMS.Service;
+using System;
+using System.Collections.Generic;
+
 
 namespace SIMS.Controller
 {
@@ -21,6 +24,11 @@ namespace SIMS.Controller
         public List<Therapy> GetById(string id)
         {
             return therapyService.GetById(id);
+        }
+
+        public Boolean Create(Therapy therapy)
+        {
+            return therapyService.Create(therapy);
         }
     }
 }

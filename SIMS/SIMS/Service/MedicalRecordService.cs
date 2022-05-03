@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SIMS.Model;
 
+
 namespace SIMS.Service
 {
     public class MedicalRecordService

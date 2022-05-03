@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using SIMS.Controller;

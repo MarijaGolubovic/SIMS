@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using SIMS.Controller;
-using SIMS.Model;
+
 
 namespace SIMS.View.Doctor
 {
@@ -33,7 +35,12 @@ namespace SIMS.View.Doctor
 
         private void Button_Click_Pristupi(object sender, RoutedEventArgs e)
         {
-
+            if (allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO == null)
+            {
+                return;
+            }
+            SelectedItem = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
+            MainWindow.frame.Content = new JoinAppointmentPage();
         }
     }
 }

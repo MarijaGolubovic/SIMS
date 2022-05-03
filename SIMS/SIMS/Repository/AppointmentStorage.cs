@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using SIMS.Model;
 
+
 namespace SIMS.Repository
 {
     public class AppointmentStorage
@@ -34,7 +35,21 @@ namespace SIMS.Repository
 
         public Boolean Delete(int appointmentID)
         {
-            throw new NotImplementedException();
+            List<Appointment> appointments = GetAll();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.Id.Equals(appointmentID))
+                {
+                    appointments.Remove(a);
+                    break;
+                }
+            }
+
+            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+            appointmentSerializer.toCSV("appointments.txt", appointments);
+            return true;
+
         }
         public Boolean Create(Appointment appointment)
         {

@@ -46,6 +46,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -60,8 +63,12 @@
     <Compile Include="Controller\CityController.cs" />
     <Compile Include="Controller\CountryController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
+    <Compile Include="Controller\EquipmentController.cs" />
+    <Compile Include="Controller\DiagnosisController.cs" />
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineContoller.cs" />
+    <Compile Include="Controller\NotificationController.cs" />
+    <Compile Include="Controller\OccupacyRoomController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\SpecializationController.cs" />
@@ -72,30 +79,80 @@
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
+    <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
+    <Compile Include="Model\Equpment.cs" />
+    <Compile Include="Model\RoomEqupment.cs" />
+    <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\EquipmentStorage.cs" />
+    <Compile Include="Model\Diagnosis.cs" />
+    <Compile Include="Model\PatientForAddAppointmentDTO.cs" />
+    <Compile Include="Model\Therapy.cs" />
+    <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\DiagnosisStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
+    <Compile Include="Repository\OccupacyRoomStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\CityService.cs" />
     <Compile Include="Service\CountryService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\EquipmentService.cs" />
+    <Compile Include="Service\DiagnosisService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
+    <Compile Include="Service\OccupacyRoomService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecializationsService.cs" />
     <Compile Include="Service\TherapyService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="View\Doctor\AddAppointmentPage.xaml.cs">
+      <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\AddTherapyPage.xaml.cs">
+      <DependentUpon>AddTherapyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Doctor\AllAppointmentsPage.xaml.cs">
       <DependentUpon>AllAppointmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Doctor\DetailedAppointmentPage.xaml.cs">
       <DependentUpon>DetailedAppointmentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Doctor\EditAppointmentPage.xaml.cs">
+      <DependentUpon>EditAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\JoinAppointmentPage.xaml.cs">
+      <DependentUpon>JoinAppointmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\SelectTimeOfAppointmentPriorityDoctorPage.xaml.cs">
+      <DependentUpon>SelectTimeOfAppointmentPriorityDoctorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
+      <DependentUpon>EqupmentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MovingWindow.xaml.cs">
+      <DependentUpon>MovingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\RenovateForm.xaml.cs">
+      <DependentUpon>RenovateForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\RenovateWindow.xaml.cs">
+      <DependentUpon>RenovateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Rooms.xaml.cs">
+      <DependentUpon>Rooms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\RoomsPanel.xaml.cs">
+      <DependentUpon>RoomsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
@@ -137,9 +194,6 @@
     <Compile Include="View\Doctor\EditAppointmentWindow.xaml.cs">
       <DependentUpon>EditAppointmentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Doctor\MainDoctorWindow.xaml.cs">
-      <DependentUpon>MainDoctorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\AddRoomWindow.xaml.cs">
       <DependentUpon>AddRoomWindow.xaml</DependentUpon>
     </Compile>
@@ -174,6 +228,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Doctor\AddAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Doctor\AddTherapyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Doctor\AllAppointmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,13 +248,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Doctor\EditAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Doctor\EditAppointmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Doctor\MainDoctorWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\Doctor\JoinAppointmentPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +273,38 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Doctor\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Doctor\SelectTimeOfAppointmentPriorityDoctorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\EqupmentPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\MovingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\RenovateForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\RenovateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\RoomsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -337,6 +435,7 @@
     </EmbeddedResource>
     <Resource Include="Fonts\Orbitron-Medium.ttf" />
     <Resource Include="Fonts\Roboto-Light.ttf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -345,36 +444,66 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\img_about.png" />
-    <Resource Include="Assets\img_acoustic.png" />
-    <Resource Include="Assets\img_album.png" />
+    <Resource Include="Assets\viewAccount.png" />
+    <Resource Include="Assets\vacation.png" />
+    <Resource Include="Assets\hospital.png" />
+    <Resource Include="Assets\note.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\doctor-consultation.png" />
+    <Resource Include="Assets\planner.png" />
+    <Resource Include="Assets\account.png" />
+    <Resource Include="Assets\report.png" />
+    <Resource Include="Assets\poll.png" />
+    <Resource Include="Assets\requirements.png" />
+    <Resource Include="Assets\stethoscope.png" />
+    <Resource Include="Assets\surgery.png" />
+    <Resource Include="Assets\addAppointment.png" />
+    <Resource Include="Assets\editAppointment.png" />
+    <Resource Include="Assets\deleteAppointment.png" />
+    <Resource Include="Assets\freeDay.png" />
+    <Resource Include="Assets\procurement.png" />
+    <Resource Include="Assets\changePassword.png" />
+    <Resource Include="Assets\hospital-doctor.png" />
+    <Content Include="Assets\therapy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\img_arrow.png" />
-    <Resource Include="Assets\img_artist.png" />
-    <Resource Include="Assets\img_electronic.png" />
-    <Resource Include="Assets\img_exit.png" />
-    <Resource Include="Assets\img_folder.png" />
-    <Resource Include="Assets\img_genre.png" />
-    <Resource Include="Assets\img_hiphop.png" />
-    <Resource Include="Assets\img_history.png" />
-    <Resource Include="Assets\img_home.png" />
-    <Resource Include="Assets\img_hotkey.png" />
-    <Resource Include="Assets\img_input.png" />
-    <Resource Include="Assets\img_jazz.png" />
-    <Resource Include="Assets\img_metal.png" />
-    <Resource Include="Assets\img_movies.png" />
-    <Resource Include="Assets\img_music.png" />
-    <Resource Include="Assets\img_playlist.png" />
-    <Resource Include="Assets\img_pop.png" />
-    <Resource Include="Assets\img_rock.png" />
-    <Resource Include="Assets\img_search.png" />
-    <Resource Include="Assets\img_setting.png" />
-    <Resource Include="Assets\img_songs.png" />
-    <Resource Include="Assets\max_def.png" />
-    <Resource Include="Assets\max_mo.png" />
     <Resource Include="Assets\shutdown_def.png" />
     <Resource Include="Assets\shutdown_mo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\sign-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\add_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\renovate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\distribution.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ordering.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\move.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

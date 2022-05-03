@@ -34,5 +34,27 @@ namespace SIMS.Menager
             roomsList.Show();
             this.Close();
         }
+
+        private void Label_MouseDoubleClickRooms(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            View.Menager.RoomsPanel roomsPanel = new View.Menager.RoomsPanel();
+            roomsPanel.Owner = this;
+            roomsPanel.Show();
+
+        }
+
+        private void Label_MouseDoubleClickEqupment(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            View.Menager.EqupmentPanel equpmentPanel = new View.Menager.EqupmentPanel();
+            equpmentPanel.Owner = this;
+            equpmentPanel.Show();
+        }
+
+        private void Label_MouseDoubleClickSignOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            View.Menager.LogWindow logWindow = new View.Menager.LogWindow();
+            logWindow.Show();
+            this.Close();
+        }
     }
 }

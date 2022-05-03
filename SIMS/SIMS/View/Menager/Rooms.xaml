@@ -1,0 +1,87 @@
+﻿<Window x:Class="SIMS.View.Menager.Rooms"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.View.Menager"
+        mc:Ignorable="d"
+        Title="Rooms" Height="450" Width="800">
+    <Grid>
+        <Border BorderThickness="2" BorderBrush="Black"  Margin="0,0,0,328"/>
+        <Grid Height="92" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Image Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="24,0,63,0" Height="45" VerticalAlignment="Top">
+                <Image.Source>
+                    <BitmapImage  UriSource="/Assets/hospital.png" />
+                </Image.Source>
+            </Image>
+            <Label Grid.Row="0"  FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="88,4,0,5">
+                Hello clinic
+            </Label>
+            <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="53,12,0,7" Width="211">
+                <Label.Content >
+                    Best place for all your needements
+                </Label.Content>
+            </Label>
+            <Label Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="Normal">
+                Sign out
+            </Label>
+            <Image Grid.Column="5" Grid.Row="0" Height="25" HorizontalAlignment="Right">
+                <Image.Source >
+                    <BitmapImage  UriSource="/Assets/sign-out.png"  />
+                </Image.Source>
+            </Image>
+
+            <Label Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Black" HorizontalAlignment="Right" Margin="0,0,35,0" Width="73" RenderTransformOrigin="0.174,0.484">
+                Home
+            </Label>
+            <Label x:Name="RoomWindows" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Center" RenderTransformOrigin="1.138,0.518" Margin="114,0,77,0"
+                   MouseDoubleClick="Rooms_MouseDoubleClick_OK" Width="73">
+                Rooms
+            </Label>
+            <Label Grid.Row="1" Grid.Column="1" FontSize="18" FontWeight="Black" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="0,1,79,-1">
+                Medicines
+            </Label>
+            <Label Grid.Row="1" Grid.Column="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Left" Margin="82,1,0,-1" Height="45" VerticalAlignment="Top" RenderTransformOrigin="-0.039,0.393" Grid.ColumnSpan="2">
+                Polls
+            </Label>
+            <Label Grid.Row="1" Grid.Column="3" FontSize="18" FontWeight="Black" Grid.ColumnSpan="2" Margin="29,0,103,0"  MouseDoubleClick="Label_MouseDoubleClickEqupment">
+                Equipment
+            </Label>
+            <Label Grid.Row="1" Grid.Column="4" FontSize="18" FontWeight="Black" RenderTransformOrigin="0.632,0.45" Grid.ColumnSpan="2" Margin="34,0,98,0" >
+                Tutorial
+            </Label>
+            <Label Grid.Row="1" Grid.Column="5" FontSize="18" FontWeight="Black"  HorizontalAlignment="Left">
+                My account
+            </Label>
+        </Grid>
+
+
+
+        <Grid Margin="0,24,0,60" >
+            <DataGrid x:Name="DataGridRoomsChose" ItemsSource="{Binding RoomsChoose}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick"  Margin="0,68,0,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                    <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+
+        <Button Width="100" Height="24" Margin="584,365,108,0" Content="BACK" Click="UpdateBack_Click_Back" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722"/>
+    </Grid>
+</Window>

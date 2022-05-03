@@ -1,10 +1,13 @@
-﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Controller;
 using SIMS.Model;
+
 
 namespace SIMS.Pacijent
 {
@@ -18,6 +21,7 @@ namespace SIMS.Pacijent
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
 
         private readonly PatientController patientController = new PatientController();
+        private readonly DoctorController doctorController = new DoctorController();
 
         public EditAppintment()
         {
@@ -27,7 +31,7 @@ namespace SIMS.Pacijent
             Doctors = new ObservableCollection<Model.Doctor>();
 
             //Popunjavanje kolekcije dokora iz fajla
-            foreach (Model.Doctor item in DoctorController.GetAll())
+            foreach (Model.Doctor item in doctorController.GetAll())
             {
                 Doctors.Add(item);
             }
@@ -66,7 +70,7 @@ namespace SIMS.Pacijent
                 jmbg = "2108010103158";
             }
 
-            Model.Doctor doctorTmp = DoctorController.GetByID(jmbg);
+            Model.Doctor doctorTmp = doctorController.GetByID(jmbg);
 
             //poredim stari datum sa novim zeljenim datumom
             DateTime dateTimeOld = AllAppointments.SelectedItem.DateAndTime;  //stari datum
@@ -89,6 +93,7 @@ namespace SIMS.Pacijent
                 appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
 
                 //zatvaram prozor
+
                 this.Close();
             }
 

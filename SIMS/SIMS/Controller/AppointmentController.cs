@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SIMS.Model;
 using SIMS.Service;
 
+
 namespace SIMS.Controller
 {
     public class AppointmentController
@@ -28,7 +29,8 @@ namespace SIMS.Controller
                 String date = array[0];
                 String time = a.DateAndTime.TimeOfDay.ToString();
                 String roomId = a.Room.Id;
-                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId);
+                String doctorId = a.Doctor.Person.JMBG;
+                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId, doctorId);
 
                 appointmentsForDoctorDTOs.Add(pom);
             }
@@ -86,5 +88,15 @@ namespace SIMS.Controller
         }
 
 
+        
+        public Boolean Delete(int appointmentID)
+        {
+            return appointmentService.Delete(appointmentID);
+        }
+
+        public List<DateTime> getTimesOfDoctorAppointments(String doctorId)
+        {
+            return appointmentService.getTimesOfDoctorAppointments(doctorId);
+        }
     }
 }

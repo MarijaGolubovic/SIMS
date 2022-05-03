@@ -6,30 +6,30 @@ namespace SIMS.Service
 {
     public class DoctorService
     {
-        private Repository.DoctorStorage doctorStorage;
+        private Repository.DoctorStorage doctorStorage = new Repository.DoctorStorage();
 
         public DoctorService()
         {
             doctorStorage = new Repository.DoctorStorage();
         }
 
-        public static List<SIMS.Model.Doctor> GetAll()
+        public List<SIMS.Model.Doctor> GetAll()
         {
-            return Repository.DoctorStorage.GetAll();
+            return doctorStorage.GetAll();
         }
 
-        public static SIMS.Model.Doctor GetByID(String jmbg)
+        public SIMS.Model.Doctor GetByID(String jmbg)
         {
-            return Repository.DoctorStorage.GetByID(jmbg);
+            return doctorStorage.GetByID(jmbg);
         }
 
-        public static SIMS.Model.Doctor GetByUsername(String username)
+        public SIMS.Model.Doctor GetByUsername(String username)
         {
-            return Repository.DoctorStorage.GetByUsername(username);
+            return doctorStorage.GetByUsername(username);
         }
-        public static List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        public  List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
         {
-            return Repository.DoctorStorage.GetBySpecialization(specialization);
+            return doctorStorage.GetBySpecialization(specialization);
         }
 
     }

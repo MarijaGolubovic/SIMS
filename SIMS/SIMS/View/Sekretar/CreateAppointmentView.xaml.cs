@@ -126,7 +126,7 @@ namespace SIMS.View.Sekretar
             }
 
             Doctors.Clear();
-            foreach (SIMS.Model.Doctor d in DoctorController.GetBySpecialization(specialization))
+            foreach (SIMS.Model.Doctor d in doctorController.GetBySpecialization(specialization))
             {
                 Doctors.Add(d);
             }

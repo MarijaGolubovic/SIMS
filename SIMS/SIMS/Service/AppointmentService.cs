@@ -25,6 +25,7 @@ namespace SIMS.Service
         {
             return storage.GetOne(appointmentID);
         }
+
         public Boolean Create(Appointment appointment)
         {
             return storage.Create(appointment);
@@ -54,6 +55,8 @@ namespace SIMS.Service
             {
                 suggestedAppointments.Add(appointment);
                 storage.Create(appointment);
+
+
                 return suggestedAppointments;
             }
             else
@@ -91,6 +94,27 @@ namespace SIMS.Service
 
             }
             return suggestedAppointments;
+        }
+
+        public Boolean Delete(int appointmentID)
+        {
+            return storage.Delete(appointmentID);
+        }
+
+        public List<DateTime> getTimesOfDoctorAppointments(String doctorId)
+        {
+            List<DateTime> doctorAppointments = new List<DateTime>();
+            List<Appointment> allAppointments = new List<Appointment>();
+
+            foreach(Appointment a in allAppointments)
+            {
+                if (a.Doctor.Person.JMBG.Equals(doctorId)) 
+                {
+                    doctorAppointments.Add(a.DateAndTime);
+                }
+            }
+
+            return doctorAppointments;
         }
     }
 }

@@ -5,13 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
+        Topmost="True"
+        WindowStartupLocation="CenterOwner"
         Title="Hello Clinic" Height="450" Width="800">
-    <Grid>
-        <Grid Height="90" VerticalAlignment="Top">
-            <Border BorderThickness="1" BorderBrush="Black" Background="LightGray"/>
-            <Button Width="80" Height="25"  HorizontalAlignment="Left"  Name="AddRoom" Content="Add room" Background="White" Click="AddRoom_Click" RenderTransformOrigin="1.531,0.587"  />
-            <Button Height="25" Width="80"  Name="UpdateRoom" HorizontalAlignment="Center" Content="Update room" Background="White" Click="UpdateRoom_Click" RenderTransformOrigin="0.548,-0.398"  />
-            <Button Height="25" Width="80" Name="DeleteRoom" Content="Delete room" HorizontalAlignment="Right" Background="White" RenderTransformOrigin="1.259,0.607" Click="DeleteRoom_Click"  />
+    <Grid RenderTransformOrigin="0.495,0.386">
+        <Border BorderThickness="2" BorderBrush="Black"  Margin="0,0,0,328"/>
+        <Grid Height="92" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Image Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="24,0,63,0" Height="45" VerticalAlignment="Top">
+                <Image.Source>
+                    <BitmapImage  UriSource="/Assets/hospital.png" />
+                </Image.Source>
+            </Image>
+            <Label Grid.Row="0"  FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="88,4,0,5">
+                Hello clinic
+            </Label>
+            <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="53,12,0,7" Width="211">
+                <Label.Content >
+                    Best place for all your needements
+                </Label.Content>
+            </Label>
+            <Label Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="Normal"
+                   MouseDoubleClick="Label_MouseDoubleClickSignOut">
+                Sign out
+            </Label>
+            <Image Grid.Column="5" Grid.Row="0" Height="25" HorizontalAlignment="Right">
+                <Image.Source >
+                    <BitmapImage  UriSource="/Assets/sign-out.png"  />
+                </Image.Source>
+            </Image>
+
+            <Label Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Black" HorizontalAlignment="Right" Margin="0,0,35,0" Width="73" RenderTransformOrigin="0.174,0.484">
+                Home
+            </Label>
+            <Label x:Name="Rooms" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Center" RenderTransformOrigin="1.138,0.518" Margin="114,0,77,0"
+                   MouseDoubleClick="Label_MouseDoubleClickRooms" Width="73">
+                Rooms
+            </Label>
+            <Label Grid.Row="1" Grid.Column="1" FontSize="18" FontWeight="Black" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="0,1,79,-1">
+                Medicines
+            </Label>
+            <Label Grid.Row="1" Grid.Column="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Left" Margin="82,1,0,-1" Height="45" VerticalAlignment="Top" RenderTransformOrigin="-0.039,0.393" Grid.ColumnSpan="2">
+                Polls
+            </Label>
+            <Label Grid.Row="1" Grid.Column="3" FontSize="18" FontWeight="Black" Grid.ColumnSpan="2" Margin="29,0,103,0"  MouseDoubleClick="Label_MouseDoubleClickEqupment">
+                Equipment
+            </Label>
+            <Label Grid.Row="1" Grid.Column="4" FontSize="18" FontWeight="Black" RenderTransformOrigin="0.632,0.45" Grid.ColumnSpan="2" Margin="34,0,98,0" >
+                Tutorial
+            </Label>
+            <Label Grid.Row="1" Grid.Column="5" FontSize="18" FontWeight="Black"  HorizontalAlignment="Left">
+                My account
+            </Label>
         </Grid>
+
+
     </Grid>
 </Window>

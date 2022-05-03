@@ -1,4 +1,7 @@
 ﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using SIMS.Controller;
@@ -16,8 +19,10 @@ namespace SIMS.Doctor
         public static ObservableCollection<Patient> Patients { get; set; }
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
         public static ObservableCollection<Model.Room> Rooms { get; set; }
+        public static Controller.RoomController roomController = new Controller.RoomController();
 
         private readonly PatientController patientController;
+        private readonly DoctorController doctorController = new DoctorController();
 
         public Window1()
         {
@@ -25,6 +30,7 @@ namespace SIMS.Doctor
             this.DataContext = this;
 
             Patients = new ObservableCollection<Patient>();
+
             patientController = new PatientController();
             foreach (Patient p in patientController.GetAll())
             {
@@ -32,14 +38,16 @@ namespace SIMS.Doctor
             }
 
             Doctors = new ObservableCollection<Model.Doctor>();
-            foreach (Model.Doctor doc in Repository.DoctorStorage.GetAll())
-            {
+
+
+            foreach (Model.Doctor doc in doctorController.GetAll()) {
                 Doctors.Add(doc);
             }
 
             Rooms = new ObservableCollection<Room>();
-            foreach (Room r in RoomStorage.GetAll())
-            {
+
+
+            foreach (Room r in roomController.GetAll()) {
                 Rooms.Add(r);
             }
         }

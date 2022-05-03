@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SIMS.Model;
 using SIMS.Service;
 
+
 namespace SIMS.Controller
 {
     public class PatientController
@@ -55,6 +56,7 @@ namespace SIMS.Controller
             return patientService.UpdateJMBG(jmbgOld, jmbgNew);
         }
 
+
         public Patient CreateNewPatient(NewPatientDTO patientDTO)
         {
             User user = new User(patientDTO.Name + "." + patientDTO.Surname, "lozinka123", UserType.patient, new Person(patientDTO.Name, patientDTO.Surname, patientDTO.JMBG, patientDTO.PhoneNumber, patientDTO.DateTime));
@@ -72,17 +74,17 @@ namespace SIMS.Controller
             {
                 if (medicalRecordController.GetOne(jmbg) == null)
                 {
-                    allergies.Add(new AllergyDTO(a.allergy, false));
+                    allergies.Add(new AllergyDTO(a.Name, false));
                 }
                 else
                 {
-                    if (medicalRecordController.GetOne(jmbg).Allergies.Find(m => m.allergy.Equals(a.allergy)) == null)
+                    if (medicalRecordController.GetOne(jmbg).Allergies.Find(m => m.Name.Equals(a.Name)) == null)
                     {
-                        allergies.Add(new AllergyDTO(a.allergy, false));
+                        allergies.Add(new AllergyDTO(a.Name, false));
                     }
                     else
                     {
-                        allergies.Add(new AllergyDTO(a.allergy, true));
+                        allergies.Add(new AllergyDTO(a.Name, true));
                     }
                 }
             }
@@ -90,5 +92,24 @@ namespace SIMS.Controller
 
         }
 
+        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
+        {
+            List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();
+
+
+            foreach(Patient p in GetAll())
+            {
+                String date = p.Person.DateOfBirth.ToString().Split(' ')[0];
+                String address = p.Person.Address.City.Name + ", " + p.Person.Address.Street + ", " + p.Person.Address.Number;
+                PatientForAddAppointmentDTO patient = new PatientForAddAppointmentDTO(p.Person.JMBG, p.Person.Name, p.Person.Surname, address, date);
+                list.Add(patient);
+            }
+            return list;
+        }
+
+        public List<PatientForAddAppointmentDTO> filterPatients(String query, List<PatientForAddAppointmentDTO> patients)
+        {
+            return patientService.filterPatients(query, patients);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SIMS.Model;
 
+
 namespace SIMS.Service
 {
     public class PatientService
@@ -77,6 +78,23 @@ namespace SIMS.Service
         public Boolean UpdateJMBG(String jmbgOld, String jmbgNew)
         {
             return patientStorage.UpdateJMBG(jmbgOld, jmbgNew);
+        }
+
+        public List<PatientForAddAppointmentDTO> filterPatients(String query, List<PatientForAddAppointmentDTO> patients)
+        {
+            List<PatientForAddAppointmentDTO> retList = new List<PatientForAddAppointmentDTO>();
+            String name = query.Split(' ')[0];
+            String surname = query.Split(' ')[1];
+
+            foreach (PatientForAddAppointmentDTO p in patients)
+            {
+                if (p.PatientName.StartsWith(name) || p.PatientSurname.StartsWith(surname))
+                {
+                    retList.Add(p);
+                }
+            }
+
+            return retList;
         }
 
     }

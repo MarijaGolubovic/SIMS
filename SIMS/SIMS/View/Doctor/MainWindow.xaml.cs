@@ -18,5 +18,9 @@ namespace SIMS.View.Doctor
 
         }
 
+        private void MenuItem_Click_Zakazi(object sender, RoutedEventArgs e)
+        {
+            MainWindow.frame.Content = new AddAppointmentPage();
+        }
     }
 }
