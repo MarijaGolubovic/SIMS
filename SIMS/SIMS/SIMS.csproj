@@ -63,6 +63,7 @@
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\TherapyContoller.cs" />
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\Therapy.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\TherapyService.cs" />
+    <Compile Include="Service\UserService.cs" />
     <Compile Include="View\Doctor\AllAppointmentsPage.xaml.cs">
       <DependentUpon>AllAppointmentsPage.xaml</DependentUpon>
     </Compile>

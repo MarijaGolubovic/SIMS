@@ -14,7 +14,11 @@ namespace SIMS.Model
 
         public User GetOne(String jmbg)
         {
-            throw new NotImplementedException();
+            List<User> users =GetAll();
+            User user = new User();
+            user = users.Find(u => u.Person.JMBG.Equals(jmbg));
+            return user;
+
         }
 
         public Boolean Delete(String jmbg)
@@ -24,12 +28,29 @@ namespace SIMS.Model
 
         public Boolean Create(User user)
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
+            List<User> users = new List<User>();
+            foreach (User u in userSerializer.fromCSV("user.txt"))
+            {
+                users.Add(u);
+            }
+            users.Add(user);
+            userSerializer.toCSV("user.txt", users);
+            return true;
         }
 
-        public Boolean Update(User user)
+        public Boolean Update(User newUser, User oldUser)
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
+            List<User> users = new List<User>();
+            foreach (User u in userSerializer.fromCSV("user.txt"))
+            {
+                users.Add(u);
+            }
+            users.Add(newUser);
+            users.Remove(users.Find(u=>u.Person.JMBG.Equals(oldUser.Person.JMBG)));
+            userSerializer.toCSV("user.txt", users);
+            return true;
         }
 
         public String fileName;

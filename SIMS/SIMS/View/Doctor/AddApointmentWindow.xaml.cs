@@ -26,6 +26,7 @@ namespace SIMS.Doctor
             this.DataContext = this;
 
             Patients = new ObservableCollection<Patient>();
+            patientController = new PatientController();
             foreach (Patient p in patientController.GetAll()) { 
                 Patients.Add(p);
             }
