@@ -30,6 +30,7 @@ namespace SIMS.View.Menager
             idRenovateRoom.Text = roomItem.Id;
             sizeRenovateRoom.Text = roomItem.Size.ToString();
             TypeRenovateRoom.Text = roomItem.Type.ToString();
+            
         }
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
@@ -46,9 +47,22 @@ namespace SIMS.View.Menager
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ClickOK(object sender, RoutedEventArgs e)
         {
+            Service.RoomService roomService = new Service.RoomService();
+            Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
+            List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
+            
 
+            foreach (Model.Room roomItem in rooms)
+            {
+                if (roomItem.Id.Equals(idRenovateRoom.Text))
+                {
+                    MessageBox.Show(roomService.RenovateRoom(roomItem, renovationMethod.Text, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, "Renovation"));
+                }
+            }
+
+           
         }
     }
 }

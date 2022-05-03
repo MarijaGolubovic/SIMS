@@ -89,7 +89,7 @@
         <DatePicker Name="DatePickerEnd" HorizontalAlignment="Left" Height="23" Margin="304,321,0,0"  VerticalAlignment="Top" Width="153"/>
         
         <Label  VerticalAlignment="Center" Margin="216,344,516,50" RenderTransformOrigin="0.039,0.489" Height="26">Method:</Label>
-        <TextBox Margin="304,349,335,45"/>
+        <TextBox x:Name="renovationMethod" Margin="304,349,335,45"/>
         <Grid VerticalAlignment="Bottom" Height="45">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -105,7 +105,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Height="25" Width="80">Split room</Button>
             <Button Grid.Column="1" Height="25" Width="80">Merge room</Button>
-            <Button  Grid.Column="5" Height="25" Width="80"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">OK</Button>
+            <Button  Grid.Column="5" Height="25" Width="80"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_ClickOK">OK</Button>
             <Button  Grid.Column="6" Height="25" Width="80" Click="Button_Click_CANCEL"  HorizontalAlignment="Center" VerticalAlignment="Center">CANCEL</Button>
         </Grid>
     </Grid>
