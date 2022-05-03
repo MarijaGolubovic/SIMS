@@ -5,7 +5,7 @@ namespace SIMS.Repository
 {
     public class DoctorStorage
     {
-        public static List<SIMS.Model.Doctor> GetAll()     
+        public List<SIMS.Model.Doctor> GetAll()     
         {
             Serialization.Serializer<DoctorSpecialization> doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
             List<DoctorSpecialization> doctorStorage = doctorSerializer.fromCSV("doctors.txt");
@@ -15,9 +15,12 @@ namespace SIMS.Repository
 
             List<Model.Doctor> Doctors = new List<SIMS.Model.Doctor>();
 
-            foreach (User u in users) {
-                foreach (DoctorSpecialization ds in doctorStorage) {
-                    if (u.Person.JMBG.Equals(ds.JMBG)) {
+            foreach (User u in users)
+            {
+                foreach (DoctorSpecialization ds in doctorStorage)
+                {
+                    if (u.Person.JMBG.Equals(ds.JMBG))
+                    {
                         Model.Doctor doc = new Model.Doctor(u, new Specialization(ds.Spec));
                         Doctors.Add(doc);
                     }
@@ -27,7 +30,7 @@ namespace SIMS.Repository
             return Doctors;
         }
 
-        public static SIMS.Model.Doctor GetByID(String jmbg)
+        public SIMS.Model.Doctor GetByID(String jmbg)
         {
             List<Model.Doctor> Doctors = GetAll();
             SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
@@ -39,7 +42,7 @@ namespace SIMS.Repository
             return doc;
         }
 
-        public static SIMS.Model.Doctor GetByUsername(String username)
+        public SIMS.Model.Doctor GetByUsername(String username)
         {
             List<SIMS.Model.Doctor> Doctors = GetAll();
             SIMS.Model.Doctor doc = new SIMS.Model.Doctor();

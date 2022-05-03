@@ -14,7 +14,7 @@ namespace SIMS.Model
             Spec = specialization;
         }
 
-        public DoctorSpecialization(){}
+        public DoctorSpecialization() { }
         public string[] toCSV()
         {
             string[] csvValues =
@@ -27,8 +27,8 @@ namespace SIMS.Model
 
         public void fromCSV(string[] values)
         {
-            JMBG=values[0];
-            Spec=values[1]; 
+            JMBG = values[0];
+            Spec = values[1];
         }
     }
 }

@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Doctor
 {
@@ -26,8 +15,12 @@ namespace SIMS.View.Doctor
             View.Doctor.AllAppointmentsPage allAppointmentsPage = new View.Doctor.AllAppointmentsPage();
             frame = MainFrame;
             frame.Content = allAppointmentsPage;
-            
+
         }
 
+        private void MenuItem_Click_Zakazi(object sender, RoutedEventArgs e)
+        {
+            MainWindow.frame.Content = new AddAppointmentPage();
+        }
     }
 }

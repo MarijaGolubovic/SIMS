@@ -2,9 +2,6 @@
 using SIMS.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Service
 {
@@ -25,6 +22,11 @@ namespace SIMS.Service
         public List<Therapy> GetById(string id)
         {
             return therapyStorage.GetById(id);
+        }
+
+        public Boolean Create(Therapy therapy)
+        {
+            return therapyStorage.Create(therapy);
         }
     }
 }

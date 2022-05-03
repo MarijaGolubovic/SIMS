@@ -2,9 +2,6 @@
 using SIMS.Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Controller
 {
@@ -12,7 +9,7 @@ namespace SIMS.Controller
     {
         private readonly MedicalRecordService service;
 
-        public MedicalRecordController() 
+        public MedicalRecordController()
         {
             service = new MedicalRecordService();
         }

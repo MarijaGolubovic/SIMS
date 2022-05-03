@@ -1,9 +1,6 @@
 ﻿using SIMS.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Repository
 {
@@ -24,7 +21,7 @@ namespace SIMS.Repository
             List<Allergy> allergies = GetAll();
             Allergy allergy = new Allergy();
 
-            foreach(Allergy a in allergies)
+            foreach (Allergy a in allergies)
             {
                 if (a.Equals(name))
                 {

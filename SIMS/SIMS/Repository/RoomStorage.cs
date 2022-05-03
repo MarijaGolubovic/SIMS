@@ -11,7 +11,7 @@ namespace SIMS.Repository
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
             rooms = roomSerijalization.fromCSV("Room.txt");
-           
+
             return rooms;
         }
 
@@ -40,7 +40,7 @@ namespace SIMS.Repository
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
 
             rooms = roomSerijalization.fromCSV("Room.txt");
-            foreach(Room roomInput in rooms)
+            foreach (Room roomInput in rooms)
 
             {
                 if (roomID.Equals(roomInput.Id))
@@ -75,8 +75,8 @@ namespace SIMS.Repository
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
 
             rooms = roomSerijalization.fromCSV("Room.txt");
-            List <Room> room = new List<Room>();
-            foreach(Room inputRoom in rooms)
+            List<Room> room = new List<Room>();
+            foreach (Room inputRoom in rooms)
             {
                 if (type == inputRoom.Type)
                 {

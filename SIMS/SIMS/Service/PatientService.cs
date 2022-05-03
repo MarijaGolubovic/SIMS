@@ -1,9 +1,6 @@
 ﻿using SIMS.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Service
 {
@@ -11,17 +8,17 @@ namespace SIMS.Service
     {
         private PatientStorage patientStorage;
 
-        public PatientService() 
+        public PatientService()
         {
             patientStorage = new PatientStorage();
         }
 
-        public List<Patient> GetAll() 
+        public List<Patient> GetAll()
         {
             return patientStorage.GetAll();
         }
 
-        public Patient GetOne(String jmbg) 
+        public Patient GetOne(String jmbg)
         {
             return patientStorage.GetOne(jmbg);
         }
@@ -79,6 +76,23 @@ namespace SIMS.Service
         public Boolean UpdateJMBG(String jmbgOld, String jmbgNew)
         {
            return patientStorage.UpdateJMBG(jmbgOld, jmbgNew);
+        }
+
+        public List<PatientForAddAppointmentDTO> filterPatients(String query, List<PatientForAddAppointmentDTO> patients)
+        {
+            List<PatientForAddAppointmentDTO> retList = new List<PatientForAddAppointmentDTO>();
+            String name = query.Split(' ')[0];
+            String surname = query.Split(' ')[1];
+
+            foreach (PatientForAddAppointmentDTO p in patients)
+            {
+                if (p.PatientName.StartsWith(name) || p.PatientSurname.StartsWith(surname))
+                {
+                    retList.Add(p);
+                }
+            }
+
+            return retList;
         }
 
     }

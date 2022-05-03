@@ -15,7 +15,7 @@ namespace SIMS.Service
         private RoomService roomService { get; set; }
         private readonly PatientService patientService = new PatientService();
 
-        public AppointmentService() 
+        public AppointmentService()
         {
             storage = new AppointmentStorage();
             roomService = new RoomService();
@@ -29,6 +29,7 @@ namespace SIMS.Service
         {
             return storage.GetOne(appointmentID);
         }
+
         public Boolean Create(Appointment appointment)
         {
             return storage.Create(appointment);
@@ -40,7 +41,7 @@ namespace SIMS.Service
             List<Appointment> allAppointments = AppointmentStorage.GetAll();
             List<Appointment> rangeList = new List<Appointment>();
 
-            Appointment appointment = new Appointment(dateTimeTmp, 1, roomService.GetOne("o1"), patientService.GetOne("2212010103158"),doctorTmp);
+            Appointment appointment = new Appointment(dateTimeTmp, 1, roomService.GetOne("o1"), patientService.GetOne("2212010103158"), doctorTmp);
 
             //petlja koja provjerava da li je zeljeni termin slobodan
             bool free = true;
@@ -68,17 +69,17 @@ namespace SIMS.Service
             else
             {
                 //napisati metodu koja trazi poprioritetima termine
-                  
+
                 if (doctorPriority == true)  //ako je doktor prioritet
                 {
-                    for (int i = 1; i<=5; i++)
+                    for (int i = 1; i <= 5; i++)
                     {
                         //ubacujem skorasnje termine koje cu provjeriti da li su slobodni
                         Appointment tmp = new Appointment(dateTimeTmp.AddDays(i), 1, roomService.GetOne("o1"), patientService.GetOne("2212010103158"), doctorTmp);
                         rangeList.Add(tmp);
                     }
                     bool free1 = true;
-                    foreach(Appointment a in allAppointments)
+                    foreach (Appointment a in allAppointments)
                     {
                         foreach (Appointment r in rangeList)
                         {
@@ -100,6 +101,11 @@ namespace SIMS.Service
 
             }
             return suggestedAppointments;
+        }
+
+        public Boolean Delete(int appointmentID)
+        {
+            return storage.Delete(appointmentID);
         }
     }
 }

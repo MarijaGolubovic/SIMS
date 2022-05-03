@@ -1,10 +1,6 @@
 ﻿using SIMS.Model;
 using SIMS.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Controller
 {
@@ -12,12 +8,12 @@ namespace SIMS.Controller
     {
         private MedicineService medicineService;
 
-        public MedicineContoller() 
+        public MedicineContoller()
         {
-            medicineService = new MedicineService();   
+            medicineService = new MedicineService();
         }
 
-        public List<Medicine> GetAll() 
+        public List<Medicine> GetAll()
         {
             return medicineService.GetAll();
         }

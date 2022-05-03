@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SIMS.Model;
+using System;
 using System.Linq;
 using System.Windows;
 using SIMS.Controller;
 using SIMS.Model;
+
 
 namespace SIMS.Sekretar
 {

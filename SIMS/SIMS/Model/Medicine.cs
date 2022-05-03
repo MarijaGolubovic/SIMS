@@ -10,7 +10,6 @@ namespace SIMS.Model
 
         public List<String> Ingredients { get; set; }
 
-        private int numOdIndgredients;
         public Medicine(string name, List<string> ingredients)
         {
             Name = name;
@@ -19,10 +18,11 @@ namespace SIMS.Model
 
         public string[] toCSV()
         {
-            string[] csvValues = {Name};
+            string[] csvValues = { Name };
 
             int i = 1;
-            foreach (String s in Ingredients) { 
+            foreach (String s in Ingredients)
+            {
                 csvValues[i] = s;
                 i++;
             }
@@ -35,7 +35,9 @@ namespace SIMS.Model
         {
             Name = values[0];
 
-            for (int i = 1; i < values.Length; i++) { 
+            Ingredients = new List<String>();
+            for (int i = 1; i < values.Length; i++)
+            {
                 Ingredients.Add(values[i]);
             }
         }
