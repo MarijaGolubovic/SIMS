@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Controller;
 using SIMS.Model;
+using Tulpep.NotificationWindow;
 
 namespace SIMS.Pacijent
 {
@@ -89,6 +90,10 @@ namespace SIMS.Pacijent
                 appointmentSerializer.toCSV("appointments.txt", AllAppointments.AppointmentsCollceciton.ToList());
 
                 //zatvaram prozor
+
+                PopupNotifier popup = new PopupNotifier();
+                popup.TitleText = "Obavestenje!";
+                popup.Popup();
                 this.Close();
             }
 
