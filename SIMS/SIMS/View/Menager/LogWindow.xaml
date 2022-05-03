@@ -12,7 +12,7 @@
                 <BitmapImage  UriSource="/Assets/hospital.png" />
             </Image.Source>
         </Image>
-
+        <Label FontSize="20" FontWeight="Bold" Margin="81,26,587,349">Hello Clinic</Label>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
