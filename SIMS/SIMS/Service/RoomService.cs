@@ -20,5 +20,30 @@ namespace SIMS.Service
         {
             return roomStorage.GetOne(roomID);
         }
+
+        public List<Room> GetAll() {
+            return roomStorage.GetAll();
+        }
+
+        public Boolean Delete(int roomID) {
+
+            return roomStorage.Delete(roomID);
+        }
+
+        public Boolean Create(Room room) {
+
+            return roomStorage.Create(room);
+        
+        }
+
+        public List<Room> GetByType(RoomType type) {
+
+            return roomStorage.GetByType(type);
+
+        }
+
+
+
+
     }
 }

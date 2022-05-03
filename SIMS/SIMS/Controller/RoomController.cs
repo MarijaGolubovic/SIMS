@@ -19,5 +19,31 @@ namespace SIMS.Controller
         {
             return roomService.GetOne(roomID);
         }
+
+        public List<Room> GetAll()
+        {
+            return roomService.GetAll();
+        }
+
+        public Boolean Delete(int roomID)
+        {
+
+            return roomService.Delete(roomID);
+        }
+
+        public Boolean Create(Room room)
+        {
+
+            return roomService.Create(room);
+
+        }
+
+        public List<Room> GetByType(RoomType type)
+        {
+
+            return roomService.GetByType(type);
+
+        }
+
     }
 }
