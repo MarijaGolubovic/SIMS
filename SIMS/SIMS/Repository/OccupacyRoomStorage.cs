@@ -19,6 +19,27 @@ namespace SIMS.Repository
 
             return occupacy;
         }
+        public List<Model.Room> GetById(String roomID)
+        {
+            Model.Room room = new Model.Room();
+            List<Model.Room> findRooms = new List<Model.Room>();
+            List<Model.Room> rooms = new List<Model.Room>();
+            Serialization.Serializer<Model.Room> roomSerijalization = new Serialization.Serializer<Model.Room>();
+            rooms = roomSerijalization.fromCSV("OccupacyRoom.txt");
+
+            foreach (Model.Room roomInput in rooms)
+            {
+                if (roomID.Equals(roomInput.Id))
+                {
+                    room = roomInput;
+                    findRooms.Add(roomInput);
+
+                }
+            }
+
+            return findRooms;
+        }
+
 
         public Model.RoomOccupacy GetOne(int appointmentID)
         {
