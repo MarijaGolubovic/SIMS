@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,11 +46,28 @@ namespace SIMS.Service
             return occupacyRoomStorage.GetById(roomID);
         }
 
+        public List<RoomOccupacy> GetAll()
+        {
+            return occupacyRoomStorage.GetAll();
+        }
+
         public OccupacyRoomService()
         {
         }
 
-        
+        public Model.RoomOccupacy getTimeForAppointmentWhenPriorityDoctor(String doctorId, DateTime dateOfAppointment)
+        {
+            RoomOccupacy ro = new RoomOccupacy();
+            AppointmentController appointmentController = new AppointmentController();
+
+            List<RoomOccupacy> listRo = GetAll();
+            List<DateTime> timesOfDoctorAppointments = appointmentController.getTimesOfDoctorAppointments(doctorId);
+
+
+
+            return ro;
+        }
+
     }
 
 }

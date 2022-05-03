@@ -95,9 +95,6 @@ namespace SIMS.Pacijent
 
                 //zatvaram prozor
 
-                PopupNotifier popup = new PopupNotifier();
-                popup.TitleText = "Obavestenje!";
-                popup.Popup();
                 this.Close();
             }
 

@@ -24,6 +24,7 @@ namespace SIMS.View.Doctor
         private readonly DoctorController doctorController = new DoctorController();
         private List<PatientForAddAppointmentDTO> Patients;
         private List<DoctorForAddAppointmentDTO> Doctors;
+        public static Appointment appointment { get; set; }
         public AddAppointmentPage()
         {
             InitializeComponent();
@@ -38,6 +39,33 @@ namespace SIMS.View.Doctor
         private void PatientNameAndSurname_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             addAppointmentsPatientDataGrid.ItemsSource = patientController.filterPatients(PatientNameAndSurname_TextBox.Text, Patients);
+        }
+
+        private void Button_PotvrdiPacijenta_Click(object sender, RoutedEventArgs e)
+        {
+            PatientForAddAppointmentDTO pat = addAppointmentsPatientDataGrid.SelectedItem as PatientForAddAppointmentDTO;
+            appointment.Patient = patientController.GetOne(pat.PatientId);
+        }
+
+        private void Button_PotvrdiDoktora_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorForAddAppointmentDTO doc = addAppointmentsDoctorDataGrid.SelectedItem as DoctorForAddAppointmentDTO;
+            appointment.Doctor = doctorController.GetByID(doc.Id);
+        }
+
+        private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.frame.Content = new AllAppointmentsPage();
+        }
+
+        private void Button_Nastavi_Click(object sender, RoutedEventArgs e)
+        {
+            appointment.DateAndTime = dateOfAppointment.DisplayDate;
+            if ((bool)doctorRadioButton.IsChecked) 
+            {
+                
+            }else if ((bool)terminRadioButton.IsChecked)
+            { }
         }
     }
 }

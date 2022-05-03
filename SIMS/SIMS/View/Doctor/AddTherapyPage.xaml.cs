@@ -34,6 +34,7 @@ namespace SIMS.View.Doctor
 
             Medicine_Combobox.ItemsSource = medicines;
             Medicine_Combobox.SelectedItem = medicines.First();
+            Trajanje_Combobox.SelectedValue = "7";
             Period_Combobox.SelectedValue = "4";
         }
 
@@ -62,11 +63,13 @@ namespace SIMS.View.Doctor
         private void Button_Zavrsi_Click(object sender, RoutedEventArgs e)
         {
             Medicine m = Medicine_Combobox.SelectedItem as Medicine;
-            String period = (String)Period_Combobox.SelectedValue;
+            String periodInHours = (String)Period_Combobox.SelectedValue;
+            String periodInDays = (String)Trajanje_Combobox.SelectedValue;
             String recept = Recept_TextBox.Text;
             String id = JoinAppointmentPage.SelectedItem.Patient.Person.JMBG;
+            DateTime timeOfMaking = DateTime.Now;
 
-            Therapy t = new Therapy(m, period, recept, id);
+            Therapy t = new Therapy(m, periodInHours, recept, periodInDays, timeOfMaking, id);
 
             therapyContoller.Create(t);
         }

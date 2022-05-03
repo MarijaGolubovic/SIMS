@@ -6,17 +6,21 @@ namespace SIMS.Model
     public class Therapy : Serialization.Serializable
     {
         public Medicine Medicine { get; set; }
-        public String Period { get; set; }
+        public String PeriodInHours { get; set; }
         public String MethodOfTaking { get; set; }
+        public String PeriodInDays { get; set; }
 
+        public DateTime timeOfMaking { get; set; }
         public string PatientId { get; set; }
 
-        public Therapy(Medicine medicine, string period, string methodOfTaking, string id)
+        public Therapy(Medicine medicine, string periodInHours, string methodOfTaking, string periodInDays, DateTime timeOfMaking, string patientId)
         {
             Medicine = medicine;
-            Period = period;
+            PeriodInHours = periodInHours;
             MethodOfTaking = methodOfTaking;
-            PatientId = id;
+            PeriodInDays = periodInDays;
+            this.timeOfMaking = timeOfMaking;
+            PatientId = patientId;
         }
 
         public string[] toCSV()
@@ -24,9 +28,11 @@ namespace SIMS.Model
             string[] csvValues =
             {
                 Medicine.Name,
-                Period,
+                PeriodInHours,
+                PeriodInDays,
                 MethodOfTaking,
-                PatientId.ToString()
+                PatientId.ToString(),
+                timeOfMaking.ToString(),
             };
             return csvValues;
         }
@@ -37,9 +43,11 @@ namespace SIMS.Model
             if (values[0] == "")
                 return;
             Medicine = mc.GetOne(values[0]);
-            Period = values[1];
-            MethodOfTaking = values[2];
-            PatientId = values[3];
+            PeriodInHours = values[1];
+            PeriodInDays = values[2];
+            MethodOfTaking = values[3];
+            PatientId = values[4];
+            timeOfMaking = DateTime.Parse(values[5]);
         }
 
         public Therapy() { }
