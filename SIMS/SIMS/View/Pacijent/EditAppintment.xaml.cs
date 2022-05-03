@@ -5,12 +5,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-<<<<<<< Updated upstream
 using SIMS.Controller;
 using SIMS.Model;
 using Tulpep.NotificationWindow;
-=======
->>>>>>> Stashed changes
+
 
 namespace SIMS.Pacijent
 {
