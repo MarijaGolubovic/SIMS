@@ -107,5 +107,21 @@ namespace SIMS.Service
         {
             return storage.Delete(appointmentID);
         }
+
+        public List<DateTime> getTimesOfDoctorAppointments(String doctorId)
+        {
+            List<DateTime> doctorAppointments = new List<DateTime>();
+            List<Appointment> allAppointments = new List<Appointment>();
+
+            foreach(Appointment a in allAppointments)
+            {
+                if (a.Doctor.Person.JMBG.Equals(doctorId)) 
+                {
+                    doctorAppointments.Add(a.DateAndTime);
+                }
+            }
+
+            return doctorAppointments;
+        }
     }
 }

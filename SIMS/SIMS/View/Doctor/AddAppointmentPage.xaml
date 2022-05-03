@@ -21,6 +21,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -70,7 +72,16 @@
 
             </DataGrid>
 
-            <TextBlock Grid.Row="3" 
+            <Button x:Name="Button_PotvrdiPacijenta"
+                    Content="Potvrdi"                    
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Width="70" 
+                    Height="30" Margin="620,60,0,40"
+                    HorizontalAlignment="Left"
+                    Click="Button_PotvrdiPacijenta_Click"/>
+
+            <TextBlock Grid.Row="4" 
                            Grid.Column="0"
                            Text="Ime i prezime doktora:" 
                            FontFamily="Fonts/#Roboto Light"
@@ -78,7 +89,7 @@
                            VerticalAlignment="Center"/>
 
             <TextBox Name="NameAndSurnameDoctor_TextBox"
-                         Grid.Row="3"
+                         Grid.Row="4"
                          Grid.Column="0"
                          HorizontalAlignment="Left"
                          Width="240"
@@ -88,7 +99,7 @@
                          />
 
             <DataGrid x:Name="addAppointmentsDoctorDataGrid"
-                                  Grid.Row="4" 
+                                  Grid.Row="5" 
                                   Grid.Column="0"
                                   IsReadOnly="True" 
                                   SelectionMode="Single" 
@@ -107,46 +118,55 @@
 
             </DataGrid>
 
-            <TextBlock Grid.Row="5" 
+            <Button x:Name="Button_PotvrdiDoktora"
+                    Content="Potvrdi"                     
+                    Grid.Column="0"
+                    Grid.Row="6"
+                    Width="70" 
+                    Height="30" Margin="620,60,0,40"
+                    HorizontalAlignment="Left"
+                    Click="Button_PotvrdiDoktora_Click"/>
+            
+            <TextBlock Grid.Row="7" 
                            Grid.Column="0"
                            Text="Datum:" 
                            FontFamily="Fonts/#Roboto Light"
                            FontSize="25" Margin="125,50,0,0"
                            VerticalAlignment="Bottom"/>
 
-            <DatePicker Grid.Row="5" 
+            <DatePicker Name="dateOfAppointment"
+                        Grid.Row="7" 
                         Grid.Column="0"
                         Width="150"
                         VerticalAlignment="Bottom" 
                         HorizontalAlignment="Left" Margin="230,0,0,0"
                         FontSize="17"/>
 
-            <TextBlock Grid.Row="6" 
+            <TextBlock Grid.Row="8" 
                            Grid.Column="0"
                            Text="Prioritet:" 
                            FontFamily="Fonts/#Roboto Light"
                            FontSize="25" Margin="125,50,0,0"
                            VerticalAlignment="Bottom"/>
 
-            <RadioButton Grid.Row="6" Grid.Column="0" VerticalAlignment="Bottom" Margin="240,0,0,6" GroupName="Priority" FontFamily="Orbitron Medium">Doktor</RadioButton>
-            <RadioButton Grid.Row="6" Grid.Column="0" VerticalAlignment="Bottom" Margin="340,0,0,7" GroupName="Priority" FontFamily="Orbitron Medium">Termin</RadioButton>
+            <RadioButton Name="doctorRadioButton" Grid.Row="8" Grid.Column="0" VerticalAlignment="Bottom" Margin="240,0,0,6" GroupName="Priority" FontFamily="Orbitron Medium">Doktor</RadioButton>
+            <RadioButton Name="terminRadioButton" Grid.Row="8" Grid.Column="0" VerticalAlignment="Bottom" Margin="340,0,0,7" GroupName="Priority" FontFamily="Orbitron Medium">Termin</RadioButton>
 
-            <Button x:Name="Button_Otkazi"
-                    Content="Otkaži" 
-                    
+            <Button x:Name="Button_Nastavi"
+                    Content="Nastavi"                    
                     Grid.Column="0"
-                    Grid.Row="7"
+                    Grid.Row="9"
                     Width="70" 
                     Height="30" Margin="900,60,0,40"
-                    IsEnabled="False"/>
+                    Click="Button_Nastavi_Click"/>
 
             <Button x:Name="Button_Back"
-                    Content="Nastavi" 
-                    
+                    Content="Otkaži"                     
                     Grid.Column="0"
-                    Grid.Row="7"
+                    Grid.Row="9"
                     Width="70" 
-                    Height="30" Margin="700,60,0,40"/>
+                    Height="30" Margin="700,60,0,40"
+                    Click="Button_Back_Click"/>
             
         </Grid>
     </ScrollViewer>
