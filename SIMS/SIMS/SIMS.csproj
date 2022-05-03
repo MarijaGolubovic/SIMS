@@ -66,6 +66,7 @@
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineContoller.cs" />
     <Compile Include="Controller\NotificationController.cs" />
+    <Compile Include="Controller\OccupacyRoomController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\TherapyContoller.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Repository\AllergyStorage.cs" />
     <Compile Include="Repository\DiagnosisStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
+    <Compile Include="Repository\OccupacyRoomStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Service\DiagnosisService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
+    <Compile Include="Service\OccupacyRoomService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\TherapyService.cs" />

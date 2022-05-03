@@ -12,7 +12,7 @@ namespace SIMS.Repository
         {
         }
 
-        public static List<Model.RoomOccupacy> GetAll()
+        public List<Model.RoomOccupacy> GetAll()
         {
             Serialization.Serializer<Model.RoomOccupacy> occupacyRoomSerializer = new Serialization.Serializer<Model.RoomOccupacy>();
             List<Model.RoomOccupacy> occupacy = occupacyRoomSerializer.fromCSV("OccupacyRoom.txt");
