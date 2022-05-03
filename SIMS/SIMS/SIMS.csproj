@@ -71,11 +71,8 @@
     <Compile Include="Controller\OccupacyRoomController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
-<<<<<<< HEAD
-    <Compile Include="Controller\RoomEquipmentController.cs" />
-=======
     <Compile Include="Controller\SpecializationController.cs" />
->>>>>>> e165db435d557ea10d8be91afa03b74290f20565
+    <Compile Include="Controller\RoomEquipmentController.cs" />
     <Compile Include="Controller\TherapyContoller.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
