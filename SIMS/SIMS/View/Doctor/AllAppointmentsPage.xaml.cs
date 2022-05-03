@@ -1,20 +1,8 @@
 ﻿using SIMS.Controller;
 using SIMS.Model;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Doctor
 {
@@ -35,7 +23,7 @@ namespace SIMS.View.Doctor
 
         private void Button_Click_Detaljnije(object sender, RoutedEventArgs e)
         {
-            if (allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO == null) 
+            if (allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO == null)
             {
                 return;
             }
@@ -45,7 +33,12 @@ namespace SIMS.View.Doctor
 
         private void Button_Click_Pristupi(object sender, RoutedEventArgs e)
         {
-
+            if (allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO == null)
+            {
+                return;
+            }
+            SelectedItem = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
+            MainWindow.frame.Content = new JoinAppointmentPage();
         }
     }
 }

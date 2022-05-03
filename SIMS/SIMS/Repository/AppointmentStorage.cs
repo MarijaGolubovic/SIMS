@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using SIMS.Model;
 
+
 namespace SIMS.Repository
 {
     public class AppointmentStorage
@@ -13,7 +14,7 @@ namespace SIMS.Repository
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
             List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
-           
+
             return appointments;
         }
 
@@ -23,9 +24,9 @@ namespace SIMS.Repository
             List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
             Appointment app = new Appointment();
 
-            foreach (Appointment a in appointments) 
+            foreach (Appointment a in appointments)
             {
-                if (a.Id.Equals(appointmentID)) 
+                if (a.Id.Equals(appointmentID))
                 {
                     app = a;
                     break;
@@ -36,13 +37,28 @@ namespace SIMS.Repository
 
         public Boolean Delete(int appointmentID)
         {
-            throw new NotImplementedException();
+            List<Appointment> appointments = GetAll();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.Id.Equals(appointmentID))
+                {
+                    appointments.Remove(a);
+                    break;
+                }
+            }
+
+            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+            appointmentSerializer.toCSV("appointments.txt", appointments);
+            return true;
+
         }
         public Boolean Create(Appointment appointment)
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
             List<Appointment> appointments = new List<Appointment>();
-            foreach (Appointment a in appointmentSerializer.fromCSV("appointments.txt")) {
+            foreach (Appointment a in appointmentSerializer.fromCSV("appointments.txt"))
+            {
                 appointments.Add(a);
             }
             appointments.Add(appointment);

@@ -1,11 +1,8 @@
 ﻿using SIMS.Controller;
 using SIMS.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Repository;
+
 
 namespace SIMS.Doctor
 {
@@ -30,6 +28,7 @@ namespace SIMS.Doctor
 
         private readonly PatientController patientController;
         public static Controller.RoomController roomController = new Controller.RoomController();
+        private readonly DoctorController doctorController = new DoctorController();
         public EditAppointmentWindow()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace SIMS.Doctor
             }
 
             Doctors = new ObservableCollection<Model.Doctor>();
-            foreach (Model.Doctor doc in Repository.DoctorStorage.GetAll())
+            foreach (Model.Doctor doc in doctorController.GetAll())
             {
                 Doctors.Add(doc);
             }

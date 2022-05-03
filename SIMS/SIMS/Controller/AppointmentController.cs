@@ -2,9 +2,6 @@
 using SIMS.Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Controller
 {
@@ -14,16 +11,16 @@ namespace SIMS.Controller
         private readonly AppointmentService appointmentService = new AppointmentService();
         private readonly PatientController patientController = new PatientController();
 
-        public AppointmentController() 
+        public AppointmentController()
         {
         }
 
-        public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor() 
+        public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor()
         {
             List<AppointmentsForDoctorDTO> appointmentsForDoctorDTOs = new List<AppointmentsForDoctorDTO>();
             List<Appointment> appointments = appointmentService.GetAll();
 
-            foreach(Appointment a in appointments) 
+            foreach (Appointment a in appointments)
             {
                 String name = a.Patient.Person.Name;
                 String surname = a.Patient.Person.Surname;
@@ -31,7 +28,8 @@ namespace SIMS.Controller
                 String date = array[0];
                 String time = a.DateAndTime.TimeOfDay.ToString();
                 String roomId = a.Room.Id;
-                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId);
+                String doctorId = a.Doctor.Person.JMBG;
+                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId, doctorId);
 
                 appointmentsForDoctorDTOs.Add(pom);
             }
@@ -65,5 +63,10 @@ namespace SIMS.Controller
         }
 
         
+        public Boolean Delete(int appointmentID)
+        {
+            return appointmentService.Delete(appointmentID);
+        }
+
     }
 }

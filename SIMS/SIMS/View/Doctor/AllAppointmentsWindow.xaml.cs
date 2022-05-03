@@ -1,25 +1,13 @@
 ﻿using SIMS.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.Doctor
 {
     /// <summary>
     /// Interaction logic for AllAppointmentsWindow.xaml
     /// </summary>
-  
+
     public partial class AllAppointmentsWindow : Window
     {
         public static ObservableCollection<Model.Appointment> Appointments { get; set; }

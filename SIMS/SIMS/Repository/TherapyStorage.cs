@@ -1,9 +1,6 @@
 ﻿using SIMS.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Repository
 {
@@ -37,12 +34,21 @@ namespace SIMS.Repository
         {
             throw new NotImplementedException();
         }
-        public static Boolean Create(Medicine medicine)
+        public Boolean Create(Therapy therapy)
         {
-            throw new NotImplementedException();
+            Serialization.Serializer<Therapy> TherapySerializer = new Serialization.Serializer<Therapy>();
+            List<Therapy> Therapies = new List<Therapy>();
+            foreach (Therapy t in TherapySerializer.fromCSV("therapy.txt"))
+            {
+                Therapies.Add(t);
+            }
+            Therapies.Add(therapy);
+            TherapySerializer.toCSV("therapy.txt", Therapies);
+            return true;
+            
         }
 
-        public Boolean Update(Medicine medicine)
+        public Boolean Update(Therapy therapy)
         {
             throw new NotImplementedException();
         }

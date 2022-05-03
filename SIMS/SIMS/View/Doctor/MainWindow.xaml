@@ -10,17 +10,33 @@
     <Grid Background="AliceBlue">
         <DockPanel>
 
-            <StackPanel Background="#FF28579A"
+            <StackPanel Background="LightSteelBlue"
                         Orientation="Horizontal"
                         DockPanel.Dock="Top"
                         Height="80">
 
                 <Grid HorizontalAlignment="Center">
 
+                    <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\hospital-doctor.png" 
+                           HorizontalAlignment="Left" Margin="20,0,0,0"
+                           />
+
+                    <TextBlock Text="Zdravo"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="30" FontFamily="Arial Rounded MT Bold" Margin="120,6,0,0"
+                               />
+
+                    <TextBlock Text="Corporation"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left"
+                               FontSize="30" FontFamily="Arial Rounded MT Bold" Margin="120,0,0,6"
+                               />
+
                     <TextBlock Text="Because Your Life Matters" 
                            FontSize="50"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
+                           VerticalAlignment="Center" Margin="550,0,0,0" FontFamily="Edwardian Script ITC"
                            />
 
                 </Grid>
@@ -50,15 +66,16 @@
                               Template="{StaticResource Menu_SubMenu_Template}">
 
                         <MenuItem.Icon>
-                            <Image Source="Assets/img_examination.png"
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\stethoscope.png"
                                    Stretch="None" />
                         </MenuItem.Icon>
 
                         <MenuItem Header="Zakaži"
-                                  Template="{StaticResource Item_Template}">
+                                  Template="{StaticResource Item_Template}"
+                                  Click="MenuItem_Click_Zakazi">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\addAppointment.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -68,7 +85,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\editAppointment.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -78,7 +95,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\deleteAppointment.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -89,7 +106,7 @@
                                   
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\planner.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -101,7 +118,7 @@
                               Template="{StaticResource Menu_SubMenu_Template}">
 
                         <MenuItem.Icon>
-                            <Image Source="Assets/img_home.png"
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\surgery.png"
                                    Stretch="None" />
                         </MenuItem.Icon>
 
@@ -109,7 +126,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\addAppointment.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -119,7 +136,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\deleteAppointment.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -129,7 +146,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\planner.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -141,7 +158,7 @@
                               Template="{StaticResource Menu_SubMenu_Template}">
 
                         <MenuItem.Icon>
-                            <Image Source="Assets/img_home.png"
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\requirements.png"
                                    Stretch="None" />
                         </MenuItem.Icon>
 
@@ -149,7 +166,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\vacation.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -159,7 +176,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\freeDay.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -169,7 +186,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\procurement.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -181,7 +198,7 @@
                               Template="{StaticResource Menu_SubMenu_Template}">
 
                         <MenuItem.Icon>
-                            <Image Source="Assets/img_home.png"
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\account.png"
                                    Stretch="None" />
                         </MenuItem.Icon>
 
@@ -189,7 +206,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\viewAccount.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -199,7 +216,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\editAppointment.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -209,7 +226,7 @@
                                   Template="{StaticResource Item_Template}">
 
                             <MenuItem.Icon>
-                                <Image Source="Assets/img_home.png"
+                                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\changePassword.png"
                                    Stretch="None" />
                             </MenuItem.Icon>
 
@@ -221,7 +238,7 @@
                               Template="{StaticResource Menu_Template}">
 
                         <MenuItem.Icon>
-                            <Image Source="Assets/img_home.png"
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\poll.png"
                                    Stretch="None" />
                         </MenuItem.Icon>
 
@@ -231,7 +248,7 @@
                               Template="{StaticResource Menu_Template}">
 
                         <MenuItem.Icon>
-                            <Image Source="Assets/img_home.png"
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\report.png"
                                    Stretch="None" />
                         </MenuItem.Icon>
 

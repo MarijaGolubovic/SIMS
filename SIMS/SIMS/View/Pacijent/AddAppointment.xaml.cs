@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -22,6 +24,7 @@ namespace SIMS.Pacijent
         private readonly PatientController patientController = new PatientController();
         private readonly AppointmentController appointmentController  = new AppointmentController();
         private List<Appointment> suggestedAppointments = new List<Appointment>();
+        private readonly DoctorController doctorController = new DoctorController();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -34,7 +37,7 @@ namespace SIMS.Pacijent
             AppointmentsCollceciton = new ObservableCollection<Appointment>();
 
             //Popunjavanje kolekcije dokora
-            foreach(Model.Doctor item in DoctorController.GetAll())
+            foreach(Model.Doctor item in doctorController.GetAll())
             {
                 Doctors.Add(item);
             }
@@ -71,7 +74,7 @@ namespace SIMS.Pacijent
                 jmbg = "2108010103158";
             }
 
-            Model.Doctor doctorTmp = DoctorController.GetByID(jmbg);
+            Model.Doctor doctorTmp = doctorController.GetByID(jmbg);
 
             //preuzimanje podataka sa interface-a 
             string dateTime = DatePicker.Text;

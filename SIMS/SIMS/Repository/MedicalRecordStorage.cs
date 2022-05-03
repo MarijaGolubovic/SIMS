@@ -20,7 +20,7 @@ namespace SIMS.Model
             foreach (MedicalRecord mr in medicalRecords)
             {
                 if (mr.patient.Person.JMBG.Equals(jmbg))
-                { 
+                {
                     medicalRecord = mr;
                     break;
                 }

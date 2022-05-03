@@ -1,9 +1,6 @@
 ﻿using SIMS.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Repository
 {
@@ -22,9 +19,9 @@ namespace SIMS.Repository
             List<Medicine> medicines = GetAll();
             Medicine medicine = new Medicine();
 
-            foreach (Medicine m in medicines) 
+            foreach (Medicine m in medicines)
             {
-                if (m.Name.Equals(name)) 
+                if (m.Name.Equals(name))
                 {
                     medicine = m;
                     break;

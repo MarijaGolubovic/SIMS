@@ -2,9 +2,6 @@
 using SIMS.Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Controller
 {
@@ -13,7 +10,7 @@ namespace SIMS.Controller
         private readonly PatientService patientService;
 
         public PatientController()
-        { 
+        {
             patientService = new PatientService();
         }
 
@@ -52,6 +49,23 @@ namespace SIMS.Controller
             return patientService.UpdateJMBG(jmbgOld, jmbgNew);
         }
 
+        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
+        {
+            List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();
 
+            foreach(Patient p in GetAll())
+            {
+                String date = p.Person.DateOfBirth.ToString().Split(' ')[0];
+                String address = p.Person.Address.City.Name + ", " + p.Person.Address.Street + ", " + p.Person.Address.Number;
+                PatientForAddAppointmentDTO patient = new PatientForAddAppointmentDTO(p.Person.JMBG, p.Person.Name, p.Person.Surname, address, date);
+                list.Add(patient);
+            }
+            return list;
+        }
+
+        public List<PatientForAddAppointmentDTO> filterPatients(String query, List<PatientForAddAppointmentDTO> patients)
+        {
+            return patientService.filterPatients(query, patients);
+        }
     }
 }

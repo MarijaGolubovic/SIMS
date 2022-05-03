@@ -2,16 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.Menager
 {
@@ -26,19 +17,21 @@ namespace SIMS.Menager
 
         public UpdateForm()
         {
-            roomItem = Menager.UpdateRoomWindow.selectedRoom; 
+            roomItem = Menager.UpdateRoomWindow.selectedRoom;
             InitializeComponent();
             IDInput.Text = roomItem.Id;
             SizeInput.Text = roomItem.Size.ToString();
-            
 
-            if(roomItem.Type.Equals( Model.RoomType.OPPERATING_ROOM))
+
+            if (roomItem.Type.Equals(Model.RoomType.OPPERATING_ROOM))
             {
                 comboboxField.SelectedIndex = 0;
-            }else if(roomItem.Type.Equals(Model.RoomType.EXAMINATION_ROOM))
+            }
+            else if (roomItem.Type.Equals(Model.RoomType.EXAMINATION_ROOM))
             {
                 comboboxField.SelectedIndex = 1;
-            }else if(roomItem.Type.Equals( Model.RoomType.HOSPITAL_ROOM))
+            }
+            else if (roomItem.Type.Equals(Model.RoomType.HOSPITAL_ROOM))
             {
                 comboboxField.SelectedIndex = 2;
             }
@@ -47,8 +40,8 @@ namespace SIMS.Menager
                 comboboxField.SelectedIndex = 3;
             }
 
-           
-            
+
+
 
         }
 
@@ -87,13 +80,13 @@ namespace SIMS.Menager
                 roomType = Model.RoomType.WAREHOUSE;
             }
 
-            
+
             Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
             RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
             RoomsList.Rooms.Add(newRoom);
 
             roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
-            
+
 
             Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
             updateRoomWindow.Show();

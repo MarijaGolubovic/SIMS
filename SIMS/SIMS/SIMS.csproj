@@ -62,6 +62,7 @@
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
+    <Compile Include="Controller\DiagnosisController.cs" />
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineContoller.cs" />
     <Compile Include="Controller\NotificationController.cs" />
@@ -71,29 +72,48 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
+    <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
     <Compile Include="Repository\EquipmentStorage.cs" />
+    <Compile Include="Model\Diagnosis.cs" />
+    <Compile Include="Model\PatientForAddAppointmentDTO.cs" />
+    <Compile Include="Model\Therapy.cs" />
+    <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\DiagnosisStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DoctorService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
+    <Compile Include="Service\DiagnosisService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\TherapyService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="View\Doctor\AddAppointmentPage.xaml.cs">
+      <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\AddTherapyPage.xaml.cs">
+      <DependentUpon>AddTherapyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Doctor\AllAppointmentsPage.xaml.cs">
       <DependentUpon>AllAppointmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Doctor\DetailedAppointmentPage.xaml.cs">
       <DependentUpon>DetailedAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\EditAppointmentPage.xaml.cs">
+      <DependentUpon>EditAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\JoinAppointmentPage.xaml.cs">
+      <DependentUpon>JoinAppointmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -147,9 +167,6 @@
     <Compile Include="View\Doctor\EditAppointmentWindow.xaml.cs">
       <DependentUpon>EditAppointmentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Doctor\MainDoctorWindow.xaml.cs">
-      <DependentUpon>MainDoctorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\AddRoomWindow.xaml.cs">
       <DependentUpon>AddRoomWindow.xaml</DependentUpon>
     </Compile>
@@ -181,6 +198,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Doctor\AddAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Doctor\AddTherapyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Doctor\AllAppointmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,13 +218,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Doctor\EditAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Doctor\EditAppointmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Doctor\MainDoctorWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\Doctor\JoinAppointmentPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -362,35 +391,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\viewAccount.png" />
+    <Resource Include="Assets\vacation.png" />
     <Resource Include="Assets\hospital.png" />
+    <Resource Include="Assets\note.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\doctor-consultation.png" />
+    <Resource Include="Assets\planner.png" />
+    <Resource Include="Assets\account.png" />
+    <Resource Include="Assets\report.png" />
+    <Resource Include="Assets\poll.png" />
+    <Resource Include="Assets\requirements.png" />
+    <Resource Include="Assets\stethoscope.png" />
+    <Resource Include="Assets\surgery.png" />
+    <Resource Include="Assets\addAppointment.png" />
+    <Resource Include="Assets\editAppointment.png" />
+    <Resource Include="Assets\deleteAppointment.png" />
+    <Resource Include="Assets\freeDay.png" />
+    <Resource Include="Assets\procurement.png" />
+    <Resource Include="Assets\changePassword.png" />
+    <Resource Include="Assets\hospital-doctor.png" />
+    <Content Include="Assets\therapy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\img_about.png" />
-    <Resource Include="Assets\img_acoustic.png" />
-    <Resource Include="Assets\img_album.png" />
     <Resource Include="Assets\img_arrow.png" />
-    <Resource Include="Assets\img_artist.png" />
-    <Resource Include="Assets\img_electronic.png" />
-    <Resource Include="Assets\img_exit.png" />
-    <Resource Include="Assets\img_folder.png" />
-    <Resource Include="Assets\img_genre.png" />
-    <Resource Include="Assets\img_hiphop.png" />
-    <Resource Include="Assets\img_history.png" />
-    <Resource Include="Assets\img_home.png" />
-    <Resource Include="Assets\img_hotkey.png" />
-    <Resource Include="Assets\img_input.png" />
-    <Resource Include="Assets\img_jazz.png" />
-    <Resource Include="Assets\img_metal.png" />
-    <Resource Include="Assets\img_movies.png" />
-    <Resource Include="Assets\img_music.png" />
-    <Resource Include="Assets\img_playlist.png" />
-    <Resource Include="Assets\img_pop.png" />
-    <Resource Include="Assets\img_rock.png" />
-    <Resource Include="Assets\img_search.png" />
-    <Resource Include="Assets\img_setting.png" />
-    <Resource Include="Assets\img_songs.png" />
-    <Resource Include="Assets\max_def.png" />
-    <Resource Include="Assets\max_mo.png" />
     <Resource Include="Assets\shutdown_def.png" />
     <Resource Include="Assets\shutdown_mo.png" />
   </ItemGroup>

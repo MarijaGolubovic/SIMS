@@ -16,6 +16,7 @@ namespace SIMS.Model
 
         private readonly PatientController patientController = new PatientController();
         private readonly RoomController roomController = new RoomController();
+        private readonly DoctorController doctorController = new DoctorController();
 
         public Appointment(DateTime dateAndTime, int id, Room room, Patient patient, Doctor doctor)
         {
@@ -37,7 +38,7 @@ namespace SIMS.Model
                 DateAndTime.ToString(),
                 Id.ToString(),
                 Room.Id.ToString(),
-                Patient.Person.JMBG,    
+                Patient.Person.JMBG,
                 Doctor.Person.JMBG,
             };
             return csvValues;
@@ -51,7 +52,7 @@ namespace SIMS.Model
             Id = int.Parse(values[1]);
             Room = roomController.GetOne(values[2]);
             Patient = patientController.GetOne(values[3]);
-            Doctor = Repository.DoctorStorage.GetByID(values[4]);
+            Doctor = doctorController.GetByID(values[4]);
         }
     }
 }
