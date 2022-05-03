@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
         Topmost="True"
+        WindowStartupLocation="CenterOwner"
         Title="Hello Clinic" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.495,0.386">
         <Border BorderThickness="2" BorderBrush="Black"  Margin="0,0,0,328"/>
@@ -59,7 +60,7 @@
             <Label Grid.Row="1" Grid.Column="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Left" Margin="82,1,0,-1" Height="45" VerticalAlignment="Top" RenderTransformOrigin="-0.039,0.393" Grid.ColumnSpan="2">
                 Polls
             </Label>
-            <Label Grid.Row="1" Grid.Column="3" FontSize="18" FontWeight="Black" Grid.ColumnSpan="2" Margin="29,0,103,0" >
+            <Label Grid.Row="1" Grid.Column="3" FontSize="18" FontWeight="Black" Grid.ColumnSpan="2" Margin="29,0,103,0"  MouseDoubleClick="Label_MouseDoubleClickEqupment">
                 Equipment
             </Label>
             <Label Grid.Row="1" Grid.Column="4" FontSize="18" FontWeight="Black" RenderTransformOrigin="0.632,0.45" Grid.ColumnSpan="2" Margin="34,0,98,0" >

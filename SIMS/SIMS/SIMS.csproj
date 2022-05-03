@@ -86,11 +86,20 @@
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
+      <DependentUpon>EqupmentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MovingWindow.xaml.cs">
+      <DependentUpon>MovingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\RenovateForm.xaml.cs">
       <DependentUpon>RenovateForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\RenovateWindow.xaml.cs">
       <DependentUpon>RenovateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Rooms.xaml.cs">
+      <DependentUpon>Rooms.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\RoomsPanel.xaml.cs">
       <DependentUpon>RoomsPanel.xaml</DependentUpon>
@@ -193,11 +202,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\EqupmentPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\MovingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\RenovateForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\RenovateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Rooms.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,6 +391,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\distribution.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ordering.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\move.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
