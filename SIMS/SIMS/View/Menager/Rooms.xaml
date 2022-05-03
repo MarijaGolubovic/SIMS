@@ -48,7 +48,7 @@
             <Label Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Black" HorizontalAlignment="Right" Margin="0,0,35,0" Width="73" RenderTransformOrigin="0.174,0.484">
                 Home
             </Label>
-            <Label x:Name="Rooms" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Center" RenderTransformOrigin="1.138,0.518" Margin="114,0,77,0"
+            <Label x:Name="RoomWindows" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Center" RenderTransformOrigin="1.138,0.518" Margin="114,0,77,0"
                    MouseDoubleClick="Rooms_MouseDoubleClick_OK" Width="73">
                 Rooms
             </Label>

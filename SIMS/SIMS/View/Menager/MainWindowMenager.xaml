@@ -38,7 +38,8 @@
                     Best place for all your needements
                 </Label.Content>
             </Label>
-            <Label Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="Normal">
+            <Label Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="Normal"
+                   MouseDoubleClick="Label_MouseDoubleClickSignOut">
                 Sign out
             </Label>
             <Image Grid.Column="5" Grid.Row="0" Height="25" HorizontalAlignment="Right">

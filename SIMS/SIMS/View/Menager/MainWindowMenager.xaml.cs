@@ -49,5 +49,12 @@ namespace SIMS.Menager
             equpmentPanel.Owner = this;
             equpmentPanel.Show();
         }
+
+        private void Label_MouseDoubleClickSignOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            View.Menager.LogWindow logWindow = new View.Menager.LogWindow();
+            logWindow.Show();
+            this.Close();
+        }
     }
 }

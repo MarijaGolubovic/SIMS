@@ -89,6 +89,9 @@
     <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
       <DependentUpon>EqupmentPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\MovingWindow.xaml.cs">
       <DependentUpon>MovingWindow.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\EqupmentPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
