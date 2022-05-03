@@ -83,10 +83,13 @@
         <TextBox x:Name="sizeRenovateRoom" IsReadOnly="True" Height="25" Width="150" RenderTransformOrigin="0.491,-2.494" Margin="304,202,338,192" />
         <Label  VerticalAlignment="Center" Margin="216,249,531,140" RenderTransformOrigin="0.039,0.489" Height="31">Type:</Label>
         <TextBox x:Name="TypeRenovateRoom" IsReadOnly="True" Height="25" Width="150" RenderTransformOrigin="0.491,-2.494" Margin="304,249,338,146"/>
-        <Label  VerticalAlignment="Center" Margin="216,286,531,108" RenderTransformOrigin="0.039,0.489" Height="26">Period:</Label>
-        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Height="23" Margin="304,287,0,0"  VerticalAlignment="Top" Width="153"/>
-        <Label  VerticalAlignment="Center" Margin="216,325,516,69" RenderTransformOrigin="0.039,0.489" Height="26">Method:</Label>
-        <TextBox Margin="304,325,335,69"/>
+        <Label  VerticalAlignment="Center" Margin="216,286,531,108" RenderTransformOrigin="0.039,0.489" Height="26">Begin:</Label>
+        <DatePicker Name="DatePickerBegin" HorizontalAlignment="Left" Height="23" Margin="304,287,0,0"  VerticalAlignment="Top" Width="153"/>
+        <Label  VerticalAlignment="Center" Margin="216,318,531,76" RenderTransformOrigin="0.039,0.489" Height="26">End:</Label>
+        <DatePicker Name="DatePickerEnd" HorizontalAlignment="Left" Height="23" Margin="304,321,0,0"  VerticalAlignment="Top" Width="153"/>
+        
+        <Label  VerticalAlignment="Center" Margin="216,344,516,50" RenderTransformOrigin="0.039,0.489" Height="26">Method:</Label>
+        <TextBox Margin="304,349,335,45"/>
         <Grid VerticalAlignment="Bottom" Height="45">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>

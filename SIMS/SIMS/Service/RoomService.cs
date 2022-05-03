@@ -42,7 +42,11 @@ namespace SIMS.Service
 
         }
 
-
+        public void RenovateRoom(Room room, String method, DateTime period) { 
+            
+            
+        
+        }
 
 
     }
