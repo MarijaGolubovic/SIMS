@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SIMS.Repository;
+using Tulpep.NotificationWindow;
 
 namespace SIMS.Service
 {
@@ -57,6 +58,11 @@ namespace SIMS.Service
             {
                 suggestedAppointments.Add(appointment);
                 storage.Create(appointment);
+
+                PopupNotifier popup = new PopupNotifier();
+                popup.TitleText = "Zakazali ste termin!";
+                popup.Popup();
+
                 return suggestedAppointments;
             }
             else
