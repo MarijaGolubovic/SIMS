@@ -63,5 +63,6 @@ namespace SIMS.Model
         public User()
         {
         }
+
     }
 }

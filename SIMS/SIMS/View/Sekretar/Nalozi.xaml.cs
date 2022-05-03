@@ -1,11 +1,10 @@
 ﻿using SIMS.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using SIMS.Controller;
 using SIMS.Model;
-
+using SIMS.View.Sekretar;
 
 namespace SIMS.Sekretar
 {
@@ -58,11 +57,22 @@ namespace SIMS.Sekretar
                 UpdateView();
             }
         }
-
-        private void VIDI_Click(object sender, RoutedEventArgs e)
+        private void VIDI_Click_1(object sender, RoutedEventArgs e)
         {
+            Patient selectedRow = AktivniNalazi.SelectedItem as Patient;
+            MedicalRecordView medicalRecordView = new MedicalRecordView(selectedRow);
+            medicalRecordView.Show();
 
         }
+        private void VIDI_Click(object sender, RoutedEventArgs e)
+        {
+            Patient selectedRow = BlokiraniNalozi.SelectedItem as Patient;
+            MedicalRecordView medicalRecordView = new MedicalRecordView(selectedRow);
+            medicalRecordView.Show();
+
+        }
+
+
 
         private void IZMENI_Click_1(object sender, RoutedEventArgs e)
         {
@@ -83,7 +93,7 @@ namespace SIMS.Sekretar
 
         }
 
-        public static void UpdateView ()
+        public static void UpdateView()
         {
             Patients.Clear();
             PatientsBlock.Clear();
@@ -97,5 +107,7 @@ namespace SIMS.Sekretar
                 PatientsBlock.Add(p);
             }
         }
+
+
     }
 }

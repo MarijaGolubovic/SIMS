@@ -7,9 +7,9 @@ namespace SIMS.Model
     {
         public List<Country> GetAll()
         {
-            List<Country> countries = new List<Country>();
+            // List<Country> countries = new List<Country>();
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
-            countries = countrySerijalization.fromCSV("Country.csv");
+            List<Country> countries = countrySerijalization.fromCSV("Country.txt");
             return countries;
         }
 
@@ -18,7 +18,7 @@ namespace SIMS.Model
             List<Country> countries = new List<Country>();
             Country country = new Country();
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
-            countries = countrySerijalization.fromCSV("Country.csv");
+            countries = countrySerijalization.fromCSV("Country.txt");
             foreach (Country inputCountry in countries)
             {
                 if (name.Equals(inputCountry.Name))
@@ -34,7 +34,7 @@ namespace SIMS.Model
             List<Country> countries = new List<Country>();
             Boolean status = false;
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
-            countries = countrySerijalization.fromCSV("Country.csv");
+            countries = countrySerijalization.fromCSV("Country.txt");
             foreach (Country inputCountry in countries)
             {
                 if (name.Equals(inputCountry.Name))
@@ -51,9 +51,9 @@ namespace SIMS.Model
             List<Country> countries = new List<Country>();
             Boolean status = false;
             Serialization.Serializer<Country> countrySerijalization = new Serialization.Serializer<Country>();
-            countries = countrySerijalization.fromCSV("Country.csv");
+            countries = countrySerijalization.fromCSV("Country.txt");
             countries.Add(country);
-            countrySerijalization.toCSV("Country.csv", countries);
+            countrySerijalization.toCSV("Country.txt", countries);
             status = true;
             return status;
         }

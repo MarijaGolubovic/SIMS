@@ -60,6 +60,8 @@
     </ApplicationDefinition>
     <Compile Include="Controller\AllergyController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\CityController.cs" />
+    <Compile Include="Controller\CountryController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\DiagnosisController.cs" />
@@ -69,11 +71,18 @@
     <Compile Include="Controller\OccupacyRoomController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controller\RoomEquipmentController.cs" />
+=======
+    <Compile Include="Controller\SpecializationController.cs" />
+>>>>>>> e165db435d557ea10d8be91afa03b74290f20565
     <Compile Include="Controller\TherapyContoller.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
+    <Compile Include="Model\AllergyDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
+    <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\NewPatientDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
@@ -92,6 +101,8 @@
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\CityService.cs" />
+    <Compile Include="Service\CountryService.cs" />
     <Compile Include="Service\DoctorService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\DiagnosisService.cs" />
@@ -101,6 +112,7 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomEquipmentServices.cs" />
     <Compile Include="Service\RoomService.cs" />
+    <Compile Include="Service\SpecializationsService.cs" />
     <Compile Include="Service\TherapyService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="View\Doctor\AddAppointmentPage.xaml.cs">
@@ -155,14 +167,26 @@
       <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repository\DoctorSpecialization.cs" />
+    <Compile Include="View\Sekretar\AppointmentView.xaml.cs">
+      <DependentUpon>AppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\CreateAppointmentView.xaml.cs">
+      <DependentUpon>CreateAppointmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sekretar\CreatePatient.xaml.cs">
       <DependentUpon>CreatePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\EditAppointmentView.xaml.cs">
+      <DependentUpon>EditAppointmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sekretar\EditPatient.xaml.cs">
       <DependentUpon>EditPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sekretar\MainSecretaryWindow.xaml.cs">
       <DependentUpon>MainSecretaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\MedicalRecordView.cs">
+      <DependentUpon>MedicalRecordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sekretar\Nalozi.xaml.cs">
       <DependentUpon>Nalozi.xaml</DependentUpon>
@@ -199,6 +223,9 @@
     </Compile>
     <Compile Include="Serialization\Serializable.cs" />
     <Compile Include="Serialization\Serializer.cs" />
+    <Compile Include="View\Sekretar\NewPatientView.xaml.cs">
+      <DependentUpon>NewPatientView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Templates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -299,7 +326,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Sekretar\AppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\CreateAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Sekretar\CreatePatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\EditAppointmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -308,6 +347,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Sekretar\MainSecretaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\MedicalRecordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -340,6 +383,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pacijent\EditAppintment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\NewPatientView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

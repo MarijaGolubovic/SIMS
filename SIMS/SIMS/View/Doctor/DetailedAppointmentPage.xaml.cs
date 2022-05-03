@@ -1,7 +1,9 @@
-﻿using SIMS.Controller;
+﻿using System.Windows.Controls;
+using SIMS.Controller;
 using SIMS.Model;
 using System.Windows;
 using System.Windows.Controls;
+
 
 namespace SIMS.View.Doctor
 {

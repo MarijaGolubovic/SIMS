@@ -1,5 +1,5 @@
-using SIMS.Controller;
 using System;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {

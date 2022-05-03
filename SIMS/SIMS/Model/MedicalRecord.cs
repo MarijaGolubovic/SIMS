@@ -1,8 +1,8 @@
 
 
-using SIMS.Controller;
 using System;
 using System.Collections.Generic;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {
@@ -78,18 +78,20 @@ namespace SIMS.Model
 
         public string[] toCSV()
         {
+
+
             string[] csvValues = {
 
                 Height.ToString(),
                 Weight.ToString(),
                 BloodType.ToString(),
                 patient.Person.JMBG.ToString()
-
             };
 
             int i = 4;
             foreach (Allergy a in Allergies)
             {
+                Array.Resize(ref csvValues, i + 1);
                 csvValues[i] = a.Name;
                 i++;
             }
@@ -99,13 +101,15 @@ namespace SIMS.Model
 
         public void fromCSV(string[] values)
         {
+            Allergies = new List<Allergy>();
             if (values == null)
                 return;
             Height = Double.Parse(values[0]);
             Weight = Double.Parse(values[1]);
             BloodType = (BloodType)Enum.Parse(typeof(BloodType), values[2]);
             patient = patientController.GetOne(values[3]);
-            therapies = therapyContoller.GetById(values[4]);
+            //  therapies = therapyContoller.GetById(values[4]);
+
 
             Allergies = new List<Allergy>();
             for (int i = 4; i < values.Length; i++)
@@ -118,6 +122,10 @@ namespace SIMS.Model
 
         public Patient patient;
 
+        public MedicalRecord(double height, double weight, List<Allergy> allergies, BloodType bloodType, List<Therapy> therapies, Patient patient) : this(height, weight, allergies, bloodType, therapies)
+        {
+            this.patient = patient;
+        }
     }
 
 }

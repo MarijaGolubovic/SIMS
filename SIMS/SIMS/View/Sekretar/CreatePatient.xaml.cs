@@ -1,6 +1,5 @@
-﻿using SIMS.Model;
-using System;
-using System.Linq;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using SIMS.Controller;
 using SIMS.Model;
@@ -14,17 +13,37 @@ namespace SIMS.Sekretar
     {
         private PatientController patientController;
         private UserController userController;
+        private static CountryController countryController;
+        private static CityController cityController;
+        public static ObservableCollection<Country> Countries { get; set; }
+        public static ObservableCollection<City> Cities { get; set; }
+
         public CreatePatient()
         {
             InitializeComponent();
             userController = new UserController();
             patientController = new PatientController();
+            countryController = new CountryController();
+            cityController = new CityController();
+            Countries = new ObservableCollection<Country>();
+            Cities = new ObservableCollection<City>();
+            foreach (Country c in countryController.GetAll())
+            {
+                Countries.Add(c);
+            }
+            foreach (City c in cityController.GetAll())
+            {
+                Cities.Add(c);
+            }
+            countryCombobox.ItemsSource = Countries;
+            cityCombobox.ItemsSource = Cities;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User(korisnik.Text, lozinka.Text, UserType.patient, new Person(ime.Text, prezime.Text, jmbg.Text, telefon.Text, DateTime.Parse(datum.Text), email.Text, new Address(ulica.Text, broj.Text, new City(grad.Text), new Country(drzava.Text))));
-            Patient patient = new Patient(user,new MedicalRecord(),new AccountStatus(false, true));
+
+            User user = new User(korisnik.Text, lozinka.Text, UserType.patient, new Person(ime.Text, prezime.Text, jmbg.Text, telefon.Text, DateTime.Parse(datum.Text), email.Text, new Address(ulica.Text, broj.Text, cityCombobox.SelectedItem as City, countryCombobox.SelectedItem as Country)));
+            Patient patient = new Patient(user, new MedicalRecord(), new AccountStatus(false, true));
 
             if (!userController.Create(user))
             {

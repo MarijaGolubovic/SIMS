@@ -7,7 +7,40 @@ namespace SIMS.Model
     {
         public List<Specialization> GetAll()
         {
-            throw new NotImplementedException();
+            List<Specialization> specializations = new List<Specialization>();
+            Serialization.Serializer<Specialization> serializer = new Serialization.Serializer<Specialization>();
+            specializations = serializer.fromCSV("specializations.txt");
+            return specializations;
+        }
+
+        public List<Specialization> GetAllSpecialist()
+        {
+            List<Specialization> specializations = new List<Specialization>();
+            Serialization.Serializer<Specialization> serializer = new Serialization.Serializer<Specialization>();
+            specializations = serializer.fromCSV("specializations.txt");
+            foreach (Specialization s in specializations.ToArray())
+            {
+                if (s.Name.Equals("Opste prakse"))
+                {
+                    specializations.Remove(s);
+                }
+            }
+            return specializations;
+        }
+
+        public List<Specialization> GetAllOpstePrakse()
+        {
+            List<Specialization> specializations = new List<Specialization>();
+            Serialization.Serializer<Specialization> serializer = new Serialization.Serializer<Specialization>();
+            specializations = serializer.fromCSV("specializations.txt");
+            foreach (Specialization s in specializations.ToArray())
+            {
+                if (!s.Name.Equals("Opste prakse"))
+                {
+                    specializations.Remove(s);
+                }
+            }
+            return specializations;
         }
 
         public Boolean Create(Specialization specialization)

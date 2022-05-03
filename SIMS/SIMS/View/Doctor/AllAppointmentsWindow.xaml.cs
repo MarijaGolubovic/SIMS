@@ -1,6 +1,8 @@
+
 ﻿using SIMS.Model;
 using System.Collections.ObjectModel;
 using System.Windows;
+
 
 namespace SIMS.Doctor
 {

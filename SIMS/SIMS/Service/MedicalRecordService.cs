@@ -1,6 +1,7 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using SIMS.Model;
+
 
 namespace SIMS.Service
 {
@@ -21,6 +22,11 @@ namespace SIMS.Service
         public MedicalRecord GetOne(String jmbg)
         {
             return storage.GetOne(jmbg);
+        }
+
+        public void Update(String jmbg, MedicalRecord medicalRecord)
+        {
+            storage.Update(jmbg, medicalRecord);
         }
     }
 }
