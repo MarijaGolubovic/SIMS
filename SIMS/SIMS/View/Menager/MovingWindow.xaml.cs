@@ -49,5 +49,11 @@ namespace SIMS.View.Menager
             labelRooms.Show();
             
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            View.Menager.Rooms labelRooms = new View.Menager.Rooms();
+            labelRooms.Show();
+        }
     }
 }

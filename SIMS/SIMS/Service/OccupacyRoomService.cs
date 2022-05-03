@@ -26,18 +26,21 @@ namespace SIMS.Service
                     {
                         return "End period must be less than begin";
                     }
+                    else
+                    {
+                        roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
+                        occupacySerializer.toCSV("OccypacyRoom.txt", roomOccupacies);
+                        return "Room succesfully added to renovation list ";
+                    }
                 }else
                 {
                     roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
-                    occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
+                    occupacySerializer.toCSV("OccypacyRoom.txt", roomOccupacies);
                     return "Room succesfully added to renovation list ";
                 }
             }
             return "";
         }
-
-
-
 
         public List<Model.Room> GetById(String roomID)
         {

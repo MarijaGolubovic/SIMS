@@ -21,6 +21,7 @@ namespace SIMS.View.Menager
     public partial class Rooms : Window
     {
         public static ObservableCollection<Model.Room> RoomsChoose { get; set; }
+        public static Model.Room roomItem;
         public Rooms()
         {
             InitializeComponent();
@@ -59,7 +60,8 @@ namespace SIMS.View.Menager
 
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            roomItem = (Model.Room)DataGridRoomsChose.SelectedItem;
+            this.Close();
         }
 
         private void Rooms_MouseDoubleClick_OK(object sender, MouseButtonEventArgs e)

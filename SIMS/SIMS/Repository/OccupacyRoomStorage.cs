@@ -15,7 +15,7 @@ namespace SIMS.Repository
         public List<Model.RoomOccupacy> GetAll()
         {
             Serialization.Serializer<Model.RoomOccupacy> occupacyRoomSerializer = new Serialization.Serializer<Model.RoomOccupacy>();
-            List<Model.RoomOccupacy> occupacy = occupacyRoomSerializer.fromCSV("OccupacyRoom.txt");
+            List<Model.RoomOccupacy> occupacy = occupacyRoomSerializer.fromCSV("OccypacyRoom.txt");
 
             return occupacy;
         }
@@ -25,7 +25,7 @@ namespace SIMS.Repository
             List<Model.Room> findRooms = new List<Model.Room>();
             List<Model.Room> rooms = new List<Model.Room>();
             Serialization.Serializer<Model.Room> roomSerijalization = new Serialization.Serializer<Model.Room>();
-            rooms = roomSerijalization.fromCSV("OccupacyRoom.txt");
+            rooms = roomSerijalization.fromCSV("OccypacyRoom.txt");
 
             foreach (Model.Room roomInput in rooms)
             {
@@ -44,7 +44,7 @@ namespace SIMS.Repository
         public Model.RoomOccupacy GetOne(int appointmentID)
         {
             Serialization.Serializer<Model.RoomOccupacy> roomOccupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
-            List<Model.RoomOccupacy> roomOccupacies = roomOccupacySerializer.fromCSV("OccupacyRoom.txt");
+            List<Model.RoomOccupacy> roomOccupacies = roomOccupacySerializer.fromCSV("OccypacyRoom.txt");
             Model.RoomOccupacy occupacy = new Model.RoomOccupacy();
 
             foreach (Model.RoomOccupacy occupacyRoom in roomOccupacies)
@@ -67,7 +67,7 @@ namespace SIMS.Repository
                 occupacies.Add(occ);
             }
             occupacies.Add(roomOccypacy);
-            occupacySerializer.toCSV("OccupacyRoom.txt", occupacies);
+            occupacySerializer.toCSV("OccypacyRoom.txt", occupacies);
             return true;
         }
 
