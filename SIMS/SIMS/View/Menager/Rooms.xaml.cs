@@ -20,7 +20,7 @@ namespace SIMS.View.Menager
     /// </summary>
     public partial class Rooms : Window
     {
-        public static ObservableCollection<Model.Room> Roomss { get; set; }
+        public static ObservableCollection<Model.Room> RoomsChoose { get; set; }
         public Rooms()
         {
             InitializeComponent();
@@ -28,11 +28,11 @@ namespace SIMS.View.Menager
 
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
-            Roomss = new ObservableCollection<Model.Room>();
+            RoomsChoose = new ObservableCollection<Model.Room>();
 
             foreach (Model.Room roomItem in rooms)
             {
-                Roomss.Add(roomItem);
+                RoomsChoose.Add(roomItem);
             }
         }
 

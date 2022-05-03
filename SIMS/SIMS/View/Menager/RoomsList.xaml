@@ -8,7 +8,7 @@
         Title="Hello Clinic" Height="400" Width="800" VerticalAlignment="Top">
     <Grid>
         <Grid Margin="0,24,0,60">
-            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGridRooms_MouseDoubleClick">
+            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Roomsf}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGridRooms_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>

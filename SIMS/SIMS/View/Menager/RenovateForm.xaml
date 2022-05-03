@@ -48,7 +48,7 @@
             <Label Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Black" HorizontalAlignment="Right" Margin="0,0,35,0" Width="73" RenderTransformOrigin="0.174,0.484">
                 Home
             </Label>
-            <Label x:Name="Rooms" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Center" RenderTransformOrigin="1.138,0.518" Margin="114,0,77,0"
+            <Label x:Name="RoomRenovateItem" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontWeight="Black" HorizontalAlignment="Center" RenderTransformOrigin="1.138,0.518" Margin="114,0,77,0"
                    MouseDoubleClick="Label_MouseDoubleClickRooms" Width="73">
                 Rooms
             </Label>
@@ -78,8 +78,11 @@
         </Image>
 
         <Label VerticalAlignment="Center" Height="38" Margin="216,172,531,210" RenderTransformOrigin="1.939,0.433">ID:</Label>
+        <TextBox x:Name="idRenovateRoom" IsReadOnly="True" Height="25" Width="150" RenderTransformOrigin="0.491,-2.494" Margin="304,172,338,222"/>
         <Label  VerticalAlignment="Center" Margin="216,213,531,176" RenderTransformOrigin="0.039,0.489" Height="31">Size:</Label>
+        <TextBox x:Name="sizeRenovateRoom" IsReadOnly="True" Height="25" Width="150" RenderTransformOrigin="0.491,-2.494" Margin="304,202,338,192" />
         <Label  VerticalAlignment="Center" Margin="216,249,531,140" RenderTransformOrigin="0.039,0.489" Height="31">Type:</Label>
+        <TextBox x:Name="TypeRenovateRoom" IsReadOnly="True" Height="25" Width="150" RenderTransformOrigin="0.491,-2.494" Margin="304,249,338,146"/>
         <Label  VerticalAlignment="Center" Margin="216,286,531,108" RenderTransformOrigin="0.039,0.489" Height="26">Period:</Label>
         <DatePicker Name="DatePicker" HorizontalAlignment="Left" Height="23" Margin="304,287,0,0"  VerticalAlignment="Top" Width="153"/>
         <Label  VerticalAlignment="Center" Margin="216,325,516,69" RenderTransformOrigin="0.039,0.489" Height="26">Method:</Label>

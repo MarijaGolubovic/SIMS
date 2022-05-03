@@ -19,9 +19,17 @@ namespace SIMS.View.Menager
     /// </summary>
     public partial class RenovateForm : Window
     {
+        public static System.Collections.ObjectModel.ObservableCollection<Model.Room> RoomRenovate { get; set; }
+        Model.Room roomItem;
+
         public RenovateForm()
         {
+            roomItem = Menager.RenovateWindow.selectedRoom;
             InitializeComponent();
+
+            idRenovateRoom.Text = roomItem.Id;
+            sizeRenovateRoom.Text = roomItem.Size.ToString();
+            TypeRenovateRoom.Text = roomItem.Type.ToString();
         }
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
