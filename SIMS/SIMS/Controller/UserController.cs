@@ -34,5 +34,14 @@ namespace SIMS.Controller
             return userService.Update(newUser, oldUser);
         }
 
+        public User FindUserByUsername(String Username)
+        {
+            return userService.FindUserByUsername(Username);
+        }
+        public Boolean CheckUserPassword(String Username, String Password)
+        {
+            return userService.CheckUserPassword(Username, Password);
+        }
+
     }
 }
