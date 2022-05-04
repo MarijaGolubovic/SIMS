@@ -31,13 +31,13 @@ namespace SIMS.Service
                     else
                     {
                         roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
-                        occupacySerializer.toCSV("OccypacyRoom.txt", roomOccupacies);
+                        occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
                         return "Room succesfully added to renovation list ";
                     }
                 }else
                 {
                     roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
-                    occupacySerializer.toCSV("OccypacyRoom.txt", roomOccupacies);
+                    occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
                     return "Room succesfully added to renovation list ";
                 }
             }

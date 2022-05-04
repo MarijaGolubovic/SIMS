@@ -24,10 +24,9 @@ namespace SIMS.View.Menager
     public partial class MovingWindow : Window
     {
 
-       // public static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
+        internal static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
         internal Repository.RoomEquipmentStorage equipmentStorage = new Repository.RoomEquipmentStorage();
         Model.Room roomItem;
-        String period;
         private static Room roomItemSelected;
         internal Service.RoomEquipmentServices roomEquipmentService = new Service.RoomEquipmentServices();
 
@@ -38,7 +37,8 @@ namespace SIMS.View.Menager
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
-            Model.Room roomItem = View.Menager.MovingWindow.roomItemSelected;
+            //Model.Room roomItem = View.Menager.MovingWindow.roomItemSelected;
+            roomItem = (Model.Room)roomIdChoose1.Text;
 
              foreach(Room roomIt in rooms)
             {
@@ -47,7 +47,7 @@ namespace SIMS.View.Menager
                     foreach (Model.RoomEqupment eq in equpments) {
                         if (roomItem.Id.Equals(eq.RoomId))
                         {
-                           //MovingEquipment.Add((Equpment)eq.roomEquipment);
+                           MovingEquipment.Add((Equpment)eq.roomEquipment);
                         }
 
                     }
@@ -96,7 +96,7 @@ namespace SIMS.View.Menager
                 }
             
             }
-            MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem, roomItemSelected, rommEq.ToList(), period));
+            MessageBox.Show(roomEquipmentService.MovingRoomEqupment((Model.Room)roomIdChoose1.Text,(Model.Room)destination.Text, rommEq, period.Text));
             labelRooms.Show();
         }
     }
