@@ -27,7 +27,9 @@ namespace SIMS.View.Menager
        // public static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
         internal Repository.RoomEquipmentStorage equipmentStorage = new Repository.RoomEquipmentStorage();
         Model.Room roomItem;
+        String period;
         private static Room roomItemSelected;
+        internal Service.RoomEquipmentServices roomEquipmentService = new Service.RoomEquipmentServices();
 
         public MovingWindow()
         {
@@ -45,7 +47,7 @@ namespace SIMS.View.Menager
                     foreach (Model.RoomEqupment eq in equpments) {
                         if (roomItem.Id.Equals(eq.RoomId))
                         {
-                           // MovingEquipment.Add((Model.Equpment)eq.roomEquipment);
+                           //MovingEquipment.Add((Equpment)eq.roomEquipment);
                         }
 
                     }
@@ -84,7 +86,17 @@ namespace SIMS.View.Menager
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+           List<Model.RoomEqupment> rommEq = new List<RoomEqupment>();
+           
             View.Menager.Rooms labelRooms = new View.Menager.Rooms();
+            foreach(Model.RoomEqupment eq in equipmentStorage.GetAll()) {
+                if (roomItem.Id.Equals(eq.RoomId))
+                {
+                    rommEq.Add(eq);
+                }
+            
+            }
+            MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem, roomItemSelected, rommEq.ToList(), period));
             labelRooms.Show();
         }
     }
