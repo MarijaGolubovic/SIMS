@@ -29,6 +29,9 @@ namespace SIMS.View.Doctor
             MedicalRecrod = mediicalRecrodController.GetOne(SelectedItem.Patient.Person.JMBG);
             Allergy_Combobox.ItemsSource = MedicalRecrod.Allergies;
             Therapy_Combobox.ItemsSource = MedicalRecrod.therapies;
+            Allergy_Combobox.SelectedItem = MedicalRecrod.Allergies[0];
+            Therapy_Combobox.SelectedItem = MedicalRecrod.therapies[0];
+
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)

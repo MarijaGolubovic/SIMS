@@ -15,7 +15,7 @@ namespace SIMS.Repository
         public List<Model.RoomOccupacy> GetAll()
         {
             Serialization.Serializer<Model.RoomOccupacy> occupacyRoomSerializer = new Serialization.Serializer<Model.RoomOccupacy>();
-            List<Model.RoomOccupacy> occupacy = occupacyRoomSerializer.fromCSV("OccypacyRoom.txt");
+            List<Model.RoomOccupacy> occupacy = occupacyRoomSerializer.fromCSV("OccupacyRoom.txt");
 
             return occupacy;
         }
@@ -25,7 +25,7 @@ namespace SIMS.Repository
             List<Model.Room> findRooms = new List<Model.Room>();
             List<Model.Room> rooms = new List<Model.Room>();
             Serialization.Serializer<Model.Room> roomSerijalization = new Serialization.Serializer<Model.Room>();
-            rooms = roomSerijalization.fromCSV("OccypacyRoom.txt");
+            rooms = roomSerijalization.fromCSV("OccupacyRoom.txt");
 
             foreach (Model.Room roomInput in rooms)
             {
@@ -44,7 +44,7 @@ namespace SIMS.Repository
         public Model.RoomOccupacy GetOne(int appointmentID)
         {
             Serialization.Serializer<Model.RoomOccupacy> roomOccupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
-            List<Model.RoomOccupacy> roomOccupacies = roomOccupacySerializer.fromCSV("OccypacyRoom.txt");
+            List<Model.RoomOccupacy> roomOccupacies = roomOccupacySerializer.fromCSV("OccupacyRoom.txt");
             Model.RoomOccupacy occupacy = new Model.RoomOccupacy();
 
             foreach (Model.RoomOccupacy occupacyRoom in roomOccupacies)
@@ -62,12 +62,12 @@ namespace SIMS.Repository
         {
             Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
             List<Model.RoomOccupacy> occupacies = new List<Model.RoomOccupacy>();
-            foreach (Model.RoomOccupacy occ in occupacySerializer.fromCSV("OccypacyRoom.txt"))
+            foreach (Model.RoomOccupacy occ in occupacySerializer.fromCSV("OccupacyRoom.txt"))
             {
                 occupacies.Add(occ);
             }
             occupacies.Add(roomOccypacy);
-            occupacySerializer.toCSV("OccypacyRoom.txt", occupacies);
+            occupacySerializer.toCSV("OccupacyRoom.txt", occupacies);
             return true;
         }
 

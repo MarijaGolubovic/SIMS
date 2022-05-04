@@ -94,9 +94,9 @@ namespace SIMS.Controller
             return appointmentService.Delete(appointmentID);
         }
 
-        public List<DateTime> getTimesOfDoctorAppointments(String doctorId)
+        public List<DateTime> getTimesOfDoctorAppointments(String doctorId, DateTime dateOfAppointment)
         {
-            return appointmentService.getTimesOfDoctorAppointments(doctorId);
+            return appointmentService.getTimesOfDoctorAppointments(doctorId, dateOfAppointment);
         }
     }
 }

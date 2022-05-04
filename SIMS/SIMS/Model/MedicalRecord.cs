@@ -109,6 +109,7 @@ namespace SIMS.Model
             BloodType = (BloodType)Enum.Parse(typeof(BloodType), values[2]);
             patient = patientController.GetOne(values[3]);
             //  therapies = therapyContoller.GetById(values[4]);
+            therapies = therapyContoller.GetById(values[3]);
 
 
             Allergies = new List<Allergy>();

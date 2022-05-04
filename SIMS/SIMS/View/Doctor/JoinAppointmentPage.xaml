@@ -90,13 +90,14 @@
                                Grid.Row="2"
                                Grid.Column="1" Margin="730,0,0,0"/>
 
-            <ComboBox ItemsSource="{Binding Path = MedicalRecord.Allergies}" 
+            <ComboBox 
                               Grid.Row="2"
                               Grid.Column="1"
                               Width="100"
                               HorizontalAlignment="Left" Margin="810,0,0,0"
                               Height="25"
-                              VerticalAlignment="Top">
+                              VerticalAlignment="Top"
+                      x:Name="AllergyComboBox">
 
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -112,7 +113,7 @@
                                Grid.Row="3"
                                Grid.Column="1" Margin="730,0,0,0"/>
 
-            <ComboBox ItemsSource="{Binding Path = MedicalRecord.Therapy}" 
+            <ComboBox       x:Name="Therapy_Combobox"
                               Grid.Row="3"
                               Grid.Column="1"
                               Width="100"

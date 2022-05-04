@@ -42,6 +42,7 @@ namespace SIMS
         {
             View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
             doctorWindow.Show();
+            this.Close();
         }
     }
 }

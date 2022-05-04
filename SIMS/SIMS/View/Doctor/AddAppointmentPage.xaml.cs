@@ -34,6 +34,8 @@ namespace SIMS.View.Doctor
             Doctors = doctorController.GetDoctorForAddAppointment();
             addAppointmentsPatientDataGrid.ItemsSource = Patients;
             addAppointmentsDoctorDataGrid.ItemsSource = Doctors;
+
+            appointment = new Appointment();
         }
 
         private void PatientNameAndSurname_TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -44,6 +46,7 @@ namespace SIMS.View.Doctor
         private void Button_PotvrdiPacijenta_Click(object sender, RoutedEventArgs e)
         {
             PatientForAddAppointmentDTO pat = addAppointmentsPatientDataGrid.SelectedItem as PatientForAddAppointmentDTO;
+
             appointment.Patient = patientController.GetOne(pat.PatientId);
         }
 
@@ -60,10 +63,10 @@ namespace SIMS.View.Doctor
 
         private void Button_Nastavi_Click(object sender, RoutedEventArgs e)
         {
-            appointment.DateAndTime = dateOfAppointment.DisplayDate;
+            appointment.DateAndTime = (DateTime)dateOfAppointment.SelectedDate;
             if ((bool)doctorRadioButton.IsChecked) 
             {
-                
+                MainWindow.frame.Content = new SelectTimeOfAppointmentPriorityDoctorPage();
             }else if ((bool)terminRadioButton.IsChecked)
             { }
         }

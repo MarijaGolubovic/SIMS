@@ -22,6 +22,10 @@ namespace SIMS.View.Doctor
             DataContext = this;
             SelectedItem = appointmentController.GetOne(AllAppointmentsPage.SelectedItem.appointmentId);
             MedicalRecrod = mediicalRecrodController.GetOne(SelectedItem.Patient.Person.JMBG);
+            AllergyComboBox.ItemsSource = MedicalRecrod.Allergies;
+            AllergyComboBox.SelectedItem = MedicalRecrod.Allergies[0];
+            Therapy_Combobox.ItemsSource = MedicalRecrod.therapies;
+            Therapy_Combobox.SelectedItem = MedicalRecrod.therapies[0];
         }
 
         private void Button_Click_Uput(object sender, System.Windows.RoutedEventArgs e)

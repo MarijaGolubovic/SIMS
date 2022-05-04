@@ -58,17 +58,53 @@ namespace SIMS.Service
         {
         }
 
-        public Model.RoomOccupacy getTimeForAppointmentWhenPriorityDoctor(String doctorId, DateTime dateOfAppointment)
+        public List<DateTime> getTimeForAppointmentWhenPriorityDoctor(String doctorId, DateTime dateOfAppointment)
         {
-            RoomOccupacy ro = new RoomOccupacy();
+            List<DateTime> retList = new List<DateTime>();
             AppointmentController appointmentController = new AppointmentController();
 
             List<RoomOccupacy> listRo = GetAll();
-            List<DateTime> timesOfDoctorAppointments = appointmentController.getTimesOfDoctorAppointments(doctorId);
+            List<DateTime> timesOfDoctorAppointments = appointmentController.getTimesOfDoctorAppointments(doctorId, dateOfAppointment);
+
+            timesOfDoctorAppointments.Sort();
+
+            List<String> times = new List<String>();
+            foreach(DateTime dt in timesOfDoctorAppointments)
+            {
+                times.Add(dt.ToString());
+            }
+
+            int hours = 09;
+            int minutes = 00;
+            int millisecons = 00;
+            String startTime = hours + ":" + minutes + ":" + millisecons;
 
 
 
-            return ro;
+            foreach(String time in times)
+            {
+                String timeTmp = time.Split(' ')[1];
+                int i = 1;
+                while (true) 
+                {
+                    minutes = minutes + i;
+                    startTime = hours + ":" + minutes + ":" + millisecons;
+                    if (startTime.Equals(time.Split(' ')[1]))
+                    {
+                        if (i > 30)
+                        {
+                            DateTime dateTime = DateTime.Parse(dateOfAppointment.ToString().Split(' ')[0] + " " + startTime);
+                            retList.Add(dateTime);
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    i++;
+                }
+            }
+
+            return retList;
         }
 
     }
