@@ -53,6 +53,12 @@ namespace SIMS.Model
             return true;
         }
 
+        public User FindUserByUsername(String Username)
+        {
+            List<User> users = GetAll();
+            return users.Find(u => u.Username.Equals(Username));
+        }
+
         public String fileName;
 
     }
