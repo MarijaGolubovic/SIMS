@@ -96,7 +96,7 @@ namespace SIMS.View.Menager
                 }
             
             }
-            MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem, roomItemSelected, rommEq.ToList(), period));
+            //MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem, roomItemSelected, rommEq.ToList(), period));
             labelRooms.Show();
         }
     }
