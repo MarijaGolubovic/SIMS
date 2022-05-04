@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -23,13 +24,35 @@ namespace SIMS.View.Menager
     public partial class MovingWindow : Window
     {
 
-        public static ObservableCollection<Model.Room> MovingEquipment { get; set; }
+       // public static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
+        internal Repository.RoomEquipmentStorage equipmentStorage = new Repository.RoomEquipmentStorage();
         Model.Room roomItem;
+        private static Room roomItemSelected;
+
         public MovingWindow()
         {
             
             InitializeComponent();
-           
+            Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
+            List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
+            List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
+            Model.Room roomItem = View.Menager.MovingWindow.roomItemSelected;
+
+             foreach(Room roomIt in rooms)
+            {
+                if (roomIt.Id.Equals(roomItem.Id))
+                {
+                    foreach (Model.RoomEqupment eq in equpments) {
+                        if (roomItem.Id.Equals(eq.RoomId))
+                        {
+                           // MovingEquipment.Add((Model.Equpment)eq.roomEquipment);
+                        }
+
+                    }
+                }
+            }
+            
+
 
         }
 

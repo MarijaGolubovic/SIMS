@@ -53,6 +53,9 @@ namespace SIMS.Model
         {
         }
 
-       
+        public static explicit operator RoomEqupment(List<Equpment> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
