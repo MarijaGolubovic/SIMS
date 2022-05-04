@@ -29,10 +29,10 @@
         <Label Content="LEKAR:" FontSize="24" Margin="11,120,845.6,398.4"/>
         <Label Content="DATUM:" FontSize="24" Margin="10,256,846.6,262.4"/>
         <TextBox x:Name="datum" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap"  VerticalAlignment="Top" Width="206" RenderTransformOrigin="1.356,1.526" Margin="143,256,0,0" FontSize="24" IsEnabled="False"/>
-        <Label Content="PRIORITET:" FontSize="24" Margin="11,318,845.6,200.4"/>
-        <CheckBox Content="LEKAR" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="190,324,0,0" />
-        <CheckBox Content="TERMIN" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="312,324,0,0" />
-        <Button Content="PRETRAZI" HorizontalAlignment="Left" Margin="464,324,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click" />
+        <Label Content="TIP PREGLEDA:" FontSize="24" Margin="11,318,808.6,200.4"/>
+        <RadioButton GroupName="tipPregleda" Content="OPERACIJA" Name="operacija" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="190,324,0,0" />
+        <RadioButton GroupName="tipPregleda" Content="PREGLED" Name="pregled" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="361,324,0,0" />
+        <Button Content="PRETRAZI" HorizontalAlignment="Left" Margin="834,324,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click" />
         <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="834,525,0,0" VerticalAlignment="Top" Width="137" FontSize="24" RenderTransformOrigin="0.471,4.46" Click="Button_Click_1" />
 
         <DataGrid x:Name="Termini" ItemsSource="{Binding Path =  Termini}"  Margin="0,387,19.6,55.4"  SelectionMode="Single" HeadersVisibility="Column" 

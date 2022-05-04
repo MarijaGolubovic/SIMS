@@ -98,5 +98,16 @@ namespace SIMS.Controller
         {
             return appointmentService.getTimesOfDoctorAppointments(doctorId, dateOfAppointment);
         }
+
+        public List<Appointment> findSuggestedAppointmentsSecretary(Model.Doctor doctor, Patient patient, DateTime dateTime, Boolean doctorPriority, Boolean operation)
+        {
+            return appointmentService.findSuggestedAppointmentsSecretary(doctor, patient, dateTime, doctorPriority, operation);
+        }
+        public Boolean DeleteApp(AppointmentsForSecretaryDTO appointment)
+        {
+
+            return appointmentService.DeleteApp(DateTime.Parse(appointment.Date+" "+appointment.Time), appointment.roomId);
+        }
+
     }
 }

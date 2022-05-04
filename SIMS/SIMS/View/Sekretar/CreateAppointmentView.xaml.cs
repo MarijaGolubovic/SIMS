@@ -65,9 +65,10 @@ namespace SIMS.View.Sekretar
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Appointment a in appointmentController.findSuggestedAppointments(lekarCombobox.SelectedItem as SIMS.Model.Doctor, true, false, DateTime.Parse(datum.Text)))
+            Appointments.Clear();
+            foreach (Appointment a in appointmentController.findSuggestedAppointmentsSecretary(lekarCombobox.SelectedItem as SIMS.Model.Doctor, pacijentCombobox.SelectedItem as Patient, DateTime.Parse(datum.Text), true, (bool)operacija.IsChecked))
             {
-                Appointments.Add(a);
+                Appointments.Add(a); 
             }
 
 
@@ -75,11 +76,14 @@ namespace SIMS.View.Sekretar
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void IZABERI_Click(object sender, RoutedEventArgs e)
         {
+            Appointment appointment = Termini.SelectedItem as Appointment;
+            appointmentController.Create(appointment);
+            this.Close();
 
         }
 

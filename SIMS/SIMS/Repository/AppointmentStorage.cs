@@ -69,6 +69,18 @@ namespace SIMS.Repository
             throw new NotImplementedException();
         }
 
+        public Boolean DeleteApp(DateTime dateTime, String roomId)
+        {
+            List<Appointment> appointments = GetAll();
+            appointments.Remove(appointments.Find(a => a.DateAndTime == dateTime && a.Room.Id.Equals(roomId)));
+
+            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+            appointmentSerializer.toCSV("appointments.txt", appointments);
+            return true;
+
+        }
+
+
         public String fileName;
 
     }
