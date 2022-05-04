@@ -44,5 +44,10 @@ namespace SIMS.Model
         {
             throw new NotImplementedException();
         }
+
+        public static explicit operator Equpment(List<Equpment> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

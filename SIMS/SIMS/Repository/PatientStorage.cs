@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SIMS.Model
 {
@@ -14,25 +13,27 @@ namespace SIMS.Model
             Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
             List<Patient> patientSer = patientSerializer.fromCSV("patients.txt");
 
+
             List<Patient> Patients = new List<Patient>();
 
-                foreach (User item in users)
+            foreach (User item in users)
+            {
+                foreach (Patient itemP in patientSer)
                 {
-                    foreach (Patient itemP in patientSer)
+                    if (itemP.JMBGP.Equals(item.Person.JMBG))
                     {
-                        if (itemP.JMBGP.Equals(item.Person.JMBG))
+                        if (itemP.ActivatedAccount)
                         {
-                            if (itemP.ActivatedAccount)
-                            {
-                                Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true)));
-                            }
-                            else
-                            {
-                                Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false)));
-                            }
+                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true)));
+                        }
+                        else
+                        {
+                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false)));
                         }
                     }
                 }
+            }
+
 
             return Patients;
         }

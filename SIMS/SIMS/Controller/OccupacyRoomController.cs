@@ -14,5 +14,9 @@ namespace SIMS.Controller
             return occupacyRoom.GetById(roomID);
         }
 
+        public List<DateTime> getTimeForAppointmentWhenPriorityDoctor(String doctorId, DateTime dateOfAppointment)
+        {
+            return occupacyRoom.getTimeForAppointmentWhenPriorityDoctor(doctorId, dateOfAppointment);
+        }
     }
 }

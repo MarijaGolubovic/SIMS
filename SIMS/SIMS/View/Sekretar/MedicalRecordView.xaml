@@ -1,0 +1,148 @@
+﻿<Window x:Class="SIMS.View.Sekretar.MedicalRecordView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.View.Sekretar"
+        mc:Ignorable="d"
+        Title="MedicalRecord" Height="600" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="277*"/>
+            <ColumnDefinition Width="220*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="PACIJENT:" FontSize="28" Margin="0,7,416.6,511.4"/>
+
+        <Label Margin="0,124,205.6,396.4" Content="PRETHODNI:" FontSize="28"/>
+        <Label Margin="0,322,205.6,196.4" Content="BUDUCI:" FontSize="28"/>
+        <DataGrid x:Name="PrethodniPregledi" ItemsSource="{Binding Path =  Prethodni}"  Margin="0,172,19.6,240.4"  SelectionMode="Single" HeadersVisibility="Column" 
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ColumnHeaderHeight="30"  IsReadOnly="True"  AutoGenerateColumns="False" Grid.ColumnSpan="2">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FFF3F796"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="FontSize" Value="14"/>
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color= "LightBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="DATUM"  Binding ="{Binding Person.Name}" Width="*"/>
+                <DataGridTextColumn Header="VREME"  Binding ="{Binding Person.Surname}" Width="*"/>
+                <DataGridTextColumn Header="LEKAR"   Binding ="{Binding Person.DateOfBirth}"  Width="*"/>
+                <DataGridTextColumn Header="SALA"   Binding ="{Binding Person.DateOfBirth}"  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="BuduciPregledi" ItemsSource="{Binding Path =  Buduci}"  Margin="0,365,19.6,47.4"  SelectionMode="Single" HeadersVisibility="Column" 
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ColumnHeaderHeight="30"  IsReadOnly="True"  AutoGenerateColumns="False" Grid.ColumnSpan="2">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FFF3F796"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="FontSize" Value="14"/>
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color= "LightBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="DATUM"  Binding ="{Binding Person.Name}" Width="*"/>
+                <DataGridTextColumn Header="VREME"  Binding ="{Binding Person.Surname}" Width="*"/>
+                <DataGridTextColumn Header="LEKAR"   Binding ="{Binding Person.DateOfBirth}"  Width="*"/>
+                <DataGridTextColumn Header="SALA"   Binding ="{Binding Person.DateOfBirth}"  Width="*"/>
+                <DataGridTemplateColumn Header="IZMENI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="IZMENI" Content="IZMENI" Background="#73B1B7" Foreground="White" Click="IZMENI_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="OTKAZI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="OTKAZI" Content="OTKAZI" Background="#73B1B7" Foreground="White" Click="OTKAZI_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="131.4,524,0,0" VerticalAlignment="Top" Width="142" Background="#73B1B7" Foreground="White" FontSize="24" Height="36" Grid.Column="1" Click="Button_Click" />
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="278.4,524,0,0" VerticalAlignment="Top" Width="142" Background="#73B1B7" Foreground="White" FontSize="24" Height="36" Grid.Column="1" Click="Button_Click_1" />
+        <TextBox Name="pacijent" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap"  VerticalAlignment="Top" Width="193" RenderTransformOrigin="1.356,1.526" Margin="142,13,0,0" FontSize="24" IsEnabled="False"/>
+
+        <Label Content="KRVNA GRUPA:" FontSize="28" Margin="0,66,347.6,455.4"/>
+        <ComboBox x:Name="type"   FontSize="24" Margin="211,61,218.6,460.4"  />
+
+
+        <Label Content="VISINA [cm]:" FontSize="28" Margin="350,6,0,511.4" HorizontalAlignment="Left" Width="166"/>
+        <Label Content="TEZINA [kg]:" FontSize="28" Margin="350,66,37.6,455.4"/>
+        <TextBox Name="visina" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap"  VerticalAlignment="Top" Width="64" RenderTransformOrigin="1.356,1.526" Margin="521,13,0,0" FontSize="24" Grid.ColumnSpan="2" />
+        <TextBox Name="tezina" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap"  VerticalAlignment="Top" Width="64" RenderTransformOrigin="1.356,1.526" Margin="521,71,0,0" FontSize="24" Grid.ColumnSpan="2" />
+
+        <ListBox ItemsSource="{Binding Allergies}" HorizontalAlignment="Left" Height="154" VerticalAlignment="Top" Width="251" Margin="169.4,13,0,0" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding AllergyName}" FontSize="22"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="ALERGIJE:" FontSize="28" Margin="35.4,10,238.6,507.4" Grid.Column="1"/>
+
+    </Grid>
+</Window>

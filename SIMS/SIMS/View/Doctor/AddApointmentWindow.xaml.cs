@@ -1,8 +1,11 @@
+﻿using System;
 ﻿using SIMS.Controller;
 using SIMS.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using SIMS.Controller;
+using SIMS.Model;
 using SIMS.Repository;
 
 namespace SIMS.Doctor
@@ -29,18 +32,20 @@ namespace SIMS.Doctor
             Patients = new ObservableCollection<Patient>();
 
             patientController = new PatientController();
-            foreach (Patient p in patientController.GetAll()) { 
+            foreach (Patient p in patientController.GetAll())
+            {
                 Patients.Add(p);
             }
 
             Doctors = new ObservableCollection<Model.Doctor>();
 
-            foreach (Model.Doctor doc in doctorController.GetAll()) {
 
+            foreach (Model.Doctor doc in doctorController.GetAll()) {
                 Doctors.Add(doc);
             }
 
             Rooms = new ObservableCollection<Room>();
+
 
             foreach (Room r in roomController.GetAll()) {
                 Rooms.Add(r);

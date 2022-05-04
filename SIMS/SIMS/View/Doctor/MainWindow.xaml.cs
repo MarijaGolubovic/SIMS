@@ -1,5 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
 
 namespace SIMS.View.Doctor
 {
@@ -22,5 +26,6 @@ namespace SIMS.View.Doctor
         {
             MainWindow.frame.Content = new AddAppointmentPage();
         }
+
     }
 }

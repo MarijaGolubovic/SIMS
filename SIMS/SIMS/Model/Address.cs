@@ -20,5 +20,8 @@ namespace SIMS.Model
             Country = country;
         }
 
+        public Address()
+        {
+        }
     }
 }

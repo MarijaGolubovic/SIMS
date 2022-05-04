@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SIMS.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +19,41 @@ namespace SIMS.View.Menager
     /// <summary>
     /// Interaction logic for MovingWindow.xaml
     /// </summary>
+   
+    
     public partial class MovingWindow : Window
     {
+
+       // public static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
+        internal Repository.RoomEquipmentStorage equipmentStorage = new Repository.RoomEquipmentStorage();
+        Model.Room roomItem;
+        private static Room roomItemSelected;
+
         public MovingWindow()
         {
+            
             InitializeComponent();
+            Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
+            List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
+            List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
+            Model.Room roomItem = View.Menager.MovingWindow.roomItemSelected;
+
+             foreach(Room roomIt in rooms)
+            {
+                if (roomIt.Id.Equals(roomItem.Id))
+                {
+                    foreach (Model.RoomEqupment eq in equpments) {
+                        if (roomItem.Id.Equals(eq.RoomId))
+                        {
+                           // MovingEquipment.Add((Model.Equpment)eq.roomEquipment);
+                        }
+
+                    }
+                }
+            }
+            
+
+
         }
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
@@ -48,6 +80,12 @@ namespace SIMS.View.Menager
             View.Menager.Rooms labelRooms = new View.Menager.Rooms();
             labelRooms.Show();
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            View.Menager.Rooms labelRooms = new View.Menager.Rooms();
+            labelRooms.Show();
         }
     }
 }

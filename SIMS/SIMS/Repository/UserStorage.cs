@@ -14,7 +14,7 @@ namespace SIMS.Model
 
         public User GetOne(String jmbg)
         {
-            List<User> users =GetAll();
+            List<User> users = GetAll();
             User user = new User();
             user = users.Find(u => u.Person.JMBG.Equals(jmbg));
             return user;
@@ -48,7 +48,7 @@ namespace SIMS.Model
                 users.Add(u);
             }
             users.Add(newUser);
-            users.Remove(users.Find(u=>u.Person.JMBG.Equals(oldUser.Person.JMBG)));
+            users.Remove(users.Find(u => u.Person.JMBG.Equals(oldUser.Person.JMBG)));
             userSerializer.toCSV("user.txt", users);
             return true;
         }

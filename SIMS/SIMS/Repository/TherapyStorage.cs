@@ -1,6 +1,6 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using SIMS.Model;
 
 namespace SIMS.Repository
 {

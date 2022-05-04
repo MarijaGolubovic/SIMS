@@ -4,6 +4,7 @@ using SIMS.Model;
 
 namespace SIMS.Repository
 {
+
    public class RoomStorage
    {
       public List<Room> GetAll()

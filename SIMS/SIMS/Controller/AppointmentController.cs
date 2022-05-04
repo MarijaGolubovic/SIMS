@@ -1,7 +1,8 @@
-﻿using SIMS.Model;
-using SIMS.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using SIMS.Model;
+using SIMS.Service;
+
 
 namespace SIMS.Controller
 {
@@ -37,6 +38,30 @@ namespace SIMS.Controller
             return appointmentsForDoctorDTOs;
         }
 
+        public List<AppointmentsForSecretaryDTO> GetAppointmentsForSecretary(DateTime dateTime)
+        {
+            List<AppointmentsForSecretaryDTO> appointmentsForSecretaryDTOs = new List<AppointmentsForSecretaryDTO>();
+            List<Appointment> appointments = appointmentService.GetAll();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.DateAndTime.Date == dateTime.Date)
+                {
+                    String NameSurnameDoctor = a.Doctor.Person.Name + " " + a.Doctor.Person.Surname;
+                    String NameSurnamePatient = a.Patient.Person.Name + " " + a.Patient.Person.Surname;
+                    String date = a.DateAndTime.ToShortDateString();
+                    String time = a.DateAndTime.ToShortTimeString();
+                    String roomId = a.Room.Id;
+                    AppointmentsForSecretaryDTO pom = new AppointmentsForSecretaryDTO(a.Id, NameSurnameDoctor, NameSurnamePatient, date, time, roomId);
+
+                    appointmentsForSecretaryDTOs.Add(pom);
+
+                }
+            }
+
+            return appointmentsForSecretaryDTOs;
+        }
+
         public Appointment GetOne(int appointmentID)
         {
             return appointmentService.GetOne(appointmentID);
@@ -62,15 +87,16 @@ namespace SIMS.Controller
             return suggestedAppointments;
         }
 
+
         
         public Boolean Delete(int appointmentID)
         {
             return appointmentService.Delete(appointmentID);
         }
 
-        public List<DateTime> getTimesOfDoctorAppointments(String doctorId)
+        public List<DateTime> getTimesOfDoctorAppointments(String doctorId, DateTime dateOfAppointment)
         {
-            return appointmentService.getTimesOfDoctorAppointments(doctorId);
+            return appointmentService.getTimesOfDoctorAppointments(doctorId, dateOfAppointment);
         }
     }
 }

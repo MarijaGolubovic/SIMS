@@ -62,7 +62,7 @@ namespace SIMS.Repository
         {
             Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
             List<Model.RoomOccupacy> occupacies = new List<Model.RoomOccupacy>();
-            foreach (Model.RoomOccupacy occ in occupacySerializer.fromCSV("OccypacyRoom.txt"))
+            foreach (Model.RoomOccupacy occ in occupacySerializer.fromCSV("OccupacyRoom.txt"))
             {
                 occupacies.Add(occ);
             }

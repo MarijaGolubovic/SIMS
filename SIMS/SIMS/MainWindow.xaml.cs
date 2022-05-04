@@ -35,13 +35,14 @@ namespace SIMS
 
         private void Button_Click_Doctor(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Button_Click_Doctor2(object sender, RoutedEventArgs e)
         {
             View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
             doctorWindow.Show();
+            this.Close();
         }
     }
 }

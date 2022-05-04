@@ -14,6 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace SIMS.View.Doctor
 {
@@ -25,6 +29,7 @@ namespace SIMS.View.Doctor
 
         private readonly MedicineContoller medicineController = new MedicineContoller();
         private readonly TherapyContoller therapyContoller = new TherapyContoller();
+        private readonly MedicalRecordController medicalRecordController = new MedicalRecordController();
         public AddTherapyPage()
         {
             InitializeComponent();
@@ -69,9 +74,41 @@ namespace SIMS.View.Doctor
             String id = JoinAppointmentPage.SelectedItem.Patient.Person.JMBG;
             DateTime timeOfMaking = DateTime.Now;
 
+            MedicalRecord medRec = medicalRecordController.GetOne(id);
+            List<Allergy> allergies = medRec.Allergies;
+
+            foreach(String s in m.Ingredients) 
+            {
+                foreach(Allergy a in allergies)
+                {
+                    if (s.Equals(a.Name)) {
+                        notifier.ShowError("Pacijent je alergican na taj lijek!");
+                        MainWindow.frame.Content = new AddTherapyPage();
+                        return;
+                    }
+                }
+            }
+
             Therapy t = new Therapy(m, periodInHours, recept, periodInDays, timeOfMaking, id);
 
             therapyContoller.Create(t);
+            notifier.ShowSuccess("Uspješno ste dodali terapiju!");
+            MainWindow.frame.Content = new AddTherapyPage();
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
     }
 }

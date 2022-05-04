@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Controller;
 using SIMS.Model;
-using Tulpep.NotificationWindow;
 
 namespace SIMS.Pacijent
 {
@@ -17,7 +16,7 @@ namespace SIMS.Pacijent
     public partial class EditAppintment : Window
     {
 
-        
+
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
 
         private readonly PatientController patientController = new PatientController();
@@ -27,7 +26,7 @@ namespace SIMS.Pacijent
         {
             InitializeComponent();
             this.DataContext = this;
-            
+
             Doctors = new ObservableCollection<Model.Doctor>();
 
             //Popunjavanje kolekcije dokora iz fajla

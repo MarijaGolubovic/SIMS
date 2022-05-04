@@ -24,5 +24,15 @@ namespace SIMS.Model
             EMail = eMail;
             Address = address;
         }
+
+        public Person(string name, string surname, string jMBG, string telephone, DateTime dateOfBirth)
+        {
+            Name = name;
+            Surname = surname;
+            JMBG = jMBG;
+            Telephone = telephone;
+            DateOfBirth = dateOfBirth;
+            Address = new Address("", "", new City(), new Country());
+        }
     }
 }

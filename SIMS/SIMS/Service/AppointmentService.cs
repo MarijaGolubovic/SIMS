@@ -1,11 +1,7 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
 using SIMS.Repository;
-using Tulpep.NotificationWindow;
 
 namespace SIMS.Service
 {
@@ -61,9 +57,6 @@ namespace SIMS.Service
                 suggestedAppointments.Add(appointment);
                 storage.Create(appointment);
 
-                PopupNotifier popup = new PopupNotifier();
-                popup.TitleText = "Zakazali ste termin!";
-                popup.Popup();
 
                 return suggestedAppointments;
             }
@@ -109,16 +102,18 @@ namespace SIMS.Service
             return storage.Delete(appointmentID);
         }
 
-        public List<DateTime> getTimesOfDoctorAppointments(String doctorId)
+        public List<DateTime> getTimesOfDoctorAppointments(String doctorId, DateTime dateOfAppointment)
         {
             List<DateTime> doctorAppointments = new List<DateTime>();
-            List<Appointment> allAppointments = new List<Appointment>();
-
+            List<Appointment> allAppointments = GetAll();
+            String date = dateOfAppointment.ToString().Split(' ')[0];
             foreach(Appointment a in allAppointments)
             {
                 if (a.Doctor.Person.JMBG.Equals(doctorId)) 
                 {
-                    doctorAppointments.Add(a.DateAndTime);
+                    String date1 = a.DateAndTime.ToString().Split(' ')[0];
+                    if(date.Equals(date1))
+                        doctorAppointments.Add(a.DateAndTime);
                 }
             }
 

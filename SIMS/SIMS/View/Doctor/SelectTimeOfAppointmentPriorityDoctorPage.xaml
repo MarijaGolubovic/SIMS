@@ -32,5 +32,21 @@
                            FontFamily="Fonts/#Roboto Light"
                            FontSize="25" Margin="125,0,0,0"
                            VerticalAlignment="Center"/>
+
+        <ComboBox x:Name="Time_Combobox" 
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Width="150"
+                  Height="25" 
+                  Margin="720,0,0,0"
+                  HorizontalAlignment="Left">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+
+        </ComboBox>
+
     </Grid>
 </Page>

@@ -51,6 +51,7 @@ namespace SIMS.View.Menager
 
         private void Button_ClickOK(object sender, RoutedEventArgs e)
         {
+            roomItem = Menager.RenovateWindow.selectedRoom;
             string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
             MessageBox.Show(message);
             this.Close();

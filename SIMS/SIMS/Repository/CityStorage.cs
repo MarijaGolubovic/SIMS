@@ -9,7 +9,7 @@ namespace SIMS.Model
         {
             List<City> cities = new List<City>();
             Serialization.Serializer<City> citySerijalization = new Serialization.Serializer<City>();
-            cities = citySerijalization.fromCSV("City.csv");
+            cities = citySerijalization.fromCSV("City.txt");
             return cities;
         }
 
@@ -18,7 +18,7 @@ namespace SIMS.Model
             List<City> cities = new List<City>();
             City city = new City();
             Serialization.Serializer<City> citySerijalization = new Serialization.Serializer<City>();
-            cities = citySerijalization.fromCSV("City.csv");
+            cities = citySerijalization.fromCSV("City.txt");
             foreach (City inputCity in cities)
             {
                 if (name.Equals(inputCity.Name))
@@ -34,7 +34,7 @@ namespace SIMS.Model
             List<City> cities = new List<City>();
             Boolean status = false;
             Serialization.Serializer<City> citySerijalization = new Serialization.Serializer<City>();
-            cities = citySerijalization.fromCSV("City.csv");
+            cities = citySerijalization.fromCSV("City.txt");
             foreach (City inputCity in cities)
             {
                 if (name.Equals(inputCity.Name))
@@ -52,9 +52,9 @@ namespace SIMS.Model
             List<City> cities = new List<City>();
             Boolean status = false;
             Serialization.Serializer<City> citySerijalization = new Serialization.Serializer<City>();
-            cities = citySerijalization.fromCSV("City.csv");
+            cities = citySerijalization.fromCSV("City.txt");
             cities.Add(city);
-            citySerijalization.toCSV("City.csv", cities);
+            citySerijalization.toCSV("City.txt", cities);
             status = true;
             return status;
 

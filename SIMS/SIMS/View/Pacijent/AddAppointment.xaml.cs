@@ -3,13 +3,11 @@ using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Controller;
 using SIMS.Model;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace SIMS.Pacijent
 {
@@ -22,7 +20,7 @@ namespace SIMS.Pacijent
         public ObservableCollection<Model.Appointment> AppointmentsCollceciton { get; set; }
 
         private readonly PatientController patientController = new PatientController();
-        private readonly AppointmentController appointmentController  = new AppointmentController();
+        private readonly AppointmentController appointmentController = new AppointmentController();
         private List<Appointment> suggestedAppointments = new List<Appointment>();
         private readonly DoctorController doctorController = new DoctorController();
 
@@ -37,6 +35,7 @@ namespace SIMS.Pacijent
             AppointmentsCollceciton = new ObservableCollection<Appointment>();
 
             //Popunjavanje kolekcije dokora
+
             foreach(Model.Doctor item in doctorController.GetAll())
             {
                 Doctors.Add(item);

@@ -1,8 +1,10 @@
+
 ﻿using SIMS.Controller;
 using SIMS.Model;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+
 
 namespace SIMS.View.Doctor
 {
