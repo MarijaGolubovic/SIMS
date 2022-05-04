@@ -16,13 +16,26 @@ namespace SIMS.Model
         public String Period { get; set; }
 
         String _RoomId;
+
+        public RoomEqupment()
+        {
+        }
+
+        public RoomEqupment(string roomId, List<Equpment> roomEquipment, string period)
+        {
+            RoomId = roomId;
+            this.roomEquipment = roomEquipment;
+            Period = period;
+        }
+
         List<Equpment> _RoomEquipment { get; set; }
 
         public string[] toCSV()
         {
-            string[] csvValues = { RoomId, Period};
+            string[] csvValues = { RoomId, Period };
             int i = 2;
-            foreach (Equpment equipment in roomEquipment) {
+            foreach (Equpment equipment in roomEquipment)
+            {
                 csvValues[i] = equipment.ToString();
                 i++;
             }
@@ -33,30 +46,22 @@ namespace SIMS.Model
         {
             RoomId = values[0];
             Period = values[1];
-            
+
             if (values == null)
                 return;
 
             int i;
-            for(i = 2; i < values.Length; i++){
-                roomEquipment.Add(((Equpment)values[i]));
+            for (i = 2; i < values.Length; i++)
+            {
+                roomEquipment.Add((Equpment)values[i]);
             }
-            
+
         }
 
-        public RoomEqupment(string roomId, List<Equpment> roomEquipment, string period)
-        {
-            RoomId = roomId;
-            this.roomEquipment = roomEquipment;
-        }
 
-        public RoomEqupment()
-        {
-        }
 
-        public static explicit operator RoomEqupment(List<Equpment> v)
-        {
-            throw new NotImplementedException();
-        }
+
+
+
     }
 }

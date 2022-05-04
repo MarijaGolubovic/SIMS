@@ -48,6 +48,11 @@ namespace SIMS.Model
             }
         }
 
+        public static explicit operator Equpment(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         public Equpment(string name, int quantity)
         {
             Name = name;
@@ -76,11 +81,6 @@ namespace SIMS.Model
 
         String _Name;
         int _Quantity;
-
-        public static explicit operator Equpment(string v)
-        {
-            throw new NotImplementedException();
-        }
 
         public static explicit operator Equpment(List<Equpment> v)
         {

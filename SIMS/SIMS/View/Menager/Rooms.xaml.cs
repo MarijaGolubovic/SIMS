@@ -68,14 +68,19 @@ namespace SIMS.View.Menager
 
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            roomItemSelected = (Model.Room)DataGridRoomsChose.SelectedItem;
+         //   roomItemSelected = (Model.Room)DataGridRoomsChose.SelectedItem;
             List<Model.RoomEqupment> roomEqupments = RoomEquipmentController.GetAll();
             List<Model.Equpment> equpments = new List<Model.Equpment>();
             foreach(Model.RoomEqupment roomEq in roomEqupments)
             {
                 if (roomEq.RoomId.Equals(roomItemSelected.Id))
                 {
-                    equpments.Add((Model.Equpment)roomEq.roomEquipment);
+                    List<Model.Equpment> roomEqupmentList = new List<Model.Equpment>();
+                    foreach(Model.Equpment eq in roomEqupmentList)
+                    {
+                        equpments.Add(eq);
+                    }
+                    
                 }
             }
 
