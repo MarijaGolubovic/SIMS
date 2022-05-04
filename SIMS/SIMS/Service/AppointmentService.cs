@@ -44,6 +44,7 @@ namespace SIMS.Service
             Appointment appointment = new Appointment(dateTimeTmp, 1, roomService.GetOne("o1"), patientService.GetOne("2212010103158"), doctorTmp);
 
             //petlja koja provjerava da li je zeljeni termin slobodan
+            //isAvailable()
             bool free = true;
             foreach (Appointment a in allAppointments)
             {
@@ -69,7 +70,7 @@ namespace SIMS.Service
             else
             {
                 //napisati metodu koja trazi poprioritetima termine
-
+                //suggestedAppointments()  
                 if (doctorPriority == true)  //ako je doktor prioritet
                 {
                     for (int i = 1; i <= 5; i++)

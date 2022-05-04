@@ -21,7 +21,7 @@ namespace SIMS.View.Menager
     {
         public static System.Collections.ObjectModel.ObservableCollection<Model.Room> RoomRenovate { get; set; }
         Model.Room roomItem;
-        private static readonly Service.OccupacyRoomService occupacyRoomService = new Service.OccupacyRoomService();
+        private static readonly SIMS.Service.OccupacyRoomService occupacyRoomService = new Service.OccupacyRoomService();
        
 
         public RenovateForm()

@@ -44,6 +44,7 @@ namespace SIMS.Repository
             }
             Therapies.Add(therapy);
             TherapySerializer.toCSV("therapy.txt", Therapies);
+
             return true;
             
         }

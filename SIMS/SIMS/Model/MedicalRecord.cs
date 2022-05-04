@@ -105,7 +105,7 @@ namespace SIMS.Model
             Weight = Double.Parse(values[1]);
             BloodType = (BloodType)Enum.Parse(typeof(BloodType), values[2]);
             patient = patientController.GetOne(values[3]);
-            therapies = therapyContoller.GetById(values[4]);
+            therapies = therapyContoller.GetById(values[3]);
 
             Allergies = new List<Allergy>();
             for (int i = 4; i < values.Length; i++)

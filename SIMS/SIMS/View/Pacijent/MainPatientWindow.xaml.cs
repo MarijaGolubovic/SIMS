@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SIMS.View.Pacijent;
+using System.Windows;
 
 namespace SIMS.Pacijent
 {
@@ -22,6 +23,12 @@ namespace SIMS.Pacijent
         {
             AllAppointments allAppointments = new AllAppointments();
             allAppointments.Show();
+        }
+
+        private void Notification_Click(object sender, RoutedEventArgs e)
+        {
+            Notification notification = new Notification();
+            notification.Show();
         }
     }
 }

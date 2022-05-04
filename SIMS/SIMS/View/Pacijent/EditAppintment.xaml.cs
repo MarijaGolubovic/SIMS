@@ -9,7 +9,6 @@ using SIMS.Controller;
 using SIMS.Model;
 using Tulpep.NotificationWindow;
 
-
 namespace SIMS.Pacijent
 {
     /// <summary>

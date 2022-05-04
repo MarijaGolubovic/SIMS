@@ -66,7 +66,6 @@
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineContoller.cs" />
     <Compile Include="Controller\NotificationController.cs" />
-    <Compile Include="Controller\OccupacyRoomController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\TherapyContoller.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
+    <Compile Include="Model\Notificatoin.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Repository\AllergyStorage.cs" />
     <Compile Include="Repository\DiagnosisStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
+    <Compile Include="Repository\NotificationStorage.cs" />
     <Compile Include="Repository\OccupacyRoomStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
@@ -121,9 +122,6 @@
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Doctor\SelectTimeOfAppointmentPriorityDoctorPage.xaml.cs">
-      <DependentUpon>SelectTimeOfAppointmentPriorityDoctorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
       <DependentUpon>EqupmentPanel.xaml</DependentUpon>
     </Compile>
@@ -152,6 +150,9 @@
       <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repository\DoctorSpecialization.cs" />
+    <Compile Include="View\Pacijent\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sekretar\CreatePatient.xaml.cs">
       <DependentUpon>CreatePatient.xaml</DependentUpon>
     </Compile>
@@ -252,10 +253,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Doctor\SelectTimeOfAppointmentPriorityDoctorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Menager\EqupmentPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -293,6 +290,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Pacijent\MainPatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\Notification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
