@@ -66,12 +66,21 @@ namespace SIMS.Service
                         if (roomBegin.Id.Equals(roomE.RoomId))
                         {
                             
+                            
+
                             foreach (Model.Equpment eq in equpments)
                             {
-                                roomE.roomEquipment.Remove(eq);
-                                eq.Quantity -= quanitity;
+                                if (eq.Quantity < quanitity)
+                                {
+                                    return "Doesn't have enough eqvipment in this sale!";
+                                }
+                                else
+                                {
 
-                                
+                                    roomE.roomEquipment.Remove(eq);
+                                    eq.Quantity -= quanitity;
+
+                                }
                             }
                         }else if (roomEnd.Id.Equals(roomE.RoomId))
                         {
