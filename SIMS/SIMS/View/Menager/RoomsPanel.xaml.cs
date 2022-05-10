@@ -26,7 +26,7 @@ namespace SIMS.View.Menager
 
         private void Label_MouseDoubleClickAdd(object sender, MouseButtonEventArgs e)
         {
-           SIMS.Menager.AddRoomWindow addRoomWindow = new SIMS.Menager.AddRoomWindow();
+            SIMS.Menager.AddRoomWindow addRoomWindow = new SIMS.Menager.AddRoomWindow();
             addRoomWindow.Show();
             this.Close();
             

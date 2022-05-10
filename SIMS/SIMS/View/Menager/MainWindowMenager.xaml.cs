@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace SIMS.Menager
 {
@@ -37,6 +38,9 @@ namespace SIMS.Menager
 
         private void Label_MouseDoubleClickRooms(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+
+           
+            Rooms.Foreground = new SolidColorBrush(System.Windows.Media.Colors.Gray);
             View.Menager.RoomsPanel roomsPanel = new View.Menager.RoomsPanel();
             roomsPanel.Owner = this;
             roomsPanel.Show();
