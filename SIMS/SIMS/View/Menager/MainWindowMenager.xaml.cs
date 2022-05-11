@@ -40,7 +40,7 @@ namespace SIMS.Menager
         {
 
            
-            Rooms.Foreground = new SolidColorBrush(System.Windows.Media.Colors.Gray);
+           // Rooms.Foreground = new SolidColorBrush(System.Windows.Media.Colors.Gray);
             View.Menager.RoomsPanel roomsPanel = new View.Menager.RoomsPanel();
             roomsPanel.Owner = this;
             roomsPanel.Show();

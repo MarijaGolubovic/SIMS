@@ -476,6 +476,8 @@
     <Resource Include="Assets\procurement.png" />
     <Resource Include="Assets\changePassword.png" />
     <Resource Include="Assets\hospital-doctor.png" />
+    <Resource Include="Assets\move.png" />
+    <Resource Include="Assets\show.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -511,9 +513,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ordering.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\move.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
