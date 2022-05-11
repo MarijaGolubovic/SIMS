@@ -69,12 +69,13 @@ namespace SIMS.Model
             }
             else
             {
-                GetOne(jmbg).BloodType = medicalRecord.BloodType;
-                GetOne(jmbg).Height = medicalRecord.Height;
-                GetOne(jmbg).Weight = medicalRecord.Weight;
-                GetOne(jmbg).Allergies = medicalRecord.Allergies;
-                return true;
+                Serialization.Serializer<MedicalRecord> mrSerializer = new Serialization.Serializer<MedicalRecord>();
+                List<MedicalRecord> medicalRecords = GetAll();
+                medicalRecords.Remove(medicalRecords.Find(p=>p.patient.Person.JMBG.Equals(jmbg)));
+                medicalRecords.Add(medicalRecord);
+                mrSerializer.toCSV("medicalRecords.txt", medicalRecords);
             }
+
             return true;
         }
 
