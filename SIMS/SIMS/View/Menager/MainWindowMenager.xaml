@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
         Topmost="True"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Title="Hello Clinic" Height="600" Width="950" ResizeMode="NoResize">
-    <Grid RenderTransformOrigin="0.495,0.386">
-        <Border BorderThickness="2" BorderBrush="Black"  Margin="0,0,0,440"/>
-        <Grid Height="127" VerticalAlignment="Top" HorizontalAlignment="Right" Width="944">
+    <Grid RenderTransformOrigin="0.495,0.386" Background="DarkGreen">
+        <Border BorderThickness="2"   Margin="0,0,0,442"  Background="DarkGreen"/>
+        <Grid Height="127" VerticalAlignment="Top" HorizontalAlignment="Right" Width="944" Background="MintCream">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="157*"></ColumnDefinition>
                 <ColumnDefinition Width="157*"></ColumnDefinition>
@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
 
-            <Image Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="29,0,74,0" Height="55" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.363,0.483">
+            <Image Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="29,10,74,0" Height="55" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.363,0.483" Grid.RowSpan="2">
                 <Image.Source>
                     <BitmapImage  UriSource="/Assets/hospital.png" />
                 </Image.Source>
@@ -44,7 +44,7 @@
             </Label>
             <Image Grid.Column="5" Grid.Row="0" HorizontalAlignment="Right" RenderTransformOrigin="0.026,0.525" Margin="0,17,10,13" Width="25">
                 <Image.Source >
-                    <BitmapImage  UriSource="/Assets/sign-out.png"  />
+                    <BitmapImage  UriSource="/Assets/sign-out.png"/>
                 </Image.Source>
             </Image>
             <!-->
@@ -71,69 +71,73 @@
                 My account
             </Label>
             <-->
-            <Grid Grid.ColumnSpan="6"  Grid.Row="1" Background="White" Margin="12,0,11,11" >
-                <Menu Background="White" Margin="40,0,10,10">
-                    <MenuItem Header="Home" FontSize="22" FontWeight="Bold" Width="100" Background="White">
+            <Grid Grid.ColumnSpan="6"  Grid.Row="1" Background="MintCream" Margin="12,0,11,11" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="91*"/>
+                    <ColumnDefinition Width="830*"/>
+                </Grid.ColumnDefinitions>
+                <Menu Background="MintCream" Margin="40,0,10,10" Grid.ColumnSpan="2">
+                    <MenuItem Header="Home" FontSize="22" FontWeight="Bold" Width="100" Background="MintCream">
                     </MenuItem>
-                    <MenuItem Header="Rooms" FontSize="22" FontWeight="Bold" Width="108" Background="White">
-                        <Menu  Background="White">
+                    <MenuItem Header="Rooms" FontSize="22" FontWeight="Bold"  Background="MintCream"  Width="108" >
+                        <Menu  Background="MintCream" Width="782">
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137">
+                                <MenuItem Background="White" Width="137"  Click="MenuItemAddRoom_Click" Focusable="False">
                                     <MenuItem.Icon>
-                                        <Image Source="/Assets/add_icon.png" Height="79" Width="123"></Image>
+                                        <Image Source="/Assets/add_icon.png" Height="79" Width="123" Focusable="False"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </Border>
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItemRoomUpdate_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Assets/edit.png" Height="79" Width="127"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </Border>
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItemRoomDelete_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Assets/delete.png" Height="79" Width="127"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </Border>
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItemRoomRenovate_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Assets/renovate.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
                                 <MenuItem Background="White" Width="137" FontWeight="Bold">
                                     <MenuItem.Icon>
-                                        <Image Source="/Assets/edit.png" Height="79" Width="127"></Image>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </Border>
-                            <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Assets/delete.png" Height="79" Width="127"></Image>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </Border>
-                            <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Assets/renovate.png" Height="79" Width="127"></Image>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </Border>
-                            <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Assets/clock.png" Height="79" Width="127"></Image>
+                                        <Image Source="/Assets/clock.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
                         </Menu>
                     </MenuItem>
-                    <MenuItem Header="Medicines" FontSize="22" FontWeight="Bold" Width="146">
+                    <MenuItem Header="Medicines" FontSize="22" FontWeight="Bold" Width="134">
                         <Menu  Background="White">
                             <Border BorderBrush="Black" BorderThickness="2">
                                 <MenuItem Background="White" Width="137">
                                     <MenuItem.Icon>
-                                        <Image Source="/Assets/add_icon.png" Height="79" Width="123"></Image>
+                                        <Image Source="/Assets/add_icon.png" Height="79" Width="123"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
                                 <MenuItem Background="White" Width="137" FontWeight="Bold">
                                     <MenuItem.Icon>
-                                        <Image Source="/Assets/edit.png" Height="79" Width="127"></Image>
+                                        <Image Source="/Assets/edit.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
                                 <MenuItem Background="White" Width="137" FontWeight="Bold">
                                     <MenuItem.Icon>
-                                        <Image Source="/Assets/delete.png" Height="79" Width="127"></Image>
+                                        <Image Source="/Assets/delete.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
@@ -201,11 +205,7 @@
                 </Menu>
             </Grid>
         </Grid>
-
-
-
-
-
+        <Grid Margin="0,130,0,0"   Background="LightGray"/>
 
     </Grid>
 </Window>
