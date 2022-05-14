@@ -26,7 +26,7 @@ namespace SIMS.View.Menager
 
         internal static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
         internal Repository.RoomEquipmentStorage equipmentStorage = new Repository.RoomEquipmentStorage();
-        String roomItemId;
+        public static String roomItemId;
         String roomItemDestination;
         Model.Room roomItem;
         public Model.Room roomDestination;
@@ -40,35 +40,35 @@ namespace SIMS.View.Menager
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
             
-            roomItemId = roomIdChoose1.Text;
-            roomItemDestination = destination.Text;
+           // roomItemId = roomIdChoose1.Text;
+            //roomItemDestination = destination.Text;
 
-            foreach(Model.Room r in rooms)
-            {
-                if (roomItemId.Equals(r.Id))
-                {
-                    roomItem = r;
-                }
+            //foreach(Model.Room r in rooms)
+            //{
+            //    if (roomItemId.Equals(r.Id))
+            //    {
+            //        roomItem = r;
+            //    }
 
-                if (r.Id.Equals(roomItemDestination))
-                {
-                    roomDestination = r;
-                }
-            }
+            //    if (r.Id.Equals(roomItemDestination))
+            //    {
+            //        roomDestination = r;
+            //    }
+            //}
 
-             foreach(Room roomIt in rooms)
-            {
-                if (roomIt.Id.Equals(roomItem.Id))
-                {
-                    foreach (Model.RoomEqupment eq in equpments) {
-                        if (roomItem.Id.Equals(eq.RoomId))
-                        {
-                           MovingEquipment.Add((Equpment)eq.roomEquipment);
-                        }
+            // foreach(Room roomIt in rooms)
+            //{
+            //    if (roomIt.Id.Equals(roomItem.Id))
+            //    {
+            //        foreach (Model.RoomEqupment eq in equpments) {
+            //            if (roomItem.Id.Equals(eq.RoomId))
+            //            {
+            //               MovingEquipment.Add((Equpment)eq.roomEquipment);
+            //            }
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
             
 
 

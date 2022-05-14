@@ -84,7 +84,7 @@ namespace SIMS.View.Menager
                 }
             }
 
-
+            MovingWindow.roomItemId = ((Model.Room)DataGridRoomsChose.SelectedItem).Id;
 
             this.Close();
         }
