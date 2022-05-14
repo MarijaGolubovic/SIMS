@@ -1,0 +1,116 @@
+﻿<Window x:Class="SIMS.View.Sekretar.EditAppointmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.View.Sekretar"
+        mc:Ignorable="d"
+        Title="EditAppointmentView" Height="600" Width="1000">
+    <Grid>
+        <CheckBox Content="NOVI PACIJENT" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="10,10,0,0" Click="CheckBox_Click"  IsEnabled="False"/>
+        <Label Content="PACIJENT:" FontSize="24" Margin="10,50,846.6,468.4"/>
+        <TextBox x:Name="pacijent" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap"  VerticalAlignment="Top" Width="206" RenderTransformOrigin="1.356,1.526" Margin="143,50,0,0" FontSize="24" IsEnabled="False"/>
+        <RadioButton GroupName="lekar" Content="SPECIJALISTA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,126,0,0" FontSize="24" RenderTransformOrigin="0.851,0.372"/>
+        <RadioButton GroupName="lekar" Content="OPSTE PRAKSE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,190,0,0" FontSize="24" RenderTransformOrigin="0.731,1.179"/>
+        <ComboBox x:Name="specijalistaCombobox"   FontSize="24" Margin="665,120,75.6,401.4"  SelectedValuePath="Name">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="lekarCombobox"   FontSize="24" Margin="665,184,75.6,337.4"  SelectedValuePath="Name">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="LEKAR:" FontSize="24" Margin="11,120,845.6,398.4"/>
+        <Label Content="DATUM:" FontSize="24" Margin="10,256,846.6,262.4"/>
+        <TextBox x:Name="datum" HorizontalAlignment="Left" Height="39" TextWrapping="Wrap"  VerticalAlignment="Top" Width="206" RenderTransformOrigin="1.356,1.526" Margin="143,256,0,0" FontSize="24" IsEnabled="False"/>
+        <Label Content="TIP PREGLEDA:" FontSize="24" Margin="11,318,808.6,200.4"/>
+        <RadioButton GroupName="tipPregleda" Content="OPERACIJA" Name="operacija" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="190,324,0,0" />
+        <RadioButton GroupName="tipPregleda" Content="PREGLED" Name="pregled" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="361,324,0,0" />
+        <Button Content="PRETRAZI" HorizontalAlignment="Left" Margin="834,324,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click" />
+        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="834,525,0,0" VerticalAlignment="Top" Width="137" FontSize="24" RenderTransformOrigin="0.471,4.46" Click="Button_Click_1" />
+
+        <DataGrid x:Name="Termini" ItemsSource="{Binding Path =  Termini}"  Margin="0,387,19.6,55.4"  SelectionMode="Single" HeadersVisibility="Column" 
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ColumnHeaderHeight="30"  IsReadOnly="True"  AutoGenerateColumns="False">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FFF3F796"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="FontSize" Value="14"/>
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color= "LightBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="DATUM"  Binding ="{Binding Person.Name}" Width="*"/>
+                <DataGridTextColumn Header="VREME"  Binding ="{Binding Person.Surname}" Width="*"/>
+                <DataGridTextColumn Header="SALA"   Binding ="{Binding Person.DateOfBirth}"  Width="*"/>
+                <DataGridTemplateColumn Header="IZABERI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="IZABERI" Content="IZABERI" Background="#73B1B7" Foreground="White" Click="IZABERI_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="SPECIJALISTA:" FontSize="24" Margin="464,120,356.6,401.4" RenderTransformOrigin="0.534,0.569"/>
+        <Label Content="IME LEKARA:" FontSize="24" Margin="464,184,356.6,334.4" RenderTransformOrigin="0.534,0.569"/>
+        <Separator HorizontalAlignment="Left" Height="30" Margin="0,87,-0.4,0" VerticalAlignment="Top" Width="994"/>
+        <Separator Height="44" Margin="0,220,-0.4,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.066"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Separator Height="44" Margin="0,352,0.6,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.066"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        
+    </Grid>
+</Window>

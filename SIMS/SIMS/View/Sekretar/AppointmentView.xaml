@@ -1,0 +1,83 @@
+﻿<Window x:Class="SIMS.View.Sekretar.AppointmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.View.Sekretar"
+        mc:Ignorable="d"
+        Title="AppointmentView" Height="600" Width="1000">
+    <Grid>
+        <Label Content="DATUM:" HorizontalAlignment="Left" Margin="8,27,0,0" VerticalAlignment="Top" Width="101" FontSize="24" RenderTransformOrigin="-0.163,0.257"/>
+        <TextBox HorizontalAlignment="Left" Name ="datum" Height="48" Margin="109,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" RenderTransformOrigin="-0.163,1.326" FontSize="24" />
+        <Button Content="PRETRAZI" HorizontalAlignment="Left" Margin="304,34,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click_2" />
+        <Button Content="ZAKAZI" HorizontalAlignment="Left" Margin="466,34,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click_1" />
+        <Button Content="GRAFIK" HorizontalAlignment="Left" Margin="636,34,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click_3" />
+        <Button Content="IZVESTAJ" HorizontalAlignment="Left" Margin="806,34,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click_4" />
+
+        <DataGrid x:Name="Pregledi" ItemsSource="{Binding Path =  Appointments}"  Margin="0,148,19.6,64.4"  SelectionMode="Single" HeadersVisibility="Column" 
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ColumnHeaderHeight="30"  IsReadOnly="True"  AutoGenerateColumns="False">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FFF3F796"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="FontSize" Value="14"/>
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color= "LightBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="DATUM"  Binding ="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="VREME"  Binding ="{Binding Time}" Width="*"/>
+                <DataGridTextColumn Header="LEKAR"   Binding ="{Binding NameSurnameDoctor}"  Width="*"/>
+                <DataGridTextColumn Header="PACIJENT"   Binding ="{Binding NameSurnamePatient}"  Width="*"/>
+                <DataGridTextColumn Header="SALA"   Binding ="{Binding roomId}"  Width="*"/>
+
+                <DataGridTemplateColumn Header="IZMENI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="IZMENI" Content="IZMENI" Background="#73B1B7" Foreground="White" Click="IZMENI_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="OTKAZI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="OTKAZI" Content="OTKAZI" Background="#73B1B7" Foreground="White" Click="OTKAZI_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="ZATVORI" HorizontalAlignment="Left" Margin="837,518,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click" />
+
+
+    </Grid>
+</Window>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SIMS.Model
 {
@@ -11,10 +12,16 @@ namespace SIMS.Model
         public Boolean InitialAccount { get; set; }
         public Boolean ActivatedAccount { get; set; }
 
+        public List<Notificatoin> NotificationList { get; set; }
         public Patient(User user, MedicalRecord medicalRecord, AccountStatus accountStatus) : base(user.Username, user.Password, user.Type, user.Person)
         {
+
             this.MedicalRecord = medicalRecord;
             this.AccountStatus = accountStatus;
+            this.JMBGP = Person.JMBG;
+            this.InitialAccount = accountStatus.initialAccount;
+            this.ActivatedAccount = accountStatus.activatedAccount;
+            this.NotificationList = new List<Notificatoin>();
         }
         public Patient()
         {
@@ -39,13 +46,20 @@ namespace SIMS.Model
         public string[] toCSV()
         {
             string[] csvValues =
-{
-             Person.JMBG,
-             AccountStatus.initialAccount.ToString(),
-             AccountStatus.activatedAccount.ToString()
+            {
+             JMBGP,
+             InitialAccount.ToString(),
+             ActivatedAccount.ToString()
 
             };
             return csvValues;
+        }
+
+        public Patient(string jMBGP, bool initialAccount, bool activatedAccount)
+        {
+            JMBGP = jMBGP;
+            InitialAccount = initialAccount;
+            ActivatedAccount = activatedAccount;
         }
     }
 }

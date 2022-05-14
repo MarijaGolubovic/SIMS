@@ -11,6 +11,11 @@ namespace SIMS.Model
         {
             Name = name;
         }
+
+        public Specialization()
+        {
+        }
+
         public string[] toCSV()
         {
             string[] csvValues =

@@ -1,0 +1,19 @@
+﻿<Window x:Class="SIMS.Pacijent.MainPatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.Pacijent"
+        mc:Ignorable="d"
+        Title="MainPatientWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Content="Zakazi novi termin" Grid.Column="2" HorizontalAlignment="Left" Margin="85,98,0,0" VerticalAlignment="Top" Width="213" Click="AddAppointment"/>
+        <Button Content="Prikaz svih termina" Grid.Column="2" HorizontalAlignment="Left" Margin="85,56,0,0" VerticalAlignment="Top" Width="213" Click="AllAppointments"/>
+        <Button Content="Obavestenja" Grid.Column="2" HorizontalAlignment="Left" Margin="85,143,0,0" VerticalAlignment="Top" Width="213" Click="Notification_Click"/>
+    </Grid>
+</Window>

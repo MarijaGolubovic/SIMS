@@ -98,8 +98,9 @@ namespace SIMS.Model
 
         public Room() { }
 
-
-
-        
+        public static explicit operator Room(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
