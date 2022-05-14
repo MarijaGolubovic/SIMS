@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -58,6 +61,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPF.EventCalendar, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF.EventCalendar.1.0.3\lib\net45\WPF.EventCalendar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -91,6 +97,7 @@
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
+    <Compile Include="MyICommand.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
     <Compile Include="Repository\EquipmentStorage.cs" />
     <Compile Include="Model\Diagnosis.cs" />
@@ -195,9 +202,6 @@
     <Compile Include="View\Sekretar\Nalozi.xaml.cs">
       <DependentUpon>Nalozi.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Doctor\AddApointmentWindow.xaml.cs">
-      <DependentUpon>AddApointmentWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Doctor\AllAppointmentsWindow.xaml.cs">
       <DependentUpon>AllAppointmentsWindow.xaml</DependentUpon>
     </Compile>
@@ -231,10 +235,6 @@
       <DependentUpon>NewPatientView.xaml</DependentUpon>
     </Compile>
     <Page Include="Templates.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Doctor\AddApointmentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -513,6 +513,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ordering.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\Doctor\" />
+    <Folder Include="ViewModel\Menager\" />
+    <Folder Include="ViewModel\Pacijent\" />
+    <Folder Include="ViewModel\Sekretar\" />
+    <Folder Include="VML\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

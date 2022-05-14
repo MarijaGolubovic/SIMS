@@ -11,7 +11,7 @@
 
     <ScrollViewer>
 
-        <Grid Background="AliceBlue">
+        <Grid>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -151,14 +151,16 @@
                                Grid.Row="7"
                                Grid.Column="0"
                                HorizontalAlignment="Center" Margin="0,60,0,60"/>
-
+            
+            
             <Button Background="White"
                     Grid.Column="0"
                     Grid.Row="8" Margin="0,0,140,0"
                     Width="200"
                     Height="250"
                     HorizontalAlignment="Right"
-                    Click="Button_Click_Opravdanje">
+                    Click="Button_Click_Opravdanje"
+                    Focusable="False">
                 <StackPanel>
                     <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\note.png"
                            Stretch="None"
@@ -179,7 +181,8 @@
                     Width="200"
                     Height="250"
                     HorizontalAlignment="Left"
-                    Click="Button_Click_Terapija">
+                    Click="Button_Click_Terapija"
+                    Focusable="False">
                 <StackPanel>
                     <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\therapy.png"
                            Stretch="None"

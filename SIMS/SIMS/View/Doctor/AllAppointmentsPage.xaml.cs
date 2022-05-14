@@ -12,7 +12,7 @@ namespace SIMS.View.Doctor
     {
         public List<AppointmentsForDoctorDTO> Appointments { get; set; }
         private AppointmentController appointmentController { get; set; }
-        public static AppointmentsForDoctorDTO SelectedItem { get; set; }
+        public static AppointmentsForDoctorDTO SelectedAppointment { get; set; }
 
         public AllAppointmentsPage()
         {
@@ -29,7 +29,7 @@ namespace SIMS.View.Doctor
             {
                 return;
             }
-            SelectedItem = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
+            SelectedAppointment = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
             MainWindow.frame.Content = new DetailedAppointmentPage();
         }
 
@@ -39,7 +39,7 @@ namespace SIMS.View.Doctor
             {
                 return;
             }
-            SelectedItem = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
+            SelectedAppointment = allAppointmentsDataGrid.SelectedItem as AppointmentsForDoctorDTO;
             MainWindow.frame.Content = new JoinAppointmentPage();
         }
     }

@@ -13,9 +13,9 @@ namespace SIMS.View.Doctor
     public partial class DetailedAppointmentPage : Page
     {
 
-        public static Appointment SelectedItem { get; set; }
+        public static Appointment SelectedAppointment { get; set; }
         public string date { get; set; }
-        public static MedicalRecord MedicalRecrod { get; set; }
+        public static MedicalRecord MedicalRecord { get; set; }
 
         private readonly AppointmentController service = new AppointmentController();
         private readonly MedicalRecordController mediicalRecrodController = new MedicalRecordController();
@@ -24,13 +24,13 @@ namespace SIMS.View.Doctor
         {
             InitializeComponent();
             DataContext = this;
-            SelectedItem = service.GetOne(AllAppointmentsPage.SelectedItem.appointmentId);
-            date = SelectedItem.Patient.Person.DateOfBirth.Date.ToString().Split(' ')[0];
-            MedicalRecrod = mediicalRecrodController.GetOne(SelectedItem.Patient.Person.JMBG);
-            Allergy_Combobox.ItemsSource = MedicalRecrod.Allergies;
-            Therapy_Combobox.ItemsSource = MedicalRecrod.therapies;
-            Allergy_Combobox.SelectedItem = MedicalRecrod.Allergies[0];
-            Therapy_Combobox.SelectedItem = MedicalRecrod.therapies[0];
+            SelectedAppointment = service.GetOne(AllAppointmentsPage.SelectedAppointment.appointmentId);
+            date = SelectedAppointment.Patient.Person.DateOfBirth.Date.ToString().Split(' ')[0];
+            MedicalRecord = mediicalRecrodController.GetOne(SelectedAppointment.Patient.Person.JMBG);
+            Allergy_Combobox.ItemsSource = MedicalRecord.Allergies;
+            Therapy_Combobox.ItemsSource = MedicalRecord.therapies;
+            Allergy_Combobox.SelectedItem = MedicalRecord.Allergies[0];
+            Therapy_Combobox.SelectedItem = MedicalRecord.therapies[0];
 
         }
 

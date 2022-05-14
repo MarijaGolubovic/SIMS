@@ -6,11 +6,15 @@ namespace SIMS.Repository
 {
     internal class TherapyStorage
     {
-        public List<Therapy> GetAll()
-        {
-            Serialization.Serializer<Therapy> therapySerializer = new Serialization.Serializer<Therapy>();
-            List<Therapy> therapies = therapySerializer.fromCSV("therapy.txt");
+        private Serialization.Serializer<Therapy> therapySerializer;
 
+        public TherapyStorage()
+        {
+            therapySerializer = new Serialization.Serializer<Therapy>();
+        }
+        public List<Therapy> GetAll()
+        {           
+            List<Therapy> therapies = therapySerializer.fromCSV("therapy.txt");
             return therapies;
         }
 
@@ -36,14 +40,13 @@ namespace SIMS.Repository
         }
         public Boolean Create(Therapy therapy)
         {
-            Serialization.Serializer<Therapy> TherapySerializer = new Serialization.Serializer<Therapy>();
             List<Therapy> Therapies = new List<Therapy>();
-            foreach (Therapy t in TherapySerializer.fromCSV("therapy.txt"))
+            foreach (Therapy t in therapySerializer.fromCSV("therapy.txt"))
             {
                 Therapies.Add(t);
             }
             Therapies.Add(therapy);
-            TherapySerializer.toCSV("therapy.txt", Therapies);
+            therapySerializer.toCSV("therapy.txt", Therapies);
 
             return true;
             

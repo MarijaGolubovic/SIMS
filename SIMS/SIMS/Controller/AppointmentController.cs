@@ -23,7 +23,7 @@ namespace SIMS.Controller
 
             foreach (Appointment a in appointments)
             {
-                if (a.Doctor.Person.JMBG.Equals(View.Doctor.MainWindow.Doctor.Person.JMBG))
+                if (a.Doctor.Person.JMBG.Equals(View.Doctor.MainWindow.LoggedInUser.Person.JMBG))
                 {
                     String name = a.Patient.Person.Name;
                     String surname = a.Patient.Person.Surname;
