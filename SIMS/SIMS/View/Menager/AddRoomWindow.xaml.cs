@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using SIMS.Repository;
 
 
@@ -13,7 +14,7 @@ namespace SIMS.Menager
     /// <summary>
     /// Interaction logic for AddRoomWindow.xaml
     /// </summary>
-    public partial class AddRoomWindow : Window
+    public partial class AddRoomWindow : Page
     {
         public static ObservableCollection<Model.Room> Rooms { get; set; }
         public static Controller.RoomController roomController = new Controller.RoomController();
@@ -70,14 +71,19 @@ namespace SIMS.Menager
 
             Menager.RoomsList roomList = new Menager.RoomsList();
             roomList.Show();
-            this.Close();
+            //this.Close();
         }
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
             Menager.MainWindowMenager mainWindow = new MainWindowMenager();
             mainWindow.Show();
-            this.Close();
+           // this.Close();
+
+        }
+
+        private void comboboxField_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
-        Title="Hello Clinic" Height="600" Width="950" ResizeMode="NoResize">
+        Title="Hello Clinic" Height="600" Width="950" ResizeMode="NoResize"
+    >
     <Grid RenderTransformOrigin="0.495,0.386" Background="DarkGreen">
         <Border BorderThickness="2"   Margin="0,0,0,442"  Background="DarkGreen"/>
         <Grid Height="127" VerticalAlignment="Top" HorizontalAlignment="Right" Width="944" Background="MintCream">
@@ -205,7 +206,9 @@
                 </Menu>
             </Grid>
         </Grid>
-        <Grid Margin="0,130,0,0"   Background="LightGray"/>
+        <Grid Margin="0,130,0,0"   Background="LightGray">
+            <Frame x:Name="MainFrameMenager"  NavigationUIVisibility="Hidden" />
+        </Grid>
 
     </Grid>
 </Window>

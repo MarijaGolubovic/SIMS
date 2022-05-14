@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SIMS.Menager
@@ -8,7 +9,7 @@ namespace SIMS.Menager
     /// <summary>
     /// Interaction logic for UpdateRoomWindow.xaml
     /// </summary>
-    public partial class UpdateRoomWindow : Window
+    public partial class UpdateRoomWindow : Page
     {
         public static ObservableCollection<Model.Room> Rooms { get; set; }
         public static Model.Room selectedRoom;
@@ -28,19 +29,20 @@ namespace SIMS.Menager
             }
         }
 
+
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             selectedRoom = (Model.Room)DataGridUpdate.SelectedItem;
             indexSelected = DataGridUpdate.SelectedIndex;
-            Menager.UpdateForm updateForm = new Menager.UpdateForm();
-            updateForm.Show();
-            this.Close();
+           // Menager.UpdateForm updateForm = new Menager.UpdateForm();
+           // updateForm.Show();
+           // this.Close();
         }
 
         private void UpdateBack_Click(object sender, RoutedEventArgs e)
         {
 
-            this.Close();
+//            this.Close();
 
         }
 

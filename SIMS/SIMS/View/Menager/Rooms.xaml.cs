@@ -91,9 +91,9 @@ namespace SIMS.View.Menager
 
         private void Rooms_MouseDoubleClick_OK(object sender, MouseButtonEventArgs e)
         {
-            RoomsPanel roomsPanel = new RoomsPanel();
-            roomsPanel.Owner = this;
-            roomsPanel.Show();
+         //   RoomsPanel roomsPanel = new RoomsPanel();
+          //  roomsPanel.Owner = this;
+           // roomsPanel.Show();
         }
     }
 }

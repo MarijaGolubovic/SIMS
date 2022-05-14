@@ -165,9 +165,6 @@
     <Compile Include="View\Menager\Rooms.xaml.cs">
       <DependentUpon>Rooms.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Menager\RoomsPanel.xaml.cs">
-      <DependentUpon>RoomsPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
     </Compile>
@@ -307,10 +304,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\Rooms.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Menager\RoomsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -478,6 +471,7 @@
     <Resource Include="Assets\hospital-doctor.png" />
     <Resource Include="Assets\move.png" />
     <Resource Include="Assets\show.png" />
+    <Resource Include="Assets\plus.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

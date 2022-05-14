@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace SIMS.Menager
@@ -8,9 +9,13 @@ namespace SIMS.Menager
     /// </summary>
     public partial class MainWindowMenager : Window
     {
+        public static Frame frame { get; set; }
+        private Frame _mainFrame;
         public MainWindowMenager()
         {
             InitializeComponent();
+            _mainFrame = this.FindName("MainFrameMenager") as Frame;
+           // _mainFrame.NavigationService.Navigate(new MainWindowMenager());
         }
 
        
@@ -24,16 +29,19 @@ namespace SIMS.Menager
 
         private void MenuItemAddRoom_Click(object sender, RoutedEventArgs e)
         {
-            SIMS.Menager.AddRoomWindow addRoomWindow = new SIMS.Menager.AddRoomWindow();
-            addRoomWindow.Show();
-            this.Close();
+            // SIMS.Menager.AddRoomWindow addRoomWindow = new SIMS.Menager.AddRoomWindow();
+            // addRoomWindow.Show();
+            //this.Close();
+            //MainWindowMenager.frame.Content = new AddRoomWindow();
+            _mainFrame.NavigationService.Navigate(new AddRoomWindow());
         }
 
         private void MenuItemRoomUpdate_Click(object sender, RoutedEventArgs e)
         {
-            SIMS.Menager.UpdateRoomWindow updateRoomWindow = new SIMS.Menager.UpdateRoomWindow();
-            updateRoomWindow.Show();
-            this.Close();
+            // SIMS.Menager.UpdateRoomWindow updateRoomWindow = new SIMS.Menager.UpdateRoomWindow();
+            //updateRoomWindow.Show();
+            //this.Close();
+            _mainFrame.NavigationService.Navigate(new UpdateRoomWindow());
         }
 
         private void MenuItemRoomDelete_Click(object sender, RoutedEventArgs e)

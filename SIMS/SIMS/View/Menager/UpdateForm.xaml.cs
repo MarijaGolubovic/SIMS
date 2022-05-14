@@ -88,9 +88,9 @@ namespace SIMS.Menager
             roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
 
 
-            Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
-            updateRoomWindow.Show();
-            this.Close();
+        //    Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
+          //  updateRoomWindow.Show();
+            //this.Close();
         }
     }
 }

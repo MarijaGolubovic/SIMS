@@ -40,8 +40,8 @@ namespace SIMS.View.Menager
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
         {
-            Menager.RoomsPanel roomsPanel = new RoomsPanel();
-            roomsPanel.Show();
+          ///  Menager.RoomsPanel roomsPanel = new RoomsPanel();
+            //roomsPanel.Show();
             
         }
 
