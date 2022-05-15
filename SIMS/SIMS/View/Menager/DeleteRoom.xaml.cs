@@ -62,7 +62,7 @@ namespace SIMS.Menager
 
         private void Button_Click_TUTORIJAL(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new View.Menager.Tutorials.DelateRoomTutorial());
         }
     }
 }

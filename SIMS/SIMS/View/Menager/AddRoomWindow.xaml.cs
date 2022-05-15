@@ -84,9 +84,9 @@ namespace SIMS.Menager
 
         }
 
-        private void comboboxField_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new View.Menager.Tutorials.AddRoomTutorial());
         }
     }
 }

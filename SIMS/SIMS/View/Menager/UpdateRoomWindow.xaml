@@ -27,6 +27,6 @@
 
         <Button x:Name="UpdateBack" Width="80" Height="24" Margin="694,366,26,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
         <Button x:Name="UpdateOK" Width="80" Height="24" Margin="587,367,133,0" Content="OK" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
-        <Button RenderTransformOrigin="0.481,2.588" Margin="28,366,672,59" Background="MintCream" Height="25" Width="100">TUTORIAL</Button>
+        <Button RenderTransformOrigin="0.481,2.588" Margin="28,366,672,59" Background="MintCream" Height="25" Width="100" Click="Button_Click_TUTORIAL">TUTORIAL</Button>
     </Grid>
 </Page>

@@ -44,5 +44,10 @@ namespace SIMS.Menager
             indexSelected = DataGridUpdate.SelectedIndex;
             this.NavigationService.Navigate(new UpdateForm());
         }
+
+        private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new View.Menager.Tutorials.UpdateRoomTutorial());
+        }
     }
 }
