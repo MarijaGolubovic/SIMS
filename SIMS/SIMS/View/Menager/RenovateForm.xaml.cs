@@ -54,8 +54,21 @@ namespace SIMS.View.Menager
         {
             roomItem = Menager.RenovateWindow.selectedRoom;
             string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
-            // MessageBox.Show(message);
+            
+            if(occupacyRoomService.RoomAlreadyOccupacy(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text)){
+                MessageBox.Show("Room occypaced in this period!");
+            }
+            else if(occupacyRoomService.EndBeforeBegin(DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value))
+            {
+                MessageBox.Show("End before begin!");
+            }
+            else
+            {
+                MessageBox.Show("Room added to renoavtion list!");
+            }
+            
             //this.Close();
+
 
             this.NavigationService.Navigate(new Report());
         }

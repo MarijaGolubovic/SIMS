@@ -242,6 +242,7 @@
       <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repository\DoctorSpecialization.cs" />
+    <Compile Include="View\Menager\ValidationRules.cs" />
     <Compile Include="View\Sekretar\AppointmentView.xaml.cs">
       <DependentUpon>AppointmentView.xaml</DependentUpon>
     </Compile>

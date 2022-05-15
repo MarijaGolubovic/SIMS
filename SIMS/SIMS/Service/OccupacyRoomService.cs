@@ -44,6 +44,37 @@ namespace SIMS.Service
             return "";
         }
 
+        public bool RoomAlreadyOccupacy(Model.Room room, DateTime begin, DateTime end, String reason)
+        {
+            List<Model.RoomOccupacy> roomOccupacies = occupacyRoomStorage.GetAll();
+            Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
+            bool isOccupacy = false;
+
+            foreach (Model.RoomOccupacy roomItem in roomOccupacies)
+            {
+                if (roomItem.IDRoom.Equals(room.Id))
+                {
+                    if ((DateTime.Compare(roomItem.Begin, begin) >= 0) && (DateTime.Compare(end, roomItem.End) <= 0))
+                    {
+                        isOccupacy = true;
+                    }
+                }
+            }
+
+            return isOccupacy;
+        }
+
+        public bool EndBeforeBegin( DateTime begin, DateTime end)
+        {
+            bool isEndBeforeBegin = false;   
+                if (DateTime.Compare(end, begin) < 0)
+                {
+                isEndBeforeBegin = true;
+                }
+            
+            return isEndBeforeBegin;
+        }
+
         public List<Model.Room> GetById(String roomID)
         {
             return occupacyRoomStorage.GetById(roomID);
