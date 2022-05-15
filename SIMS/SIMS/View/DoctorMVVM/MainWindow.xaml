@@ -34,6 +34,9 @@
         <DataTemplate DataType="{x:Type viewModel:AddTherapyViewModel}">
             <view:AddTherapyView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:MedicineValidationViewModel}">
+            <view:MedicineValidationView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid Background="AliceBlue">
             <DockPanel>
@@ -266,7 +269,9 @@
                         </MenuItem>
 
                         <MenuItem Header="Verifikacija"
-                              Template="{StaticResource Menu_Template}">
+                              Template="{StaticResource Menu_Template}"
+                                  Command="{Binding NavCommand}"
+                                  CommandParameter="MedicineValidationView">
 
                             <MenuItem.Icon>
                                 <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\drugs.png"

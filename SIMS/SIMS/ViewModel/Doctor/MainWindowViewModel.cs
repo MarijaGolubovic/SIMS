@@ -15,6 +15,7 @@ namespace SIMS.ViewModel.Doctor
 
         private AllAppointmentsViewModel allAppointmentsViewModel = new AllAppointmentsViewModel(); 
         private DaysOffRequestViewModel daysOffRequestViewModel = new DaysOffRequestViewModel();
+        private MedicineValidationViewModel medicineValidationViewModel = new MedicineValidationViewModel();    
         private DetailedAppointmentViewModel detailedAppointmentViewModel;
         private JoinAppointmentViewModel joinAppointmentViewModel;
         private AddTherapyViewModel addTherapyViewModel;
@@ -66,6 +67,9 @@ namespace SIMS.ViewModel.Doctor
                     joinAppointmentViewModel = new JoinAppointmentViewModel();
                     CurrentViewModel = joinAppointmentViewModel;
                     break;
+                case "MedicineValidateView":
+                    CurrentViewModel = medicineValidationViewModel;
+                    break;
             }
         }
 
@@ -76,8 +80,8 @@ namespace SIMS.ViewModel.Doctor
                 case "daysOff":
                     CurrentViewModel = daysOffRequestViewModel;
                     break;
-                case "student":
-                    //CurrentViewModel = studentViewModel;
+                case "MedicineValidationView":
+                    CurrentViewModel = medicineValidationViewModel;
                     break;
             }
         }

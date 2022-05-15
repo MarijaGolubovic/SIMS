@@ -157,6 +157,7 @@
     <Compile Include="ViewModel\Doctor\DetailedAppointmentViewModel.cs" />
     <Compile Include="ViewModel\Doctor\JoinAppointmentViewModel.cs" />
     <Compile Include="ViewModel\Doctor\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\MedicineValidationViewModel.cs" />
     <Compile Include="View\DoctorMVVM\AddTherapyView.xaml.cs">
       <DependentUpon>AddTherapyView.xaml</DependentUpon>
     </Compile>
@@ -174,6 +175,9 @@
     </Compile>
     <Compile Include="View\DoctorMVVM\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\MedicineValidationView.xaml.cs">
+      <DependentUpon>MedicineValidationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Doctor\AddAppointmentPage.xaml.cs">
       <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
@@ -322,6 +326,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorMVVM\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\MedicineValidationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

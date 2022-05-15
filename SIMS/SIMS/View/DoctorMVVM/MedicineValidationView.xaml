@@ -4,9 +4,80 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:data="clr-namespace:SIMS.Model"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="742" d:DesignWidth="1290">
+
+    <UserControl.DataContext>
+        <viewModel:MedicineValidationViewModel/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type data:Medicine}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Name}" Width="150" FontSize="17"/>
+                <ComboBox ItemsSource="{Binding Path=Ingredients, Mode=OneWay}" Width="200" Margin="100,0,0,0" SelectedIndex="0"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   Grid.Column="0"
+                   Text="Validacija lijekova" 
+                   FontFamily="Fonts/#Orbitron medium"
+                   FontSize="40" 
+                   Margin="130,90,0,50"/>
+
+        <TextBlock Grid.Row="1" 
+                   Grid.Column="0"
+                   Text="Tabela sa svim lijekovima koje je neophodno validirati" 
+                   FontFamily="Fonts/#Roboto Light"
+                   FontSize="25" Margin="125,0,0,0"
+                   />
+
+        <ListView Grid.Row="2"
+                  ItemsSource="{Binding Medicines}" 
+                  SelectedItem="{Binding SelectedMedicine}"
+                  Margin="130,20,0,0"
+                  Width="Auto"
+                  Height="250"
+                  HorizontalAlignment="Left"
+                  Background="CadetBlue"/>
+
+        <Button Content="Završi" 
+                Grid.Column="0"
+                Grid.Row="13"
+                Width="70" 
+                Height="30" Margin="-170,60,0,0"
+                Command="{Binding FinishCommand}"/>
+
+        <Button Content="Vrati upravniku" 
+                Grid.Column="0"
+                Grid.Row="3"
+                Width="70" 
+                Height="30" 
+                Margin="-370,60,0,0"
+                Command="{Binding BackCommand}"/>
+        
+        <Button Content="Validiraj" 
+                Grid.Column="0"
+                Grid.Row="3"
+                Width="70" 
+                Height="30" 
+                Margin="-570,60,0,0"
+                Command="{Binding ValidateCommand}"/>
+
     </Grid>
 </UserControl>

@@ -24,6 +24,10 @@ namespace SIMS.Controller
         {
             return medicineService.GetAllWithStatusOnHold();
         }
+        public bool Delete(Medicine medicine)
+        {
+            return medicineService.Delete(medicine);
+        }
 
         public List<Medicine> GetAllWithStatusValid()
         {
@@ -32,6 +36,16 @@ namespace SIMS.Controller
         public Medicine GetOne(string name)
         {
             return medicineService.GetOne(name);
+        }
+
+        public bool Create(Medicine medicine)
+        {
+            return medicineService.Create(medicine);
+        }
+        public void ChangeMedicineStatus(Medicine medicine)
+        {
+
+            medicineService.ChangeMedicineStatus(medicine);
         }
     }
 }

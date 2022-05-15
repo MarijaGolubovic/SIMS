@@ -23,7 +23,11 @@ namespace SIMS.Model
 
         public string[] toCSV()
         {
-            string[] csvValues = { Name, MedicineStatus.ToString() };
+            string[] csvValues = new string[Ingredients.Count +2];
+
+            csvValues[0] = Name;
+            csvValues[1] = MedicineStatus.ToString();
+
 
             int i = 2;
             foreach (String s in Ingredients)
@@ -38,6 +42,10 @@ namespace SIMS.Model
 
         public void fromCSV(string[] values)
         {
+            if (values[0].Equals("")) 
+            {
+                return;
+            }
             Name = values[0];
             MedicineStatus = (MedicineStatus)Enum.Parse(typeof(MedicineStatus), values[1]);
 

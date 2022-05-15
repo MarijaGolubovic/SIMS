@@ -46,5 +46,20 @@ namespace SIMS.Service
         {
             return medicineStorage.GetOne(name);
         }
+
+        public bool Create(Medicine medicine)
+        {
+            return medicineStorage.Create(medicine);
+        }
+        public bool Delete(Medicine medicine)
+        {
+            return medicineStorage.Delete(medicine);
+        }
+
+        public void ChangeMedicineStatus(Medicine medicine)
+        {
+
+            medicineStorage.ChangeMedicineStatus(medicine);
+        }
     }
 }

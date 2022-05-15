@@ -32,18 +32,42 @@ namespace SIMS.Repository
 
         }
 
-        public Boolean Delete(int name)
+        public Boolean Delete(Medicine medicine)
         {
-            throw new NotImplementedException();
+            List<Medicine> medicines = GetAll();
+            medicines.Remove(medicine);
+            Serialization.Serializer<Medicine> medicineSerializer = new Serialization.Serializer<Medicine>();
+            medicineSerializer.toCSV("medicine.txt", medicines);
+            return true;
         }
-        public static Boolean Create(Medicine medicine)
+        public Boolean Create(Medicine medicine)
         {
-            throw new NotImplementedException();
+            List<Medicine> medicines = GetAll();
+            medicines.Add(medicine);
+            Serialization.Serializer<Medicine> medicineSerializer = new Serialization.Serializer<Medicine>();
+            medicineSerializer.toCSV("medicine.txt", medicines);
+            return true;
         }
 
         public Boolean Update(Medicine medicine)
         {
             throw new NotImplementedException();
+        }
+
+        public void ChangeMedicineStatus(Medicine medicine)
+        {
+            List<Medicine> medicines = GetAll();
+            foreach (Medicine med in medicines)
+            {
+                if (med.Name.Equals(medicine.Name))
+                {
+                    med.MedicineStatus = MedicineStatus.Valid;
+                }
+            }
+
+            Serialization.Serializer<Medicine> medicineSerializer = new Serialization.Serializer<Medicine>();
+            medicineSerializer.toCSV("medicine.txt", medicines);
+
         }
 
         public String fileName;
