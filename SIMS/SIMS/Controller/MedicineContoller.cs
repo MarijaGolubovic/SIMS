@@ -20,6 +20,15 @@ namespace SIMS.Controller
             return medicineService.GetAll();
         }
 
+        public List<Medicine> GetAllWithStatusOnHold()
+        {
+            return medicineService.GetAllWithStatusOnHold();
+        }
+
+        public List<Medicine> GetAllWithStatusValid()
+        {
+            return medicineService.GetAllWithStatusValid();
+        }
         public Medicine GetOne(string name)
         {
             return medicineService.GetOne(name);

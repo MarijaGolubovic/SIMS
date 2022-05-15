@@ -35,11 +35,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
     </Reference>
+    <Reference Include="Rh.DateRange.Picker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rh.DateRange.Picker.1.0.0\lib\net40\Rh.DateRange.Picker.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,10 +88,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BindableBase.cs" />
     <Compile Include="Controller\AllergyController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\CityController.cs" />
     <Compile Include="Controller\CountryController.cs" />
+    <Compile Include="Controller\DaysOffRequestController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\DiagnosisController.cs" />
@@ -90,15 +110,19 @@
     <Compile Include="Model\AllergyDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\DaysOffRequest.cs" />
+    <Compile Include="Model\MedicineStatus.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\Notificatoin.cs" />
+    <Compile Include="Model\RequestStatus.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
     <Compile Include="MyICommand.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\DaysOffRequestStorage.cs" />
     <Compile Include="Repository\EquipmentStorage.cs" />
     <Compile Include="Model\Diagnosis.cs" />
     <Compile Include="Model\PatientForAddAppointmentDTO.cs" />
@@ -114,6 +138,7 @@
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\CityService.cs" />
     <Compile Include="Service\CountryService.cs" />
+    <Compile Include="Service\DaysOffRequestService.cs" />
     <Compile Include="Service\DoctorService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\DiagnosisService.cs" />
@@ -126,6 +151,30 @@
     <Compile Include="Service\SpecializationsService.cs" />
     <Compile Include="Service\TherapyService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="ViewModel\Doctor\AddTherapyViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\AllAppointmentsViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\DaysOffRequestViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\DetailedAppointmentViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\JoinAppointmentViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\MainWindowViewModel.cs" />
+    <Compile Include="View\DoctorMVVM\AddTherapyView.xaml.cs">
+      <DependentUpon>AddTherapyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\AllAppointmentsView.xaml.cs">
+      <DependentUpon>AllAppointmentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\DaysOffRequestView.xaml.cs">
+      <DependentUpon>DaysOffRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\DetailedAppointmentView.xaml.cs">
+      <DependentUpon>DetailedAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\JoinAppointmentView.xaml.cs">
+      <DependentUpon>JoinAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Doctor\AddAppointmentPage.xaml.cs">
       <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
     </Compile>
@@ -220,12 +269,6 @@
     <Compile Include="View\Sekretar\Nalozi.xaml.cs">
       <DependentUpon>Nalozi.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Doctor\AllAppointmentsWindow.xaml.cs">
-      <DependentUpon>AllAppointmentsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Doctor\EditAppointmentWindow.xaml.cs">
-      <DependentUpon>EditAppointmentWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\AddRoomWindow.xaml.cs">
       <DependentUpon>AddRoomWindow.xaml</DependentUpon>
     </Compile>
@@ -252,9 +295,34 @@
     <Compile Include="View\Sekretar\NewPatientView.xaml.cs">
       <DependentUpon>NewPatientView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VML\ViewModelLocator.cs" />
     <Page Include="Templates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DoctorMVVM\AddTherapyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\AllAppointmentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\DaysOffRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\DetailedAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\JoinAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Doctor\AddAppointmentPage.xaml">
       <SubType>Designer</SubType>
@@ -268,19 +336,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Doctor\AllAppointmentsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Doctor\DetailedAppointmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Doctor\EditAppointmentPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Doctor\EditAppointmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -525,6 +585,9 @@
     <Resource Include="Assets\edit_room.png" />
     <Resource Include="Assets\delete_room.png" />
     <Resource Include="Assets\select_room_image.png" />
+    <Resource Include="Assets\drugs.png" />
+    <Resource Include="Assets\max_def.png" />
+    <Resource Include="Assets\max_mo.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -562,11 +625,9 @@
     <Resource Include="Assets\ordering.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\Doctor\" />
     <Folder Include="ViewModel\Menager\" />
     <Folder Include="ViewModel\Pacijent\" />
     <Folder Include="ViewModel\Sekretar\" />
-    <Folder Include="VML\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,6 +20,28 @@ namespace SIMS.Service
             return medicineStorage.GetAll();
         }
 
+        public List<Medicine> GetAllWithStatusOnHold() 
+        {
+            List<Medicine> medicines = new List<Medicine>();
+            foreach(Medicine med in GetAll())
+            {
+                if(med.MedicineStatus.Equals(MedicineStatus.OnHold))
+                    medicines.Add(med);
+            }
+            return medicines;
+        }
+
+        public List<Medicine> GetAllWithStatusValid()
+        {
+            List<Medicine> medicines = new List<Medicine>();
+            foreach (Medicine med in GetAll())
+            {
+                if (med.MedicineStatus.Equals(MedicineStatus.Valid))
+                    medicines.Add(med);
+            }
+            return medicines;
+        }
+
         public Medicine GetOne(string name)
         {
             return medicineStorage.GetOne(name);

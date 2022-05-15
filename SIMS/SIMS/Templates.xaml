@@ -297,7 +297,7 @@
 
 
     <!--// Maximize / Minimize App Button Style //-->
-
+    
     <ImageBrush x:Key="max_def"
                 ImageSource="Assets/max_def.png"
                 Stretch="None" />
@@ -305,7 +305,7 @@
     <ImageBrush x:Key="max_mo"
                 ImageSource="Assets/max_mo.png"
                 Stretch="None" />
-
+    
     <Style x:Key="MaxBtnStyle"
            TargetType="{x:Type Button}">
 

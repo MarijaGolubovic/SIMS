@@ -45,13 +45,13 @@
             <!--// Menu Panel //-->
 
             <StackPanel Background="#FF28579A"
-                        Height="480"
+                        Height="560"
                         Width="260"
                         Orientation="Vertical"
                         HorizontalAlignment="Left"
                         DockPanel.Dock="Left">
 
-                <Menu Height="480"
+                <Menu Height="560"
                       Background="Transparent">
 
                     <Menu.ItemsPanel>
@@ -234,6 +234,16 @@
 
                     </MenuItem>
 
+                    <MenuItem Header="Verifikacija"
+                              Template="{StaticResource Menu_Template}">
+
+                        <MenuItem.Icon>
+                            <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\drugs.png"
+                                   Stretch="None" />
+                        </MenuItem.Icon>
+
+                    </MenuItem>
+                    
                     <MenuItem Header="Ankete"
                               Template="{StaticResource Menu_Template}">
 
