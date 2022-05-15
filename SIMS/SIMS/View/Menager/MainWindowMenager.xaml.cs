@@ -10,7 +10,7 @@ namespace SIMS.Menager
     public partial class MainWindowMenager : Window
     {
         public static Frame frame { get; set; }
-        private Frame _mainFrame;
+        public static Frame _mainFrame;
         public MainWindowMenager()
         {
             InitializeComponent();
@@ -46,16 +46,18 @@ namespace SIMS.Menager
 
         private void MenuItemRoomDelete_Click(object sender, RoutedEventArgs e)
         {
-            SIMS.Menager.DeleteRoom deleteRoom = new SIMS.Menager.DeleteRoom();
-            deleteRoom.Show();
-            this.Close();
+            // SIMS.Menager.DeleteRoom deleteRoom = new SIMS.Menager.DeleteRoom();
+            //deleteRoom.Show();
+            //this.Close();
+            _mainFrame.NavigationService.Navigate(new DeleteRoom());
         }
 
         private void MenuItemRoomRenovate_Click(object sender, RoutedEventArgs e)
         {
-            View.Menager.RenovateWindow renovateWindow = new View.Menager.RenovateWindow();
-            renovateWindow.Show();
-            this.Close();
+            // View.Menager.RenovateWindow renovateWindow = new View.Menager.RenovateWindow();
+            // renovateWindow.Show();
+            //this.Close();
+            _mainFrame.NavigationService.Navigate(new View.Menager.RenovateWindow());
         }
     }
 }

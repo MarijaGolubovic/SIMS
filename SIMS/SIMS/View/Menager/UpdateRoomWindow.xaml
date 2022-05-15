@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
         Title="Hello Clinic" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="-2,0,2,0">
 
-        <Grid Margin="0,24,0,60" >
-            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGridUpdate_MouseDoubleClick"  Margin="0,0,0,25">
+        <Grid Margin="0,100,0,113" >
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="32,0,29,10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -18,9 +18,15 @@
 
             </DataGrid>
         </Grid>
+        <Label  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="344,21,283,377" FontWeight="Black" Width="173" Height="52">Update room</Label>
+        <Image RenderTransformOrigin="0.482,0.735" Margin="275,22,456,377">
+            <Image.Source >
+                <BitmapImage  UriSource="/Assets/edit_room.png"  />
+            </Image.Source>
+        </Image>
 
-        <Button x:Name="UpdateBack" Width="100" Height="24" Margin="584,365,108,0" Content="BACK" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722"/>
-
-
+        <Button x:Name="UpdateBack" Width="80" Height="24" Margin="694,366,26,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+        <Button x:Name="UpdateOK" Width="80" Height="24" Margin="587,367,133,0" Content="OK" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+        <Button RenderTransformOrigin="0.481,2.588" Margin="28,366,672,59" Background="MintCream" Height="25" Width="100">TUTORIAL</Button>
     </Grid>
 </Page>

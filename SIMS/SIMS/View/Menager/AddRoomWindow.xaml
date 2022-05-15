@@ -9,25 +9,26 @@
 
     <Grid>
         <Grid Margin="0,43,0,140">
-            <Image Source="/Assets/plus.png" Height="40" Width="40" Focusable="False" Margin="370,29,540,348" RenderTransformOrigin="0.475,-0.151"/>
+            <Image Source="/Assets/plus.png" Height="56"  Focusable="False" Margin="330,26,580,335" RenderTransformOrigin="0.475,-0.151"/>
             <Label Name="Label1"  
                     Content="Add room" Height="40"  
                     FontSize="25"  
-                    FontWeight="Bold" Margin="415,29,394,348"
+                    FontWeight="Bold" Margin="393,26,416,351" RenderTransformOrigin="0.476,0.765"
              />
             <Label Content="Room ID:" Margin="231,106,611,281" RenderTransformOrigin="0.968,0.268" FontSize="18"/>
-            <TextBox x:Name="IDInput" Width="200" Height="30" Margin="370,106,380,281" Text="" />
+            <TextBox x:Name="IDInput" Height="30" Margin="370,106,355,281" Text="" Background="MintCream"/>
             <Label Content="Size:" Margin="231,150,603,229" RenderTransformOrigin="1.019,0.565" FontSize="18"/>
-            <TextBox x:Name="SizeInput" Width="200" Height="30" Margin="370,158,380,229" Text=""/>
+            <TextBox x:Name="SizeInput" Height="30" Margin="370,158,355,229" Text="" Background="MintCream"/>
             <Label Content="Type:" Margin="231,201,634,180" RenderTransformOrigin="0.418,2.509" FontSize="18"/>
-            <ComboBox Margin="370,210,380,180" x:Name="comboboxField" SelectionChanged="comboboxField_SelectionChanged" >
+            <ComboBox Margin="370,210,355,180" x:Name="comboboxField" SelectionChanged="comboboxField_SelectionChanged" Background="MintCream">
                 <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
                 <ComboBoxItem IsSelected="True">EXAMINATION ROOM</ComboBoxItem>
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button Width="80" Height="25" Content="OK" Margin="564,252,306,43" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467" IsDefault="True"/>
-            <Button Width="80" Height="25" Content="CANCEL" Margin="696,252,174,43" Click="Button_Click_CANCEL" IsCancel="True"/>
+            <Button Width="80" Height="25" Content="OK" Margin="647,300,223,91" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467" IsDefault="True" Background="MintCream"/>
+            <Button Width="80" Height="25" Content="CANCEL" Margin="754,300,116,91" Click="Button_Click_CANCEL" IsCancel="True" Background="MintCream" RenderTransformOrigin="0.785,0.383"/>
+            <Button Width="100" Height="25" Content="TUTORIAL"  Click="Button_Click_CANCEL"  Background="MintCream" Margin="88,300,762,91"/>
         </Grid>
     </Grid>
 </Page>

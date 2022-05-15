@@ -147,6 +147,9 @@
     <Compile Include="View\Doctor\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
+      <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
       <DependentUpon>EqupmentPanel.xaml</DependentUpon>
     </Compile>
@@ -162,8 +165,14 @@
     <Compile Include="View\Menager\RenovateWindow.xaml.cs">
       <DependentUpon>RenovateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Rooms.xaml.cs">
       <DependentUpon>Rooms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\SuccesfullyUpdate.xaml.cs">
+      <DependentUpon>SuccesfullyUpdate.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
@@ -283,6 +292,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\DeleteSuccesfully.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\EqupmentPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -303,7 +316,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\SuccesfullyUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -472,6 +493,9 @@
     <Resource Include="Assets\move.png" />
     <Resource Include="Assets\show.png" />
     <Resource Include="Assets\plus.png" />
+    <Resource Include="Assets\renovate_room.png" />
+    <Resource Include="Assets\edit_room.png" />
+    <Resource Include="Assets\delete_room.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

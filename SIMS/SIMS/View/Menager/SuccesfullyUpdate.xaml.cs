@@ -1,20 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Menager;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace SIMS.Menager
+namespace SIMS.View.Menager
 {
     /// <summary>
-    /// Interaction logic for UpdateRoomWindow.xaml
+    /// Interaction logic for SuccesfullyUpdate.xaml
     /// </summary>
-    public partial class UpdateRoomWindow : Page
+    /// 
+    public partial class SuccesfullyUpdate : Page
     {
         public static ObservableCollection<Model.Room> Rooms { get; set; }
         public static Model.Room selectedRoom;
         public static int indexSelected = -1;
-        public UpdateRoomWindow()
+        public SuccesfullyUpdate()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -28,8 +40,6 @@ namespace SIMS.Menager
                 Rooms.Add(roomItem);
             }
         }
-
-
 
         private void UpdateBack_Click(object sender, RoutedEventArgs e)
         {

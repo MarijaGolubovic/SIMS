@@ -18,7 +18,7 @@ namespace SIMS.View.Menager
     /// <summary>
     /// Interaction logic for RenovateWindow.xaml
     /// </summary>
-    public partial class RenovateWindow : Window
+    public partial class RenovateWindow : Page
     {
         public  static ObservableCollection<Model.Room> RoomRenovate { get; set; }
         public static Model.Room selectedRoom;
@@ -47,27 +47,21 @@ namespace SIMS.View.Menager
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
-            SIMS.Menager.MainWindowMenager mainWindowMenager = new SIMS.Menager.MainWindowMenager();
-            mainWindowMenager.Show();
-            this.Close();
+            //SIMS.Menager.MainWindowMenager mainWindowMenager = new SIMS.Menager.MainWindowMenager();
+            //mainWindowMenager.Show();
+            // this.Close();
+            this.NavigationService.Navigate(new Report());
         }
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
-            Menager.RenovateForm renovateForm = new RenovateForm();
-            renovateForm.Show();
-            this.Close();
-        }
-
-       
-
-        private void dataGridRenovate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
+            // Menager.RenovateForm renovateForm = new RenovateForm();
+            //renovateForm.Show();
+            //this.Close();
             selectedRoom = (Model.Room)dataGridRenovate.SelectedItem;
             indexSelected = dataGridRenovate.SelectedIndex;
-            Menager.RenovateForm renovateForm = new Menager.RenovateForm();
-            renovateForm.Show();
-            this.Close();
+
+            this.NavigationService.Navigate(new RenovateForm());
         }
     }
 }

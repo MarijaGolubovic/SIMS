@@ -1,20 +1,30 @@
-﻿using SIMS.Model;
+﻿using SIMS.Menager;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace SIMS.Menager
+namespace SIMS.View.Menager
 {
     /// <summary>
-    /// Interaction logic for DeleteRoom.xaml
+    /// Interaction logic for DeleteSuccesfully.xaml
     /// </summary>
-    public partial class DeleteRoom : Page
+    public partial class DeleteSuccesfully : Page
     {
         public static ObservableCollection<Model.Room> Rooms { get; set; }
-        public DeleteRoom()
+        public DeleteSuccesfully()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -29,7 +39,6 @@ namespace SIMS.Menager
             }
         }
 
-
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new View.Menager.Report());
@@ -37,16 +46,16 @@ namespace SIMS.Menager
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
-            
-                    Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
-                    List<Room> rooms = roomSerializer.fromCSV("Room.txt");
-                    
+
+            Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
+            List<Room> rooms = roomSerializer.fromCSV("Room.txt");
 
 
 
-                    Rooms.Remove((Room)dataGridRooms.SelectedItem);
-                    roomSerializer.toCSV("Room.txt", Rooms.ToList());
-                    this.NavigationService.Navigate(new RoomsList());
+
+            Rooms.Remove((Room)dataGridRooms.SelectedItem);
+            roomSerializer.toCSV("Room.txt", Rooms.ToList());
+            this.NavigationService.Navigate(new RoomsList());
 
             //  Menager.MainWindowMenager mainWindow = new MainWindowMenager();
             // mainWindow.Show();
@@ -54,14 +63,6 @@ namespace SIMS.Menager
 
             HiddenDeleteLabel.Visibility = Visibility.Visible;
             this.NavigationService.Navigate(new View.Menager.DeleteSuccesfully());
-                    
-
-
-            
-        }
-
-        private void Button_Click_TUTORIJAL(object sender, RoutedEventArgs e)
-        {
 
         }
     }

@@ -37,7 +37,7 @@ namespace SIMS.View.Menager
             
             InitializeComponent();
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
-            List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
+            List<Model.Room> rooms = roomSerializer.fromCSV("RoomEqupment.txt");
             List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
             
            // roomItemId = roomIdChoose1.Text;

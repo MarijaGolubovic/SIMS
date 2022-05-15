@@ -70,14 +70,16 @@ namespace SIMS.Menager
             roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
 
             Menager.RoomsList roomList = new Menager.RoomsList();
-            roomList.Show();
+            // roomList.Show();
             //this.Close();
+            this.NavigationService.Navigate(new RoomsList());
         }
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
             Menager.MainWindowMenager mainWindow = new MainWindowMenager();
-            mainWindow.Show();
+            // mainWindow.Show();
+            this.NavigationService.Navigate(new View.Menager.Report());
            // this.Close();
 
         }
