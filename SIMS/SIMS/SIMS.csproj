@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks.Material, Version=2.3.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.Material.2.3.0\lib\net46\MahApps.Metro.IconPacks.Material.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,6 +91,7 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AllergyDTO.cs" />
+    <Compile Include="Model\AppointmentForPatientDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
@@ -112,6 +122,7 @@
     <Compile Include="Service\DiagnosisService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
+    <Compile Include="Service\NotificationService.cs" />
     <Compile Include="Service\OccupacyRoomService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RoomEquipmentServices.cs" />
@@ -168,6 +179,21 @@
       <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Repository\DoctorSpecialization.cs" />
+    <Compile Include="View\Pacijent\AddAppointmentPage.xaml.cs">
+      <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\Appointments.xaml.cs">
+      <DependentUpon>Appointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\EditAppointmentPage.xaml.cs">
+      <DependentUpon>EditAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\SuggestedAppointments.xaml.cs">
+      <DependentUpon>SuggestedAppointments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sekretar\AppointmentView.xaml.cs">
       <DependentUpon>AppointmentView.xaml</DependentUpon>
     </Compile>
@@ -216,9 +242,6 @@
     <Compile Include="View\Menager\RoomsList.xaml.cs">
       <DependentUpon>RoomsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pacijent\AddAppointment.xaml.cs">
-      <DependentUpon>AddAppointment.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Pacijent\AllAppointments.xaml.cs">
       <DependentUpon>AllAppointments.xaml</DependentUpon>
     </Compile>
@@ -230,6 +253,10 @@
     <Compile Include="View\Sekretar\NewPatientView.xaml.cs">
       <DependentUpon>NewPatientView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resource\Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Templates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -322,7 +349,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Pacijent\AddAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\Appointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\EditAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pacijent\MainPatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\SuggestedAppointments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -377,10 +424,6 @@
     <Page Include="View\Menager\RoomsList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Pacijent\AddAppointment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pacijent\AllAppointments.xaml">
       <SubType>Designer</SubType>
@@ -445,6 +488,7 @@
     </EmbeddedResource>
     <Resource Include="Fonts\Orbitron-Medium.ttf" />
     <Resource Include="Fonts\Roboto-Light.ttf" />
+    <Resource Include="Fonts\Poppins-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -476,6 +520,11 @@
     <Resource Include="Assets\procurement.png" />
     <Resource Include="Assets\changePassword.png" />
     <Resource Include="Assets\hospital-doctor.png" />
+    <Resource Include="Assets\terapija.jpg" />
+    <Resource Include="Assets\terapija-removebg-preview.png" />
+    <Resource Include="Assets\pregled-removebg-preview.png" />
+    <Resource Include="Assets\pregled1-removebg-preview.png" />
+    <Resource Include="Assets\karton_prev_ui.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

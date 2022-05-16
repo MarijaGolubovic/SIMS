@@ -1,0 +1,118 @@
+﻿<Page x:Class="SIMS.View.Pacijent.AddAppointmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Pacijent"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddAppointmentPage" Background="Transparent">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,20,0,0" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="1.Odaberite zeljenog lekara:" 
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="White"
+                       FontSize="20"/>
+            <TextBlock Text="Odaberite lekara!" x:Name="DoctorLabel"
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="Purple"
+                       Visibility="Hidden"
+                       FontSize="15"/>
+        </StackPanel>
+        <StackPanel Margin="0,20,0,0" Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="2.Odaberite datum pregleda:" 
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="White"
+                       FontSize="20"/>
+            <TextBlock Text="Odaberite datum!" x:Name="DateLabel"
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="Purple"
+                       Visibility="Hidden"
+                       FontSize="15"/>
+        </StackPanel>
+        <StackPanel Margin="0,20,0,0" Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="3.Odaberite vreme pregleda:" 
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="White"
+                       FontSize="20"/>
+            <TextBlock Text="Odaberite vreme!" x:Name="TimeLabel"
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="Purple"
+                       Visibility="Hidden"
+                       FontSize="15"/>
+        </StackPanel>
+        <StackPanel Margin="0,20,0,0" Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="4.Odaberite prioritet:" 
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="White"
+                       FontSize="20"/>
+            <TextBlock Text="Odaberite prioritet!" x:Name="PriorityrLabel"
+                       FontFamily="/Fonts/#Poppins"
+                       Foreground="Purple"
+                       Visibility="Hidden"
+                       FontSize="15"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button Content="Potvrdi" FontFamily="/Fonts/#Poppins" FontSize="20" Click="Confirm" Style="{DynamicResource RoundedButtonStyle}" Background="#ff64ccf1" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox x:Name="DoctorComboBox" Width="150" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       DropDownClosed="DoctorComboBox_DropDownClosed"
+                      ItemsSource="{Binding Path=Doctors}"
+                      BorderThickness="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Username}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <DatePicker Name="DatePicker" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        LostFocus="DatePicker_LostFocus" CalendarClosed="DatePicker_CalendarClosed"
+                        Width="150" Height="25" BorderThickness="0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox x:Name="TimeComboBox" Width="150" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                      BorderThickness="0" 
+                      DropDownClosed="TimeComboBox_DropDownClosed">
+                <ComboBoxItem Content="08:00"/>
+                <ComboBoxItem Content="08:30"/>
+                <ComboBoxItem Content="09:00"/>
+                <ComboBoxItem Content="09:30"/>
+                <ComboBoxItem Content="10:00"/>
+                <ComboBoxItem Content="10:30"/>
+                <ComboBoxItem Content="11:00"/>
+                <ComboBoxItem Content="11:30"/>
+                <ComboBoxItem Content="12:00"/>
+                <ComboBoxItem Content="12:30"/>
+                <ComboBoxItem Content="13:00"/>
+                <ComboBoxItem Content="13:30"/>
+                <ComboBoxItem Content="14:00"/>
+                <ComboBoxItem Content="14:30"/>
+                <ComboBoxItem Content="15:00"/>
+                <ComboBoxItem Content="15:30"/>
+            </ComboBox>
+        </StackPanel>
+        <RadioButton x:Name="DoctorPriority" Content="Lekar" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70,0,0,0" Foreground="White"
+                     BorderThickness="0"/>
+        <RadioButton x:Name="DatePriority" Content="Termin" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40,0,0,0" Foreground="White"
+                     BorderThickness="0"/>
+    </Grid>
+</Page>

@@ -65,10 +65,12 @@ namespace SIMS.View.Sekretar
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Appointment a in appointmentController.findSuggestedAppointments(lekarCombobox.SelectedItem as SIMS.Model.Doctor, true, false, DateTime.Parse(datum.Text)))
+            //ovdje prosljedjujem pacijenta za kojeg se kreira termin
+            Patient patient = (Patient)pacijentCombobox.SelectedItem;
+            /*foreach (Appointment a in appointmentController.findSuggestedAppointments(lekarCombobox.SelectedItem as SIMS.Model.Doctor, true, false, DateTime.Parse(datum.Text),patient))
             {
                 Appointments.Add(a);
-            }
+            }*/
 
 
         }

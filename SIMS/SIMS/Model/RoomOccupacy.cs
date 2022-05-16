@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
-    class RoomOccupacy: Serialization.Serializable
+    public class RoomOccupacy: Serialization.Serializable
     {
-        private String _IDRoom;
-        private DateTime _Begin;
-        private DateTime _End;
-        private String _Reason;
+        //private String _IDRoom;
+        //private DateTime _Begin;
+        //private DateTime _End;
+        //private String _Reason;
 
         public String IDRoom { get; set; }
         public DateTime Begin { get; set; }

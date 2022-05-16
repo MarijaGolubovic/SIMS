@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Pacijent" HorizontalAlignment="Left" Margin="61,168,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Patient"/>
 
         <Button Content="Sekretar" HorizontalAlignment="Left" Margin="61,267,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Secretary"/>
 
