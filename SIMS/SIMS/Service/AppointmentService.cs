@@ -10,6 +10,11 @@ namespace SIMS.Service
         private AppointmentStorage storage;
         private RoomService roomService { get; set; }
         private readonly PatientService patientService = new PatientService();
+        private readonly DoctorService doctorService = new DoctorService();
+        private readonly OccupacyRoomService occupacyRoomService = new OccupacyRoomService();
+        private List<Appointment> suggestedAppointments = new List<Appointment>();
+        private List<Appointment> allAppointments = AppointmentStorage.GetAll();
+        private List<Appointment> rangeList = new List<Appointment>();
 
         public AppointmentService()
         {
@@ -31,74 +36,143 @@ namespace SIMS.Service
             return storage.Create(appointment);
         }
 
-        public List<Appointment> findSuggestedAppointments(Model.Doctor doctorTmp, bool doctorPriority, bool appointemntPriority, DateTime dateTimeTmp)
+        public bool Create(Appointment appointment, RoomOccupacy roomOccupacy)
         {
-            List<Appointment> suggestedAppointments = new List<Appointment>();
-            List<Appointment> allAppointments = AppointmentStorage.GetAll();
-            List<Appointment> rangeList = new List<Appointment>();
+            occupacyRoomService.Create(roomOccupacy);
+            return storage.Create(appointment);
+        }
 
-            Appointment appointment = new Appointment(dateTimeTmp, 1, roomService.GetOne("o1"), patientService.GetOne("2212010103158"), doctorTmp);
-
-            //petlja koja provjerava da li je zeljeni termin slobodan
-            //isAvailable()
-            bool free = true;
+        public bool CheckIfAvailable(AppointmentForPatientDTO appointmentDTO)
+        {
+            bool availability = true;
             foreach (Appointment a in allAppointments)
             {
-                if (a.DateAndTime.Equals(dateTimeTmp))
+                if (a.DateAndTime.Equals(appointmentDTO.DateTime))
                 {
-                    if (a.Doctor.Username.Equals(doctorTmp.Username))
+                    if (a.Doctor.Username.Equals(appointmentDTO.Doctor.Username))
                     {
-                        free = false;
+                        availability = false;
                     }
                 }
             }
-            if (free == true)
+            return availability;
+        }
+
+        public int GenerateAppointmentID()
+        {
+            Random rnd = new Random();
+            int id = rnd.Next(0, 1000);
+
+            return id;
+        }
+
+        public DateTime FormStartDateTime(DateTime dateTime)
+        {
+            string date = dateTime.ToString().Split(' ')[0];
+            DateTime tmp = DateTime.Parse(date + " " + "08:00");
+            return tmp;
+        }
+
+        public List<Appointment> PotentialAppointmentsByDoctor(AppointmentForPatientDTO appointmentDTO)
+        {
+            List<Appointment> potentialAppointments = new List<Appointment>();
+            for (int i = 0; i<= 5; i++)
             {
-                suggestedAppointments.Add(appointment);
-                storage.Create(appointment);
+                for (int j = 0; j<= 16; j++) 
+                {
+                    Room room = FindRoomForAppointment(appointmentDTO);
+                    Appointment appointment = new Appointment(FormStartDateTime(appointmentDTO.DateTime).AddMinutes(j*30).AddDays(i), GenerateAppointmentID(), room, patientService.GetOne(appointmentDTO.User.Person.JMBG), appointmentDTO.Doctor);
+                    potentialAppointments.Add(appointment);
+                }
+            }
 
+            return potentialAppointments;
+        }
 
-                return suggestedAppointments;
+        public List<Appointment> PotentialAppointmentsByDate(AppointmentForPatientDTO appointmentDTO)
+        {
+            List<Appointment> potentialAppointments = new List<Appointment>();
+            foreach (Model.Doctor d in doctorService.GetAll())
+            {
+                for (int j = 0; j <= 16; j++)
+                {
+                    Room room = FindRoomForAppointment(appointmentDTO);
+                    Appointment appointment = new Appointment(FormStartDateTime(appointmentDTO.DateTime).AddMinutes(j * 30), GenerateAppointmentID(), room, patientService.GetOne(appointmentDTO.User.Person.JMBG), d);
+                    potentialAppointments.Add(appointment);
+                }
+            }
+            return potentialAppointments;
+        }
+
+        public List<Appointment> FindSuggestedAppointments(AppointmentForPatientDTO appointmentDTO)
+        {
+            List<Appointment> suggestedAppointments = new List<Appointment>();
+            if (appointmentDTO.Priority)
+            {
+                suggestedAppointments = PotentialAppointmentsByDoctor(appointmentDTO);
             }
             else
             {
-                //napisati metodu koja trazi poprioritetima termine
-                //suggestedAppointments()  
-                if (doctorPriority == true)  //ako je doktor prioritet
+                suggestedAppointments = PotentialAppointmentsByDate(appointmentDTO);
+            }
+            foreach (Appointment tmp1 in GetAll())
+            {
+                foreach (Appointment tmp2 in suggestedAppointments)
                 {
-                    for (int i = 1; i <= 5; i++)
+                    if (tmp1.DateAndTime.Equals(tmp2.DateAndTime))
                     {
-                        //ubacujem skorasnje termine koje cu provjeriti da li su slobodni
-                        Appointment tmp = new Appointment(dateTimeTmp.AddDays(i), 1, roomService.GetOne("o1"), patientService.GetOne("2212010103158"), doctorTmp);
-                        rangeList.Add(tmp);
-                    }
-                    bool free1 = true;
-                    foreach (Appointment a in allAppointments)
-                    {
-                        foreach (Appointment r in rangeList)
+                        if (tmp1.Doctor.Equals(tmp2.Doctor))
                         {
-                            if (a.DateAndTime.Equals(r.DateAndTime))
-                            {
-                                if (a.Doctor.Equals(r.Doctor))
-                                {
-                                    rangeList.Remove(r);
-                                }
-                            }
+                            suggestedAppointments.Remove(tmp2);
                         }
                     }
-                    return rangeList;                 //u rangeList ostanu termini koje treba ponuditi
                 }
-                else                        // ako je termin prioritet
-                {
-
-                }
-
             }
+
             return suggestedAppointments;
+        }
+
+        public RoomOccupacy FormRoomOccupacyFromAppointment(Appointment appointment)
+        {
+            RoomOccupacy roomOccupacy = new RoomOccupacy(appointment.Room.Id, appointment.DateAndTime, appointment.DateAndTime.AddMinutes(30), "appointment");
+            return roomOccupacy;
+        }
+
+        public Room FindRoomForAppointment(AppointmentForPatientDTO appointmentDTO)
+        {
+            List<Room> examinationRooms = roomService.GetByType(RoomType.EXAMINATION_ROOM);
+            List<RoomOccupacy> roomOccupacies = new List<RoomOccupacy>();
+            List<RoomOccupacy> allRoomOccupacies = occupacyRoomService.GetAll();
+            foreach (Room r in examinationRooms)
+            {
+                roomOccupacies.Add(new RoomOccupacy(r.Id,appointmentDTO.DateTime,appointmentDTO.DateTime.AddMinutes(30),"appointment"));
+            }            
+
+            for (int i= 0; i< roomOccupacies.Count; i++)
+            {
+                foreach (RoomOccupacy ro in allRoomOccupacies)
+                {
+                    if (roomOccupacies[i].IDRoom == ro.IDRoom)
+                    {
+                        if ((DateTime.Compare(roomOccupacies[i].Begin, ro.Begin) <= 0) && (DateTime.Compare(ro.End, roomOccupacies[i].End) <= 0))
+                        {
+                            roomOccupacies.Remove(roomOccupacies[i]);
+                        }
+                    }
+                }
+            }
+            Room room = roomService.GetOne(roomOccupacies[0].IDRoom);
+            return room;
         }
 
         public Boolean Delete(int appointmentID)
         {
+            return storage.Delete(appointmentID);
+        }
+
+        public Boolean Delete(int appointmentID, RoomOccupacy room)
+        {
+            occupacyRoomService.Delete(room);
             return storage.Delete(appointmentID);
         }
 

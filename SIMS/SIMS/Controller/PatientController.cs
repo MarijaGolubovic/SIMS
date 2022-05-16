@@ -91,7 +91,6 @@ namespace SIMS.Controller
             return allergies;
 
         }
-
         public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
         {
             List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();

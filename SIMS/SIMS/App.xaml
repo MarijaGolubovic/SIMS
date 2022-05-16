@@ -4,12 +4,14 @@
              xmlns:local="clr-namespace:SIMS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="Templates.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+                <ResourceDictionary Source="Resource/Dictionary.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
 

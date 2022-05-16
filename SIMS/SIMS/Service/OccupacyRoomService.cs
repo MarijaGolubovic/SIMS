@@ -34,7 +34,7 @@ namespace SIMS.Service
                         occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
                         return "Room succesfully added to renovation list ";
                     }
-                }else
+                } else
                 {
                     roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
                     occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
@@ -83,6 +83,16 @@ namespace SIMS.Service
         public List<RoomOccupacy> GetAll()
         {
             return occupacyRoomStorage.GetAll();
+        }
+
+        public bool Create(RoomOccupacy roomOccupacy)
+        {
+            return occupacyRoomStorage.Create(roomOccupacy);
+        }
+
+        public Boolean Delete(RoomOccupacy roomOccupacy)
+        {
+            return occupacyRoomStorage.Delete(roomOccupacy);
         }
 
         public OccupacyRoomService()
