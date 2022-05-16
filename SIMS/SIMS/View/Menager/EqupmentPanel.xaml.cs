@@ -26,7 +26,7 @@ namespace SIMS.View.Menager
 
         private void Label_MouseDoubleClick_Moving(object sender, MouseButtonEventArgs e)
         {
-            Menager.MovingWindow movingWindow = new MovingWindow();
+            Menager.MoveEquipment movingWindow = new MoveEquipment();
             movingWindow.Show();
             this.Close();
         }

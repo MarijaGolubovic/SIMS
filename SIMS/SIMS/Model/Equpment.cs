@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
-    class Equpment: INotifyPropertyChanged, Serialization.Serializable
+    public class Equpment: INotifyPropertyChanged, Serialization.Serializable
     {
         public String Name
         {
@@ -23,6 +23,22 @@ namespace SIMS.Model
                 }
             }
         }
+
+        public String Id
+        {
+            get
+            { return _Id; }
+
+            set
+            {
+                if (value != _Id)
+                {
+                    _Id = value;
+                    OnPropertyChanged("Id");
+                }
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
@@ -48,15 +64,12 @@ namespace SIMS.Model
             }
         }
 
-        public static explicit operator Equpment(string v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Equpment(string name, int quantity)
+        
+        public Equpment(string name, int quantity, string id)
         {
             Name = name;
             Quantity = quantity;
+            Id = id;
         }
 
         public Equpment()
@@ -67,7 +80,8 @@ namespace SIMS.Model
         {
             string[] csvValues = {
                 Name,
-                Quantity.ToString()
+                Quantity.ToString(),
+                Id
 
             };
             return csvValues;
@@ -77,14 +91,13 @@ namespace SIMS.Model
         {
             Name = values[0];
             Quantity = int.Parse(values[1]);
+            Id = values[2];
         }
 
         String _Name;
         int _Quantity;
+        String _Id;
 
-        public static explicit operator Equpment(List<Equpment> v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

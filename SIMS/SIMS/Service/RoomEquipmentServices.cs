@@ -10,7 +10,7 @@ namespace SIMS.Service
     class RoomEquipmentServices
     {
         Repository.RoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
-
+        Repository.EquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
         public List<Model.RoomEqupment> GetAll()
         {
             return roomEquipment.GetAll();
@@ -31,74 +31,101 @@ namespace SIMS.Service
             return roomEquipment.Create(room);
         }
 
-        public String MovingRoomEqupment(Model.Room roomBegin,Model.Room roomEnd, List<Model.Equpment> equpments,String period, int quanitity)
-        {
-            List<Model.RoomEqupment> roomEqupmentsList = new List<Model.RoomEqupment>();
-            roomEqupmentsList = roomEquipment.GetAll();
-            String[] tokens = period.Split('-');
-            DateTime begin = DateTime.Parse(tokens[0]);
-            DateTime end = DateTime.Parse(tokens[1]);
+        
 
-            Serialization.Serializer<Model.RoomEqupment> roomSerijalization = new Serialization.Serializer<Model.RoomEqupment>();
-            
-            foreach (Model.RoomEqupment roomE in roomEqupmentsList)
+        public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination,string begin, string end)
+        { 
+        Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
+            List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
+            List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
+            Serialization.Serializer<Model.RoomEqupment> roomEquipmentSerializer = new Serialization.Serializer<Model.RoomEqupment>();
+
+            String[] beginToken  = begin.Split(';');
+            DateTime beginTime = DateTime.Parse(beginToken[0]);
+            String[] endToken = end.Split(';');
+            DateTime endTime = DateTime.Parse(endToken[0]);
+
+            String equpmentId="";
+            bool succesfullyMove=false;
+
+            foreach(Equpment equpmentItem in equipments)
             {
-                if (roomE.RoomId.Equals(roomBegin.Id))
+                if (Name.Equals(equpmentItem.Name))
                 {
-                    String time = roomE.Period;
-                    String[] token = time.Split('-');
-                    DateTime beginTime = DateTime.Parse(token[0]);
-                    DateTime endTime = DateTime.Parse(token[1]);
-                    if(DateTime.Compare(begin,beginTime)<=0 && DateTime.Compare(endTime, end) <= 0)
-                    {
-                        return "Equpment alredy reservet in this period";
-                    }else if (DateTime.Compare(end, begin) < 0)
-                    {
-                        return "Begin period must bi less than end ";
-                    }
-                    else
-                    {
-                        
-                        roomEqupmentsList.Add(new Model.RoomEqupment(roomEnd.Id, equpments, period));
-                        roomSerijalization.toCSV("RoomEquipment.txt",roomEqupmentsList);
-                        return "Equpment successfully moved";
+                    equpmentId = equpmentItem.Id;
+                }
+            }
+            foreach(RoomEqupment eqRoom in roomEquipments)
+            {
+                if (eqRoom.IdEquipment.Equals(equpmentId))
+                {
+                    equpmentId = eqRoom.IdEquipment;
+                }
+            }
+            if (!EndBeforeBegin(beginTime, endTime))
+            {
+                if (!EquipmentAlreadyOccupacy(equpmentId, beginTime, endTime))
+                {
+                    String movingPeriod = beginToken[0]+ ";" + endToken[0];
+                    roomEquipments.Add(new RoomEqupment(roomId, movingPeriod, equpmentId));
+                   // roomEquipmentSerializer.toCSV("RoomEquipment.txt", roomEquipments);
+                    succesfullyMove = true;
 
-                        if (roomBegin.Id.Equals(roomE.RoomId))
+                  /*  foreach (Equpment equpmentItem in equipments)
+                    {
+                        if (Name.Equals(equpmentItem.Name))
                         {
-                            
-                            
-
-                            foreach (Model.Equpment eq in equpments)
-                            {
-                                if (eq.Quantity < quanitity)
-                                {
-                                    return "Doesn't have enough eqvipment in this sale!";
-                                }
-                                else
-                                {
-
-                                    roomE.roomEquipment.Remove(eq);
-                                    eq.Quantity -= quanitity;
-
-                                }
-                            }
-                        }else if (roomEnd.Id.Equals(roomE.RoomId))
-                        {
-                            foreach (Model.Equpment eq in equpments)
-                            {
-                                roomE.roomEquipment.Remove(eq);
-                                eq.Quantity += quanitity;
-
-
-                            }
+                            equpmentItem.Quantity--;
                         }
                     }
-
+                  */
                 }
+            }
+            else
+            {
+                succesfullyMove = false;
             }
 
 
-            return "";
+            return succesfullyMove;
+
+        }
+
+
+        public bool EquipmentAlreadyOccupacy(string idEq, DateTime begin, DateTime end)
+        {
+            List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
+            Serialization.Serializer<Model.RoomEqupment> occupacySerializer = new Serialization.Serializer<Model.RoomEqupment>();
+            bool isOccupacy = false;
+
+            foreach (Model.RoomEqupment roomEquipmentItem in roomEquipments)
+            {
+                if (roomEquipmentItem.IdEquipment.Equals(idEq))
+                {
+                    //string[] period = roomEquipmentItem.Period.Trim().Split(';');
+                    //DateTime beginInStorege = DateTime.Parse(period[0]);
+                    //DateTime endInStorege = DateTime.Parse(period[1]);
+
+                    //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
+                    //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
+                    //{
+                    isOccupacy = true;
+                    //}
+                }
+            }
+
+            return isOccupacy;
+        }
+
+        public bool EndBeforeBegin(DateTime begin, DateTime end)
+        {
+            bool isEndBeforeBegin = false;
+            if (DateTime.Compare(end, begin) < 0)
+            {
+                isEndBeforeBegin = true;
+            }
+
+            return isEndBeforeBegin;
         }
 
         internal string MovingRoomEqupment(Room roomItem, Room roomItemSelected, List<RoomEqupment> rommEq, string period)

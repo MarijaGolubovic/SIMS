@@ -59,5 +59,12 @@ namespace SIMS.Menager
             //this.Close();
             _mainFrame.NavigationService.Navigate(new View.Menager.RenovateWindow());
         }
+
+        private void MenuItem_ClickMoveEquipment(object sender, RoutedEventArgs e)
+        {
+            View.Menager.Rooms moveWindow = new View.Menager.Rooms();
+             moveWindow.Show();
+            this.Close();
+        }
     }
 }
