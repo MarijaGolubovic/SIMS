@@ -88,7 +88,7 @@ namespace SIMS.View.Menager
             {
                 MessageBox.Show("End before began!");
             } 
-            if (flag)
+           else  if (flag)
             {
 
                 MessageBox.Show("Equipment already move!");

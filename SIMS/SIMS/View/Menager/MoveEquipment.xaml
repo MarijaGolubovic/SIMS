@@ -10,7 +10,7 @@
         <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding MoveEquipmentObservable}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="0,49,599,10" PreviewMouseDoubleClick="DataGridEquipment_PreviewMouseDoubleClickEquipment">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
+                <!--DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/-->
             </DataGrid.Columns>
         </DataGrid>
         <Label FontSize="18" Height="40" Margin="336,66,385,314">Room:</Label>
