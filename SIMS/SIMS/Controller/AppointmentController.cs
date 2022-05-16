@@ -25,16 +25,19 @@ namespace SIMS.Controller
 
             foreach (Appointment a in appointments)
             {
-                String name = a.Patient.Person.Name;
-                String surname = a.Patient.Person.Surname;
-                String[] array = a.DateAndTime.Date.ToString().Split(' ');
-                String date = array[0];
-                String time = a.DateAndTime.TimeOfDay.ToString();
-                String roomId = a.Room.Id;
-                String doctorId = a.Doctor.Person.JMBG;
-                AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId, doctorId);
+                if (a.Doctor.Person.JMBG.Equals(View.Doctor.MainWindow.LoggedInUser.Person.JMBG))
+                {
+                    String name = a.Patient.Person.Name;
+                    String surname = a.Patient.Person.Surname;
+                    String[] array = a.DateAndTime.Date.ToString().Split(' ');
+                    String date = array[0];
+                    String time = a.DateAndTime.TimeOfDay.ToString();
+                    String roomId = a.Room.Id;
+                    String doctorId = a.Doctor.Person.JMBG;
+                    AppointmentsForDoctorDTO pom = new AppointmentsForDoctorDTO(a.Id, name, surname, date, time, roomId, doctorId);
 
-                appointmentsForDoctorDTOs.Add(pom);
+                    appointmentsForDoctorDTOs.Add(pom);
+                }
             }
 
             return appointmentsForDoctorDTOs;
@@ -144,5 +147,16 @@ namespace SIMS.Controller
         {
             return appointmentService.getTimesOfDoctorAppointments(doctorId, dateOfAppointment);
         }
+
+        public List<Appointment> findSuggestedAppointmentsSecretary(Model.Doctor doctor, Patient patient, DateTime dateTime, Boolean doctorPriority, Boolean operation)
+        {
+            return appointmentService.findSuggestedAppointmentsSecretary(doctor, patient, dateTime, doctorPriority, operation);
+        }
+        public Boolean DeleteApp(AppointmentsForSecretaryDTO appointment)
+        {
+
+            return appointmentService.DeleteApp(DateTime.Parse(appointment.Date+" "+appointment.Time), appointment.roomId);
+        }
+
     }
 }

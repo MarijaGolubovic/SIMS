@@ -101,8 +101,10 @@
         <Label  VerticalAlignment="Center" Margin="287,256,416,133" RenderTransformOrigin="0.039,0.489" Height="31">Quantity:</Label>
         <TextBox Height="25" Margin="412,262,233,133"/>
         <Label  VerticalAlignment="Center" Margin="287,292,416,97" RenderTransformOrigin="0.039,0.489" Height="31">Destination:</Label>
-        <TextBox Height="25" Margin="412,298,233,97" RenderTransformOrigin="0.502,3.343"/>
+        <TextBox  x:Name="destination" Height="25" Margin="412,298,233,97" RenderTransformOrigin="0.502,3.343"/>
         <Button Width="120" Height="25" Margin="606,298,66,97" Click="Button_Click">Choose room</Button>
+        <Label  VerticalAlignment="Center" Margin="287,334,416,55" RenderTransformOrigin="0.039,0.489" Height="31">Period:</Label>
+        <TextBox x:Name="period" Height="25" Margin="412,340,233,55" RenderTransformOrigin="0.502,3.343"/>
         <Grid VerticalAlignment="Bottom" Height="55">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>

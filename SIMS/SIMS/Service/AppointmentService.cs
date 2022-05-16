@@ -193,5 +193,76 @@ namespace SIMS.Service
 
             return doctorAppointments;
         }
+
+        public List<Appointment> findSuggestedAppointmentsSecretary(Model.Doctor doctor, Patient patient, DateTime dateTime, Boolean doctorPriority, Boolean operation)
+        {
+            List<Appointment> suggestedAppointments = new List<Appointment>();
+            List<Appointment> appointments = GetAll();
+            Appointment appointment = new Appointment(dateTime, 10, new Room(), patient, doctor);
+
+            int i = 0;
+            while (i<appointments.Count)
+            {
+
+               if (appointments.Exists(a => (a.Doctor.Person.JMBG.Equals(appointment.Doctor.Person.JMBG) && (a.DateAndTime.Equals(appointment.DateAndTime)))))
+                {
+                    appointment.DateAndTime=appointment.DateAndTime.AddHours(1);
+                    i = 0;
+                } else
+                {
+                    if(avaiableRoom(operation, appointment.DateAndTime).Count != 0)
+                    {
+                        foreach (Room r in avaiableRoom(operation, appointment.DateAndTime))
+                        {
+                            suggestedAppointments.Add(new Appointment(appointment.DateAndTime, 10, r, appointment.Patient, appointment.Doctor));
+                        }
+
+                            i = appointments.Count;
+
+                    }
+                }
+            }
+            return suggestedAppointments;
+        }
+
+        public List<Room> avaiableRoom (Boolean operation, DateTime dateTime)
+        {
+            List<Room> room = new List<Room>();
+            List<Room> rooms = roomService.GetAll();
+            List<Appointment> appointments = GetAll();
+
+            foreach (Room r in rooms)
+            {
+                if(operation)
+                {
+                    if (r.Type==RoomType.OPPERATING_ROOM)
+                    {
+                        if(!appointments.Exists(a=> a.DateAndTime == dateTime && a.Room.Id.Equals(r.Id)))
+                        {
+                            room.Add(r);
+                        }
+                    }
+                }
+                else
+                {
+                    if (r.Type == RoomType.EXAMINATION_ROOM)
+                    {
+                        if (!appointments.Exists(a => a.DateAndTime == dateTime && a.Room.Id.Equals(r.Id)))
+                        {
+                            room.Add(r);
+                        }
+                    }
+                }
+            }
+
+
+            return room;
+        }
+
+        public Boolean DeleteApp(DateTime dateTime, String roomId)
+        {
+            return storage.DeleteApp(dateTime, roomId);
+        }
+
     }
 }

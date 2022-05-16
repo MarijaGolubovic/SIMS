@@ -77,6 +77,7 @@ namespace SIMS
                 {
                     if (user.Type==UserType.doctor)
                     {
+                        View.Doctor.MainWindow.LoggedInUser = user;
                         View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
                         doctorWindow.Show();
                         this.Close();

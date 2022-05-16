@@ -67,6 +67,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPF.EventCalendar, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF.EventCalendar.1.0.3\lib\net45\WPF.EventCalendar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -101,6 +104,7 @@
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
+    <Compile Include="MyICommand.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
     <Compile Include="Repository\EquipmentStorage.cs" />
     <Compile Include="Model\Diagnosis.cs" />
@@ -221,9 +225,6 @@
     <Compile Include="View\Sekretar\Nalozi.xaml.cs">
       <DependentUpon>Nalozi.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Doctor\AddApointmentWindow.xaml.cs">
-      <DependentUpon>AddApointmentWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Doctor\AllAppointmentsWindow.xaml.cs">
       <DependentUpon>AllAppointmentsWindow.xaml</DependentUpon>
     </Compile>
@@ -258,10 +259,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Templates.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Doctor\AddApointmentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -520,6 +517,8 @@
     <Resource Include="Assets\procurement.png" />
     <Resource Include="Assets\changePassword.png" />
     <Resource Include="Assets\hospital-doctor.png" />
+    <Resource Include="Assets\move.png" />
+    <Resource Include="Assets\show.png" />
     <Resource Include="Assets\terapija.jpg" />
     <Resource Include="Assets\terapija-removebg-preview.png" />
     <Resource Include="Assets\pregled-removebg-preview.png" />
@@ -562,7 +561,11 @@
     <Resource Include="Assets\ordering.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\move.jpg" />
+    <Folder Include="ViewModel\Doctor\" />
+    <Folder Include="ViewModel\Menager\" />
+    <Folder Include="ViewModel\Pacijent\" />
+    <Folder Include="ViewModel\Sekretar\" />
+    <Folder Include="VML\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

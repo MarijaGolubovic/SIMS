@@ -24,11 +24,12 @@ namespace SIMS.View.Menager
     public partial class MovingWindow : Window
     {
 
-       // public static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
+        internal static ObservableCollection<Model.Equpment> MovingEquipment { get; set; }
         internal Repository.RoomEquipmentStorage equipmentStorage = new Repository.RoomEquipmentStorage();
+        public static String roomItemId;
+        String roomItemDestination;
         Model.Room roomItem;
-        String period;
-        private static Room roomItemSelected;
+        public Model.Room roomDestination;
         internal Service.RoomEquipmentServices roomEquipmentService = new Service.RoomEquipmentServices();
 
         public MovingWindow()
@@ -38,21 +39,36 @@ namespace SIMS.View.Menager
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
-            Model.Room roomItem = View.Menager.MovingWindow.roomItemSelected;
+            
+           // roomItemId = roomIdChoose1.Text;
+            //roomItemDestination = destination.Text;
 
-             foreach(Room roomIt in rooms)
-            {
-                if (roomIt.Id.Equals(roomItem.Id))
-                {
-                    foreach (Model.RoomEqupment eq in equpments) {
-                        if (roomItem.Id.Equals(eq.RoomId))
-                        {
-                           //MovingEquipment.Add((Equpment)eq.roomEquipment);
-                        }
+            //foreach(Model.Room r in rooms)
+            //{
+            //    if (roomItemId.Equals(r.Id))
+            //    {
+            //        roomItem = r;
+            //    }
 
-                    }
-                }
-            }
+            //    if (r.Id.Equals(roomItemDestination))
+            //    {
+            //        roomDestination = r;
+            //    }
+            //}
+
+            // foreach(Room roomIt in rooms)
+            //{
+            //    if (roomIt.Id.Equals(roomItem.Id))
+            //    {
+            //        foreach (Model.RoomEqupment eq in equpments) {
+            //            if (roomItem.Id.Equals(eq.RoomId))
+            //            {
+            //               MovingEquipment.Add((Equpment)eq.roomEquipment);
+            //            }
+
+            //        }
+            //    }
+            //}
             
 
 
@@ -96,7 +112,9 @@ namespace SIMS.View.Menager
                 }
             
             }
-            //MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem, roomItemSelected, rommEq.ToList(), period));
+
+            MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem,roomDestination, rommEq, period.Text));
+
             labelRooms.Show();
         }
     }

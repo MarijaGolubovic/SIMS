@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace SIMS.Service
             return roomEquipment.Create(room);
         }
 
-        public String MovingRoomEqupment(Model.Room roomBegin,Model.Room roomEnd, List<Model.Equpment> equpments,String period)
+        public String MovingRoomEqupment(Model.Room roomBegin,Model.Room roomEnd, List<Model.Equpment> equpments,String period, int quanitity)
         {
             List<Model.RoomEqupment> roomEqupmentsList = new List<Model.RoomEqupment>();
             roomEqupmentsList = roomEquipment.GetAll();
@@ -57,15 +58,38 @@ namespace SIMS.Service
                     }
                     else
                     {
+                        
                         roomEqupmentsList.Add(new Model.RoomEqupment(roomEnd.Id, equpments, period));
                         roomSerijalization.toCSV("RoomEquipment.txt",roomEqupmentsList);
                         return "Equpment successfully moved";
 
                         if (roomBegin.Id.Equals(roomE.RoomId))
                         {
+                            
+                            
+
+                            foreach (Model.Equpment eq in equpments)
+                            {
+                                if (eq.Quantity < quanitity)
+                                {
+                                    return "Doesn't have enough eqvipment in this sale!";
+                                }
+                                else
+                                {
+
+                                    roomE.roomEquipment.Remove(eq);
+                                    eq.Quantity -= quanitity;
+
+                                }
+                            }
+                        }else if (roomEnd.Id.Equals(roomE.RoomId))
+                        {
                             foreach (Model.Equpment eq in equpments)
                             {
                                 roomE.roomEquipment.Remove(eq);
+                                eq.Quantity += quanitity;
+
+
                             }
                         }
                     }
@@ -77,6 +101,9 @@ namespace SIMS.Service
             return "";
         }
 
-       
+        internal string MovingRoomEqupment(Room roomItem, Room roomItemSelected, List<RoomEqupment> rommEq, string period)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

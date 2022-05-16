@@ -5,60 +5,70 @@ namespace SIMS.Repository
 {
     public class DoctorStorage
     {
+        private Serialization.Serializer<DoctorSpecialization> doctorSerializer;
+        private Serialization.Serializer<User> userSerializer;
 
-
-        public List<SIMS.Model.Doctor> GetAll()     
+        public DoctorStorage()
         {
-            Serialization.Serializer<DoctorSpecialization> doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
-            List<DoctorSpecialization> doctorStorage = doctorSerializer.fromCSV("doctors.txt");
+            doctorSerializer = new Serialization.Serializer<DoctorSpecialization>();
+            userSerializer = new Serialization.Serializer<User>();
+        }
 
-            Serialization.Serializer<User> userSerializer = new Serialization.Serializer<User>();
-            List<User> users = userSerializer.fromCSV("user.txt");
+        public List<Model.Doctor> LinkDoctorsWithSpecializations(List<User> users, List<DoctorSpecialization> specializationsForDoctors)
+        {
+            List<Model.Doctor> doctors = new List<SIMS.Model.Doctor>();
 
-            List<Model.Doctor> Doctors = new List<SIMS.Model.Doctor>();
-
-            foreach (User u in users)
+            foreach (User user in users)
             {
-                foreach (DoctorSpecialization ds in doctorStorage)
+                foreach (DoctorSpecialization doctorSpecialization in specializationsForDoctors)
                 {
-                    if (u.Person.JMBG.Equals(ds.JMBG))
+                    if (user.Person.JMBG.Equals(doctorSpecialization.JMBG))
                     {
-                        Model.Doctor doc = new Model.Doctor(u, new Specialization(ds.Spec));
-                        Doctors.Add(doc);
+                        Model.Doctor doctor = new Model.Doctor(user, new Specialization(doctorSpecialization.Spec));
+                        doctors.Add(doctor);
                     }
                 }
             }
 
-            return Doctors;
+            return doctors;
         }
 
-        public SIMS.Model.Doctor GetByID(String jmbg)
+        public List<SIMS.Model.Doctor> GetAll()     
         {
-            List<Model.Doctor> Doctors = GetAll();
-            SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
-            foreach (SIMS.Model.Doctor d in Doctors)
+
+            List<DoctorSpecialization> specializationsForDoctors = doctorSerializer.fromCSV("doctors.txt");             
+            List<User> users = userSerializer.fromCSV("user.txt");
+
+            List<Model.Doctor> doctors = LinkDoctorsWithSpecializations(users, specializationsForDoctors);
+
+            return doctors;
+        }
+
+        public SIMS.Model.Doctor GetByID(String JMBG)
+        {
+            SIMS.Model.Doctor doctor = new SIMS.Model.Doctor();
+            foreach (SIMS.Model.Doctor d in GetAll())
             {
-                if (d.Person.JMBG.Equals(jmbg))
+                if (d.Person.JMBG.Equals(JMBG))
                 {
-                    doc = d;
+                    doctor = d;
                 }
             }
-            return doc;
+            return doctor;
         }
 
         public SIMS.Model.Doctor GetByUsername(String username)
         {
-            List<SIMS.Model.Doctor> Doctors = GetAll();
-            SIMS.Model.Doctor doc = new SIMS.Model.Doctor();
-            foreach (SIMS.Model.Doctor d in Doctors)
+            SIMS.Model.Doctor doctor = new SIMS.Model.Doctor();
+            foreach (SIMS.Model.Doctor d in GetAll())
             {
                 if (d.ToString().Equals(username))
                 {
-                    doc = d;
+                    doctor = d;
                     break;
                 }
             }
-            return doc;
+            return doctor;
         }
 
         public Boolean Delete(String jmbg)

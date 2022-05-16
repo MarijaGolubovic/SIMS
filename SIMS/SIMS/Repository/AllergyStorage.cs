@@ -6,11 +6,15 @@ namespace SIMS.Repository
 {
     internal class AllergyStorage
     {
-        public AllergyStorage() { }
+        private Serialization.Serializer<Allergy> allergySerializer;
+
+        public AllergyStorage()
+        {
+            allergySerializer = new Serialization.Serializer<Allergy>();
+        }
 
         public List<Allergy> GetAll()
-        {
-            Serialization.Serializer<Allergy> allergySerializer = new Serialization.Serializer<Allergy>();
+        {           
             List<Allergy> allergies = allergySerializer.fromCSV("medicine.txt");
 
             return allergies;

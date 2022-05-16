@@ -76,8 +76,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="POTVRDI" HorizontalAlignment="Left" Margin="636,519,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click" />
-        <Button Content="ODUSTANI" HorizontalAlignment="Left" Margin="806,519,0,0" VerticalAlignment="Top" Width="137" FontSize="24" RenderTransformOrigin="0.471,4.46" Click="Button_Click_1" />
+        <Button Content="ZATVORI" HorizontalAlignment="Left" Margin="837,518,0,0" VerticalAlignment="Top" Width="137" FontSize="24" Click="Button_Click" />
 
 
     </Grid>

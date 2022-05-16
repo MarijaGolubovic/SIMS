@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace SIMS.Menager
 {
@@ -12,48 +13,40 @@ namespace SIMS.Menager
             InitializeComponent();
         }
 
-        private void AddRoom_Click(object sender, RoutedEventArgs e)
-        {
-            Menager.AddRoomWindow addRoomWindow = new Menager.AddRoomWindow();
-            addRoomWindow.Show();
-            this.Close();
-        }
-
-        private void UpdateRoom_Click(object sender, RoutedEventArgs e)
-        {
-
-            Menager.UpdateRoomWindow updateWindow = new UpdateRoomWindow();
-            updateWindow.Show();
-
-
-        }
-
-        private void DeleteRoom_Click(object sender, RoutedEventArgs e)
-        {
-            Menager.RoomsList roomsList = new Menager.RoomsList();
-            roomsList.Show();
-            this.Close();
-        }
-
-        private void Label_MouseDoubleClickRooms(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            View.Menager.RoomsPanel roomsPanel = new View.Menager.RoomsPanel();
-            roomsPanel.Owner = this;
-            roomsPanel.Show();
-
-        }
-
-        private void Label_MouseDoubleClickEqupment(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            View.Menager.EqupmentPanel equpmentPanel = new View.Menager.EqupmentPanel();
-            equpmentPanel.Owner = this;
-            equpmentPanel.Show();
-        }
+       
 
         private void Label_MouseDoubleClickSignOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             View.Menager.LogWindow logWindow = new View.Menager.LogWindow();
             logWindow.Show();
+            this.Close();
+        }
+
+        private void MenuItemAddRoom_Click(object sender, RoutedEventArgs e)
+        {
+            SIMS.Menager.AddRoomWindow addRoomWindow = new SIMS.Menager.AddRoomWindow();
+            addRoomWindow.Show();
+            this.Close();
+        }
+
+        private void MenuItemRoomUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            SIMS.Menager.UpdateRoomWindow updateRoomWindow = new SIMS.Menager.UpdateRoomWindow();
+            updateRoomWindow.Show();
+            this.Close();
+        }
+
+        private void MenuItemRoomDelete_Click(object sender, RoutedEventArgs e)
+        {
+            SIMS.Menager.DeleteRoom deleteRoom = new SIMS.Menager.DeleteRoom();
+            deleteRoom.Show();
+            this.Close();
+        }
+
+        private void MenuItemRoomRenovate_Click(object sender, RoutedEventArgs e)
+        {
+            View.Menager.RenovateWindow renovateWindow = new View.Menager.RenovateWindow();
+            renovateWindow.Show();
             this.Close();
         }
     }

@@ -1,15 +1,32 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace SIMS.Model
 {
     public class Allergy : Serialization.Serializable
     {
-        public String Name { get; set; }
+        private String name;
+        public String Name 
+        {
+            get { return name; }
+
+            set
+            {
+                if (name != value)
+                {
+                    name = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+
+        }
 
         public Allergy(String allergy)
         {
             this.Name = allergy;
         }
+
+        public Allergy() { }
 
         public string[] toCSV()
         {
@@ -25,6 +42,14 @@ namespace SIMS.Model
             Name = values[0];
         }
 
-        public Allergy() { }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged(string property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
     }
 }

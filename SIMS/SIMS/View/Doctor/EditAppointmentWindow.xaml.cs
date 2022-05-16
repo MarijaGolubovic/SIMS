@@ -58,8 +58,8 @@ namespace SIMS.Doctor
 
         private void AddApointment(object sender, RoutedEventArgs e)
         {
-            var addApointmentWindow = new Doctor.Window1();
-            addApointmentWindow.Show();
+            //var addApointmentWindow = new Doctor.Window1();
+            //addApointmentWindow.Show();
             this.Close();
         }
 

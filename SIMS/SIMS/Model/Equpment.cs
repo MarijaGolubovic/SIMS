@@ -1,15 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
-    class Equpment: Serialization.Serializable
+    class Equpment: INotifyPropertyChanged, Serialization.Serializable
     {
-        public String Name { get; set; }
-        public int Quantity{ get; set; }
+        public String Name
+        {
+            get
+            { return _Name; }
+
+            set
+            {
+                if (value != _Name)
+                {
+                    _Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        public int Quantity
+        {
+            get
+            { return _Quantity; }
+
+            set
+            {
+                if (value != _Quantity)
+                {
+                    _Quantity = value;
+                    OnPropertyChanged("Quantity");
+                }
+            }
+        }
+
+        public static explicit operator Equpment(string v)
+        {
+            throw new NotImplementedException();
+        }
 
         public Equpment(string name, int quantity)
         {
@@ -39,11 +81,6 @@ namespace SIMS.Model
 
         String _Name;
         int _Quantity;
-
-        public static explicit operator Equpment(string v)
-        {
-            throw new NotImplementedException();
-        }
 
         public static explicit operator Equpment(List<Equpment> v)
         {
