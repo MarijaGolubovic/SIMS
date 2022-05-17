@@ -96,6 +96,7 @@
     </ApplicationDefinition>
     <Compile Include="BindableBase.cs" />
     <Compile Include="Controller\AllergyController.cs" />
+    <Compile Include="Controller\AnswerController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\CityController.cs" />
     <Compile Include="Controller\CountryController.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Controller\MedicineContoller.cs" />
     <Compile Include="Controller\NotificationController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Controller\QuestionController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\SpecializationController.cs" />
     <Compile Include="Controller\RoomEquipmentController.cs" />
@@ -114,9 +116,11 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AllergyDTO.cs" />
+    <Compile Include="Model\Answers.cs" />
     <Compile Include="Model\AppointmentForPatientDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\CategoryID.cs" />
     <Compile Include="Model\DaysOffRequest.cs" />
     <Compile Include="Model\EquipmentDTO.cs" />
     <Compile Include="Model\MedicineStatus.cs" />
@@ -124,12 +128,15 @@
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\Notificatoin.cs" />
+    <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\ReportID.cs" />
     <Compile Include="Model\RequestStatus.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
     <Compile Include="Model\Therapy.cs" />
     <Compile Include="MyICommand.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
+    <Compile Include="Repository\AnswerStorage.cs" />
     <Compile Include="Repository\DaysOffRequestStorage.cs" />
     <Compile Include="Repository\EquipmentStorage.cs" />
     <Compile Include="Model\Diagnosis.cs" />
@@ -140,9 +147,11 @@
     <Compile Include="Repository\MedicineStorage.cs" />
     <Compile Include="Repository\NotificationStorage.cs" />
     <Compile Include="Repository\OccupacyRoomStorage.cs" />
+    <Compile Include="Repository\QuestionStorage.cs" />
     <Compile Include="Repository\RoomEquipmentStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
+    <Compile Include="Service\AnswerService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\CityService.cs" />
     <Compile Include="Service\CountryService.cs" />
@@ -155,6 +164,7 @@
     <Compile Include="Service\NotificationService.cs" />
     <Compile Include="Service\OccupacyRoomService.cs" />
     <Compile Include="Service\PatientService.cs" />
+    <Compile Include="Service\QuesttionService.cs" />
     <Compile Include="Service\RoomEquipmentServices.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecializationsService.cs" />
@@ -269,6 +279,9 @@
     </Compile>
     <Compile Include="View\Pacijent\EditAppointmentPage.xaml.cs">
       <DependentUpon>EditAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\Feedback.xaml.cs">
+      <DependentUpon>Feedback.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pacijent\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -484,6 +497,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pacijent\Feedback.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pacijent\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -622,6 +639,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\vesti10.png" />
+    <Resource Include="Assets\vesti9.png" />
+    <Resource Include="Assets\vesti8.png" />
+    <Resource Include="Assets\vesti7.png" />
+    <Resource Include="Assets\vesti6.png" />
+    <Resource Include="Assets\vesti5.png" />
+    <Resource Include="Assets\vesti4.png" />
+    <Resource Include="Assets\vesti3.png" />
+    <Resource Include="Assets\vesti2.png" />
+    <Resource Include="Assets\vesti1.png" />
     <Resource Include="Assets\viewAccount.png" />
     <Resource Include="Assets\vacation.png" />
     <Resource Include="Assets\hospital.png" />

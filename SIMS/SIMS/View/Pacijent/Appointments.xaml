@@ -50,11 +50,11 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Content="Zakazi pregled" Grid.Column="0" Click="AddAppointment" HorizontalAlignment="Left" Height="40" Width="110" Margin="120,0,0,0"
+                            <Button Content="Zakazi pregled" Grid.Column="0" Click="AddAppointment" HorizontalAlignment="Left" Height="40" Width="110" Margin="135,0,0,0"
                                     Background="#ff64ccf1" Foreground="White" Style="{DynamicResource RoundedButtonStyle}"/>
-                            <Button Content="Otkazi pregled" Grid.Column="1" Click="CancelAppointment" HorizontalAlignment="Center" Height="40" Width="110" Margin="120,0,0,0"
+                            <Button Content="Otkazi pregled" Grid.Column="1" Click="CancelAppointment" HorizontalAlignment="Center" Height="40" Width="110" Margin="135,0,0,0"
                                     Background="#ff64ccf1" Foreground="White" Style="{DynamicResource RoundedButtonStyle}"/>
-                            <Button Content="Izmeni pregled" Click="EditAppointment" HorizontalAlignment="Right" Height="40" Width="110" Margin="120,0,0,0"
+                            <Button Content="Izmeni pregled" Click="EditAppointment" HorizontalAlignment="Right" Height="40" Width="110" Margin="135,0,0,0"
                                     Background="#ff64ccf1" Grid.Column="2" Foreground="White" Style="{DynamicResource RoundedButtonStyle}"/>
                         </Grid>
                     </StackPanel>

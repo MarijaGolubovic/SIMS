@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using SIMS.Model;
+using SIMS.Controller;
+using System.Collections.ObjectModel;
+
+namespace SIMS.View.Pacijent
+{
+    /// <summary>
+    /// Interaction logic for Feedback.xaml
+    /// </summary>
+    public partial class Feedback : Page
+    {
+
+        private QuestionController questionController = new QuestionController();
+        private AnswerController answerController = new AnswerController();
+        public static ObservableCollection<Model.Doctor> Doctors { get; set; }
+        private readonly DoctorController doctorController = new DoctorController();
+        public string Hygiene1 { get; set; }
+        public string Hygiene2 { get; set; }
+        public string Staff1 { get; set; }
+        public string Staff2 { get; set; }
+        public string Approach1 { get; set; }
+        public string Approach2 { get; set; }
+        public string Professionalism1 { get; set; }
+        public string Professionalism2 { get; set; }
+
+        public List<Question> questionsAboutHygiene = new List<Question>();
+        public List<Question> questionsAboutStaff = new List<Question>();
+        public List<Question> questionsAboutApproach = new List<Question>();
+        public List<Question> questionsAboutProf = new List<Question>();
+
+        public Feedback()
+        {
+            InitializeComponent();
+            this.DataContext = this;
+
+            Doctors = new ObservableCollection<Model.Doctor>();
+
+            foreach (Model.Doctor item in doctorController.GetAll())
+            {
+                Doctors.Add(item);
+            }
+
+            questionsAboutHygiene = questionController.GetHospitalQuestionsAbouHygiene();
+            questionsAboutStaff = questionController.GetHospitalQuestionsAbouStaff();
+            questionsAboutApproach = questionController.GetDoctorQuestionsAbouApproach();
+            questionsAboutProf = questionController.GetDoctorQuestionsAbouProfessionalism();
+
+            Hygiene1 = questionsAboutHygiene[0].ToString();
+            Hygiene2 = questionsAboutHygiene[1].ToString();
+            Staff1 = questionsAboutStaff[0].ToString();
+            Staff2 = questionsAboutStaff[1].ToString();
+            Approach1 = questionsAboutApproach[0].ToString();
+            Approach2 = questionsAboutApproach[1].ToString();
+            Professionalism1 = questionsAboutProf[0].ToString();
+            Professionalism2 = questionsAboutProf[1].ToString();
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (hygiene1 != null)
+            {
+                Answers answer = new Answers(questionsAboutHygiene[0],5);
+                answerController.Create(answer);
+            }
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+}

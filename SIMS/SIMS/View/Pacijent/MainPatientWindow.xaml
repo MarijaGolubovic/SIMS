@@ -48,21 +48,25 @@
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
-                <iconPacks:PackIconMaterial Kind="Hospital" Foreground="White" HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center" 
-                                            Height="Auto" Width="70"/>
-                <TextBlock Text="Home page" VerticalAlignment="Bottom"
+                <Button Background="Transparent" BorderThickness="0" Click="Button_Click_Home">
+                    <StackPanel>
+                        <iconPacks:PackIconMaterial Kind="Hospital" Foreground="White" HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center" 
+                                                        Height="70" Width="70" />
+                        <TextBlock Text="Pocetna" VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center" 
                                             Foreground="White"
                                             FontSize="22"
                                             FontFamily="/Fonts/#Poppins"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Center">
                 <iconPacks:PackIconMaterial Kind="HumanGreeting" Foreground="White" HorizontalAlignment="Center" 
                                             VerticalAlignment="Center" 
-                                            Height="Auto" Width="70"/>
-                <TextBlock Text="About us" VerticalAlignment="Bottom"
+                                            Height="70" Width="70" Margin="29,0"/>
+                <TextBlock Text="O nama" VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center" 
                                             Foreground="White"
                                             FontSize="22"
@@ -70,20 +74,24 @@
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="4" VerticalAlignment="Center">
-                <iconPacks:PackIconMaterial Kind="MessageReply" Foreground="White" HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center" 
-                                            Height="Auto" Width="70"/>
-                <TextBlock Text="Feedback" VerticalAlignment="Bottom"
+                <Button Background="Transparent" BorderThickness="0" Click="Button_Click_Feedback" Margin="0,0,-9,0">
+                    <StackPanel>
+                        <iconPacks:PackIconMaterial Kind="MessageReply" Foreground="White" HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center" 
+                                                        Height="70" Width="70" />
+                        <TextBlock Text="Ocenite nas" VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center" 
                                             Foreground="White"
                                             FontSize="22"
                                             FontFamily="/Fonts/#Poppins"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="5" VerticalAlignment="Center">
                 <iconPacks:PackIconMaterial Kind="Information" Foreground="White" HorizontalAlignment="Center" 
                                             VerticalAlignment="Center" 
-                                            Height="Auto" Width="70"/>
+                                            Height="70" Width="70"/>
                 <TextBlock Text="Info" VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center" 
                                             Foreground="White"
@@ -108,7 +116,7 @@
                                             Height="Auto" Width="40"/>
             </StackPanel>
             <Frame x:Name="MainFrame" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="2" NavigationUIVisibility="Hidden" Margin="70,0,70,0"></Frame>
-                
+
         </Grid>
     </Grid>
 </Window>

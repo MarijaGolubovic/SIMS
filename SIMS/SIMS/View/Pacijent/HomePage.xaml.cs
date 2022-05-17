@@ -32,5 +32,14 @@ namespace SIMS.View.Pacijent
         {
             NavigationService.Navigate(new Appointments(logedInUser));
         }
+
+        private void Button_Click_Right(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Button_Click_Left(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

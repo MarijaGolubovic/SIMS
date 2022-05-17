@@ -58,6 +58,22 @@ namespace SIMS.Service
             return availability;
         }
 
+        public bool CheckIfAvailable(Appointment appointment)
+        {
+            bool availability = true;
+            foreach (Appointment a in allAppointments)
+            {
+                if (a.DateAndTime.Equals(appointment.DateAndTime))
+                {
+                    if (a.Doctor.Username.Equals(appointment.Doctor.Username))
+                    {
+                        availability = false;
+                    }
+                }
+            }
+            return availability;
+        }
+
         public int GenerateAppointmentID()
         {
             Random rnd = new Random();
@@ -81,8 +97,11 @@ namespace SIMS.Service
                 for (int j = 0; j<= 16; j++) 
                 {
                     Room room = FindRoomForAppointment(appointmentDTO);
-                    Appointment appointment = new Appointment(FormStartDateTime(appointmentDTO.DateTime).AddMinutes(j*30).AddDays(i), GenerateAppointmentID(), room, patientService.GetOne(appointmentDTO.User.Person.JMBG), appointmentDTO.Doctor);
-                    potentialAppointments.Add(appointment);
+                    Appointment appointment = new Appointment(FormStartDateTime(appointmentDTO.DateTime).AddMinutes(j * 30).AddDays(i), GenerateAppointmentID(), room, patientService.GetOne(appointmentDTO.User.Person.JMBG), appointmentDTO.Doctor);
+                    if (CheckIfAvailable(appointment))
+                    {
+                        potentialAppointments.Add(appointment);
+                    }
                 }
             }
 
@@ -98,7 +117,10 @@ namespace SIMS.Service
                 {
                     Room room = FindRoomForAppointment(appointmentDTO);
                     Appointment appointment = new Appointment(FormStartDateTime(appointmentDTO.DateTime).AddMinutes(j * 30), GenerateAppointmentID(), room, patientService.GetOne(appointmentDTO.User.Person.JMBG), d);
-                    potentialAppointments.Add(appointment);
+                    if (CheckIfAvailable(appointment))
+                    {
+                        potentialAppointments.Add(appointment);
+                    }
                 }
             }
             return potentialAppointments;

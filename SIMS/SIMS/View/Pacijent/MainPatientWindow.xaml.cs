@@ -6,6 +6,7 @@ using System.Timers;
 using System.Windows;
 using SIMS.Controller;
 using Tulpep.NotificationWindow;
+using System.Windows.Navigation;
 
 namespace SIMS.Pacijent
 {
@@ -85,5 +86,14 @@ namespace SIMS.Pacijent
             notification.Show();
         }
 
+        private void Button_Click_Home(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new HomePage(logedInUser);
+        }
+
+        private void Button_Click_Feedback(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new Feedback();
+        }
     }
 }

@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.View.Pacijent"
+      xmlns:local="clr-namespace:SIMS.View.Pacijent" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddAppointmentPage" Background="Transparent">
@@ -65,8 +65,19 @@
                        Visibility="Hidden"
                        FontSize="15"/>
         </StackPanel>
-        <StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button Content="Potvrdi" FontFamily="/Fonts/#Poppins" FontSize="20" Click="Confirm" Style="{DynamicResource RoundedButtonStyle}" Background="#ff64ccf1" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    Margin="0,22,10,22" Width="780" Grid.ColumnSpan="2">
+            <Button BorderThickness="0" Background="Transparent" Click="Button_Click_Back"/>
+            <Button Content="Potvrdi" FontFamily="/Fonts/#Poppins" FontSize="20" 
+                    Click="Confirm" Style="{DynamicResource RoundedButtonStyle}" 
+                    Background="#ff64ccf1" HorizontalAlignment="Center" Margin="300,0,0,0"
+                    />
+            <Button BorderThickness="0" Background="Transparent" Click="Button_Click_Back">
+                <iconPacks:PackIconMaterial Name="CheckIcon" Kind="Check" Foreground="Green" HorizontalAlignment="Left" 
+                                                VerticalAlignment="Center" Margin="10,0,0,0"
+                                            Visibility="Hidden"
+                                                Height="30" Width="50" />
+            </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -111,8 +122,8 @@
             </ComboBox>
         </StackPanel>
         <RadioButton x:Name="DoctorPriority" Content="Lekar" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70,0,0,0" Foreground="White"
-                     BorderThickness="0"/>
+                     BorderThickness="0"  Checked="DoctorPriority_Checked"/>
         <RadioButton x:Name="DatePriority" Content="Termin" Grid.Column="1"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40,0,0,0" Foreground="White"
-                     BorderThickness="0"/>
+                     BorderThickness="0" Checked="DoctorPriority_Checked"/>
     </Grid>
 </Page>

@@ -38,6 +38,7 @@ namespace SIMS.View.Pacijent
             DoctorComboBox.SelectedItem = appointment1.Doctor.Username.ToString();
 
             Doctors = new ObservableCollection<Model.Doctor>();
+            Patients = new ObservableCollection<Model.Patient>();
 
             Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
             List<Patient> patients = patientSerializer.fromCSV("patients.txt");

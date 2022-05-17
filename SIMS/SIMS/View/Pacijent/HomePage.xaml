@@ -3,13 +3,26 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.View.Pacijent"
+      xmlns:local="clr-namespace:SIMS.View.Pacijent" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Background="Transparent"
       Title="HomePage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="8" Orientation="Horizontal">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="178*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="237*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="6" HorizontalAlignment="Center" Orientation="Horizontal" Margin="-5,0" Width="810">
             <StackPanel>
                 <StackPanel>
                     <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Width="250" Height="150" RenderTransformOrigin="0.5,0.5">
@@ -149,6 +162,56 @@
                 </StackPanel>
 
             </StackPanel>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="6" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Vesti"
+                   FontFamily="/Fonts/#Poppins" FontSize="20" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="6" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Click="Button_Click_Left" Background="Transparent" BorderThickness="0" Margin="0,98,0,99">
+                    <StackPanel>
+                        <iconPacks:PackIconMaterial Kind="ArrowLeft" Foreground="White" HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center" 
+                                                            Height="40" Width="40" RenderTransformOrigin="0.493,0.536" />
+                    </StackPanel>
+                </Button>
+                <Border Grid.Column="1">
+                    <Image x:Name="slika3" Source="/Assets/vesti5.png" Width="250" VerticalAlignment="Center" HorizontalAlignment="Right" Height="250" Margin="10,0,0,0"/>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="20"
+                                                       RadiusY="20" Rect="10,0,250,240"/>
+                    </Border.Clip>
+                </Border>
+                <Border Grid.Column="2">
+                    <Image x:Name="slika1" Source="/Assets/vesti6.png" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" Height="250" Margin="10,0,0,0"/>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="20"
+                                                       RadiusY="20"
+                                                       Rect="10,0,250,240"/>
+                    </Border.Clip>
+                </Border>
+                <Border Grid.Column="3">
+                    <Image x:Name="slika2" Source="/Assets/vesti7.png" Width="250" VerticalAlignment="Center" HorizontalAlignment="Left" Height="250" Margin="10,0,10,0"/>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="20"
+                                                       RadiusY="20"
+                                                       Rect="10,0,250,240"/>
+                    </Border.Clip>
+                </Border>
+                <Button Click="Button_Click_Right" Grid.Column="4" Background="Transparent" BorderThickness="0">
+                    <StackPanel>
+                        <iconPacks:PackIconMaterial Kind="ArrowRight" Foreground="White" HorizontalAlignment="Center" 
+                                                            VerticalAlignment="Center" 
+                                                            Height="40" Width="40"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

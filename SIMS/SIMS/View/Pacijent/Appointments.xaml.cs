@@ -55,7 +55,7 @@ namespace SIMS.View.Pacijent
             Patients = new ObservableCollection<Patient>();
 
             //ucitavam podatke u kolekciju
-            foreach (Appointment item in appointments)
+            foreach (var item in appointments)
             {
                 if (item.Patient.JMBGP.Equals(logedInUser.Person.JMBG))
                 {

@@ -56,15 +56,45 @@ namespace SIMS.View.Pacijent
 
             return dateTime1;
         }
+
+        public bool checkIfFilled()
+        {
+            bool filled = true;
+
+            if (DoctorComboBox.SelectedItem == null)
+            {
+                DoctorLabel.Visibility = Visibility.Visible;
+                filled = false;
+            }
+            if (DatePicker.SelectedDate == null)
+            {
+                DateLabel.Visibility = Visibility.Visible;
+                filled = false;
+            }
+            if (TimeComboBox.SelectedItem == null)
+            {
+                TimeLabel.Visibility = Visibility.Visible;
+                filled = false;
+            }
+            if (DoctorPriority.IsChecked == false && DatePriority.IsChecked == false)
+            {
+                PriorityrLabel.Visibility = Visibility.Visible;
+                filled = false;
+            }
+
+            return filled;
+        }
+
         public void Confirm(object sender, RoutedEventArgs e)
         {
-            if (appointmentController.CheckIfDateIsValid(formDateTime()))
+            if (checkIfFilled() && appointmentController.CheckIfDateIsValid(formDateTime()))
             {
                 AppointmentForPatientDTO appointmentForPatient = new AppointmentForPatientDTO(DoctorComboBox.SelectedItem as Model.Doctor, formDateTime(), logedInUser, (bool)DoctorPriority.IsChecked);
                 if (appointmentController.CheckIfAvailable(appointmentForPatient))
                 {
                     Appointment appointment = new Appointment(appointmentForPatient.DateTime, appointmentController.GenerateAppointmentID(), appointmentController.FindRoomForAppointment(appointmentForPatient), patientController.GetOne(appointmentForPatient.User.Person.JMBG), appointmentForPatient.Doctor);
                     _ = appointmentController.Create(appointment, appointmentController.FormRoomOccupacyFromAppointment(appointment));
+                    CheckIcon.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -120,6 +150,16 @@ namespace SIMS.View.Pacijent
             {
                 TimeLabel.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void DoctorPriority_Checked(object sender, RoutedEventArgs e)
+        {
+            PriorityrLabel.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Appointments(logedInUser));
         }
     }
 }
