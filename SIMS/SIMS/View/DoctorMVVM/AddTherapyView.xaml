@@ -23,33 +23,34 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" 
                    Grid.Column="0"
                    Text="Terapija" 
-                   FontFamily="Fonts/#Orbitron medium"
+                   FontFamily="Bahnschrift Light"
                    FontSize="40" 
-                   Margin="130,90,0,50"/>
+                   Margin="160,90,0,50"/>
 
-        <TextBlock Text="Lijek"
-                   FontFamily="Roboto Light"
+        <TextBlock Text="Odaberite ijek"
+                   FontFamily="Bahnschrift Light"
                    FontSize="20" 
                    Grid.Row="1"
                    Grid.Column="0" 
-                   Margin="130,0,0,0"
+                   Margin="160,0,0,0"
                    VerticalAlignment="Center"/>
 
         <ComboBox x:Name="Medicine_Combobox" 
                   Grid.Row="1"
                   Grid.Column="0"
-                  Width="150"
+                  Width="200"
                   Height="25" 
-                  Margin="400,0,0,0"
-                  HorizontalAlignment="Left"
+                  Margin="400,0,160,0"
+                  HorizontalAlignment="Right"
                   ItemsSource="{Binding Medicines}"
-                  SelectedItem="{Binding Path=SelectedMedicine, Mode=TwoWay}">
+                  SelectedItem="{Binding Path=SelectedMedicine, Mode=TwoWay}"
+                  FontFamily="Bahnschrift Light">
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -60,23 +61,24 @@
         </ComboBox>
 
 
-        <TextBlock Text="Period (u satima)"
-                   FontFamily="Roboto Light"
+        <TextBlock Text="Odaberite period (u satima)"
+                   FontFamily="Bahnschrift Light"
                    FontSize="20" 
                    Grid.Row="2"
                    Grid.Column="0" 
-                   Margin="130,0,0,0"
+                   Margin="160,0,0,0"
                    VerticalAlignment="Center"/>
 
         <ComboBox x:Name="Period_Combobox"
                   Grid.Row="2"
                   Grid.Column="0"
-                  Width="150"
+                  Width="200"
                   Height="25" 
-                  Margin="400,0,0,0"
-                  HorizontalAlignment="Left"
+                  Margin="400,0,160,0"
+                  HorizontalAlignment="Right"
                   SelectedValuePath="Content"
-                  SelectedValue="{Binding Path=SelectedPeriodInHours, Mode=TwoWay}">
+                  SelectedValue="{Binding Path=SelectedPeriodInHours, Mode=TwoWay}"
+                  FontFamily="Bahnschrift Light">
 
             <ComboBoxItem Content="1" />
             <ComboBoxItem Content="2" />
@@ -105,21 +107,22 @@
 
         </ComboBox>
 
-        <TextBlock Text="Trajanje (u danima)"
-                   FontFamily="Roboto Light"
+        <TextBlock Text="Odaberite rajanje (u danima)"
+                   FontFamily="Bahnschrift Light"
                    FontSize="20" 
                    Grid.Row="3"
                    Grid.Column="0" 
-                   Margin="130,0,0,0"
+                   Margin="160,0,0,0"
                    VerticalAlignment="Center"/>
 
         <ComboBox x:Name="Trajanje_Combobox"
                   Grid.Row="3"
                   Grid.Column="0"
-                  Width="150"
+                  Width="200"
                   Height="25" 
-                  Margin="400,0,0,0"
-                  HorizontalAlignment="Left"
+                  FontFamily="Bahnschrift Light"
+                  Margin="0,0,160,0"
+                  HorizontalAlignment="Right"
                   SelectedValuePath="Content"
                   SelectedValue="{Binding Path=SelectedPeriodInDays, Mode=TwoWay}">
 
@@ -140,11 +143,11 @@
         </ComboBox>
 
         <TextBlock Text="Recept" 
-                   FontFamily="Roboto Light"
+                   FontFamily="Bahnschrift Light"
                    FontSize="25" 
                    Grid.Row="4"
                    Grid.Column="0"
-                   HorizontalAlignment="Left" Margin="130,30,0,20"/>
+                   HorizontalAlignment="Left" Margin="160,30,0,7"/>
 
         <TextBox x:Name="Recept_TextBox"
                  Grid.Row="5"
@@ -152,8 +155,9 @@
                  HorizontalAlignment="Left"
                  Width="1000"
                  Height="150"
-                 FontSize="15" Margin="130,0,0,0" 
-                 Text="{Binding Recipe}"/>
+                 FontSize="15" Margin="160,0,160,0" 
+                 Text="{Binding Recipe, Mode=TwoWay}"
+                 FontFamily="Bahnschrift Light"/>
 
         <Button Name="Button_Zavrsi"
                 Content="Završi"
@@ -161,15 +165,23 @@
                 Width="70" 
                 Height="30"
                 HorizontalAlignment="Right"
-                Margin="0,50,160,0"
-                Command="{Binding AddTherapyCommand}"/>
+                VerticalAlignment="Bottom"
+                Margin="0,0,170,60"
+                Command="{Binding AddTherapyCommand}"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                FontFamily="Bahnschrift Light"/>
 
         <Button Content="Nazad"
                 Grid.Row="6" 
                 Width="70" 
                 Height="30"
                 HorizontalAlignment="Right"
-                Margin="0,50,280,0"
-                Command="{Binding BackCommand}"/>
+                Margin="0,0,280,60"
+                Command="{Binding BackCommand}"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                FontFamily="Bahnschrift Light"/>
     </Grid>
 </UserControl>

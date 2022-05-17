@@ -110,5 +110,10 @@ namespace SIMS.Controller
         {
             return patientService.filterPatients(query, patients);
         }
+
+        public List<String> LinkPatientInformationsForAddAppointment()
+        {
+            return patientService.LinkPatientInformationsForAddAppointment();
+        }
     }
 }

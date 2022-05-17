@@ -187,6 +187,49 @@ namespace SIMS.Service
             return room;
         }
 
+        public List<Room> FindRoomsForEditAppointment(AppointmentsForDoctorDTO appointmentDTO)
+        {
+            List<Room> examinationRooms = roomService.GetByType(RoomType.EXAMINATION_ROOM);
+            List<RoomOccupacy> roomOccupacies = new List<RoomOccupacy>();
+            List<RoomOccupacy> allRoomOccupacies = occupacyRoomService.GetAll();
+            foreach (Room r in examinationRooms)
+            {
+                roomOccupacies.Add(new RoomOccupacy(r.Id, DateTime.Parse(appointmentDTO.Date + " " + appointmentDTO.Time), DateTime.Parse(appointmentDTO.Date + " " + appointmentDTO.Time).AddMinutes(30), "appointment"));
+            }
+
+            for (int i = 0; i < roomOccupacies.Count; i++)
+            {
+                foreach (RoomOccupacy ro in allRoomOccupacies)
+                {
+                    //dejan je dodao parce koda
+                    if (roomOccupacies.Count == 0)
+                        break;
+                    //blabla
+                    if (roomOccupacies[i].IDRoom == ro.IDRoom)
+                    {
+                        if ((DateTime.Compare(roomOccupacies[i].Begin, ro.Begin) <= 0) && (DateTime.Compare(ro.End, roomOccupacies[i].End) <= 0))
+                        {
+                            roomOccupacies.Remove(roomOccupacies[i]);
+                        }
+                    }
+                }
+            }
+            //dodao dejan
+            if(roomOccupacies.Count == 0)
+            {
+                return null;
+            }
+            //blabla
+            List<Room> rooms = new List<Room>();
+            roomService.GetOne(roomOccupacies[0].IDRoom);
+            foreach (RoomOccupacy ro in roomOccupacies)
+            {
+                rooms.Add(roomService.GetOne(ro.IDRoom));
+            }
+
+            return rooms;
+        }
+
         public Boolean Delete(int appointmentID)
         {
             return storage.Delete(appointmentID);
@@ -286,5 +329,21 @@ namespace SIMS.Service
             return storage.DeleteApp(dateTime, roomId);
         }
 
+        public void EditRoom(int appointmentId, Room room)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+
+            foreach(Appointment app in GetAll())
+            {
+                if (appointmentId == app.Id) 
+                {
+                    app.Room = room;
+                }
+                appointments.Add(app);
+            }
+
+            Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
+            appointmentSerializer.toCSV("appointments.txt", appointments);
+        }
     }
 }

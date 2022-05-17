@@ -28,23 +28,17 @@
         <TextBlock Grid.Row="0" 
                            Grid.Column="0"
                            Text="Detaljan prikaz" 
-                           FontFamily="Fonts/#Orbitron medium"
+                           FontFamily="Bahnschrift Light"
                            FontSize="40" 
-                           Margin="130,100.1,0,50"/>
-
-        <TextBlock Grid.Row="1" 
-                           Grid.Column="0" 
-                           FontFamily="Roboto Light"
-                           FontSize="20" 
-                           Margin="130,20,0,50" />
+                           Margin="160,90,0,50"/>
 
         <Grid Grid.Row="1" 
                       Grid.Column="0"
-                      Margin="130,20,0,50" 
+                      Margin="160,20,160,50" 
                       x:Name="LicniPodaci">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
@@ -58,137 +52,138 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Lični podaci " 
-                               FontFamily="Roboto Light"
-                               FontSize="25" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="30" 
                                Grid.Row="0"
                                Grid.Column="0"
-                               HorizontalAlignment="Center"/>
+                               HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
             <TextBlock Text="Ime: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="1"
                                Grid.Column="0"/>
 
             <TextBlock Text="{Binding Path = Patient.Person.Name}"
                                Grid.Row="1"
                                Grid.Column="0" 
-                               Margin="50,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Prezime: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="2"
                                Grid.Column="0"/>
 
             <TextBlock Text="{Binding Path = Patient.Person.Surname}"
                                Grid.Row="2"
                                Grid.Column="0" 
-                               Margin="85,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Datum rodjenja: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="3"
                                Grid.Column="0"/>
 
             <TextBlock Text="{Binding Path = Date}"
                                Grid.Row="3"
                                Grid.Column="0" 
-                               Margin="150,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Telefon: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="4"
                                Grid.Column="0"/>
 
             <TextBlock Text="{Binding Path = Patient.Person.Telephone}"
                                Grid.Row="4"
                                Grid.Column="0" 
-                               Margin="80,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="EMail: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="5"
                                Grid.Column="0"/>
 
             <TextBlock Text="{Binding Path = Patient.Person.EMail}"
                                Grid.Row="5"
                                Grid.Column="0" 
-                               Margin="63,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Zdravstveni karton: " 
-                               FontFamily="Roboto Light"
-                               FontSize="25" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="30" 
                                Grid.Row="0"
                                Grid.Column="1"
                                HorizontalAlignment="Center"/>
 
             <TextBlock Text="Krvna grupa: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="1"
                                Grid.Column="1"/>
 
             <TextBlock Text="{Binding Path = Patient.MedicalRecord.BloodType}"
                                Grid.Row="1"
                                Grid.Column="1" 
-                               Margin="118,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="275,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Visina: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="2"
                                Grid.Column="1"/>
 
             <TextBlock Text="{Binding Height}"
                                Grid.Row="2"
                                Grid.Column="1" 
-                               Margin="63,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="275,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Težina: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="3"
                                Grid.Column="1"/>
 
             <TextBlock Text="{Binding Weight}"
                                Grid.Row="3"
                                Grid.Column="1" 
-                               Margin="64,0,0,0"
-                               FontFamily="Roboto Light"
-                               FontSize="20"/>
+                               Margin="275,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
 
             <TextBlock Text="Alergije: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="4"
                                Grid.Column="1"/>
 
             <ComboBox Name="Allergy_Combobox"
                               Grid.Row="4"
                               Grid.Column="1"
-                              Width="100"
-                              HorizontalAlignment="Left" Margin="83,0,0,0"
+                              Width="200"
+                              HorizontalAlignment="Right" Margin="83,0,0,0"
                               Height="25"
                               VerticalAlignment="Top"
-                              ItemsSource="{Binding Allergies}">
+                              ItemsSource="{Binding Allergies}"
+                      FontFamily="Bahnschrift Light">
 
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -199,16 +194,17 @@
             </ComboBox>
 
             <TextBlock Text="Terapije: " 
-                               FontFamily="Roboto Light"
-                               FontSize="20" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
                                Grid.Row="5"
                                Grid.Column="1"/>
 
             <ComboBox Name="Therapy_Combobox" 
                               Grid.Row="5"
                               Grid.Column="1"
-                              Width="100"
-                              HorizontalAlignment="Left" Margin="83,0,0,0"
+                      FontFamily="Bahnschrift Light"
+                              Width="200"
+                              HorizontalAlignment="Right" Margin="83,0,0,0"
                               Height="25"
                               VerticalAlignment="Top"
                               ItemsSource="{Binding Therapies}">
@@ -221,7 +217,17 @@
 
             </ComboBox>
 
-            <Button Content="Nazad" Grid.Column="1" Grid.Row="6" Width="70" Height="30" HorizontalAlignment="Right" Margin="0,0,130,0" Command="{Binding BackCommand}"/>
+            <Button Content="Nazad" 
+                    Grid.Column="1"
+                    Grid.Row="6" Width="70"
+                    Height="30"
+                    Command="{Binding BackCommand}"
+                    Margin="0,0,10,60"
+                     Style="{DynamicResource RoundedButtonStyle}"
+                     Background="#FF36547C"
+                    FontFamily="Bahnschrift Light"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Right"/>
 
         </Grid>
     </Grid>

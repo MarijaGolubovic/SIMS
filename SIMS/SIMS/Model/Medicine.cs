@@ -26,7 +26,7 @@ namespace SIMS.Model
 
         public string[] toCSV()
         {
-            string[] csvValues = new string[Ingredients.Count +2];
+            string[] csvValues = new string[Ingredients.Count +3];
 
             csvValues[0] = Name;
             csvValues[1] = MedicineStatus.ToString();

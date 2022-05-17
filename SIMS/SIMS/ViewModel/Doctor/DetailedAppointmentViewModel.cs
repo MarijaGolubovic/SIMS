@@ -40,7 +40,7 @@ namespace SIMS.ViewModel.Doctor
 
         private void OnBack()
         {
-            Messenger.Default.Send("BackFromDetailedAppointmentView");
+            Messenger.Default.Send("AllAppointmentView");
         }
     }
 }

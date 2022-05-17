@@ -29,9 +29,9 @@ namespace SIMS.Controller
         {
             daysOffRequestService.Create(request);
         }
-        public bool IsThereDoctorsWithSameSpetialization(String doctorId)
+        public bool IsThereDoctorsWithSameSpetialization(DaysOffRequest request, String doctorId)
         {
-            return daysOffRequestService.IsThereDoctorsWithSameSpetialization(doctorId);
+            return daysOffRequestService.IsThereDoctorsWithSameSpetialization(request, doctorId);
         }
         public bool IsSelectedDatesValid(DateTime startDate, DateTime endDate)
         {
