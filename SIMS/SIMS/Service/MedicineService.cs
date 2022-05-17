@@ -61,5 +61,7 @@ namespace SIMS.Service
 
             medicineStorage.ChangeMedicineStatus(medicine);
         }
+
+
     }
 }
