@@ -128,5 +128,18 @@ namespace SIMS.Service
             return isEndBeforeBegin;
         }
 
+
+        public List<Equpment> SearchEquipment(String inputSearchContent)
+        {
+            List<Equpment> allEquipment = equipmentStorage.GetAll();
+            List<Equpment> searchedEquipment = new List<Equpment>();
+            foreach(Equpment roomEquipment in allEquipment) {
+                if (roomEquipment.Name.Trim().Contains(inputSearchContent))
+                {
+                    searchedEquipment.Add(roomEquipment);
+                }
+            }
+            return searchedEquipment;
+        }
     }
 }

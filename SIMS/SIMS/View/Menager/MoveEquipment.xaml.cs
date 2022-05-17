@@ -104,5 +104,32 @@ namespace SIMS.View.Menager
                
             }
         }
+
+        private void Button_Click_SEARCHEquipment(object sender, RoutedEventArgs e)
+        {
+            string inputSearchContent= searchFiled.Text;
+            
+            if(!(inputSearchContent.Length==null))
+            {
+                List<Model.Equpment> searchedEquipment = new List<Model.Equpment>();
+                searchedEquipment.Clear();
+                MoveEquipmentObservable.Clear();
+                searchedEquipment = roomEquipmentServices.SearchEquipment(inputSearchContent);
+                foreach (Model.Equpment equipmentItem in searchedEquipment)
+                {
+                    MoveEquipmentObservable.Add(equipmentItem);
+                }
+            }else
+                {
+                    Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
+                    List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
+                    MoveEquipmentObservable = new System.Collections.ObjectModel.ObservableCollection<Model.Equpment>();
+
+                    foreach (Model.Equpment equipmentItem in equipments)
+                    {
+                        MoveEquipmentObservable.Add(equipmentItem);
+                    }
+                }
+        }
     }
 }

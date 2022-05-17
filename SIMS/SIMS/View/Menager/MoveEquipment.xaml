@@ -26,7 +26,7 @@
         <Button x:Name="OkButton" Height="25" Width="100" Background="MintCream" Margin="493,342,199,53" Click="OkButton_MoveEquipment">OK</Button>
         <Button x:Name= "CancelButon" Height="25" Width="100" Background="MintCream" Margin="623,342,69,53" RenderTransformOrigin="0.88,0.447" >CANCEL</Button>
         <Label FontSize="18" Height="30" Margin="10,0,716,376">Search:</Label>
-        <TextBox Height="25" Width="150" Margin="94,0,548,375"></TextBox>
-        <Button Height="25" Width="100" Background="MintCream" Margin="265,0,427,376">SEARCH</Button>
+        <TextBox x:Name="searchFiled" Height="25" Width="150" Margin="94,0,548,375"></TextBox>
+        <Button Height="25" Width="100" Background="MintCream" Margin="265,0,427,376" Click="Button_Click_SEARCHEquipment">SEARCH</Button>
     </Grid>
 </Window>
