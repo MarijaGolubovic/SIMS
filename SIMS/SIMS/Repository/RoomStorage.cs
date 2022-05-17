@@ -34,19 +34,20 @@ namespace SIMS.Repository
             return room;
         }
 
-        public Boolean Delete(int roomID)
+        public Boolean Delete(string roomID)
         {
             Boolean status = false;
-            List<Room> rooms = new List<Room>();
+            
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
 
-            rooms = roomSerijalization.fromCSV("Room.txt");
-            foreach (Room roomInput in rooms)
+            List<Room> rooms = roomSerijalization.fromCSV("Room.txt");
 
+            foreach (Model.Room roomInput in rooms)
             {
                 if (roomID.Equals(roomInput.Id))
                 {
                     rooms.Remove(roomInput);
+                    roomSerijalization.toCSV("Room.txt", rooms);
                     status = true;
                 }
             }
