@@ -122,7 +122,7 @@
                     <MenuItem Header="Medicines" FontSize="22" FontWeight="Bold" Width="134">
                         <Menu  Background="White">
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137">
+                                <MenuItem Background="White" Width="137" Click="MenuItem_Click_AddMedicine">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/add_icon.png" Height="79" Width="123"/>
                                     </MenuItem.Icon>
