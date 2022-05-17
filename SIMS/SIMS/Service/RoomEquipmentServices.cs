@@ -102,9 +102,9 @@ namespace SIMS.Service
             {
                 if (roomEquipmentItem.IdEquipment.Equals(idEq))
                 {
-                    //string[] period = roomEquipmentItem.Period.Trim().Split(';');
-                    //DateTime beginInStorege = DateTime.Parse(period[0]);
-                    //DateTime endInStorege = DateTime.Parse(period[1]);
+                    string[] period = roomEquipmentItem.Period.Trim().Split(';');
+                    DateTime beginInStorege = DateTime.Parse(period[0]);
+                    DateTime endInStorege = DateTime.Parse(period[1]);
 
                     //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
                     //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
@@ -128,9 +128,5 @@ namespace SIMS.Service
             return isEndBeforeBegin;
         }
 
-        internal string MovingRoomEqupment(Room roomItem, Room roomItemSelected, List<RoomEqupment> rommEq, string period)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

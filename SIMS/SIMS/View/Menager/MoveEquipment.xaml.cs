@@ -54,9 +54,11 @@ namespace SIMS.View.Menager
             string idRoom = Rooms.roomItemSelected.Id;
             string equipmentName = EquipmentBox.Text;
             string destination = destinationBox.Text;
-            string begin = beginBox.Text;
-            string end = endBox.Text;
+            string beginString = beginBox.Text;
+            string endString = endBox.Text;
             string equipnemtId="";
+            string begin = beginString.Split(';')[0];
+            string end = endString.Split(';')[0];
             Serialization.Serializer<Model.RoomEqupment> equpmentSerializer = new Serialization.Serializer<Model.RoomEqupment>();
             List<Model.RoomEqupment> equipments = equpmentSerializer.fromCSV("RoomEquipment.txt");
 
