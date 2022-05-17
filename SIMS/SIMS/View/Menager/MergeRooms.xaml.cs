@@ -77,14 +77,16 @@ namespace SIMS.View.Menager
             {
                 MessageBox.Show("Room successfuly merged!");
                 
-                List<Room> rooms = new List<Room>();
+               List<Room> rooms = new List<Room>();
                 Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
                 rooms = roomSerijalization.fromCSV("Room.txt");
-                roomStorage.Create(newRoom);
-                roomStorage.Delete(oldRoomBox.Text);
-                roomStorage.Delete(otherMergedRoomBox.Text);
+                //roomStorage.Create(newRoom);
+                roomService.IsRoomMerge(oldRoom, otherMergedRoom, newRoom);
+                rooms.Remove(otherMergedRoom);
+                //roomStorage.Delete(oldRoomBox.Text);
+                
                 roomSerijalization.toCSV("Room.txt", rooms);
-              //  roomService.IsRoomMerge(oldRoom, otherMergedRoom, newRoom);
+               
                 this.NavigationService.Navigate(new RenovateWindow());
             }
             

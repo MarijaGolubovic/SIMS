@@ -92,20 +92,14 @@ namespace SIMS.Service
             {
                 if (IsRoomAlreadyExist(otherMergedRoom))
                 {
-                    DeleteMergedRoom(oldRoom.Id, otherMergedRoom.Id);
+                    roomStorage.Delete(oldRoom.Id);
                     roomStorage.Create(newRoom);
+                    roomStorage.Delete(otherMergedRoom.Id);
                     isRoomMerged = true;
                 }
             }
-
-
             return isRoomMerged;
         }
         
-        public void DeleteMergedRoom(string idFirstRoom, string idSecondRoom) {
-            roomStorage.Delete(idFirstRoom);
-            roomStorage.Delete(idSecondRoom);
-        
-        }
     }
 }
