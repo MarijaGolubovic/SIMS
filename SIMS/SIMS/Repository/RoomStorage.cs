@@ -5,10 +5,10 @@ using SIMS.Model;
 namespace SIMS.Repository
 {
 
-   public class RoomStorage
-   {
-      public List<Room> GetAll()
-      {
+    public class RoomStorage
+    {
+        public List<Room> GetAll()
+        {
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
             rooms = roomSerijalization.fromCSV("Room.txt");
@@ -37,7 +37,7 @@ namespace SIMS.Repository
         public Boolean Delete(string roomID)
         {
             Boolean status = false;
-            
+
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
 
             List<Room> rooms = roomSerijalization.fromCSV("Room.txt");
@@ -70,6 +70,24 @@ namespace SIMS.Repository
         {
             throw new NotImplementedException();
         }
+
+        public Model.Room GetRoomById(string idRoom)
+        {
+            Room room=new Room();
+            List<Room> rooms = new List<Room>();
+            Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
+            rooms = roomSerijalization.fromCSV("Room.txt");
+            foreach(Model.Room roomItem in rooms)
+            {
+                if (roomItem.Id.Equals(idRoom))
+                    room = roomItem;
+            }
+
+
+            return room;
+        }
+
+            
 
         public List<Room> GetByType(RoomType type)
         {

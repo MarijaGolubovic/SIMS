@@ -66,5 +66,10 @@ namespace SIMS.Menager
              moveWindow.Show();
             this.Close();
         }
+
+        private void MenuItem_BackToHomePage(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.Report());
+        }
     }
 }

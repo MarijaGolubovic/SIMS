@@ -77,5 +77,10 @@ namespace SIMS.View.Menager
         {
             this.NavigationService.Navigate(new SplitRoom());
         }
+
+        private void Button_Click_MergeRooms(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MergeRooms());
+        }
     }
 }

@@ -33,6 +33,11 @@ namespace SIMS.Service
         
         }
 
+        public Model.Room GetRoomById(string idRoom)
+        {
+            return roomStorage.GetRoomById(idRoom);
+        }
+
         public List<Room> GetByType(RoomType type) {
 
             return roomStorage.GetByType(type);
@@ -42,8 +47,8 @@ namespace SIMS.Service
         public bool isSplitRoom(Room oldRoom, Room firtsNewRoom, Room secondNewRoom) 
         {
             bool isRoomSplited = false;
-            bool isFirstAdded = isNewRoomAdd(firtsNewRoom);
-            bool isSecondAdded = isNewRoomAdd(secondNewRoom);
+            bool isFirstAdded = IsNewRoomAdd(firtsNewRoom);
+            bool isSecondAdded = IsNewRoomAdd(secondNewRoom);
             
             if (isFirstAdded && isSecondAdded)
             {
@@ -55,7 +60,7 @@ namespace SIMS.Service
             return isRoomSplited;
         }
 
-        public bool isroomAlreadyExist(Room newRoom)
+        public bool IsRoomAlreadyExist(Room newRoom)
         {
             bool isExist = false;
             List<Room> allRooms = roomStorage.GetAll();
@@ -68,10 +73,10 @@ namespace SIMS.Service
         }
 
 
-        public bool isNewRoomAdd(Room newRoom) {
+        public bool IsNewRoomAdd(Room newRoom) {
 
             bool isAdded = false;
-            if (!isroomAlreadyExist(newRoom))
+            if (!IsRoomAlreadyExist(newRoom))
             {
                 roomStorage.Create(newRoom);
                 isAdded = true;
@@ -79,5 +84,28 @@ namespace SIMS.Service
             return isAdded;
         }
 
+
+        public bool IsRoomMerge(Room oldRoom, Room otherMergedRoom, Room newRoom)
+        {
+            bool isRoomMerged = false;
+            if (!IsRoomAlreadyExist(newRoom))
+            {
+                if (IsRoomAlreadyExist(otherMergedRoom))
+                {
+                    DeleteMergedRoom(oldRoom.Id, otherMergedRoom.Id);
+                    roomStorage.Create(newRoom);
+                    isRoomMerged = true;
+                }
+            }
+
+
+            return isRoomMerged;
+        }
+        
+        public void DeleteMergedRoom(string idFirstRoom, string idSecondRoom) {
+            roomStorage.Delete(idFirstRoom);
+            roomStorage.Delete(idSecondRoom);
+        
+        }
     }
 }

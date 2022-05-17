@@ -50,7 +50,7 @@
             <Button  Grid.Column="10" Height="25" Width="80" Click="Button_Click_CANCEL"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15,43,35" Background="MintCream" IsCancel="True" RenderTransformOrigin="0.41,0.606">CANCEL</Button>
         </Grid>
         <Button Height="25" Width="100" Background="MintCream" Click="Button_Click" RenderTransformOrigin="0.43,1.812" Margin="42,299,658,126">SPLIT ROOM</Button>
-        <Button  Height="25" Width="100" Background="MintCream" RenderTransformOrigin="0.486,1.413" Margin="42,341,658,84">MERGE ROOM</Button>
+        <Button  Height="25" Width="100" Background="MintCream" RenderTransformOrigin="0.486,1.413" Margin="42,341,658,84" Click="Button_Click_MergeRooms">MERGE ROOM</Button>
     </Grid>
 
 

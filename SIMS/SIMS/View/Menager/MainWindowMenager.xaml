@@ -78,7 +78,7 @@
                     <ColumnDefinition Width="830*"/>
                 </Grid.ColumnDefinitions>
                 <Menu Background="MintCream" Margin="40,0,10,10" Grid.ColumnSpan="2">
-                    <MenuItem Header="Home" FontSize="22" FontWeight="Bold" Width="100" Background="MintCream">
+                    <MenuItem Header="Home" FontSize="22" FontWeight="Bold" Width="100" Background="MintCream" Click="MenuItem_BackToHomePage">
                     </MenuItem>
                     <MenuItem Header="Rooms" FontSize="22" FontWeight="Bold"  Background="MintCream"  Width="108" >
                         <Menu  Background="MintCream" Width="782">

@@ -35,11 +35,11 @@ namespace SIMS.View.Menager
             Model.Room secondNewRoom = new Model.Room(secondRoomId.Text, Double.Parse(secondRoomSize.Text), Model.RoomType.OPPERATING_ROOM);
 
             double newRoomSize = Double.Parse(firstRoomSize.Text) + Double.Parse(secondRoomSize.Text);
-            if (roomService.isroomAlreadyExist(firstNewRoom))
+            if (roomService.IsRoomAlreadyExist(firstNewRoom))
             {
                 MessageBox.Show("First room already existe");
             }
-            else if (roomService.isroomAlreadyExist(secondNewRoom))
+            else if (roomService.IsRoomAlreadyExist(secondNewRoom))
             {
                 MessageBox.Show("Second room alreday exist!");
             }else if (newRoomSize != oldRoom.Size )
@@ -69,6 +69,10 @@ namespace SIMS.View.Menager
             }
             return roomType;
         }
-        
+
+        private void Button_Click_CANCELSplit(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new RenovateWindow());
+        }
     }
 }
