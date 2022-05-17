@@ -56,10 +56,13 @@ namespace SIMS.Service
             return medicineStorage.Delete(medicine);
         }
 
-        public void ChangeMedicineStatus(Medicine medicine)
+        public void ChangeMedicineStatusOnValid(Medicine medicine)
         {
-
-            medicineStorage.ChangeMedicineStatus(medicine);
+            medicineStorage.ChangeMedicineStatusOnValid(medicine);
+        }
+        public void ChangeMedicineStatusOnInvalid(Medicine medicine)
+        {
+            medicineStorage.ChangeMedicineStatusOnInvalid(medicine);
         }
 
 

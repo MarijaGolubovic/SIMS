@@ -8,7 +8,8 @@ namespace SIMS.Model
     {
         public MedicalRecord MedicalRecord { get; set; }
         public AccountStatus AccountStatus { get; set; }
-
+        
+        public String Date { get; set; } 
         public String JMBGP { get; set; }
         public Boolean InitialAccount { get; set; }
         public Boolean ActivatedAccount { get; set; }
@@ -26,6 +27,7 @@ namespace SIMS.Model
             this.InitialAccount = accountStatus.initialAccount;
             this.ActivatedAccount = accountStatus.activatedAccount;
             this.NotificationList = new List<Notificatoin>();
+            this.Date = Person.DateOfBirth.ToString().Split(' ')[0];
         }
 
         public Patient(User user, MedicalRecord medicalRecord, AccountStatus accountStatus, int offenceCounter) : base(user.Username, user.Password, user.Type, user.Person)
@@ -38,7 +40,7 @@ namespace SIMS.Model
             this.ActivatedAccount = accountStatus.activatedAccount;
             this.NotificationList = new List<Notificatoin>();
             this.OffenceCounter = offenceCounter;
-
+            this.Date = Person.DateOfBirth.ToString().Split(' ')[0];
 
             /*public void Start30DayTimer()
             {

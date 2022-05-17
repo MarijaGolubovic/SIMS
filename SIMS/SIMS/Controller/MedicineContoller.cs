@@ -8,7 +8,7 @@ namespace SIMS.Controller
 {
     public class MedicineContoller
     {
-        private MedicineService medicineService;
+        private readonly MedicineService medicineService;
 
         public MedicineContoller()
         {
@@ -23,6 +23,14 @@ namespace SIMS.Controller
         public List<Medicine> GetAllWithStatusOnHold()
         {
             return medicineService.GetAllWithStatusOnHold();
+        }
+
+        public bool IsThereMedicineForValidation()
+        {
+            if (medicineService.GetAllWithStatusOnHold().Count == 0)
+                return false;
+            else
+                return true;
         }
         public bool Delete(Medicine medicine)
         {
@@ -42,10 +50,14 @@ namespace SIMS.Controller
         {
             return medicineService.Create(medicine);
         }
-        public void ChangeMedicineStatus(Medicine medicine)
+        public void ChangeMedicineStatusOnValid(Medicine medicine)
         {
 
-            medicineService.ChangeMedicineStatus(medicine);
+            medicineService.ChangeMedicineStatusOnValid(medicine);
+        }
+        public void ChangeMedicineStatusOnInvalid(Medicine medicine)
+        {
+            medicineService.ChangeMedicineStatusOnInvalid(medicine);
         }
     }
 }

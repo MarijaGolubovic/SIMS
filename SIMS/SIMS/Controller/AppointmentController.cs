@@ -18,6 +18,10 @@ namespace SIMS.Controller
         {
         }
 
+        public void EditRoom(int appointmentId, Room room)
+        {
+            appointmentService.EditRoom(appointmentId, room);
+        }
         public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor()
         {
             List<AppointmentsForDoctorDTO> appointmentsForDoctorDTOs = new List<AppointmentsForDoctorDTO>();
@@ -117,6 +121,15 @@ namespace SIMS.Controller
             return true;
         }
 
+        public bool CheckIfDateIsValidForDoctor(DateTime date)
+        {
+            if (DateTime.Compare(DateTime.Now, date) > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public bool CheckIfDateIsValidForEdit(DateTime old, DateTime chosen)
         {
             if (DateTime.Compare(DateTime.Now, chosen) > 0)
@@ -158,5 +171,9 @@ namespace SIMS.Controller
             return appointmentService.DeleteApp(DateTime.Parse(appointment.Date+" "+appointment.Time), appointment.roomId);
         }
 
+        public List<Room> FindRoomsForEditAppointment(AppointmentsForDoctorDTO appointmentDTO)
+        {
+            return appointmentService.FindRoomsForEditAppointment(appointmentDTO);
+        }
     }
 }

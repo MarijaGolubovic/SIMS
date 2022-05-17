@@ -16,8 +16,8 @@
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type data:Medicine}">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=Name}" Width="150" FontSize="17"/>
-                <ComboBox ItemsSource="{Binding Path=Ingredients, Mode=OneWay}" Width="200" Margin="100,0,0,0" SelectedIndex="0"/>
+                <TextBlock Text="{Binding Path=Name, Mode=TwoWay}" Width="150" FontSize="23"/>
+                <ComboBox ItemsSource="{Binding Path=Ingredients, Mode=TwoWay}" Width="200" Margin="285,0,0,0" SelectedIndex="0" FontSize="17"/>
             </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
@@ -30,54 +30,71 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" 
                    Grid.Column="0"
                    Text="Validacija lijekova" 
-                   FontFamily="Fonts/#Orbitron medium"
+                   FontFamily="Bahnschrift Light"
                    FontSize="40" 
-                   Margin="130,90,0,50"/>
+                   Margin="160,90,0,50"/>
 
         <TextBlock Grid.Row="1" 
                    Grid.Column="0"
-                   Text="Tabela sa svim lijekovima koje je neophodno validirati" 
-                   FontFamily="Fonts/#Roboto Light"
-                   FontSize="25" Margin="125,0,0,0"
+                   Text="Lista svih lijekova koje je neophodno validirati" 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="30" Margin="160,0,0,0"
                    />
 
         <ListView Grid.Row="2"
-                  ItemsSource="{Binding Medicines}" 
+                  ItemsSource="{Binding Medicines, Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedMedicine}"
-                  Margin="130,20,0,0"
-                  Width="Auto"
-                  Height="250"
+                  Margin="160,20,0,0"
+                  Width="650"
+                  Height="300"
                   HorizontalAlignment="Left"
-                  Background="CadetBlue"/>
+                  Background="AliceBlue"
+                  FontFamily="Bahnschrift Light"/>
 
         <Button Content="Završi" 
                 Grid.Column="0"
-                Grid.Row="13"
-                Width="70" 
-                Height="30" Margin="-170,60,0,0"
-                Command="{Binding FinishCommand}"/>
+                Grid.Row="3"
+                Width="90" 
+                Height="30"
+                Command="{Binding FinishCommand}"
+                FontFamily="Bahnschrift Light"
+                Margin="0,0,600,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"/>
 
         <Button Content="Vrati upravniku" 
                 Grid.Column="0"
                 Grid.Row="3"
-                Width="70" 
+                Width="90" 
                 Height="30" 
-                Margin="-370,60,0,0"
-                Command="{Binding BackCommand}"/>
+                Command="{Binding SendToDirectorCommand}"
+                FontFamily="Bahnschrift Light"
+                Margin="0,0,730,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"/>
         
         <Button Content="Validiraj" 
                 Grid.Column="0"
                 Grid.Row="3"
-                Width="70" 
+                Width="90" 
                 Height="30" 
-                Margin="-570,60,0,0"
-                Command="{Binding ValidateCommand}"/>
+                Command="{Binding ValidateCommand}"
+                FontFamily="Bahnschrift Light"
+                Margin="0,0,860,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"/>
 
     </Grid>
 </UserControl>

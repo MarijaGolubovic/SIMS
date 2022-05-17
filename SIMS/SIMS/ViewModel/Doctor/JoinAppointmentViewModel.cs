@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
@@ -25,6 +26,7 @@ namespace SIMS.ViewModel.Doctor
             set 
             { 
                 diagnosis = value;
+                OnPropertyChanged("Diagnosis");
                 FinishCommand.RaiseCanExecuteChanged();
             }
         }
@@ -36,6 +38,7 @@ namespace SIMS.ViewModel.Doctor
         public MyICommand BackCommand { get; set; }
         public MyICommand FinishCommand { get; set; }
         public MyICommand AddTherapyCommand { get; set; }
+        public MyICommand AddAppointmentCommand { get; set; }
 
         public JoinAppointmentViewModel()
         {
@@ -48,32 +51,35 @@ namespace SIMS.ViewModel.Doctor
             Weight = MedicalRecord.Weight.ToString();
 
             BackCommand = new MyICommand(OnBack);
-            FinishCommand = new MyICommand(OnFinish, CanFinish);
+            FinishCommand = new MyICommand(OnFinish);
             AddTherapyCommand = new MyICommand(OnAddTherapy);
+            AddAppointmentCommand = new MyICommand(OnAddAppointment);
+
+            Diagnosis = "";
         }
 
         private void OnBack()
         {
-            Messenger.Default.Send("BackFromJoinAppointmentView");
+            Messenger.Default.Send("AllAppointmentView");
         }
 
         private void OnFinish()
         {
             appointmentController.Delete(SelectedAppointment.Id);
-            Diagnosis d = new Diagnosis(Diagnosis, SelectedAppointment.DateAndTime, SelectedAppointment.Id, SelectedAppointment.Room, Patient, SelectedAppointment.Doctor);
-            diagnosisController.Create(d);
+            Diagnosis diagnosis = new Diagnosis(Diagnosis, SelectedAppointment.DateAndTime, SelectedAppointment.Id, SelectedAppointment.Room, Patient, SelectedAppointment.Doctor);
+            diagnosisController.Create(diagnosis);
 
-            Messenger.Default.Send("FinishFromJoinAppointmentView");
-        }
-
-        private bool CanFinish()
-        {
-            return Diagnosis.Equals("");
+            Messenger.Default.Send("AllAppointmentView");
+            MainWindowViewModel.notifier.ShowSuccess("Uspješno!");
         }
 
         private void OnAddTherapy()
         {
             Messenger.Default.Send("AddTherapy");
+        }
+        private void OnAddAppointment()
+        {
+            Messenger.Default.Send("AddAppointmentView");
         }
     }
 }

@@ -54,7 +54,7 @@ namespace SIMS.Repository
             throw new NotImplementedException();
         }
 
-        public void ChangeMedicineStatus(Medicine medicine)
+        public void ChangeMedicineStatusOnValid(Medicine medicine)
         {
             List<Medicine> medicines = GetAll();
             foreach (Medicine med in medicines)
@@ -62,6 +62,23 @@ namespace SIMS.Repository
                 if (med.Name.Equals(medicine.Name))
                 {
                     med.MedicineStatus = MedicineStatus.Valid;
+                    break;
+                }
+            }
+
+            Serialization.Serializer<Medicine> medicineSerializer = new Serialization.Serializer<Medicine>();
+            medicineSerializer.toCSV("medicine.txt", medicines);
+
+        }
+
+        public void ChangeMedicineStatusOnInvalid(Medicine medicine)
+        {
+            List<Medicine> medicines = GetAll();
+            foreach (Medicine med in medicines)
+            {
+                if (med.Name.Equals(medicine.Name))
+                {
+                    med.MedicineStatus = MedicineStatus.Invalid;
                 }
             }
 

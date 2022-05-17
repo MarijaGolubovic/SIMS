@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS.View.Doctor
+namespace SIMS.View.DoctorMVVM
 {
     /// <summary>
-    /// Interaction logic for EditAppointmentPage.xaml
+    /// Interaction logic for SuggestedAppointmentsView.xaml
     /// </summary>
-    public partial class EditAppointmentPage : Page
+    public partial class SuggestedAppointmentsView : UserControl
     {
-        public EditAppointmentPage()
+        public SuggestedAppointmentsView()
         {
             InitializeComponent();
         }

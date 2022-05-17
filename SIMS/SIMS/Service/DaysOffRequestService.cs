@@ -49,13 +49,30 @@ namespace SIMS.Service
             }
             return doctors;
         }
-        public bool IsThereDoctorsWithSameSpetialization(String doctorId)
+        public DaysOffRequest GetByDoctorId(String id)
+        {
+            DaysOffRequest request = new DaysOffRequest();
+            foreach(DaysOffRequest req in GetAll())
+            {
+                if(req.DoctorId.Equals(id))
+                {
+                    request = req;
+                    break;
+                }
+            }
+            return request;
+        }
+        public bool IsThereDoctorsWithSameSpetialization(DaysOffRequest request, String doctorId)
         {
             int doctorCounter = 0;
             foreach(Doctor doc in LinkDoctorsWithRequestStatusOnHoldOrAccepted(GetAll()))
             {
-                if (doc.Specialization.Equals(doctorController.GetByID(doctorId).Specialization))
-                    doctorCounter++;  
+                if (doc.Specialization.Name.Equals(doctorController.GetByID(doctorId).Specialization.Name))
+                    if((request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate) 
+                            || (request.StartDate <= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).StartDate)
+                                || (request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.StartDate <= GetByDoctorId(doc.Person.JMBG).EndDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).EndDate)
+                                    || (request.StartDate <= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).EndDate))
+                        doctorCounter++;  
             }
             return doctorCounter > 1;
         }
@@ -67,7 +84,7 @@ namespace SIMS.Service
 
             if (startDate > endDate)
                 return false;
-            else if (startDate.AddDays(startDate.Day + 2) >= startDate)
+            else if (startDate < DateTime.Now.AddDays(2))
                 return false;
 
             return true;

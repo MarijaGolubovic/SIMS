@@ -26,7 +26,16 @@ namespace SIMS.ViewModel.Doctor
         public Medicine SelectedMedicine { get; set; }
         public String SelectedPeriodInHours { get; set; }
         public String SelectedPeriodInDays { get; set; }
-        public String Recipe { get; set; }
+        private String recipe;
+        public String Recipe 
+        {
+            get { return recipe; }
+            set 
+            {
+                recipe = value;
+                OnPropertyChanged("Recipe");
+            } 
+        }
 
         public AddTherapyViewModel()
         {
@@ -40,50 +49,51 @@ namespace SIMS.ViewModel.Doctor
 
         private void OnAddTherapy()
         {
-            Medicine m = SelectedMedicine;
-            String periodInHours = SelectedPeriodInHours;
-            String periodInDays = SelectedPeriodInDays;
-            String recept = Recipe;
-            String id = JoinAppointmentViewModel.SelectedAppointment.Patient.Person.JMBG;
-            DateTime timeOfMaking = DateTime.Now;
+            MedicalRecord medicalRecord = medicalRecordController.GetOne(JoinAppointmentViewModel.SelectedAppointment.Patient.Person.JMBG);
+            List<Allergy> allergies = medicalRecord.Allergies;
 
-            MedicalRecord medRec = medicalRecordController.GetOne(id);
-            List<Allergy> allergies = medRec.Allergies;
+            Medicine medicine = SelectedMedicine;
 
-            foreach (String s in m.Ingredients)
-            {
-                foreach (Allergy a in allergies)
-                {
-                    if (s.Equals(a.Name))
-                    {
-                        notifier.ShowError("Pacijent je alergican na taj lijek!");
-                        Messenger.Default.Send("AddTherapy");
-                        return;
-                    }
-                }
-            }
+            if (IfAllergic(allergies, medicine))
+                return;
 
-            Therapy t = new Therapy(m, periodInHours, recept, periodInDays, timeOfMaking, id);
+            Therapy t = new Therapy(medicine, SelectedPeriodInHours, Recipe, SelectedPeriodInDays,
+                                    DateTime.Now, JoinAppointmentViewModel.SelectedAppointment.Patient.Person.JMBG);
 
+            AddTherapy(t);
+        }
+
+        private void AddTherapy(Therapy t)
+        {
             therapyContoller.Create(t);
-            notifier.ShowSuccess("Uspješno ste dodali terapiju!");
+            Recipe = "";
+            MainWindowViewModel.notifier.ShowSuccess("Uspješno!");
             Messenger.Default.Send("AddTherapy");
         }
 
-        Notifier notifier = new Notifier(cfg =>
+        private bool IfAllergic(List<Allergy> allergies, Medicine medicine)
         {
-            cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: Application.Current.MainWindow,
-                corner: Corner.TopRight,
-                offsetX: 10,
-                offsetY: 10);
+            foreach (String ingredient in medicine.Ingredients)
+            {
+                if (IsIngredientEqualsAllergies(allergies, ingredient))
+                    return true;
+            }
+            return false;
+        }
 
-            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(3),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
-
-            cfg.Dispatcher = Application.Current.Dispatcher;
-        });
+        private bool IsIngredientEqualsAllergies(List<Allergy> allergies, string ingredient)
+        {
+            foreach (Allergy allergy in allergies)
+            {
+                if (ingredient.Equals(allergy.Name))
+                {
+                    MainWindowViewModel.notifier.ShowError("Pacijent je alergican na taj lijek!");
+                    Messenger.Default.Send("AddTherapy");
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private void OnBack()
         {
