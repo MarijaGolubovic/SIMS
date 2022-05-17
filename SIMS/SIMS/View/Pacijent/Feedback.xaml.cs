@@ -73,9 +73,24 @@ namespace SIMS.View.Pacijent
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (hygiene1 != null)
+            if (hygiene1.SelectedItem != null)
             {
-                Answers answer = new Answers(questionsAboutHygiene[0],5);
+                Answers answer = new Answers(questionsAboutHygiene[0],int.Parse(hygiene1.Text), "");
+                answerController.Create(answer);
+            }
+            if (hygiene2.SelectedItem != null)
+            {
+                Answers answer = new Answers(questionsAboutHygiene[1], int.Parse(hygiene2.Text), "");
+                answerController.Create(answer);
+            }
+            if (staff1.SelectedItem != null)
+            {
+                Answers answer = new Answers(questionsAboutStaff[0], int.Parse(staff1.Text), "");
+                answerController.Create(answer);
+            }
+            if (staff2.SelectedItem != null)
+            {
+                Answers answer = new Answers(questionsAboutStaff[1], int.Parse(staff2.Text), "");
                 answerController.Create(answer);
             }
 
@@ -83,7 +98,29 @@ namespace SIMS.View.Pacijent
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            if (DoctorComboBox.SelectedItem != null)
+            {
+                if (approach1.SelectedItem != null)
+                {
+                    Answers answer = new Answers(questionsAboutApproach[0], int.Parse(approach1.Text), (Model.Doctor)DoctorComboBox.SelectedItem);
+                    answerController.Create(answer);
+                }
+                if (approach2.SelectedItem != null)
+                {
+                    Answers answer = new Answers(questionsAboutApproach[1], int.Parse(approach2.Text), (Model.Doctor)DoctorComboBox.SelectedItem);
+                    answerController.Create(answer);
+                }
+                if (prof1.SelectedItem != null)
+                {
+                    Answers answer = new Answers(questionsAboutProf[0], int.Parse(prof1.Text), (Model.Doctor)DoctorComboBox.SelectedItem);
+                    answerController.Create(answer);
+                }
+                if (prof2.SelectedItem != null)
+                {
+                    Answers answer = new Answers(questionsAboutProf[1], int.Parse(prof2.Text), (Model.Doctor)DoctorComboBox.SelectedItem);
+                    answerController.Create(answer);
+                }
+            } 
         }
     }
 }

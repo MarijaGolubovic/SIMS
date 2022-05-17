@@ -13,17 +13,14 @@ namespace SIMS.Model
         public CategoryID CategoryID { get; set; }
         public string QuestionText { get; set; }
 
-        public Doctor Doctor { get; set; }
         public int ID { get; set; }
 
-        private readonly DoctorController doctorController = new DoctorController();
 
-        public Question(ReportID reportID, CategoryID categoryID, string questionText, Doctor doctor, int iD)
+        public Question(ReportID reportID, CategoryID categoryID, string questionText, int iD)
         {
             ReportID = reportID;
             CategoryID = categoryID;
             QuestionText = questionText;
-            Doctor = doctor;
             ID = iD;
         }
 
@@ -39,7 +36,6 @@ namespace SIMS.Model
                 ReportID.ToString(),
                 CategoryID.ToString(),
                 QuestionText,
-                Doctor.Person.JMBG,
                 ID.ToString()
             };
             return csvValues;
@@ -52,11 +48,7 @@ namespace SIMS.Model
             ReportID = (ReportID)Enum.Parse(typeof(ReportID), values[0]);
             CategoryID = (CategoryID)Enum.Parse(typeof(CategoryID), values[1]);
             QuestionText = values[2];
-            if (values[3] != null)
-            {
-                Doctor = doctorController.GetByID(values[3]);
-            }
-            ID = int.Parse(values[4]);
+            ID = int.Parse(values[3]);
         }
 
         public override string ToString()
