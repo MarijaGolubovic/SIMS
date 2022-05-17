@@ -10,13 +10,16 @@ namespace SIMS.Model
         public List<String> Ingredients { get; set; }
         public MedicineStatus MedicineStatus { get; set; }
 
-        public Medicine(string name, List<string> ingredients)
+        public int Quantity { get; set; }
+
+        public Medicine(string name, List<string> ingredients, int quantity)
         {
             Name = name;
             Ingredients = ingredients;
+            Quantity = quantity;
         }
 
-        public Medicine(string name, List<string> ingredients, MedicineStatus medicineStatus) : this(name, ingredients)
+        public Medicine(string name, List<string> ingredients, MedicineStatus medicineStatus, int quantity) : this(name, ingredients,quantity)
         {
             MedicineStatus = medicineStatus;
         }
@@ -27,9 +30,9 @@ namespace SIMS.Model
 
             csvValues[0] = Name;
             csvValues[1] = MedicineStatus.ToString();
+            csvValues[2] = Quantity.ToString();
 
-
-            int i = 2;
+            int i = 3;
             foreach (String s in Ingredients)
             {
                 csvValues[i] = s;
@@ -48,9 +51,10 @@ namespace SIMS.Model
             }
             Name = values[0];
             MedicineStatus = (MedicineStatus)Enum.Parse(typeof(MedicineStatus), values[1]);
+            Quantity = int.Parse(values[2]);
 
             Ingredients = new List<String>();
-            for (int i = 2; i < values.Length; i++)
+            for (int i = 3; i < values.Length; i++)
             {
                 Ingredients.Add(values[i]);
             }
