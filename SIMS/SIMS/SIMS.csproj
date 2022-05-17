@@ -233,6 +233,9 @@
     <Compile Include="View\Menager\Rooms.xaml.cs">
       <DependentUpon>Rooms.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\SplitRoom.xaml.cs">
+      <DependentUpon>SplitRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\SuccesfullyUpdate.xaml.cs">
       <DependentUpon>SuccesfullyUpdate.xaml</DependentUpon>
     </Compile>
@@ -427,6 +430,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\SplitRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
