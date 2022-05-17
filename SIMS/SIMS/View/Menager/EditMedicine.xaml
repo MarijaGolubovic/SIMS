@@ -14,11 +14,15 @@
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label FontSize="18" Margin="459,10,267,370" RenderTransformOrigin="0.648,-1.541">Name:</Label>
-        <Label FontSize="18" Width="100"  Margin="459,110,233,221">Ingrediets:</Label>
-        <Label FontSize="18" Width="100" Margin="459,50,233,327">Quantity:</Label>
-        <TextBox Height="25" Width="180" Margin="566,15,46,380" Background="MintCream" TextChanged="TextBox_TextChanged"></TextBox>
-        <TextBox Height="25" Width="180" Margin="566,110,46,285" Background="MintCream"></TextBox>
-        <TextBox Height="25" Width="180" Margin="566,60,46,335" Background="MintCream"></TextBox>
+        <Label FontSize="18" Margin="459,86,267,294" RenderTransformOrigin="0.648,-1.541">Name:</Label>
+        <Label FontSize="18" Width="100"  Margin="459,207,233,167">Ingrediets:</Label>
+        <Label FontSize="18" Width="100" Margin="459,145,233,232">Quantity:</Label>
+        <Label FontSize="25" FontWeight="Bold" Margin="520,10,89,367"> Edit Medicine</Label>
+        <TextBox Height="25" Width="180" Margin="530,80,34,309" Background="MintCream" TextChanged="TextBox_TextChanged"></TextBox>
+        <TextBox Width="180" Margin="530,207,34,129" Background="MintCream"/>
+        <TextBox Height="25" Width="180" Margin="530,120,34,230" Background="MintCream"></TextBox>
+
+        <Button Height="25" Width="100"  Background="MintCream" Margin="530,330,150,48">OK</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="665,330,10,47">CANCEL</Button>
     </Grid>
 </Window>
