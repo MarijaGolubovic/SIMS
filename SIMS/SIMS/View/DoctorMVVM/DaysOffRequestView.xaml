@@ -22,7 +22,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,55 +30,62 @@
         <TextBlock Grid.Row="0" 
                    Grid.Column="0"
                    Text="Zahtjev za slobodan dan" 
-                   FontFamily="Fonts/#Orbitron medium"
+                   FontFamily="Bahnschrift Light"
                    FontSize="40" 
-                   Margin="130,100,0,40"/>
+                   Margin="160,90,0,40"/>
 
         <TextBlock Text="Od:" 
-                   FontFamily="Roboto Light"
-                   FontSize="20" 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25"
                    Grid.Row="1"
                    Grid.Column="0"
-                   Margin="130,0,0,0"
+                   Margin="160,0,0,0"
                    VerticalAlignment="Center"/>
 
         <DatePicker Grid.Row="1"
-                    SelectedDate="{Binding StartDate}"
-                    FontSize="15" Margin="250,0,800,0"
+                    SelectedDate="{Binding StartDate, Mode=TwoWay}"
+                    FontSize="15" Margin="0,0,160,0"
                     VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Width="200"
+                    FontFamily="Bahnschrift Light"
                     />
 
         <TextBlock Text="Do:" 
-                   FontFamily="Roboto Light"
-                   FontSize="20" 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25"
                    Grid.Row="2"
                    Grid.Column="0"
-                   Margin="130,0,0,0"
+                   Margin="160,0,0,0"
                    VerticalAlignment="Center"/>
 
         <DatePicker Grid.Row="2"
-                    SelectedDate="{Binding StartDate}"
-                    FontSize="15" Margin="250,0,800,0"
-                    VerticalAlignment="Center"/>
+                    SelectedDate="{Binding EndDate, Mode=TwoWay}"
+                    FontSize="15" Margin="250,0,160,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Width="200"
+                    FontFamily="Bahnschrift Light"/>
 
         <TextBlock Text="Hitno:" 
-                   FontFamily="Roboto Light"
-                   FontSize="20" 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
                    Grid.Row="3"
                    Grid.Column="0"
-                   Margin="130,0,0,0"
+                   Margin="160,0,0,0"
                    VerticalAlignment="Center"/>
 
         <CheckBox Grid.Row="3"
-                  VerticalAlignment="Center" Margin="250,0,0,0"
-                  IsChecked="{Binding IsUrgently}"/>
+                  VerticalAlignment="Center" Margin="250,0,280,0"
+                  IsChecked="{Binding IsUrgently}"
+                  HorizontalAlignment="Right"/>
 
         <TextBlock Text="Obrazloženje:" 
-                   FontFamily="Roboto Light"
-                   FontSize="20" 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25"
                    Grid.Row="4"
                    Grid.Column="0"
-                   Margin="130,15,0,10"
+                   Margin="160,15,0,10"
                    VerticalAlignment="Center"/>
         
         <TextBox Grid.Row="5"
@@ -86,8 +93,9 @@
                  HorizontalAlignment="Left"
                  Width="1025"
                  Height="150"
+                 FontFamily="Bahnschrift Light"
                  FontSize="15"
-                 Margin="130,0,0,40"
+                 Margin="160,0,160,40"
                  Text="{Binding Reason}"/>
 
         <Button x:Name="Button_Zavrsi"
@@ -95,15 +103,27 @@
                     Grid.Column="0"
                     Grid.Row="6"
                     Width="70" 
-                    Height="30" Margin="900,40,0,0"
-                Command="{Binding FinishCommand}"/>
+                FontFamily="Bahnschrift Light"
+                    Height="30" Margin="0,0,170,60"
+                Command="{Binding FinishCommand}"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"/>
 
         <Button x:Name="Button_Back"
                     Content="Nazad" 
                     Grid.Column="0"
                     Grid.Row="6"
                     Width="70" 
-                    Height="30" Margin="700,40,0,0"/>
+                    Height="30" 
+                FontFamily="Bahnschrift Light"
+                Margin="0,0,280,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Command="{Binding BackCommand}"/>
 
     </Grid>
 </UserControl>

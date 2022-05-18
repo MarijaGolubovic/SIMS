@@ -71,5 +71,16 @@ namespace SIMS.Menager
         {
             _mainFrame.NavigationService.Navigate(new View.Menager.Report());
         }
+
+        private void MenuItem_Click_AddMedicine(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.AddMedicine());
+        }
+
+        private void MenuItem_Click_EditMedicine(object sender, RoutedEventArgs e)
+        {
+            View.Menager.EditMedicine editMedicine = new View.Menager.EditMedicine();
+            editMedicine.Show();
+        }
     }
 }

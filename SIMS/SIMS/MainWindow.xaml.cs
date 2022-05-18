@@ -39,7 +39,9 @@ namespace SIMS
 
         private void Button_Click_Doctor2(object sender, RoutedEventArgs e)
         {
-            View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
+            DoctorController doctorController = new DoctorController();
+            ViewModel.Doctor.MainWindowViewModel.LoggedInUser = doctorController.GetByID("2408000103256");
+            View.DoctorMVVM.MainWindow doctorWindow = new View.DoctorMVVM.MainWindow();
             doctorWindow.Show();
             this.Close();
         }

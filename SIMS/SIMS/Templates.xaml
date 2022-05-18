@@ -13,8 +13,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="#FF36547C"
+                BorderBrush="#FF2C466A"
                 BorderThickness="0"
                 Height="80"
                 Width="260">
@@ -73,8 +73,8 @@
                        VerticalOffset="0">
 
                     <Border x:Name="SubMenuBorder"
-                            Background="#2E333A"
-                            BorderBrush="#2E333A">
+                            Background="#FF36547C"
+                            BorderBrush="#FF2C466A">
 
                         <ScrollViewer x:Name="SubMenuScrollViewer"
                                       Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
@@ -139,8 +139,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="#FF36547C"
+                BorderBrush="#FF2C466A"
                 BorderThickness="0"
                 Height="80"
                 Width="260"
@@ -220,8 +220,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="#FF36547C"
+                BorderBrush="#FF2C466A"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Height="80"
                 Width="280"
