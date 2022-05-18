@@ -105,7 +105,7 @@ namespace SIMS.Model
                 Ingredients.Add(values[i]);
             }
         }
-
+        
         public Medicine() { }
     }
 }

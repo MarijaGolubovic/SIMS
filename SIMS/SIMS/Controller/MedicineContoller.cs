@@ -59,5 +59,11 @@ namespace SIMS.Controller
         {
             medicineService.ChangeMedicineStatusOnInvalid(medicine);
         }
+
+
+       public void EditMedicine(Medicine oldMedicine, Medicine newMedicine){
+
+            medicineService.EditMedicine(oldMedicine,newMedicine);
+       }
     }
 }

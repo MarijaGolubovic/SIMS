@@ -92,8 +92,10 @@ namespace SIMS.View.Menager
                     ingredients.Add(tokens[i]);
                 }
 
-                medicineStorage.Delete(selectedMedicine);
-                medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
+                Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
+                medicineStorage.EditMedicine(selectedMedicine,newMedecine);
+              //  medicineStorage.Delete(selectedMedicine);
+               // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
                 View.Menager.EditMedicine editMedicine = new EditMedicine();
                 editMedicine.Show();
                 this.Close();

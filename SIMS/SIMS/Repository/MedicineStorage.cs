@@ -88,5 +88,11 @@ namespace SIMS.Repository
         }
 
         public String fileName;
+
+        public void EditMedicine(Medicine oldMedicine, Medicine newMedicine)
+        {
+            Delete(oldMedicine);
+            Create(newMedicine);
+        }
     }
 }
