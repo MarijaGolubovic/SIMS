@@ -21,6 +21,10 @@ namespace SIMS.View.Menager
     public partial class EditMedicine : Window
     {
         public static ObservableCollection<Model.Medicine> Rooms { get; set; }
+        public static Model.Medicine selectedMedicine;
+        bool flag = false;
+
+        public Repository.MedicineStorage medicineStorage = new Repository.MedicineStorage();
         public EditMedicine()
         {
             InitializeComponent();
@@ -44,16 +48,62 @@ namespace SIMS.View.Menager
                 Rooms.Add(roomItem);
             }
 
+           
+
         }
 
         private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            selectedMedicine = (Model.Medicine)dataGridMedicines.SelectedItem;
 
+            List<string> medecineIgredients = new List<string>();
+            foreach (string item in selectedMedicine.Ingredients)
+            {
+                medecineIgredients.Add(item);
+            }
+
+
+            string igredients = "";
+
+            for (int i = 1; i < medecineIgredients.Count; i++)
+            {
+                igredients = medecineIgredients[0];
+                igredients += ",";
+                igredients += medecineIgredients[i];
+
+            }
+
+
+            nameBox.Text = selectedMedicine.Name;
+            quantityBox.Text = selectedMedicine.Quantity.ToString();
+            igredientsBox.Text = igredients;
+            flag = true;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
+            if (flag)
+            {
+                int quantity = int.Parse(quantityBox.Text);
+                List<String> ingredients = new List<String>();
+                string[] tokens = igredientsBox.Text.Trim().Split(',');
+                for (int i = 0; i < tokens.Length; i++)
+                {
+                    ingredients.Add(tokens[i]);
+                }
 
+                medicineStorage.Delete(selectedMedicine);
+                medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
+                View.Menager.EditMedicine editMedicine = new EditMedicine();
+                editMedicine.Show();
+                this.Close();
+                
+            }
+        }
+
+        private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

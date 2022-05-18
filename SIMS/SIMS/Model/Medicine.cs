@@ -33,13 +33,7 @@ namespace SIMS.Model
             }
         }
 
-        public List<String> Ingredients { get { 
-            return _Ingredients;
-            } set {
-                _Ingredients = value;
-                OnPropertyChanged("Ingredients");
-            
-            } }
+        public List<String> Ingredients { get; set; }
         public MedicineStatus MedicineStatus { 
             get { return _MedicineStatus; } 
             set {

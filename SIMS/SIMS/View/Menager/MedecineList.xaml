@@ -16,7 +16,7 @@
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Height="25" Width="100" Background="MintCream" Margin="651,391,49,34" Click="Button_Click_BACK">BACK</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="651,360,49,34" Click="Button_Click_BACK">BACK</Button>
         
     </Grid>
 </Page>
