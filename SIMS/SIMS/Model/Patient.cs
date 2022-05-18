@@ -15,7 +15,7 @@ namespace SIMS.Model
         public Boolean ActivatedAccount { get; set; }
         public int OffenceCounter { get; set; }
 
-        //System.Threading.Timer _timer;
+        public System.Threading.Timer _timer;
 
         public List<Notificatoin> NotificationList { get; set; }
         public Patient(User user, MedicalRecord medicalRecord, AccountStatus accountStatus) : base(user.Username, user.Password, user.Type, user.Person)
@@ -40,15 +40,14 @@ namespace SIMS.Model
             this.ActivatedAccount = accountStatus.activatedAccount;
             this.NotificationList = new List<Notificatoin>();
             this.OffenceCounter = offenceCounter;
-            this.Date = Person.DateOfBirth.ToString().Split(' ')[0];
+        }
 
-            /*public void Start30DayTimer()
-            {
+        public void Start30DayTimer()
+        {
                 TimeSpan span = new TimeSpan(30, 0, 0, 0);
                 TimeSpan disablePeriodic = new TimeSpan(0, 0, 0, 0, -1);
                 _timer = new System.Threading.Timer(timer_TimerCallback, null,
                     span, disablePeriodic);
-            }*/
         }
 
             public void timer_TimerCallback(object state)

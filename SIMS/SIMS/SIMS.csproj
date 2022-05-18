@@ -226,11 +226,17 @@
     <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
       <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\EditMedicine.xaml.cs">
+      <DependentUpon>EditMedicine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
       <DependentUpon>EqupmentPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MedecineList.xaml.cs">
+      <DependentUpon>MedecineList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\MergeRooms.xaml.cs">
       <DependentUpon>MergeRooms.xaml</DependentUpon>
@@ -416,6 +422,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\EditMedicine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Menager\EqupmentPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -423,6 +433,10 @@
     <Page Include="View\Menager\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\MedecineList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Menager\MergeRooms.xaml">
       <SubType>Designer</SubType>
