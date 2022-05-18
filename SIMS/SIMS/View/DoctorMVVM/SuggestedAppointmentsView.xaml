@@ -50,7 +50,8 @@
                        Background="Transparent"
                        FontFamily="Bahnschrift Light"
                        Height="340"
-                       SelectedItem="{Binding SelectedAppointment}">
+                       SelectedItem="{Binding SelectedAppointment}"
+                       FontSize="20">
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Datum i vreme" Binding="{Binding DateAndTime}" Width="*"></DataGridTextColumn>

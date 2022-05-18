@@ -7,7 +7,7 @@
         xmlns:view="clr-namespace:SIMS.View.DoctorMVVM"
         xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Bravo Corporation"
         Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" 
         Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" 
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">

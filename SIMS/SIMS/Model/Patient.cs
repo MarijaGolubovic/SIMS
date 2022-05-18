@@ -40,6 +40,7 @@ namespace SIMS.Model
             this.ActivatedAccount = accountStatus.activatedAccount;
             this.NotificationList = new List<Notificatoin>();
             this.OffenceCounter = offenceCounter;
+            this.Date = Person.DateOfBirth.ToString().Split(' ')[0];
         }
 
         public void Start30DayTimer()
