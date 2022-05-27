@@ -1,0 +1,264 @@
+﻿<UserControl x:Class="SIMS.View.DoctorMVVM.JoinAppointmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="1290">
+
+    <UserControl.DataContext>
+        <viewModel:JoinAppointmentViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" 
+                   Grid.Column="0"
+                   Text="Pregled" 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="40" 
+                   Margin="160,90,0,50"
+                   />
+
+        <TextBlock Text="Zdravstveni karton" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="30" 
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+        <TextBlock Text="Krvna grupa: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="3"
+                               Grid.Column="0" Margin="320,0,0,0"/>
+
+        <TextBlock Text="{Binding MedicalRecord.BloodType}"
+                               Grid.Row="3"
+                               Grid.Column="0" 
+                               Margin="490,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+        <TextBlock Text="Visina: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="4"
+                               Grid.Column="0" Margin="320,0,0,0"/>
+
+        <TextBlock Text="{Binding Height}"
+                               Grid.Row="4"
+                               Grid.Column="0" 
+                               Margin="490,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+        <TextBlock Text="Težina: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="5"
+                               Grid.Column="1" Margin="320,0,0,0"/>
+
+        <TextBlock Text="{Binding Weight}"
+                               Grid.Row="5"
+                               Grid.Column="1" 
+                               Margin="490,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+        <TextBlock Text="Alergije: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="3"
+                               Grid.Column="1" Margin="700,0,0,0"/>
+
+        <ComboBox Grid.Row="3"
+                  Grid.Column="1"
+                  Width="200"
+                  HorizontalAlignment="Left" Margin="800,0,160,0"
+                  Height="25"
+                  VerticalAlignment="Top"
+                  FontFamily="Bahnschrift Light"
+                  x:Name="AllergyComboBox"
+                  ItemsSource="{Binding Allergies}"
+                  SelectedIndex="0">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+
+        </ComboBox>
+
+        <TextBlock Text="Terapije: " 
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="4"
+                    Grid.Column="1" Margin="700,0,0,0"/>
+
+        <ComboBox Grid.Row="4"
+                  Grid.Column="1"
+                  Width="200"
+                  HorizontalAlignment="Left" Margin="800,0,0,0"
+                  Height="25"
+                  FontFamily="Bahnschrift Light"
+                  VerticalAlignment="Top"
+                  ItemsSource="{Binding Therapies}"
+                  SelectedIndex="0">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Medicine.Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+
+        </ComboBox>
+
+        <TextBlock Text="Dijagnoza" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="6"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center" Margin="0,30,0,30"/>
+
+        <TextBox x:Name="Diagnosis_TextBox"
+                     Grid.Row="7"
+                     Grid.Column="1"
+                     HorizontalAlignment="Center"
+                     Width="935"
+                     Height="150"
+                 FontFamily="Bahnschrift Light"
+                     FontSize="15" Margin="160,0,160,20"
+                     Text="{Binding Diagnosis, Mode=TwoWay}"/>
+
+        <TextBlock Text="Dodatne funkcionalnosti" 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="8"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center" Margin="0,50,0,50"/>
+
+
+        <Button Background="White"
+                    Grid.Column="0"
+                    Grid.Row="9" Margin="0,0,160,0"
+                    Width="200"
+                    Height="250"
+                    HorizontalAlignment="Right"
+                FontFamily="Bahnschrift Light"
+                    Focusable="False"
+                Style="{DynamicResource RoundedButtonStyle}">
+            <StackPanel>
+                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\note.png"
+                           Stretch="None"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,60"/>
+                <TextBlock Text="Opravdanje" 
+                               FontFamily="Bahnschrift SemiBold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom" Margin="0,0,0,20"
+                               FontSize="24"
+                           Foreground="Black"/>
+            </StackPanel>
+        </Button>
+
+
+        <Button Background="White"
+                    Grid.Column="0"
+                    Grid.Row="9" Margin="160,0,0,0"
+                    Width="200"
+                    Height="250"
+                    HorizontalAlignment="Left"
+                FontFamily="Bahnschrift Light"
+                    Focusable="False"
+                Command="{Binding AddTherapyCommand}"
+                Style="{DynamicResource RoundedButtonStyle}">
+            <StackPanel>
+                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\therapy.png"
+                           Stretch="None"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,60"/>
+                <TextBlock Text="Terapija" 
+                               FontFamily="Bahnschrift SemiBold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom" Margin="0,0,0,20"
+                               FontSize="24"
+                           Foreground="Black"/>
+            </StackPanel>
+        </Button>
+
+        <Button Background="White"
+                    Grid.Column="0"
+                    Grid.Row="9" Margin="140,0,140,0"
+                    Width="200"
+                    Height="250"
+                FontFamily="Bahnschrift Light"
+                    HorizontalAlignment="Center"
+                    Style="{DynamicResource RoundedButtonStyle}"
+                Command="{Binding AddAppointmentCommand}"
+                    >
+            <StackPanel>
+                <Image Source="C:\Users\X\Desktop\Fakultet\SIMS\SIMS - Dejan Gloginjicc\SIMS\SIMS\SIMS\Assets\doctor-consultation.png"
+                           Stretch="None"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,60"/>
+                <TextBlock Text="Uputnica" 
+                           FontFamily="Bahnschrift SemiBold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom" Margin="0,0,0,20"
+                           FontSize="24"
+                           Foreground="Black"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="Button_Zavrsi"
+                Content="Završi" 
+                Grid.Column="0"
+                Grid.Row="10"
+                Width="70" 
+                Height="30" 
+                Command="{Binding FinishCommand}"
+                Margin="0,90,170,60"
+                FontFamily="Bahnschrift Light"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"/>
+
+        <Button x:Name="Button_Back"
+                Content="Nazad" 
+                Grid.Column="0"
+                Grid.Row="10"
+                Width="70" 
+                FontFamily="Bahnschrift Light"
+                Height="30" 
+                Command="{Binding BackCommand}"
+                Margin="0,90,280,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"/>
+
+    </Grid>
+
+
+</UserControl>

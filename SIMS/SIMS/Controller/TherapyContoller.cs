@@ -30,6 +30,7 @@ namespace SIMS.Controller
 
         public Boolean Create(Therapy therapy)
         {
+            /*
             //ovaj kod trebam negdje lijepo smjestiti
 
             //ovdje treba zamijeniti datumom kad je terapija propisana
@@ -50,7 +51,7 @@ namespace SIMS.Controller
                     patient.NotificationList.Add(notification);
                     notificationStorage.Create(notification);
                 }
-            }
+            }*/
             return therapyService.Create(therapy);
         }
     }

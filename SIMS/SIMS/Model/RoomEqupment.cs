@@ -9,49 +9,44 @@ namespace SIMS.Model
         private readonly Controller.EquipmentController equipmentController = new Controller.EquipmentController();
 
         public String RoomId { get; set; }
-        public List<Equpment> roomEquipment { get; set; }
+        public String IdEquipment { get; set; }
         public String Period { get; set; }
 
-        String _RoomId;
+       
 
         public RoomEqupment()
         {
         }
 
-        public RoomEqupment(string roomId, List<Equpment> roomEquipment, string period)
+        public RoomEqupment(string roomId, string idEquipment, string period)
         {
             RoomId = roomId;
-            this.roomEquipment = roomEquipment;
             Period = period;
+            IdEquipment = idEquipment;
+           
+            
         }
 
         List<Equpment> _RoomEquipment { get; set; }
 
         public string[] toCSV()
         {
-            string[] csvValues = { RoomId, Period };
-            int i = 2;
-            foreach (Equpment equipment in roomEquipment)
-            {
-                csvValues[i] = equipment.ToString();
-                i++;
-            }
+            string[] csvValues = { RoomId, Period, IdEquipment };
+            
+            
             return csvValues;
         }
 
         public void fromCSV(string[] values)
         {
-            RoomId = values[0];
-            Period = values[1];
-
             if (values == null)
                 return;
+            //RoomId = values[0];
+            //Period = values[1];
+            //IdEquipment = values[2];
 
-            int i;
-            for (i = 2; i < values.Length; i++)
-            {
-                roomEquipment.Add((Equpment)values[i]);
-            }
+            
+
 
         }
 

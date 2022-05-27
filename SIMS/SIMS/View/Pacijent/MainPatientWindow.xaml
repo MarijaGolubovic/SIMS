@@ -3,17 +3,120 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SIMS.Pacijent"
+        xmlns:local="clr-namespace:SIMS.Pacijent" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainPatientWindow" Height="450" Width="800">
+        Title="MainPatientWindow" Height="768" Width="1024" 
+        AllowsTransparency="True" Background="Transparent" 
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Button Content="Zakazi novi termin" Grid.Column="2" HorizontalAlignment="Left" Margin="85,98,0,0" VerticalAlignment="Top" Width="213" Click="AddAppointment"/>
-        <Button Content="Prikaz svih termina" Grid.Column="2" HorizontalAlignment="Left" Margin="85,56,0,0" VerticalAlignment="Top" Width="213" Click="AllAppointments"/>
-        <Button Content="Obavestenja" Grid.Column="2" HorizontalAlignment="Left" Margin="85,143,0,0" VerticalAlignment="Top" Width="213" Click="Notification_Click"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="170"/>
+                <RowDefinition/>
+                <RowDefinition Height="130"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="10" Grid.RowSpan="4" Grid.ColumnSpan="8">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#7be9f6" Offset="0.0"/>
+                        <GradientStop Color="#f083da" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="Account" Foreground="White" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" 
+                                            Height="Auto" Width="70"/>
+                <TextBlock Text="{Binding Path=Username, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"
+                                            FontSize="22"
+                                            FontFamily="/Fonts/#Poppins"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
+                <Button Background="Transparent" BorderThickness="0" Click="Button_Click_Home">
+                    <StackPanel>
+                        <iconPacks:PackIconMaterial Kind="Hospital" Foreground="White" HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center" 
+                                                        Height="70" Width="70" />
+                        <TextBlock Text="Pocetna" VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"
+                                            FontSize="22"
+                                            FontFamily="/Fonts/#Poppins"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="HumanGreeting" Foreground="White" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" 
+                                            Height="70" Width="70" Margin="29,0"/>
+                <TextBlock Text="O nama" VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"
+                                            FontSize="22"
+                                            FontFamily="/Fonts/#Poppins"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="4" VerticalAlignment="Center">
+                <Button Background="Transparent" BorderThickness="0" Click="Button_Click_Feedback" Margin="0,0,-9,0">
+                    <StackPanel>
+                        <iconPacks:PackIconMaterial Kind="MessageReply" Foreground="White" HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center" 
+                                                        Height="70" Width="70" />
+                        <TextBlock Text="Ocenite nas" VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"
+                                            FontSize="22"
+                                            FontFamily="/Fonts/#Poppins"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="5" VerticalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="Information" Foreground="White" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" 
+                                            Height="70" Width="70"/>
+                <TextBlock Text="Info" VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"
+                                            FontSize="22"
+                                            FontFamily="/Fonts/#Poppins"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2"  Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock Text="Klinika Zdravo" Foreground="White"
+                           FontSize="40" 
+                           FontFamily="/Fonts/#Poppins"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center">
+
+                <iconPacks:PackIconMaterial Kind="NotificationClearAll" Foreground="White" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" 
+                                            Height="Auto" Width="40"/>
+                <iconPacks:PackIconMaterial Kind="AccountRemove" Foreground="White" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            Margin="15,0,0,0"
+                                            Height="Auto" Width="40"/>
+            </StackPanel>
+            <Frame x:Name="MainFrame" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="2" NavigationUIVisibility="Hidden" Margin="70,0,70,0"></Frame>
+
+        </Grid>
     </Grid>
 </Window>

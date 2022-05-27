@@ -1,0 +1,377 @@
+﻿<Window x:Class="SIMS.View.DoctorMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+        xmlns:view="clr-namespace:SIMS.View.DoctorMVVM"
+        xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Bravo Corporation"
+        Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" 
+        Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" 
+        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <!--instead of specifying an x:Key you can use DataType-->
+        <!--This DataTemplate gets applied automatically to HomeViewModel-->
+        <DataTemplate DataType="{x:Type viewModel:AllAppointmentsViewModel}">
+            <view:AllAppointmentsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:DetailedAppointmentViewModel}">
+            <view:DetailedAppointmentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:JoinAppointmentViewModel}">
+            <view:JoinAppointmentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:DaysOffRequestViewModel}">
+            <view:DaysOffRequestView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AddTherapyViewModel}">
+            <view:AddTherapyView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:MedicineValidationViewModel}">
+            <view:MedicineValidationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AddAppointmentViewModel}">
+            <view:AddAppointmentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:EditAppointmentViewModel}">
+            <view:EditAppointmentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:EditRoomViewModel}">
+            <view:EditRoomView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:SuggestedAppointmentsViewModel}">
+            <view:SuggestedAppointmentsView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="#FFB2C7DD">
+            <DockPanel>
+
+            <StackPanel Background="#FF36547C"
+                        Orientation="Horizontal"
+                        DockPanel.Dock="Top"
+                        Height="80">
+
+                    <Grid HorizontalAlignment="Center">
+
+                        <Image Source="/Assets/hospital-doctor.png" 
+                           HorizontalAlignment="Left" Margin="20,0,0,0"
+                           />
+
+                        <TextBlock Text="Zdravo"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="30" FontFamily="Bahnschrift SemiBold"
+                               Margin="120,6,0,0"
+                               Foreground="WhiteSmoke"
+                               />
+
+                        <TextBlock Text="Corporation"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left"
+                               FontSize="30" 
+                               FontFamily="Bahnschrift SemiBold"
+                               Margin="120,0,0,6"
+                               Foreground="WhiteSmoke"/>
+
+                        <TextBlock Text="Because Your Life Matters" 
+                                   FontSize="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" 
+                                   Margin="572,0,470,0"
+                                   FontFamily="Bahnschrift Light"
+                                   Foreground="WhiteSmoke"
+                           />
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right" 
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    >
+                            
+                            <TextBlock Text="{Binding LoggedInUser.Person.Name}" 
+                                       Margin="0,0,5,0"
+                                       FontSize="17"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Bahnschrift Light"
+                                       Foreground="WhiteSmoke"/>
+                            <TextBlock Text="{Binding LoggedInUser.Person.Surname}"
+                                       FontSize="17"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Bahnschrift Light"
+                                       Foreground="WhiteSmoke"/>
+
+                        <Button Height="50"
+                                Width="50"
+                                Click="Button_Click">
+                            
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Grid.Column="5"
+                                           Grid.Row="0"
+                                           HorizontalAlignment="Right"
+                                           RenderTransformOrigin="0.026,0.525"
+                                           Margin="10,0,10,0"
+                                           Width="25"
+                                           VerticalAlignment="Center">
+                                        <Image.Source >
+                                            <BitmapImage  UriSource="/Assets/sign-out.png"/>
+                                        </Image.Source>
+                                    </Image>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+
+                <!--// Menu Panel //-->
+
+                <StackPanel Background="#FF28579A"
+                        Height="560"
+                        Width="260"
+                        Orientation="Vertical"
+                        HorizontalAlignment="Left"
+                        DockPanel.Dock="Left">
+
+                    <Menu Height="560"
+                      Background="Transparent">
+
+                        <Menu.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </Menu.ItemsPanel>
+
+                        <!--// Main Menu - Home //-->
+
+                        <MenuItem Header="Pregledi"
+                              Template="{StaticResource Menu_SubMenu_Template}">
+
+                            <MenuItem.Icon>
+                                <Image Source="/Assets/stethoscope.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="Zakaži"
+                                  Template="{StaticResource Item_Template}"
+                                  Command="{Binding NavCommand}"
+                                  CommandParameter="AddAppointmentView">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/addAppointment.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Izmjeni"
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="EditAppointmentView">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/editAppointment.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Otkaži"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/deleteAppointment.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Prikaži sve"
+                                      Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="AllAppointmentView">
+
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/planner.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Operacije"
+                              Template="{StaticResource Menu_SubMenu_Template}">
+
+                            <MenuItem.Icon>
+                                <Image Source="/Assets/surgery.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="Zakaži"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/addAppointment.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Otkaži"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/deleteAppointment.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Prikaži sve"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/planner.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Zahtjevi"
+                              Template="{StaticResource Menu_SubMenu_Template}">
+
+                            <MenuItem.Icon>
+                                <Image Source="/Assets/requirements.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="Godišnji odmor"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/vacation.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Slobodan dan"
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="daysOff">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/freeDay.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Nabavka"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/procurement.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Nalog"
+                              Template="{StaticResource Menu_SubMenu_Template}">
+
+                            <MenuItem.Icon>
+                                <Image Source="/Assets/account.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="Prikaz"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/viewAccount.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Izmjeni"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/editAppointment.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Izmjeni lozinku"
+                                  Template="{StaticResource Item_Template}">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/changePassword.png"
+                                   Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Verifikacija"
+                              Template="{StaticResource Menu_Template}"
+                                  Command="{Binding NavCommand}"
+                                  CommandParameter="MedicineValidationView">
+
+                            <MenuItem.Icon>
+                            <Image Source="/Assets/icons8-medicine-32.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Ankete"
+                              Template="{StaticResource Menu_Template}">
+
+                            <MenuItem.Icon>
+                            <Image Source="/Assets/poll.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Izvještaj"
+                              Template="{StaticResource Menu_Template}">
+
+                            <MenuItem.Icon>
+                                <Image Source="/Assets/report.png"
+                                   Stretch="None" />
+                            </MenuItem.Icon>
+
+                        </MenuItem>
+
+                    </Menu>
+
+                </StackPanel>
+
+            <ScrollViewer>
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+            </ScrollViewer>
+
+        </DockPanel>
+        </Grid>
+</Window>

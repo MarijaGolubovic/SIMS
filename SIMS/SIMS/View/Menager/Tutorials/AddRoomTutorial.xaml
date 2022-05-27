@@ -1,0 +1,22 @@
+﻿<Page x:Class="SIMS.View.Menager.Tutorials.AddRoomTutorial"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Menager.Tutorials"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddRoomTutorial">
+
+    <Grid RenderTransformOrigin="0.617,0.502" HorizontalAlignment="Left" Width="800">
+        <ScrollBar Margin="783,0,0,0" x:Name="AddRoomTutorijalScroll" Scroll="AddRoomTutorijalScroll_Scroll"></ScrollBar>
+        <Image Source="/Assets/plus.png"  Focusable="False" VerticalAlignment="Top" Height="56" RenderTransformOrigin="0.45,0.69" Width="45" Margin="304,26,451,0"/>
+        <Label Name="Label1"  
+                    Content="Add room"  
+                    FontSize="25"  
+                    FontWeight="Bold" 
+                    Width="150" VerticalAlignment="Top" Margin="354,26,296,0"
+             />
+        <Image Source="/Assets/select_room_image.png"  Focusable="False" VerticalAlignment="Bottom" Margin="39,0,328,57" RenderTransformOrigin="-0.021,6.656" Height="306" />
+    </Grid>
+</Page>

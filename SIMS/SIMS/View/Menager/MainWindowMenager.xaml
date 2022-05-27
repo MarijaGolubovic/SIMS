@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
-        Title="Hello Clinic" Height="600" Width="950" ResizeMode="NoResize">
+        Title="Hello Clinic" Height="600" Width="950" ResizeMode="NoResize"
+    >
     <Grid RenderTransformOrigin="0.495,0.386" Background="DarkGreen">
         <Border BorderThickness="2"   Margin="0,0,0,442"  Background="DarkGreen"/>
         <Grid Height="127" VerticalAlignment="Top" HorizontalAlignment="Right" Width="944" Background="MintCream">
@@ -77,7 +78,7 @@
                     <ColumnDefinition Width="830*"/>
                 </Grid.ColumnDefinitions>
                 <Menu Background="MintCream" Margin="40,0,10,10" Grid.ColumnSpan="2">
-                    <MenuItem Header="Home" FontSize="22" FontWeight="Bold" Width="100" Background="MintCream">
+                    <MenuItem Header="Home" FontSize="22" FontWeight="Bold" Width="100" Background="MintCream" Click="MenuItem_BackToHomePage">
                     </MenuItem>
                     <MenuItem Header="Rooms" FontSize="22" FontWeight="Bold"  Background="MintCream"  Width="108" >
                         <Menu  Background="MintCream" Width="782">
@@ -121,14 +122,14 @@
                     <MenuItem Header="Medicines" FontSize="22" FontWeight="Bold" Width="134">
                         <Menu  Background="White">
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137">
+                                <MenuItem Background="White" Width="137" Click="MenuItem_Click_AddMedicine">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/add_icon.png" Height="79" Width="123"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_Click_EditMedicine">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/edit.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
@@ -192,7 +193,7 @@
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_ClickMoveEquipment">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/move.png" Height="79" Width="127"></Image>
                                     </MenuItem.Icon>
@@ -205,7 +206,9 @@
                 </Menu>
             </Grid>
         </Grid>
-        <Grid Margin="0,130,0,0"   Background="LightGray"/>
+        <Grid Margin="0,130,0,0"   Background="LightGray">
+            <Frame x:Name="MainFrameMenager"  NavigationUIVisibility="Hidden" />
+        </Grid>
 
     </Grid>
 </Window>

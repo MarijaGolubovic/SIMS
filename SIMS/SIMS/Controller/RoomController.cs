@@ -22,7 +22,12 @@ namespace SIMS.Controller
             return roomService.GetAll();
         }
 
-        public Boolean Delete(int roomID)
+        public Model.Room GetRoomById(string idRoom)
+        {
+            return roomService.GetRoomById(idRoom);
+        }
+
+        public Boolean Delete(string roomID)
         {
 
             return roomService.Delete(roomID);

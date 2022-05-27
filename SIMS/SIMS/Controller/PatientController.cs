@@ -92,7 +92,7 @@ namespace SIMS.Controller
 
         }
 
-        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment()
+        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
         {
             List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();
 
@@ -110,6 +110,11 @@ namespace SIMS.Controller
         public List<PatientForAddAppointmentDTO> filterPatients(String query, List<PatientForAddAppointmentDTO> patients)
         {
             return patientService.filterPatients(query, patients);
+        }
+
+        public List<String> LinkPatientInformationsForAddAppointment()
+        {
+            return patientService.LinkPatientInformationsForAddAppointment();
         }
     }
 }

@@ -13,8 +13,6 @@ namespace SIMS.Pacijent
     /// </summary>
     public partial class EditAppintment : Window
     {
-
-
         public static ObservableCollection<Model.Doctor> Doctors { get; set; }
 
         private readonly PatientController patientController = new PatientController();

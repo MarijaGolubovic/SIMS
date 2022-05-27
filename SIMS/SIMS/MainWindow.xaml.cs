@@ -11,17 +11,12 @@ namespace SIMS
     public partial class MainWindow : Window
     {
         private UserController userController;
+        private PatientController patientController;
         public MainWindow()
         {
             InitializeComponent();
             userController = new UserController();
-        }
-
-        private void Button_Click_Patient(object sender, RoutedEventArgs e)
-        {
-            Pacijent.MainPatientWindow patientWindow = new Pacijent.MainPatientWindow();
-            patientWindow.Show();
-
+            patientController = new PatientController();
         }
 
 
@@ -45,7 +40,9 @@ namespace SIMS
 
         private void Button_Click_Doctor2(object sender, RoutedEventArgs e)
         {
-            View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
+            DoctorController doctorController = new DoctorController();
+            ViewModel.Doctor.MainWindowViewModel.LoggedInUser = doctorController.GetByID("2408000103256");
+            View.DoctorMVVM.MainWindow doctorWindow = new View.DoctorMVVM.MainWindow();
             doctorWindow.Show();
             this.Close();
         }
@@ -86,16 +83,31 @@ namespace SIMS
                 {
                     if (user.Type == UserType.doctor)
                     {
-                        View.Doctor.MainWindow.LoggedInUser = user;
-                        View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
+                        ViewModel.Doctor.MainWindowViewModel.LoggedInUser = user;
+                        View.DoctorMVVM.MainWindow doctorWindow = new View.DoctorMVVM.MainWindow();
                         doctorWindow.Show();
                         this.Close();
                     }
 
                     if (user.Type == UserType.patient)
                     {
-                        Pacijent.MainPatientWindow patientWindow = new Pacijent.MainPatientWindow();
-                        patientWindow.Show();
+                        Patient patient = patientController.GetOne(user.Person.JMBG);
+                        if (patient.OffenceCounter < 5)
+                        {
+                            Pacijent.MainPatientWindow patientWindow = new Pacijent.MainPatientWindow(user);
+                            patientWindow.Show();
+                        }
+                        else
+                        {
+                            patient.AccountStatus.activatedAccount = false;
+                            patientController.Update(patient);
+                            string messageBoxText = "Vas profil je blokiran!";
+                            string caption = "Greska";
+                            MessageBoxButton button = MessageBoxButton.OK;
+                            MessageBoxImage icon = MessageBoxImage.Warning;
+                            MessageBoxResult result;
+                            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+                        }
                     }
 
                     if (user.Type == UserType.menager)

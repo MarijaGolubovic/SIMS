@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using SIMS.Model;
 using SIMS.Service;
 
@@ -11,11 +12,16 @@ namespace SIMS.Controller
 
         private readonly AppointmentService appointmentService = new AppointmentService();
         private readonly PatientController patientController = new PatientController();
+        private readonly OccupacyRoomService occupacyRoomService = new OccupacyRoomService();
 
         public AppointmentController()
         {
         }
 
+        public void EditRoom(int appointmentId, Room room)
+        {
+            appointmentService.EditRoom(appointmentId, room);
+        }
         public List<AppointmentsForDoctorDTO> GetAppointmentsForDoctor()
         {
             List<AppointmentsForDoctorDTO> appointmentsForDoctorDTOs = new List<AppointmentsForDoctorDTO>();
@@ -23,7 +29,7 @@ namespace SIMS.Controller
 
             foreach (Appointment a in appointments)
             {
-                if (a.Doctor.Person.JMBG.Equals(View.Doctor.MainWindow.LoggedInUser.Person.JMBG))
+                if (a.Doctor.Person.JMBG.Equals(ViewModel.Doctor.MainWindowViewModel.LoggedInUser.Person.JMBG))
                 {
                     String name = a.Patient.Person.Name;
                     String surname = a.Patient.Person.Surname;
@@ -75,25 +81,79 @@ namespace SIMS.Controller
             return appointmentService.Create(appointment);
         }
 
-        public List<Appointment> findSuggestedAppointments(Model.Doctor doctorTmp, bool doctorPriority, bool appointemntPriority, DateTime dateTimeTmp)
+        public bool Create(Appointment appointment, RoomOccupacy roomOccupacy)
         {
-            //porvjera da li je jedno od polja prioriteta oznaceno
-            if (doctorPriority == false && appointemntPriority == false)
-            {
-                //javi gresku korisniku
-            }
-            //ovo su sad predlozeni termini
-            List<Appointment> suggestedAppointments = appointmentService.findSuggestedAppointments(doctorTmp, doctorPriority, appointemntPriority, dateTimeTmp);
-            List<Appointment> createdAppointemnt = new List<Appointment>();
-            //ako lista predlozenih termina sadrzi tacno zeljeni termin onda je termin vec kreiran
-
-            return suggestedAppointments;
+            return appointmentService.Create(appointment,roomOccupacy);
         }
 
+        public int GenerateAppointmentID()
+        {
+            return appointmentService.GenerateAppointmentID();
+        }
+
+        public RoomOccupacy FormRoomOccupacyFromAppointment(Appointment appointment)
+        {
+            return appointmentService.FormRoomOccupacyFromAppointment(appointment);
+        }
+
+        public Room FindRoomForAppointment(AppointmentForPatientDTO appointmentDTO)
+        {
+            return appointmentService.FindRoomForAppointment(appointmentDTO);
+        }
+
+        public bool CheckIfAvailable(AppointmentForPatientDTO appointmentDTO)
+        {
+            return appointmentService.CheckIfAvailable(appointmentDTO);
+        }
+
+        public List<Appointment> FindSuggestedAppointments(AppointmentForPatientDTO appointmentDTO)
+        {
+            return appointmentService.FindSuggestedAppointments(appointmentDTO);
+        }
+
+        public bool CheckIfDateIsValid(DateTime date)
+        {
+            if (DateTime.Compare(DateTime.Now, date) > 0)
+            {
+                MessageBox.Show("Nije moguce zakazati termin u proslosti!");
+                return false;
+            }
+            return true;
+        }
+
+        public bool CheckIfDateIsValidForDoctor(DateTime date)
+        {
+            if (DateTime.Compare(DateTime.Now, date) > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool CheckIfDateIsValidForEdit(DateTime old, DateTime chosen)
+        {
+            if (DateTime.Compare(DateTime.Now, chosen) > 0)
+            {
+                MessageBox.Show("Nije moguce zakazati termin u proslosti!");
+                return false;
+            }
+            if ((chosen - old).TotalDays > 7)
+            {
+                MessageBox.Show("Termin pregleda je moguce pomjeriti do 7 dana!");
+                return false;
+            }
+            return true;
+        }
 
 
         public Boolean Delete(int appointmentID)
         {
+            return appointmentService.Delete(appointmentID);
+        }
+
+        public Boolean Delete(int appointmentID, RoomOccupacy roomOccupacy)
+        {
+            occupacyRoomService.Delete(roomOccupacy);
             return appointmentService.Delete(appointmentID);
         }
 
@@ -125,5 +185,9 @@ namespace SIMS.Controller
             return appointmentService.ReschedulingAppointments(emergency, oldTermin, newTermin);
         }
 
+        public List<Room> FindRoomsForEditAppointment(AppointmentsForDoctorDTO appointmentDTO)
+        {
+            return appointmentService.FindRoomsForEditAppointment(appointmentDTO);
+        }
     }
 }

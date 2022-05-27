@@ -1,29 +1,23 @@
-﻿using System.Collections.Generic;
-using SIMS.Model;
+﻿using SIMS.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SIMS.Service;
 
 namespace SIMS.Controller
 {
     public class NotificationController
     {
-        private readonly PatientController patientController = new PatientController();
+        private readonly NotificationService notificationService = new NotificationService();
         public NotificationController()
         {
-
         }
 
-        public void Notificate()
+        public List<Notificatoin> GetAllForPatient(String jmbg)
         {
-            //dobavljam logovanog korisnika 
-            Patient logedInPatient = patientController.GetOne("2212010103158");
-
-            //dobavljam sve njegove trenutne terapije
-            List<Therapy> therapiesOfPatient = logedInPatient.MedicalRecord.Therapy;
-
-            foreach (Therapy t in therapiesOfPatient)
-            {
-
-            }
-
+            return notificationService.GetAllForPatient(jmbg);
         }
     }
 }

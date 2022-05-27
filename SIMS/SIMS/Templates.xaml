@@ -13,8 +13,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="#FF36547C"
+                BorderBrush="#FF2C466A"
                 BorderThickness="0"
                 Height="80"
                 Width="260">
@@ -73,8 +73,8 @@
                        VerticalOffset="0">
 
                     <Border x:Name="SubMenuBorder"
-                            Background="#2E333A"
-                            BorderBrush="#2E333A">
+                            Background="#FF36547C"
+                            BorderBrush="#FF2C466A">
 
                         <ScrollViewer x:Name="SubMenuScrollViewer"
                                       Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
@@ -139,8 +139,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="#FF36547C"
+                BorderBrush="#FF2C466A"
                 BorderThickness="0"
                 Height="80"
                 Width="260"
@@ -220,8 +220,8 @@
                      TargetType="{x:Type MenuItem}">
 
         <Border x:Name="border"
-                Background="#2E333A"
-                BorderBrush="#2E333A"
+                Background="#FF36547C"
+                BorderBrush="#FF2C466A"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Height="80"
                 Width="280"
@@ -297,7 +297,7 @@
 
 
     <!--// Maximize / Minimize App Button Style //-->
-
+    
     <ImageBrush x:Key="max_def"
                 ImageSource="Assets/max_def.png"
                 Stretch="None" />
@@ -305,7 +305,7 @@
     <ImageBrush x:Key="max_mo"
                 ImageSource="Assets/max_mo.png"
                 Stretch="None" />
-
+    
     <Style x:Key="MaxBtnStyle"
            TargetType="{x:Type Button}">
 

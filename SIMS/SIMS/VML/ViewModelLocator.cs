@@ -29,7 +29,8 @@ namespace SIMS.VML
         private static void AutoHookedUpViewModelChanged(DependencyObject d,
             DependencyPropertyChangedEventArgs e)
         {
-            if (DesignerProperties.GetIsInDesignMode(d))
+
+            if(DesignerProperties.GetIsInDesignMode(d))
             {
                 return;
             }

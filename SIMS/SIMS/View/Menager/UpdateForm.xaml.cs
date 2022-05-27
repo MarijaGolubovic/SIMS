@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace SIMS.Menager
 {
     /// <summary>
     /// Interaction logic for UpdateForm.xaml
     /// </summary>
-    public partial class UpdateForm : Window
+    public partial class UpdateForm : Page
 
     {
         Model.Room roomItem;
@@ -47,7 +48,8 @@ namespace SIMS.Menager
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            this.NavigationService.Navigate(new View.Menager.Report());
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
@@ -88,9 +90,10 @@ namespace SIMS.Menager
             roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
 
 
-            Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
-            updateRoomWindow.Show();
-            this.Close();
+            //    Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
+            //  updateRoomWindow.Show();
+            //this.Close();
+            this.NavigationService.Navigate(new View.Menager.SuccesfullyUpdate());
         }
     }
 }

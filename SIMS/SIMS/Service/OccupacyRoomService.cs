@@ -31,8 +31,8 @@ namespace SIMS.Service
                         occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
                         return "Room succesfully added to renovation list ";
                     }
-                }
-                else
+
+                } else
                 {
                     roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
                     occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
@@ -40,6 +40,37 @@ namespace SIMS.Service
                 }
             }
             return "";
+        }
+
+        public bool RoomAlreadyOccupacy(Model.Room room, DateTime begin, DateTime end, String reason)
+        {
+            List<Model.RoomOccupacy> roomOccupacies = occupacyRoomStorage.GetAll();
+            Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
+            bool isOccupacy = false;
+
+            foreach (Model.RoomOccupacy roomItem in roomOccupacies)
+            {
+                if (roomItem.IDRoom.Equals(room.Id))
+                {
+                    if ((DateTime.Compare(roomItem.Begin, begin) >= 0) && (DateTime.Compare(end, roomItem.End) <= 0))
+                    {
+                        isOccupacy = true;
+                    }
+                }
+            }
+
+            return isOccupacy;
+        }
+
+        public bool EndBeforeBegin( DateTime begin, DateTime end)
+        {
+            bool isEndBeforeBegin = false;   
+                if (DateTime.Compare(end, begin) < 0)
+                {
+                isEndBeforeBegin = true;
+                }
+            
+            return isEndBeforeBegin;
         }
 
         public List<Model.Room> GetById(String roomID)
@@ -50,6 +81,16 @@ namespace SIMS.Service
         public List<RoomOccupacy> GetAll()
         {
             return occupacyRoomStorage.GetAll();
+        }
+
+        public bool Create(RoomOccupacy roomOccupacy)
+        {
+            return occupacyRoomStorage.Create(roomOccupacy);
+        }
+
+        public Boolean Delete(RoomOccupacy roomOccupacy)
+        {
+            return occupacyRoomStorage.Delete(roomOccupacy);
         }
 
         public OccupacyRoomService()

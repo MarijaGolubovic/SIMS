@@ -1,33 +1,89 @@
-﻿<Window x:Class="SIMS.Menager.AddRoomWindow"
+﻿<Page x:Class="SIMS.Menager.AddRoomWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SIMS.Menager"
-        mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        xmlns:val="clr-namespace:SIMS.View.Menager"
+      mc:Ignorable="d"
         Title="Hello Clinic" Height="600" Width="950">
+
     <Grid>
-        <Grid Height="320">
+        <Grid Margin="0,10,0,140">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="239*"/>
+                <ColumnDefinition Width="236*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/plus.png" Height="56"  Focusable="False" Margin="328,0,110,394" RenderTransformOrigin="0.475,-0.151"/>
             <Label Name="Label1"  
-                    Content="Add room"  
-                    Width="120" Height="40"  
-                    FontSize="20"  
-                    FontWeight="Bold" Margin="321,33,351,247"
+                    Content="Add room" Height="40"  
+                    FontSize="25"  
+                    FontWeight="Bold" Margin="393,10,416,400" RenderTransformOrigin="0.476,0.765" Grid.ColumnSpan="2"
              />
-            <Label Content="Room ID:" Margin="165,78,554,212"/>
-            <TextBox x:Name="IDInput" Width="200" Height="30" Margin="194,78,300,212" Text=""/>
-            <Label Content="Size:" Margin="165,132,554,158"/>
-            <TextBox x:Name="SizeInput" Width="200" Height="30" Margin="243,132,349,158" Text=""/>
-            <Label Content="Type:" Margin="165,189,554,107" RenderTransformOrigin="0.418,2.509"/>
-            <ComboBox Margin="243,189,349,107" x:Name="comboboxField" >
+            <Label Content="Room ID:" Margin="239,82,131,338" RenderTransformOrigin="0.968,0.268" FontSize="18"/>
+            <TextBox x:Name="IDInput" Height="30" Margin="370,82,355,338"  Background="MintCream" Grid.ColumnSpan="2">
+                <TextBox.Text>
+                    <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <val:ValidationEmptyFileds ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox"/>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0]}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+            
+            <Label Content="Size:" Margin="239,136,123,279" RenderTransformOrigin="1.019,0.565" FontSize="18"/>
+            <TextBox x:Name="SizeInput" Height="30" Margin="368,136,357,284"  Background="MintCream" Grid.ColumnSpan="2" >
+                <TextBox.Text>
+                    <Binding Path="Room.Size" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <val:ValidationEmptyFileds ValidationStep="RawProposedValue"/>
+                            <val:ValidationRules ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <AdornedElementPlaceholder Grid.Column="0" Grid.Row="0" x:Name="textBox1"/>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
+            
+<Label Content="Type:" Margin="239,187,154,227" RenderTransformOrigin="0.418,2.509" FontSize="18"/>
+            <ComboBox Margin="370,187,355,232" x:Name="comboboxField" Background="MintCream" Grid.ColumnSpan="2">
                 <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
                 <ComboBoxItem IsSelected="True">EXAMINATION ROOM</ComboBoxItem>
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button Width="80" Height="25" Content="OK" Margin="487,268,225,26" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467"/>
-            <Button Width="80" Height="25" Content="CANCEL" Margin="633,268,79,26" Click="Button_Click_CANCEL" />
+            <Button Width="80" Height="25" Content="OK" Margin="169,285,223,140" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467" IsDefault="True" Background="MintCream" Grid.Column="1"/>
+            <Button Width="80" Height="25" Content="CANCEL" Margin="280,285,112,140" Click="Button_Click_CANCEL" IsCancel="True" Background="MintCream" RenderTransformOrigin="0.785,0.383" Grid.Column="1"/>
+            <Button Width="100" Height="25" Content="TUTORIAL"  Click="Button_Click_TUTORIAL"  Background="MintCream" Margin="90,285,288,140"/>
         </Grid>
     </Grid>
-</Window>
+</Page>

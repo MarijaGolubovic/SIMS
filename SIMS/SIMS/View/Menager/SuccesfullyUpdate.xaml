@@ -1,0 +1,34 @@
+﻿<Page x:Class="SIMS.View.Menager.SuccesfullyUpdate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Menager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SuccesfullyUpdate">
+
+    <Grid>
+        <Grid Margin="0,24,0,60" >
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="65,0,64,100">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                    <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+        <Grid Height="140" Width="400" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="HiddenDeleteLabel"  Foreground="Green" FontSize="18" Grid.Column="0" Width="250" Height="35" Grid.ColumnSpan="2" Margin="80,10,70,95">Room successfullu updated!</Label>
+        </Grid>
+        
+        <Button x:Name="UpdateBack" Width="80" Height="24" Margin="690,316,30,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+        <Button x:Name="UpdateOK" Width="80" Height="24" Margin="588,316,132,0" Content="OK" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+
+    </Grid>
+</Page>

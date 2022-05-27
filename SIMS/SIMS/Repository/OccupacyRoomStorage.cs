@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SIMS.Model;
 
 namespace SIMS.Repository
 {
@@ -9,6 +13,28 @@ namespace SIMS.Repository
         {
         }
 
+        public Boolean Delete(RoomOccupacy roomOccupacy)
+        {
+            List<RoomOccupacy> roomOccupacies = GetAll();
+
+            for (int i = 0; i < roomOccupacies.Count; i++)
+            {
+                if (roomOccupacy.IDRoom.Equals(roomOccupacies[i].IDRoom))
+                {
+                    if (DateTime.Compare(roomOccupacy.Begin, roomOccupacies[i].Begin) == 0)
+                    {
+                        if (DateTime.Compare(roomOccupacy.End, roomOccupacies[i].End) == 0)
+                        {
+                            roomOccupacies.Remove(roomOccupacies[i]);
+                        }
+                    }
+                }
+            }
+
+            Serialization.Serializer<RoomOccupacy> roomOccupacySerializer = new Serialization.Serializer<RoomOccupacy>();
+            roomOccupacySerializer.toCSV("OccupacyRoom.txt",roomOccupacies);
+            return true;
+        }
         public List<Model.RoomOccupacy> GetAll()
         {
             Serialization.Serializer<Model.RoomOccupacy> occupacyRoomSerializer = new Serialization.Serializer<Model.RoomOccupacy>();

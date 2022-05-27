@@ -21,16 +21,18 @@ namespace SIMS.Pacijent
         private readonly AppointmentController appointmentController = new AppointmentController();
         private List<Appointment> suggestedAppointments = new List<Appointment>();
         private readonly DoctorController doctorController = new DoctorController();
+        public User logedInUser;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public AddAppointment()
+        public AddAppointment(User user)
         {
             InitializeComponent();
             this.DataContext = this;
 
             Doctors = new ObservableCollection<Model.Doctor>();
             AppointmentsCollceciton = new ObservableCollection<Appointment>();
+            logedInUser = user;
 
             //Popunjavanje kolekcije dokora
 
@@ -48,38 +50,11 @@ namespace SIMS.Pacijent
         }
 
         private void NewAppointment(object sender, RoutedEventArgs e)
-        {
-            //dobavljanje doktora prema indeksu izabranog item-a iz comboBox-a
-
-            string jmbg = "";
-
-            int index = DoctorComboBox.SelectedIndex;
-            if (index == 0)
-            {
-                jmbg = "2408000103256";
-            }
-            else if (index == 1)
-            {
-                jmbg = "2408010103256";
-            }
-            else if (index == 2)
-            {
-                jmbg = "2408010103156";
-            }
-            else if (index == 3)
-            {
-                jmbg = "2108010103158";
-            }
-
-            Model.Doctor doctorTmp = doctorController.GetByID(jmbg);
-
-            //preuzimanje podataka sa interface-a 
-            string dateTime = DatePicker.Text;
-            DateTime dateTimeTmp = DateTime.Parse(dateTime);
+        { 
 
             //u view mi treba samo ova linija
             //predlozeni termini koje treba prikazati i omoguciti korisniku da neki izabere
-            suggestedAppointments = appointmentController.findSuggestedAppointments(doctorTmp, (bool)doctorRadioButton.IsChecked, (bool)appointmentRadioButton.IsChecked, dateTimeTmp);
+            suggestedAppointments = appointmentController.findSuggestedAppointments(doctorTmp, (bool)doctorRadioButton.IsChecked, (bool)appointmentRadioButton.IsChecked, dateTimeTmp,logedInUser);
 
             //ucitavam podatke u kolekciju
             foreach (Appointment item in suggestedAppointments)

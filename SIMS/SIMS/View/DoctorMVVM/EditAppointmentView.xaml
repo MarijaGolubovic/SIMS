@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="SIMS.View.DoctorMVVM.EditAppointmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
+             mc:Ignorable="d" 
+             d:DesignHeight="742" d:DesignWidth="1290">
+
+    <UserControl.DataContext>
+        <viewModel:EditAppointmentViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" 
+                           Grid.Column="0"
+                           Text="Izmjena pregleda" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="160,90,0,50"/>
+
+        <TextBlock Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="Pristupite pregledu ili odaberite jedan ukoliko želite detaljniji prikaz" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="30" Margin="160,0,0,0"/>
+
+        
+
+            <DataGrid x:Name="allAppointmentsDataGrid"
+                          Grid.Row="3" 
+                          Grid.Column="0"
+                          ItemsSource="{Binding Path = Appointments}" 
+                          IsReadOnly="True" 
+                          SelectionMode="Single" 
+                          AutoGenerateColumns="False" 
+                          Margin="160,25,160,0"
+                          Width="Auto"
+                      FontFamily="Bahnschrift Light"
+                          Height="300"
+                          HorizontalAlignment="Left" FontSize="18"
+                          SelectedItem="{Binding Path=SelectedAppointment}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Surname}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Date}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Vrijeme" Binding="{Binding Time}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ambulanta" Binding="{Binding roomId}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <StackPanel Grid.Column="0" 
+                    Grid.Row="4"
+                    Orientation="Horizontal" 
+                    Margin="130,23,170,60"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+
+            <Button Content="Nazad" 
+                    Margin="330,0,40,0" 
+                    Width="70" Height="30" 
+                    FontFamily="Bahnschrift Light"
+                    Command="{Binding BackCommand}"
+                    Style="{DynamicResource RoundedButtonStyle}"
+                    Background="#FF36547C"/>
+            
+            <Button Content="Izmjeni" 
+                    Width="70" 
+                    Height="30"
+                    FontFamily="Bahnschrift Light"
+                    Command="{Binding EditCommand}"
+                    Style="{DynamicResource RoundedButtonStyle}"
+                    Background="#FF36547C"/>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

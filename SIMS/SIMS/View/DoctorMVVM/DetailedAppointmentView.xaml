@@ -1,0 +1,234 @@
+﻿<UserControl x:Class="SIMS.View.DoctorMVVM.DetailedAppointmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
+             mc:Ignorable="d" 
+             d:DesignHeight="742" d:DesignWidth="1290">
+    
+    <UserControl.DataContext>
+        <viewModel:DetailedAppointmentViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                           Grid.Column="0"
+                           Text="Detaljan prikaz" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="160,90,0,50"/>
+
+        <Grid Grid.Row="1" 
+                      Grid.Column="0"
+                      Margin="160,20,160,50" 
+                      x:Name="LicniPodaci">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Lični podaci " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="30" 
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+            <TextBlock Text="Ime: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="1"
+                               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Path = Patient.Person.Name}"
+                               Grid.Row="1"
+                               Grid.Column="0" 
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Prezime: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="2"
+                               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Path = Patient.Person.Surname}"
+                               Grid.Row="2"
+                               Grid.Column="0" 
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Datum rodjenja: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="3"
+                               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Path = Date}"
+                               Grid.Row="3"
+                               Grid.Column="0" 
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Telefon: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="4"
+                               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Path = Patient.Person.Telephone}"
+                               Grid.Row="4"
+                               Grid.Column="0" 
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="EMail: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="5"
+                               Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Path = Patient.Person.EMail}"
+                               Grid.Row="5"
+                               Grid.Column="0" 
+                               Margin="190,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Zdravstveni karton: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="30" 
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Krvna grupa: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+
+            <TextBlock Text="{Binding Path = Patient.MedicalRecord.BloodType}"
+                               Grid.Row="1"
+                               Grid.Column="1" 
+                               Margin="275,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Visina: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="2"
+                               Grid.Column="1"/>
+
+            <TextBlock Text="{Binding Height}"
+                               Grid.Row="2"
+                               Grid.Column="1" 
+                               Margin="275,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Težina: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="3"
+                               Grid.Column="1"/>
+
+            <TextBlock Text="{Binding Weight}"
+                               Grid.Row="3"
+                               Grid.Column="1" 
+                               Margin="275,0,0,0"
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25"/>
+
+            <TextBlock Text="Alergije: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="4"
+                               Grid.Column="1"/>
+
+            <ComboBox Name="Allergy_Combobox"
+                              Grid.Row="4"
+                              Grid.Column="1"
+                              Width="200"
+                              HorizontalAlignment="Right" Margin="83,0,0,0"
+                              Height="25"
+                              VerticalAlignment="Top"
+                              ItemsSource="{Binding Allergies}"
+                      FontFamily="Bahnschrift Light">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+
+            <TextBlock Text="Terapije: " 
+                               FontFamily="Bahnschrift Light"
+                               FontSize="25" 
+                               Grid.Row="5"
+                               Grid.Column="1"/>
+
+            <ComboBox Name="Therapy_Combobox" 
+                              Grid.Row="5"
+                              Grid.Column="1"
+                      FontFamily="Bahnschrift Light"
+                              Width="200"
+                              HorizontalAlignment="Right" Margin="83,0,0,0"
+                              Height="25"
+                              VerticalAlignment="Top"
+                              ItemsSource="{Binding Therapies}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Medicine.Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+
+            <Button Content="Nazad" 
+                    Grid.Column="1"
+                    Grid.Row="6" Width="70"
+                    Height="30"
+                    Command="{Binding BackCommand}"
+                    Margin="0,0,10,60"
+                     Style="{DynamicResource RoundedButtonStyle}"
+                     Background="#FF36547C"
+                    FontFamily="Bahnschrift Light"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Right"/>
+
+        </Grid>
+    </Grid>
+</UserControl>

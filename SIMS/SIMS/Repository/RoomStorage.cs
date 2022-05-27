@@ -34,19 +34,20 @@ namespace SIMS.Repository
             return room;
         }
 
-        public Boolean Delete(int roomID)
+        public Boolean Delete(string roomID)
         {
             Boolean status = false;
-            List<Room> rooms = new List<Room>();
+
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
 
-            rooms = roomSerijalization.fromCSV("Room.txt");
-            foreach (Room roomInput in rooms)
+            List<Room> rooms = roomSerijalization.fromCSV("Room.txt");
 
+            foreach (Model.Room roomInput in rooms)
             {
                 if (roomID.Equals(roomInput.Id))
                 {
                     rooms.Remove(roomInput);
+                    roomSerijalization.toCSV("Room.txt", rooms);
                     status = true;
                 }
             }
@@ -69,6 +70,24 @@ namespace SIMS.Repository
         {
             throw new NotImplementedException();
         }
+
+        public Model.Room GetRoomById(string idRoom)
+        {
+            Room room=new Room();
+            List<Room> rooms = new List<Room>();
+            Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
+            rooms = roomSerijalization.fromCSV("Room.txt");
+            foreach(Model.Room roomItem in rooms)
+            {
+                if (roomItem.Id.Equals(idRoom))
+                    room = roomItem;
+            }
+
+
+            return room;
+        }
+
+            
 
         public List<Room> GetByType(RoomType type)
         {

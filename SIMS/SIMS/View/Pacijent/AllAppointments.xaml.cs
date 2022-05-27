@@ -14,11 +14,15 @@ namespace SIMS.Pacijent
         public static ObservableCollection<Model.Appointment> AppointmentsCollceciton { get; set; }
         public static Appointment SelectedItem { get; set; }
 
-        public AllAppointments()
+        public User logedInUser;
+
+        public AllAppointments(User user)
         {
             InitializeComponent();
             this.DataContext = this;
             SelectedItem = null;
+            logedInUser = user;
+
 
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
 
@@ -31,7 +35,10 @@ namespace SIMS.Pacijent
             //ucitavam podatke u kolekciju
             foreach (Appointment item in appointments)
             {
-                AppointmentsCollceciton.Add(item);
+                if (item.Patient.Equals(logedInUser))
+                {
+                    AppointmentsCollceciton.Add(item);
+                }
             }
         }
 

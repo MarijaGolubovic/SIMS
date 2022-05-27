@@ -1,0 +1,71 @@
+﻿<Page x:Class="SIMS.View.Menager.SplitRoom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Menager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SplitRoom">
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="2" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Left"  FontWeight="Black" Width="137" Height="52" Margin="23,0,0,33" Grid.RowSpan="2">Split room</Label>
+            <Image  Grid.Column="1" Grid.RowSpan="2" Margin="123,26,120,33" Grid.ColumnSpan="2">
+                <Image.Source >
+                    <BitmapImage  UriSource="/Assets/renovate_room.png"  />
+                </Image.Source>
+            </Image>
+            <Label FontSize="18" Margin="120,49,79,28" Grid.Row="1" RenderTransformOrigin="1.416,0.336" Grid.ColumnSpan="2" Grid.RowSpan="2">Splited room:</Label>
+            <TextBox x:Name="splitedRoomName"  Height="25" Grid.ColumnSpan="2" Margin="86,0,139,30" Grid.Column="1" Grid.Row="2" Background="MintCream"/>
+
+            <Label FontWeight="Bold" FontSize="18" Margin="120,33,89,45" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2">First room:</Label>
+            <Label FontSize="18" Margin="120,18,158,4" RenderTransformOrigin="5.339,5.23" Grid.Row="3" Grid.ColumnSpan="2">Id:</Label>
+            <TextBox x:Name="firstRoomId" Height="25" Grid.Row="3" Background="MintCream" Margin="21,20,139,10" Grid.Column="1" RenderTransformOrigin="0.524,0.278" Grid.ColumnSpan="2" />
+
+            <Label FontSize="18" Margin="120,6,149,16" RenderTransformOrigin="5.339,5.23" Grid.Row="4" Grid.ColumnSpan="2">Size:</Label>
+            <TextBox  x:Name="firstRoomSize" Height="25" Grid.Column="1" Grid.Row="4" Background="MintCream" Margin="21,10,139,0" RenderTransformOrigin="0.131,0.508" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Label FontSize="18" Margin="125,51,136,20" RenderTransformOrigin="5.339,5.23" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2">Type:</Label>
+            <ComboBox x:Name="firstRoomType" Height="25" Grid.ColumnSpan="2"  Grid.Column="1" Grid.Row="5" Background="MintCream" Margin="24,0,136,25">
+                <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">EXAMINATION ROOM</ComboBoxItem>
+                <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
+                <ComboBoxItem>WAREHOUSE</ComboBoxItem>
+            </ComboBox>
+            <Label FontWeight="Bold" FontSize="18" Margin="1,32,25,46" Grid.Row="2" Grid.Column="3" Grid.RowSpan="2">Second room:</Label>
+            <Label FontSize="18" Margin="1,15,117,7" RenderTransformOrigin="5.339,5.23" Grid.Row="3" Grid.Column="3">Id:</Label>
+            <TextBox x:Name="secondRoomId"  Height="25" Grid.Row="3" Background="MintCream" Margin="74,18,86,14" Grid.Column="3" RenderTransformOrigin="1.73,0.632" Grid.ColumnSpan="2" />
+            <TextBox x:Name="secondRoomSize" Height="25" Grid.Column="3" Grid.Row="4" Background="MintCream" Margin="74,6,86,0" RenderTransformOrigin="0.131,0.508" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Label FontSize="18" Margin="1,47,100,20" RenderTransformOrigin="5.339,5.23" Grid.Row="4" Grid.Column="3" Grid.RowSpan="2">Type:</Label>
+            <Label FontSize="18" Margin="0,54,109,24" RenderTransformOrigin="5.339,5.23" Grid.Row="3" Grid.Column="3" Grid.RowSpan="2">Size:</Label>
+
+            <ComboBox Height="25" Grid.ColumnSpan="2" Margin="74,51,86,25" Grid.Column="3" Grid.Row="4" Background="MintCream"  Grid.RowSpan="2">
+                <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">EXAMINATION ROOM</ComboBoxItem>
+                <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
+                <ComboBoxItem>WAREHOUSE</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+
+        <Button Height="25" Width="100" Background="MintCream" Margin="531,363,169,40" IsDefault="True" RenderTransformOrigin="0.705,0.157" Click="Button_Click_SplitRoom">OK</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="658,363,42,40" IsCancel="True" Click="Button_Click_CANCELSplit">CANCEL</Button>
+
+    </Grid>
+</Page>
