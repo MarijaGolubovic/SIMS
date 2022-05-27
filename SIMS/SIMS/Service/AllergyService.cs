@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using SIMS.Model;
 using SIMS.Repository;
-using System.Collections.Generic;
 
 
 namespace SIMS.Service

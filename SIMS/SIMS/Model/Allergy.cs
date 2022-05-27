@@ -6,7 +6,7 @@ namespace SIMS.Model
     public class Allergy : Serialization.Serializable
     {
         private String name;
-        public String Name 
+        public String Name
         {
             get { return name; }
 

@@ -1,6 +1,4 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;

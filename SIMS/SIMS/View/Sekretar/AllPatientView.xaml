@@ -1,0 +1,284 @@
+﻿<Window x:Class="SIMS.View.Sekretar.AllPatientView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Koricnički nalozi pacijenata" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+          Background="#e4ebf1">
+    <Window.Resources>
+
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FCF1C5"/>
+            <Setter Property="BorderBrush" Value="#0F131A"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="Foreground" Value="#0F131A"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="GotKeyboardFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Height" To="80" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Width" To="270" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="35" />
+                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="Red" />
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" To="Red" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostKeyboardFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Height" To="60" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Width" To="250" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="30" />
+                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="#0F131A" />
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" To="#0F131A" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FCF1C5"/>
+            <Setter Property="BorderBrush" Value="#0F131A"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Foreground" Value="#0F131A"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="GotKeyboardFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Height" To="50" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Width" To="185" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="35" />
+                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="Red" />
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" To="Red" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostKeyboardFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Height" To="45" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Width" To="170" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="28" />
+                                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="#0F131A" />
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" To="#0F131A" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TextStyle" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="GotKeyboardFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Height" To="55" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Width" To="350" />
+                                <ThicknessAnimation Duration="0:0:0.200" Storyboard.TargetProperty="BorderThickness" To="4" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="35" />
+                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FFF3F796" />
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" To="Black" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostKeyboardFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Height" To="48" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="Width" To="300" />
+                                <ThicknessAnimation Duration="0:0:0.200" Storyboard.TargetProperty="BorderThickness" To="0" />
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="30" />
+                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="White" />
+                                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" To="White" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Button Content="KREIRAJ NALOG" Style="{StaticResource ResourceKey=ButtonStyle}" Click="Button_Click" VerticalAlignment="Top"  Width="250" HorizontalAlignment="Left" Margin="16,11,0,0" />
+        <Image Source="/Assets/search.png" Margin="1111,64,27.6,229.2"  />
+
+        <TextBox Style="{StaticResource ResourceKey=TextStyle}"  Name ="SearchActiv" Height="48" Width="300" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  HorizontalAlignment="Right" Grid.Row="0"  FontSize="24" Margin="0,58,87.6,0" TextChanged="SearchActiv_TextChanged" />
+
+        <Label Content="AKTIVNI NALOZI:" FontSize="28" Margin="18,74,961.6,199.2"/>
+        <Label  Content="BLOKIRANI NALOZI:" FontSize="28" Margin="14,15.8,-14.4,-15.6" Grid.Row="1"/>
+
+        <DataGrid x:Name="AktivniNalazi" ItemsSource="{Binding Path =  Patients}"  Margin="5,111,-0.4,0"  SelectionMode="Single" HeadersVisibility="Column" 
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ColumnHeaderHeight="40"  IsReadOnly="True"  AutoGenerateColumns="False" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" >
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FFF3F796"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="35"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="60"/>
+                    <Setter Property="FontSize" Value="28"/>
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color= "LightBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IME"  Binding ="{Binding Person.Name}" Width="*"/>
+                <DataGridTextColumn Header="PREZIME"  Binding ="{Binding Person.Surname}" Width="*"/>
+                <DataGridTextColumn Header="DATUM ROĐENJA"   Binding ="{Binding Person.DateOfBirth , StringFormat=dd/MM/yyyy}"  Width="*"/>
+                <DataGridTemplateColumn Header="KARTON" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="VIDI"  Click="VIDI_Click_1" Style="{StaticResource ResourceKey=ButtonStyle1}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="IZMENI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="IZMENI" Content="IZMENI" Click="IZMENI_Click" Style="{StaticResource ResourceKey=ButtonStyle1}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="DEAKTIVIRAJ" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DEAKTIVIRAJ" Content="DEAKTIVIRAJ" Click="DEAKTIVIRAJ_Click" Style="{StaticResource ResourceKey=ButtonStyle1}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <TextBox Style="{StaticResource ResourceKey=TextStyle}"  x:Name ="searchBlocks" TextChanged="searchBlocks_TextChanged" Height="48" Width="300" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  HorizontalAlignment="Right" Grid.Row="0"  FontSize="24" Margin="0,334,87.6,0" Grid.RowSpan="2" />
+
+        <DataGrid x:Name="BlokiraniNalozi" ItemsSource="{Binding Path =  PatientsBlock}"  Margin="5,55.8,-0.4,0"  SelectionMode="Single" HeadersVisibility="Column" 
+                              CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              ColumnHeaderHeight="40"  IsReadOnly="True"  AutoGenerateColumns="False" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left"  Grid.Row="1">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#FFF3F796"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="35"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="60"/>
+                    <Setter Property="FontSize" Value="28"/>
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color= "LightBlue"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Green" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Resources>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IME"  Binding ="{Binding Person.Name}" Width="*"/>
+                <DataGridTextColumn Header="PREZIME"  Binding ="{Binding Person.Surname}" Width="*"/>
+                <DataGridTextColumn Header="DATUM ROĐENJA"   Binding ="{Binding Person.DateOfBirth, StringFormat=dd/MM/yyyy}"  Width="*"/>
+                <DataGridTemplateColumn Header="KARTON" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="VIDI" Content="VIDI"  Style="{StaticResource ResourceKey=ButtonStyle1}"  Click="VIDI_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="IZMENI" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="IZMENI" Content="IZMENI"  Style="{StaticResource ResourceKey=ButtonStyle1}"  Click="IZMENI_Click_1"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="AKTIVIRAJ" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="AKTIVIRAJ" Content="AKTIVIRAJ"  Style="{StaticResource ResourceKey=ButtonStyle1}"  Click="AKTIVIRAJ_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="ZATVORI" Style="{StaticResource ResourceKey=ButtonStyle}" Click="Button_Click_1" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.569,0.491" Grid.Row="1" Margin="0,0,5,5" />
+        <Image Source="/SIMS;component/Assets/search.png" Margin="1111,4.8,27.6,288.4" Grid.Row="1"  />
+
+
+    </Grid>
+</Window>

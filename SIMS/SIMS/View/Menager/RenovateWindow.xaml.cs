@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -20,7 +10,7 @@ namespace SIMS.View.Menager
     /// </summary>
     public partial class RenovateWindow : Window
     {
-        public  static ObservableCollection<Model.Room> RoomRenovate { get; set; }
+        public static ObservableCollection<Model.Room> RoomRenovate { get; set; }
         public static Model.Room selectedRoom;
         public static int indexSelected = -1;
         public RenovateWindow()
@@ -42,7 +32,7 @@ namespace SIMS.View.Menager
         {
             Menager.RoomsPanel roomsPanel = new RoomsPanel();
             roomsPanel.Show();
-            
+
         }
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
@@ -59,7 +49,7 @@ namespace SIMS.View.Menager
             this.Close();
         }
 
-       
+
 
         private void dataGridRenovate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

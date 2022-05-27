@@ -1,11 +1,7 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using ToastNotifications;
-using ToastNotifications.Lifetime;
-using ToastNotifications.Position;
+using SIMS.Controller;
+using SIMS.Model;
 
 namespace SIMS.View.Doctor
 {

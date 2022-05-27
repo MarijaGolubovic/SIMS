@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -22,7 +11,7 @@ namespace SIMS.View.Menager
         public static System.Collections.ObjectModel.ObservableCollection<Model.Room> RoomRenovate { get; set; }
         Model.Room roomItem;
         private static readonly SIMS.Service.OccupacyRoomService occupacyRoomService = new Service.OccupacyRoomService();
-       
+
 
         public RenovateForm()
         {
@@ -32,7 +21,7 @@ namespace SIMS.View.Menager
             idRenovateRoom.Text = roomItem.Id;
             sizeRenovateRoom.Text = roomItem.Size.ToString();
             TypeRenovateRoom.Text = roomItem.Type.ToString();
-            
+
         }
 
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
@@ -52,7 +41,7 @@ namespace SIMS.View.Menager
         private void Button_ClickOK(object sender, RoutedEventArgs e)
         {
             roomItem = Menager.RenovateWindow.selectedRoom;
-            string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
+            string message = occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
             MessageBox.Show(message);
             this.Close();
         }

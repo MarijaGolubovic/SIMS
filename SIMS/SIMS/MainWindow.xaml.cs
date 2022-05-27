@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using SIMS.Controller;
 using SIMS.Model;
+using SIMS.View.Sekretar;
 
 namespace SIMS
 {
@@ -26,7 +27,7 @@ namespace SIMS
 
         private void Button_Click_Secretary(object sender, RoutedEventArgs e)
         {
-            Sekretar.MainSecretaryWindow secretaryWindow = new Sekretar.MainSecretaryWindow();
+            MainSecretaryWindow secretaryWindow = new MainSecretaryWindow();
             secretaryWindow.Show();
         }
 
@@ -51,7 +52,7 @@ namespace SIMS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Username.Text=="" || Password.Text == "")
+            if (Username.Text == "" || Password.Text == "")
             {
                 string messageBoxText = "Polja Username i Password su obavezna";
                 string caption = "Upozorenje";
@@ -59,10 +60,11 @@ namespace SIMS
                 MessageBoxImage icon = MessageBoxImage.Warning;
                 MessageBoxResult result;
                 result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-            } else
+            }
+            else
             {
                 User user = userController.FindUserByUsername(Username.Text);
-                if (user==null)
+                if (user == null)
                 {
                     string messageBoxText = "Korisnik sa ovim usernameom ne postoji";
                     string caption = "Greska";
@@ -70,7 +72,8 @@ namespace SIMS
                     MessageBoxImage icon = MessageBoxImage.Warning;
                     MessageBoxResult result;
                     result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-                } else if (!userController.CheckUserPassword(Username.Text, Password.Text))
+                }
+                else if (!userController.CheckUserPassword(Username.Text, Password.Text))
                 {
                     string messageBoxText = "Pogresan password";
                     string caption = "Greska";
@@ -78,9 +81,10 @@ namespace SIMS
                     MessageBoxImage icon = MessageBoxImage.Warning;
                     MessageBoxResult result;
                     result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-                } else
+                }
+                else
                 {
-                    if (user.Type==UserType.doctor)
+                    if (user.Type == UserType.doctor)
                     {
                         View.Doctor.MainWindow.LoggedInUser = user;
                         View.Doctor.MainWindow doctorWindow = new View.Doctor.MainWindow();
@@ -102,7 +106,7 @@ namespace SIMS
                     }
                     if (user.Type == UserType.secretary)
                     {
-                        Sekretar.MainSecretaryWindow secretaryWindow = new Sekretar.MainSecretaryWindow();
+                        MainSecretaryWindow secretaryWindow = new MainSecretaryWindow();
                         secretaryWindow.Show();
                     }
 

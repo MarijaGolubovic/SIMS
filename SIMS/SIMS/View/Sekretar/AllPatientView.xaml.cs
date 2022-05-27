@@ -1,17 +1,18 @@
-﻿using SIMS.Model;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using SIMS.Controller;
 using SIMS.Model;
-using SIMS.View.Sekretar;
 
-namespace SIMS.Sekretar
+namespace SIMS.View.Sekretar
 {
     /// <summary>
     /// Interaction logic for Nalozi.xaml
     /// </summary>
-    public partial class Nalozi : Window
+    public partial class AllPatientView : Window
     {
 
         public static ObservableCollection<Patient> Patients { get; set; }
@@ -19,7 +20,7 @@ namespace SIMS.Sekretar
         private static PatientController patientController;
         private static UserController userController;
         public static List<User> users;
-        public Nalozi()
+        public AllPatientView()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -28,7 +29,17 @@ namespace SIMS.Sekretar
             PatientsBlock = new ObservableCollection<Patient>();
             userController = new UserController();
             patientController = new PatientController();
-            UpdateView();
+  
+            foreach (Patient p in patientController.GetAllActiv())
+            {
+                Patients.Add(p);
+            }
+            
+
+            foreach (Patient p in patientController.GetAllBlock())
+            {
+                PatientsBlock.Add(p);
+            }
 
 
 
@@ -96,7 +107,7 @@ namespace SIMS.Sekretar
         public static void UpdateView()
         {
             Patients.Clear();
-            PatientsBlock.Clear();
+            PatientsBlock.Clear();        
             foreach (Patient p in patientController.GetAllActiv())
             {
                 Patients.Add(p);
@@ -108,6 +119,64 @@ namespace SIMS.Sekretar
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
 
+        }
+
+        private void SearchActiv_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            var tbx = sender as TextBox;
+            if (tbx.Text != "")
+            {
+                var filteredList = patientController.GetAllActiv().Where(x => x.Username.ToLower().Contains(tbx.Text.ToLower()));
+                //AktivniNalazi.ItemsSource = null;
+                //AktivniNalazi.ItemsSource = filteredList;
+                Patients.Clear();
+                PatientsBlock.Clear();
+                foreach (Patient p in filteredList)
+                {
+                    Patients.Add(p);
+                }
+
+                foreach (Patient p in patientController.GetAllBlock())
+                {
+                    PatientsBlock.Add(p);
+                }
+            } else
+            {
+                UpdateView();
+                //AktivniNalazi.ItemsSource = patientActivList;
+            }
+
+            
+        }
+
+        private void searchBlocks_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tbx = sender as TextBox;
+            if (tbx.Text != "")
+            {
+                var filteredList = patientController.GetAllBlock().Where(x => x.Username.ToLower().Contains(tbx.Text.ToLower()));
+                Patients.Clear();
+                PatientsBlock.Clear();
+                foreach (Patient p in filteredList)
+                {
+                    PatientsBlock.Add(p);
+                }
+
+                foreach (Patient p in patientController.GetAllActiv())
+                {
+                    Patients.Add(p);
+                }
+            }
+            else
+            {
+                UpdateView();
+                //AktivniNalazi.ItemsSource = patientActivList;
+            }
+
+        }
     }
 }

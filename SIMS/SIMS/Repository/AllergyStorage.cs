@@ -14,7 +14,7 @@ namespace SIMS.Repository
         }
 
         public List<Allergy> GetAll()
-        {           
+        {
             List<Allergy> allergies = allergySerializer.fromCSV("medicine.txt");
 
             return allergies;

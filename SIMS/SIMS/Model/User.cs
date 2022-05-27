@@ -1,10 +1,12 @@
 using System;
+using System.ComponentModel;
 
 namespace SIMS.Model
 {
 
     public class User : Serialization.Serializable
     {
+
         public String Username { get; set; }
         public String Password { get; set; }
         public UserType Type { get; set; }
@@ -18,6 +20,7 @@ namespace SIMS.Model
             Type = type;
             Person = person;
         }
+
 
         public void fromCSV(string[] values)
         {
@@ -63,6 +66,7 @@ namespace SIMS.Model
         public User()
         {
         }
+
 
     }
 }

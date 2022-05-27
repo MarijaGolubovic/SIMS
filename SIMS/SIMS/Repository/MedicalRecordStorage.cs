@@ -71,7 +71,7 @@ namespace SIMS.Model
             {
                 Serialization.Serializer<MedicalRecord> mrSerializer = new Serialization.Serializer<MedicalRecord>();
                 List<MedicalRecord> medicalRecords = GetAll();
-                medicalRecords.Remove(medicalRecords.Find(p=>p.patient.Person.JMBG.Equals(jmbg)));
+                medicalRecords.Remove(medicalRecords.Find(p => p.patient.Person.JMBG.Equals(jmbg)));
                 medicalRecords.Add(medicalRecord);
                 mrSerializer.toCSV("medicalRecords.txt", medicalRecords);
             }

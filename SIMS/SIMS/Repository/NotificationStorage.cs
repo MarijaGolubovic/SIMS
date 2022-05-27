@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Model;
-using System.Collections.Generic;
 
 
 namespace SIMS.Repository
@@ -23,7 +19,7 @@ namespace SIMS.Repository
         public List<Notificatoin> GetAllForPatient(String jmbg)
         {
             List<Notificatoin> notifications = new List<Notificatoin>();
-            foreach(Notificatoin n in GetAll())
+            foreach (Notificatoin n in GetAll())
             {
                 if (n.Patient.JMBGP == jmbg)
                 {

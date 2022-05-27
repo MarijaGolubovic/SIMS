@@ -1,7 +1,7 @@
 
-﻿using SIMS.Model;
 using System.Collections.ObjectModel;
 using System.Windows;
+using SIMS.Model;
 
 
 namespace SIMS.Doctor
@@ -38,7 +38,7 @@ namespace SIMS.Doctor
 
         private void AddApointment(object sender, RoutedEventArgs e)
         {
-           // var addApointmentWindow = new Doctor.Window1();
+            // var addApointmentWindow = new Doctor.Window1();
             //addApointmentWindow.Show();
             this.Close();
         }

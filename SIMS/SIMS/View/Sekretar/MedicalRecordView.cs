@@ -37,7 +37,7 @@ namespace SIMS.View.Sekretar
             }
             this.DataContext = this;
             pacijent.Text = patient.Person.Name + " " + patient.Person.Surname;
-            if (medicalRecordController.GetOne(patient.Person.JMBG)== null)
+            if (medicalRecordController.GetOne(patient.Person.JMBG) == null)
             {
                 visina.Text = "";
                 tezina.Text = "";
@@ -52,7 +52,7 @@ namespace SIMS.View.Sekretar
 
 
             type.ItemsSource = Enum.GetValues(typeof(BloodType));
-            if (medicalRecordController.GetOne(patient.Person.JMBG)!=null)
+            if (medicalRecordController.GetOne(patient.Person.JMBG) != null)
             {
                 type.SelectedItem = medicalRecordController.GetOne(patient.Person.JMBG).BloodType;
             }

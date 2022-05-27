@@ -1,7 +1,7 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Windows.Controls;
+using SIMS.Controller;
+using SIMS.Model;
 
 namespace SIMS.View.Doctor
 {
@@ -14,7 +14,7 @@ namespace SIMS.View.Doctor
 
         private readonly AppointmentController appointmentController = new AppointmentController();
         private readonly MedicalRecordController mediicalRecrodController = new MedicalRecordController();
-        private readonly DiagnosisController diagnosisController = new DiagnosisController();   
+        private readonly DiagnosisController diagnosisController = new DiagnosisController();
 
         public JoinAppointmentPage()
         {

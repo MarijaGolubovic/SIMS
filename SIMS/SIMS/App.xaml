@@ -13,6 +13,19 @@
 
             </ResourceDictionary.MergedDictionaries>
 
+            <ControlTemplate x:Key="errorTemplate">
+                <Border>
+                    <Grid>
+                        <AdornedElementPlaceholder/>
+                        <TextBlock  Text="{Binding [0].ErrorContent}" Foreground="Red" FontSize="20" FontFamily="Roboto" Margin="250,0,0,0" MaxWidth="170" TextWrapping="Wrap"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+
         </ResourceDictionary>
+
+
+        
     </Application.Resources>
 </Application>

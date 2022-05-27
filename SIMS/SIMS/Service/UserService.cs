@@ -55,13 +55,14 @@ namespace SIMS.Service
             return userStorage.FindUserByUsername(Username);
         }
 
-        public Boolean CheckUserPassword (String Username, String Password)
+        public Boolean CheckUserPassword(String Username, String Password)
         {
             User user = FindUserByUsername(Username);
             if (user.Password.Equals(Password))
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }

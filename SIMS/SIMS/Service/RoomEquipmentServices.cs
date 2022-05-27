@@ -1,9 +1,6 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
 
 namespace SIMS.Service
 {
@@ -31,7 +28,7 @@ namespace SIMS.Service
             return roomEquipment.Create(room);
         }
 
-        public String MovingRoomEqupment(Model.Room roomBegin,Model.Room roomEnd, List<Model.Equpment> equpments,String period, int quanitity)
+        public String MovingRoomEqupment(Model.Room roomBegin, Model.Room roomEnd, List<Model.Equpment> equpments, String period, int quanitity)
         {
             List<Model.RoomEqupment> roomEqupmentsList = new List<Model.RoomEqupment>();
             roomEqupmentsList = roomEquipment.GetAll();
@@ -40,7 +37,7 @@ namespace SIMS.Service
             DateTime end = DateTime.Parse(tokens[1]);
 
             Serialization.Serializer<Model.RoomEqupment> roomSerijalization = new Serialization.Serializer<Model.RoomEqupment>();
-            
+
             foreach (Model.RoomEqupment roomE in roomEqupmentsList)
             {
                 if (roomE.RoomId.Equals(roomBegin.Id))
@@ -49,24 +46,25 @@ namespace SIMS.Service
                     String[] token = time.Split('-');
                     DateTime beginTime = DateTime.Parse(token[0]);
                     DateTime endTime = DateTime.Parse(token[1]);
-                    if(DateTime.Compare(begin,beginTime)<=0 && DateTime.Compare(endTime, end) <= 0)
+                    if (DateTime.Compare(begin, beginTime) <= 0 && DateTime.Compare(endTime, end) <= 0)
                     {
                         return "Equpment alredy reservet in this period";
-                    }else if (DateTime.Compare(end, begin) < 0)
+                    }
+                    else if (DateTime.Compare(end, begin) < 0)
                     {
                         return "Begin period must bi less than end ";
                     }
                     else
                     {
-                        
+
                         roomEqupmentsList.Add(new Model.RoomEqupment(roomEnd.Id, equpments, period));
-                        roomSerijalization.toCSV("RoomEquipment.txt",roomEqupmentsList);
+                        roomSerijalization.toCSV("RoomEquipment.txt", roomEqupmentsList);
                         return "Equpment successfully moved";
 
                         if (roomBegin.Id.Equals(roomE.RoomId))
                         {
-                            
-                            
+
+
 
                             foreach (Model.Equpment eq in equpments)
                             {
@@ -82,7 +80,8 @@ namespace SIMS.Service
 
                                 }
                             }
-                        }else if (roomEnd.Id.Equals(roomE.RoomId))
+                        }
+                        else if (roomEnd.Id.Equals(roomE.RoomId))
                         {
                             foreach (Model.Equpment eq in equpments)
                             {

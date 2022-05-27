@@ -5,10 +5,10 @@ using SIMS.Model;
 namespace SIMS.Repository
 {
 
-   public class RoomStorage
-   {
-      public List<Room> GetAll()
-      {
+    public class RoomStorage
+    {
+        public List<Room> GetAll()
+        {
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
             rooms = roomSerijalization.fromCSV("Room.txt");

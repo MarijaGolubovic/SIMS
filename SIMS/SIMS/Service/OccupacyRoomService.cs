@@ -1,10 +1,7 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Controller;
+using SIMS.Model;
 
 namespace SIMS.Service
 {
@@ -34,7 +31,8 @@ namespace SIMS.Service
                         occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
                         return "Room succesfully added to renovation list ";
                     }
-                }else
+                }
+                else
                 {
                     roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
                     occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
@@ -69,7 +67,7 @@ namespace SIMS.Service
             timesOfDoctorAppointments.Sort();
 
             List<String> times = new List<String>();
-            foreach(DateTime dt in timesOfDoctorAppointments)
+            foreach (DateTime dt in timesOfDoctorAppointments)
             {
                 times.Add(dt.ToString());
             }
@@ -81,11 +79,11 @@ namespace SIMS.Service
 
 
 
-            foreach(String time in times)
+            foreach (String time in times)
             {
                 String timeTmp = time.Split(' ')[1];
                 int i = 1;
-                while (true) 
+                while (true)
                 {
                     minutes = minutes + i;
                     startTime = hours + ":" + minutes + ":" + millisecons;
@@ -96,7 +94,8 @@ namespace SIMS.Service
                             DateTime dateTime = DateTime.Parse(dateOfAppointment.ToString().Split(' ')[0] + " " + startTime);
                             retList.Add(dateTime);
                         }
-                        else {
+                        else
+                        {
                             break;
                         }
                     }

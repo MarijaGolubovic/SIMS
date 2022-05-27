@@ -27,7 +27,7 @@ namespace SIMS.Service
         {
             return doctorStorage.GetByUsername(username);
         }
-        public  List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        public List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
         {
             return doctorStorage.GetBySpecialization(specialization);
         }

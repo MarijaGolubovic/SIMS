@@ -59,8 +59,6 @@ namespace SIMS.View.Sekretar
         {
             NewPatientView newPatientView = new NewPatientView();
             newPatientView.Show();
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -68,7 +66,7 @@ namespace SIMS.View.Sekretar
             Appointments.Clear();
             foreach (Appointment a in appointmentController.findSuggestedAppointmentsSecretary(lekarCombobox.SelectedItem as SIMS.Model.Doctor, pacijentCombobox.SelectedItem as Patient, DateTime.Parse(datum.Text), true, (bool)operacija.IsChecked))
             {
-                Appointments.Add(a); 
+                Appointments.Add(a);
             }
 
 
@@ -84,7 +82,6 @@ namespace SIMS.View.Sekretar
             Appointment appointment = Termini.SelectedItem as Appointment;
             appointmentController.Create(appointment);
             this.Close();
-
         }
 
         private void specijalista_Checked(object sender, RoutedEventArgs e)

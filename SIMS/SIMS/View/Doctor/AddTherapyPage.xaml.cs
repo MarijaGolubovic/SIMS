@@ -1,19 +1,10 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using SIMS.Controller;
+using SIMS.Model;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
@@ -77,11 +68,12 @@ namespace SIMS.View.Doctor
             MedicalRecord medRec = medicalRecordController.GetOne(id);
             List<Allergy> allergies = medRec.Allergies;
 
-            foreach(String s in m.Ingredients) 
+            foreach (String s in m.Ingredients)
             {
-                foreach(Allergy a in allergies)
+                foreach (Allergy a in allergies)
                 {
-                    if (s.Equals(a.Name)) {
+                    if (s.Equals(a.Name))
+                    {
                         notifier.ShowError("Pacijent je alergican na taj lijek!");
                         MainWindow.frame.Content = new AddTherapyPage();
                         return;

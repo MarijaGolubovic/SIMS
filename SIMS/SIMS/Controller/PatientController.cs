@@ -92,12 +92,12 @@ namespace SIMS.Controller
 
         }
 
-        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
+        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment()
         {
             List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();
 
 
-            foreach(Patient p in GetAll())
+            foreach (Patient p in GetAll())
             {
                 String date = p.Person.DateOfBirth.ToString().Split(' ')[0];
                 String address = p.Person.Address.City.Name + ", " + p.Person.Address.Street + ", " + p.Person.Address.Number;

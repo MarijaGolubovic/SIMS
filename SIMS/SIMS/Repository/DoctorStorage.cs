@@ -33,10 +33,10 @@ namespace SIMS.Repository
             return doctors;
         }
 
-        public List<SIMS.Model.Doctor> GetAll()     
+        public List<SIMS.Model.Doctor> GetAll()
         {
 
-            List<DoctorSpecialization> specializationsForDoctors = doctorSerializer.fromCSV("doctors.txt");             
+            List<DoctorSpecialization> specializationsForDoctors = doctorSerializer.fromCSV("doctors.txt");
             List<User> users = userSerializer.fromCSV("user.txt");
 
             List<Model.Doctor> doctors = LinkDoctorsWithSpecializations(users, specializationsForDoctors);
@@ -86,7 +86,7 @@ namespace SIMS.Repository
             throw new NotImplementedException();
         }
 
-        public  List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
+        public List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)
         {
             List<SIMS.Model.Doctor> doctors = new List<Model.Doctor>();
             foreach (SIMS.Model.Doctor d in GetAll())

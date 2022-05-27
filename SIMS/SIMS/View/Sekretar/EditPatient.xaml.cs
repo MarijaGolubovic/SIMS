@@ -5,7 +5,7 @@ using SIMS.Controller;
 using SIMS.Model;
 
 
-namespace SIMS.Sekretar
+namespace SIMS.View.Sekretar
 {
     /// <summary>
     /// Interaction logic for EditPatient.xaml
@@ -67,7 +67,7 @@ namespace SIMS.Sekretar
             if (userController.Update(newUser, selected))
             {
                 patientController.UpdateJMBG(selected.Person.JMBG, newUser.Person.JMBG);
-                Nalozi.UpdateView();
+                AllPatientView.UpdateView();
                 this.Close();
             }
             else

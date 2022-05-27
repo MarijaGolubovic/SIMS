@@ -1,19 +1,8 @@
-﻿using SIMS.Controller;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
+using SIMS.Controller;
 
 namespace SIMS.View.Menager
 {
@@ -23,7 +12,7 @@ namespace SIMS.View.Menager
     public partial class Rooms : Window
     {
         public static ObservableCollection<Model.Room> RoomsChoose { get; set; }
-        
+
         internal RoomEquipmentController RoomEquipmentController { get => roomEquipmentController; set => roomEquipmentController = value; }
 
         public static Model.Room roomItemSelected;
@@ -68,19 +57,19 @@ namespace SIMS.View.Menager
 
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-         //   roomItemSelected = (Model.Room)DataGridRoomsChose.SelectedItem;
+            //   roomItemSelected = (Model.Room)DataGridRoomsChose.SelectedItem;
             List<Model.RoomEqupment> roomEqupments = RoomEquipmentController.GetAll();
             List<Model.Equpment> equpments = new List<Model.Equpment>();
-            foreach(Model.RoomEqupment roomEq in roomEqupments)
+            foreach (Model.RoomEqupment roomEq in roomEqupments)
             {
                 if (roomEq.RoomId.Equals(roomItemSelected.Id))
                 {
                     List<Model.Equpment> roomEqupmentList = new List<Model.Equpment>();
-                    foreach(Model.Equpment eq in roomEqupmentList)
+                    foreach (Model.Equpment eq in roomEqupmentList)
                     {
                         equpments.Add(eq);
                     }
-                    
+
                 }
             }
 

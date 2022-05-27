@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Controller;
 
 namespace SIMS.Model
@@ -50,7 +46,7 @@ namespace SIMS.Model
             }
         }
 
-        public Notificatoin(DateTime notificationDateTime, string details,Patient patient)
+        public Notificatoin(DateTime notificationDateTime, string details, Patient patient)
         {
             Details = details;
             NotificationDateTime = notificationDateTime;

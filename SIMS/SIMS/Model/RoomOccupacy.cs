@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
-    class RoomOccupacy: Serialization.Serializable
+    class RoomOccupacy : Serialization.Serializable
     {
         private String _IDRoom;
         private DateTime _Begin;
@@ -15,7 +11,7 @@ namespace SIMS.Model
 
         public String IDRoom { get; set; }
         public DateTime Begin { get; set; }
-        public DateTime End{ get; set; }
+        public DateTime End { get; set; }
         public string Reason { get; set; }
 
         public void fromCSV(string[] values)

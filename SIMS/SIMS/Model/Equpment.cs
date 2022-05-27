@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
-    class Equpment: INotifyPropertyChanged, Serialization.Serializable
+    class Equpment : INotifyPropertyChanged, Serialization.Serializable
     {
         public String Name
         {

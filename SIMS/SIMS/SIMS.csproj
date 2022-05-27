@@ -84,18 +84,23 @@
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\SpecializationController.cs" />
     <Compile Include="Controller\RoomEquipmentController.cs" />
+    <Compile Include="Controller\SuppliesController.cs" />
     <Compile Include="Controller\TherapyContoller.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Converters\InvertAndBooleansToBooleanConverter.cs" />
+    <Compile Include="Converters\LengthToBooleanCoverter.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AllergyDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\EmergencyAppointmentsDTO.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\Notificatoin.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
     <Compile Include="Model\RoomOccupacy.cs" />
+    <Compile Include="Model\Supplies.cs" />
     <Compile Include="Model\Therapy.cs" />
     <Compile Include="MyICommand.cs" />
     <Compile Include="Repository\AllergyStorage.cs" />
@@ -109,6 +114,7 @@
     <Compile Include="Repository\NotificationStorage.cs" />
     <Compile Include="Repository\OccupacyRoomStorage.cs" />
     <Compile Include="Repository\RoomEquipmentStorage.cs" />
+    <Compile Include="Repository\SuppliesStorage.cs" />
     <Compile Include="Repository\TherapyStorage.cs" />
     <Compile Include="Service\AllergyService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
@@ -124,8 +130,18 @@
     <Compile Include="Service\RoomEquipmentServices.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecializationsService.cs" />
+    <Compile Include="Service\SuppliesService.cs" />
     <Compile Include="Service\TherapyService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Validation\DateTimeValidation.cs" />
+    <Compile Include="Validation\EmailValidation.cs" />
+    <Compile Include="Validation\JMBGValidation.cs" />
+    <Compile Include="Validation\NotEmptyValidationRule.cs" />
+    <Compile Include="Validation\ValidationSecretary.cs" />
+    <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
+    <Compile Include="ViewModel\Sekretar\EquipmentViewModel.cs" />
+    <Compile Include="ViewModel\Sekretar\MainSecretaryWindowViewModel.cs" />
+    <Compile Include="ViewModel\Sekretar\OrderEquipmentViewModel.cs" />
     <Compile Include="View\Doctor\AddAppointmentPage.xaml.cs">
       <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
     </Compile>
@@ -193,14 +209,20 @@
     <Compile Include="View\Sekretar\EditPatient.xaml.cs">
       <DependentUpon>EditPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Sekretar\EmergencyView.xaml.cs">
+      <DependentUpon>EmergencyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\EquipmentView.xaml.cs">
+      <DependentUpon>EquipmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sekretar\MainSecretaryWindow.xaml.cs">
       <DependentUpon>MainSecretaryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sekretar\MedicalRecordView.cs">
       <DependentUpon>MedicalRecordView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Sekretar\Nalozi.xaml.cs">
-      <DependentUpon>Nalozi.xaml</DependentUpon>
+    <Compile Include="View\Sekretar\AllPatientView.xaml.cs">
+      <DependentUpon>AllPatientView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Doctor\AllAppointmentsWindow.xaml.cs">
       <DependentUpon>AllAppointmentsWindow.xaml</DependentUpon>
@@ -234,6 +256,13 @@
     <Compile Include="View\Sekretar\NewPatientView.xaml.cs">
       <DependentUpon>NewPatientView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Sekretar\OrderEquipmentView.xaml.cs">
+      <DependentUpon>OrderEquipmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\UpdateEquipmentView.xaml.cs">
+      <DependentUpon>UpdateEquipmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VML\ViewModelLocator.cs" />
     <Page Include="Templates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -350,6 +379,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Sekretar\EmergencyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\EquipmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Sekretar\MainSecretaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -358,7 +395,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Sekretar\Nalozi.xaml">
+    <Page Include="View\Sekretar\AllPatientView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -391,6 +428,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Sekretar\NewPatientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\OrderEquipmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\UpdateEquipmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -478,6 +523,8 @@
     <Resource Include="Assets\hospital-doctor.png" />
     <Resource Include="Assets\move.png" />
     <Resource Include="Assets\show.png" />
+    <Resource Include="Assets\logo.png" />
+    <Resource Include="Assets\search.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -518,8 +565,6 @@
     <Folder Include="ViewModel\Doctor\" />
     <Folder Include="ViewModel\Menager\" />
     <Folder Include="ViewModel\Pacijent\" />
-    <Folder Include="ViewModel\Sekretar\" />
-    <Folder Include="VML\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

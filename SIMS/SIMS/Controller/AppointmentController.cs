@@ -91,7 +91,7 @@ namespace SIMS.Controller
         }
 
 
-        
+
         public Boolean Delete(int appointmentID)
         {
             return appointmentService.Delete(appointmentID);
@@ -109,7 +109,20 @@ namespace SIMS.Controller
         public Boolean DeleteApp(AppointmentsForSecretaryDTO appointment)
         {
 
-            return appointmentService.DeleteApp(DateTime.Parse(appointment.Date+" "+appointment.Time), appointment.roomId);
+            return appointmentService.DeleteApp(DateTime.Parse(appointment.Date + " " + appointment.Time), appointment.roomId);
+        }
+
+        public List<EmergencyAppointmentsDTO> GetEmergencyAppointments(Patient patient, Specialization specialization)
+        {
+            return appointmentService.GetEmergencyAppointments(patient, specialization);
+        }
+
+        public Boolean ReschedulingAppointments (Patient urgentPatient, EmergencyAppointmentsDTO rescheduledAppointment)
+        {
+            Appointment emergency = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, urgentPatient, rescheduledAppointment.Doctor);
+            Appointment oldTermin = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, rescheduledAppointment.Patient,rescheduledAppointment.Doctor);
+            Appointment newTermin = new Appointment(rescheduledAppointment.NewDateAndTime, 10, rescheduledAppointment.NewRoom, rescheduledAppointment.Patient, rescheduledAppointment.NewDoctor);
+            return appointmentService.ReschedulingAppointments(emergency, oldTermin, newTermin);
         }
 
     }

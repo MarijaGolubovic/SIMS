@@ -1,26 +1,17 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using SIMS.Model;
 
 namespace SIMS.View.Menager
 {
     /// <summary>
     /// Interaction logic for MovingWindow.xaml
     /// </summary>
-   
-    
+
+
     public partial class MovingWindow : Window
     {
 
@@ -34,13 +25,13 @@ namespace SIMS.View.Menager
 
         public MovingWindow()
         {
-            
+
             InitializeComponent();
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             List<Model.RoomEqupment> equpments = equipmentStorage.GetAll();
-            
-           // roomItemId = roomIdChoose1.Text;
+
+            // roomItemId = roomIdChoose1.Text;
             //roomItemDestination = destination.Text;
 
             //foreach(Model.Room r in rooms)
@@ -69,7 +60,7 @@ namespace SIMS.View.Menager
             //        }
             //    }
             //}
-            
+
 
 
         }
@@ -97,23 +88,24 @@ namespace SIMS.View.Menager
         {
             View.Menager.Rooms labelRooms = new View.Menager.Rooms();
             labelRooms.Show();
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           List<Model.RoomEqupment> rommEq = new List<RoomEqupment>();
-           
+            List<Model.RoomEqupment> rommEq = new List<RoomEqupment>();
+
             View.Menager.Rooms labelRooms = new View.Menager.Rooms();
-            foreach(Model.RoomEqupment eq in equipmentStorage.GetAll()) {
+            foreach (Model.RoomEqupment eq in equipmentStorage.GetAll())
+            {
                 if (roomItem.Id.Equals(eq.RoomId))
                 {
                     rommEq.Add(eq);
                 }
-            
+
             }
 
-            MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem,roomDestination, rommEq, period.Text));
+            MessageBox.Show(roomEquipmentService.MovingRoomEqupment(roomItem, roomDestination, rommEq, period.Text));
 
             labelRooms.Show();
         }

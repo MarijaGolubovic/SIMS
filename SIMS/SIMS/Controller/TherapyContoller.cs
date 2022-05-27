@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using SIMS.Model;
-using SIMS.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
 
 
 namespace SIMS.Controller
@@ -47,7 +46,7 @@ namespace SIMS.Controller
                     DateTime dateTimeTmp = start.AddDays(i).AddHours(j * addingHours);
                     String details = "Popiti lek " + therapy.Medicine.Name + " u " + dateTimeTmp.ToString();
                     Patient patient = patientController.GetOne(therapy.PatientId);
-                    Notificatoin notification = new Notificatoin(dateTimeTmp, details,patient);
+                    Notificatoin notification = new Notificatoin(dateTimeTmp, details, patient);
                     patient.NotificationList.Add(notification);
                     notificationStorage.Create(notification);
                 }

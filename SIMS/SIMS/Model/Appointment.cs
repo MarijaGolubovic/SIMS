@@ -16,10 +16,10 @@ namespace SIMS.Model
 
         private Doctor doctor;
 
-        public DateTime DateAndTime 
+        public DateTime DateAndTime
         {
             get { return dateAndTime; }
-            set 
+            set
             {
                 if (dateAndTime != value)
                 {
@@ -28,10 +28,10 @@ namespace SIMS.Model
                 }
             }
         }
-        public int Id 
+        public int Id
         {
-            get { return id;  }
-            set 
+            get { return id; }
+            set
             {
                 if (id != value)
                 {
@@ -41,7 +41,7 @@ namespace SIMS.Model
             }
         }
 
-        public Room Room 
+        public Room Room
         {
             get { return room; }
             set
@@ -54,7 +54,7 @@ namespace SIMS.Model
             }
         }
 
-        public Patient Patient 
+        public Patient Patient
         {
             get { return patient; }
             set
@@ -67,7 +67,7 @@ namespace SIMS.Model
             }
         }
 
-        public Doctor Doctor 
+        public Doctor Doctor
         {
             get { return doctor; }
             set

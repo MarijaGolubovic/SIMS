@@ -1,5 +1,5 @@
-﻿using SIMS.View.Pacijent;
-using System.Windows;
+﻿using System.Windows;
+using SIMS.View.Pacijent;
 
 namespace SIMS.Pacijent
 {

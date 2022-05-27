@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using SIMS.Repository;
 
 
 
@@ -23,7 +22,7 @@ namespace SIMS.Menager
             this.DataContext = this;
             Rooms = new ObservableCollection<Model.Room>();
 
-            foreach(Model.Room roomItem in roomController.GetAll())
+            foreach (Model.Room roomItem in roomController.GetAll())
             {
                 Rooms.Add(roomItem);
             }

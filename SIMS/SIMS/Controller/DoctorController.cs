@@ -27,7 +27,7 @@ namespace SIMS.Controller
             return doctorService.GetByUsername(username);
         }
 
-        public List<SIMS.Model.DoctorForAddAppointmentDTO> GetDoctorForAddAppointment() 
+        public List<SIMS.Model.DoctorForAddAppointmentDTO> GetDoctorForAddAppointment()
         {
             List<SIMS.Model.Doctor> doctors = GetAll();
             List<SIMS.Model.DoctorForAddAppointmentDTO> retList = new List<SIMS.Model.DoctorForAddAppointmentDTO>();
@@ -35,10 +35,12 @@ namespace SIMS.Controller
             foreach (SIMS.Model.Doctor d in doctors)
             {
                 String specialization;
-                if (d.Specialization == null) {
+                if (d.Specialization == null)
+                {
                     specialization = "Nema";
                 }
-                else {
+                else
+                {
                     specialization = d.Specialization.Name;
                 }
                 SIMS.Model.DoctorForAddAppointmentDTO doc = new SIMS.Model.DoctorForAddAppointmentDTO(d.Person.JMBG, d.Person.Name, d.Person.Surname, specialization, d.Person.DateOfBirth.ToString().Split(' ')[0]);

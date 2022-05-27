@@ -1,6 +1,4 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -36,7 +34,7 @@ namespace SIMS.Pacijent
 
             //Popunjavanje kolekcije dokora
 
-            foreach(Model.Doctor item in doctorController.GetAll())
+            foreach (Model.Doctor item in doctorController.GetAll())
             {
                 Doctors.Add(item);
             }

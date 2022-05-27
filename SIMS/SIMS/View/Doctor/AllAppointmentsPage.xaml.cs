@@ -1,9 +1,9 @@
 
-﻿using SIMS.Controller;
-using SIMS.Model;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Controller;
+using SIMS.Model;
 
 
 namespace SIMS.View.Doctor

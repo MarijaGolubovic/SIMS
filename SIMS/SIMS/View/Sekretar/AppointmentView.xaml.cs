@@ -31,7 +31,7 @@ namespace SIMS.View.Sekretar
         {
             CreateAppointmentView createAppointmentView = new CreateAppointmentView();
             createAppointmentView.Show();
-             
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -10,6 +11,7 @@ namespace SIMS.Service
         private AppointmentStorage storage;
         private RoomService roomService { get; set; }
         private readonly PatientService patientService = new PatientService();
+        private readonly DoctorService doctorService = new DoctorService();
 
         public AppointmentService()
         {
@@ -107,12 +109,12 @@ namespace SIMS.Service
             List<DateTime> doctorAppointments = new List<DateTime>();
             List<Appointment> allAppointments = GetAll();
             String date = dateOfAppointment.ToString().Split(' ')[0];
-            foreach(Appointment a in allAppointments)
+            foreach (Appointment a in allAppointments)
             {
-                if (a.Doctor.Person.JMBG.Equals(doctorId)) 
+                if (a.Doctor.Person.JMBG.Equals(doctorId))
                 {
                     String date1 = a.DateAndTime.ToString().Split(' ')[0];
-                    if(date.Equals(date1))
+                    if (date.Equals(date1))
                         doctorAppointments.Add(a.DateAndTime);
                 }
             }
@@ -127,23 +129,24 @@ namespace SIMS.Service
             Appointment appointment = new Appointment(dateTime, 10, new Room(), patient, doctor);
 
             int i = 0;
-            while (i<appointments.Count)
+            while (i < appointments.Count)
             {
 
-               if (appointments.Exists(a => (a.Doctor.Person.JMBG.Equals(appointment.Doctor.Person.JMBG) && (a.DateAndTime.Equals(appointment.DateAndTime)))))
+                if (appointments.Exists(a => (a.Doctor.Person.JMBG.Equals(appointment.Doctor.Person.JMBG) && (a.DateAndTime.Equals(appointment.DateAndTime)))))
                 {
-                    appointment.DateAndTime=appointment.DateAndTime.AddHours(1);
+                    appointment.DateAndTime = appointment.DateAndTime.AddHours(1);
                     i = 0;
-                } else
+                }
+                else
                 {
-                    if(avaiableRoom(operation, appointment.DateAndTime).Count != 0)
+                    if (avaiableRoom(operation, appointment.DateAndTime).Count != 0)
                     {
                         foreach (Room r in avaiableRoom(operation, appointment.DateAndTime))
                         {
                             suggestedAppointments.Add(new Appointment(appointment.DateAndTime, 10, r, appointment.Patient, appointment.Doctor));
                         }
 
-                            i = appointments.Count;
+                        i = appointments.Count;
 
                     }
                 }
@@ -151,7 +154,7 @@ namespace SIMS.Service
             return suggestedAppointments;
         }
 
-        public List<Room> avaiableRoom (Boolean operation, DateTime dateTime)
+        public List<Room> avaiableRoom(Boolean operation, DateTime dateTime)
         {
             List<Room> room = new List<Room>();
             List<Room> rooms = roomService.GetAll();
@@ -159,11 +162,11 @@ namespace SIMS.Service
 
             foreach (Room r in rooms)
             {
-                if(operation)
+                if (operation)
                 {
-                    if (r.Type==RoomType.OPPERATING_ROOM)
+                    if (r.Type == RoomType.OPPERATING_ROOM)
                     {
-                        if(!appointments.Exists(a=> a.DateAndTime == dateTime && a.Room.Id.Equals(r.Id)))
+                        if (!appointments.Exists(a => a.DateAndTime == dateTime && a.Room.Id.Equals(r.Id)))
                         {
                             room.Add(r);
                         }
@@ -189,6 +192,105 @@ namespace SIMS.Service
         {
             return storage.DeleteApp(dateTime, roomId);
         }
+
+        public List<EmergencyAppointmentsDTO> GetEmergencyAppointments(Patient patient, Specialization specialization)
+        {
+            DateTime dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, 0, 0);
+            dateTime.AddHours(1);
+            Model.Doctor doctor = CheckAvaliableDoctor(dateTime, specialization);
+            Room room = CheckAvaliableRoom(dateTime);
+
+            if (doctor == null || room == null)
+            {
+                return FindSuggestionsForPostponingAppointments(dateTime, specialization);
+            }
+            else
+            {
+                Create(new Appointment(dateTime, 10, room, patient, doctor));
+                return null;
+            }
+        }
+
+        public SIMS.Model.Doctor CheckAvaliableDoctor(DateTime dateTime, Specialization specialization)
+        {
+            List<Appointment> appointments = GetAll();
+            List<SIMS.Model.Doctor> doctors = doctorService.GetBySpecialization(specialization);
+
+            foreach (SIMS.Model.Doctor d in doctors)
+            {
+                if (!appointments.Exists(a => a.Doctor.Person.JMBG.Equals(d.Person.JMBG) && a.DateAndTime == dateTime))
+                {
+                    return d;
+                }
+            }
+
+            return null;
+        }
+
+        public Room CheckAvaliableRoom(DateTime dateTime)
+        {
+            List<Room> rooms = roomService.GetAll();
+            List<Appointment> appointments = GetAll();
+
+            foreach (Room r in rooms)
+            {
+
+                if (!appointments.Exists(a => a.DateAndTime == dateTime && a.Room.Id.Equals(r.Id)))
+                {
+                    return r;
+                }
+
+            }
+            return null;
+        }
+
+        public List<EmergencyAppointmentsDTO> FindSuggestionsForPostponingAppointments(DateTime dateTime, Specialization specialization)
+        {
+            List<EmergencyAppointmentsDTO> postponedAppointments =new List<EmergencyAppointmentsDTO>();
+            List<Appointment> appointments = GetAll();
+            List<Appointment> appointmentsForPostp = appointments.FindAll(a => a.DateAndTime == dateTime && a.Doctor.Specialization.Name.Equals(specialization.Name));
+            Appointment appointment = new Appointment();
+
+            foreach (Appointment a in appointmentsForPostp)
+            {
+                appointment = findSuggestedAppointmentsSecretary(a.Doctor, a.Patient, a.DateAndTime, true, CheckRoomType(a.Room)).OrderBy(x=>x.DateAndTime).ToList().FirstOrDefault();
+                postponedAppointments.Add(new EmergencyAppointmentsDTO(a.Room,a.Patient,a.Doctor,a.DateAndTime,appointment.Room,appointment.Doctor,appointment.DateAndTime));
+            }
+
+            postponedAppointments.Sort((x, y) => DateTime.Compare(x.NewDateAndTime, y.NewDateAndTime));
+
+          return postponedAppointments;
+        }
+
+        public Boolean CheckRoomType(Room room)
+        {
+            if (room.Type == RoomType.OPPERATING_ROOM)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean ReschedulingAppointments(Appointment emergency, Appointment oldTermin, Appointment newTermin)
+        {
+
+            storage.DeleteApp(oldTermin.DateAndTime, oldTermin.Room.Id);
+            if (CheckAppointment(newTermin) || CheckAppointment(emergency))
+                return false;
+            storage.Create(emergency);
+            storage.Create(newTermin);
+            return true;
+        }
+
+        public Boolean CheckAppointment(Appointment appointment)
+        {
+            List<Appointment> appointments = GetAll();
+            return appointments.Exists(a => ((a.DateAndTime == appointment.DateAndTime) && (a.Room.Id.Equals(appointment.Room.Id))) || ((a.Doctor.Username.Equals(appointment.Doctor.Username) && (a.DateAndTime == appointment.DateAndTime))));
+        }
+
 
     }
 }

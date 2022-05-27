@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Media;
 
 namespace SIMS.Menager
 {
@@ -13,7 +12,7 @@ namespace SIMS.Menager
             InitializeComponent();
         }
 
-       
+
 
         private void Label_MouseDoubleClickSignOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

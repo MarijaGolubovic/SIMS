@@ -13,7 +13,7 @@ namespace SIMS.Repository
             therapySerializer = new Serialization.Serializer<Therapy>();
         }
         public List<Therapy> GetAll()
-        {           
+        {
             List<Therapy> therapies = therapySerializer.fromCSV("therapy.txt");
             return therapies;
         }
@@ -49,7 +49,7 @@ namespace SIMS.Repository
             therapySerializer.toCSV("therapy.txt", Therapies);
 
             return true;
-            
+
         }
 
         public Boolean Update(Therapy therapy)

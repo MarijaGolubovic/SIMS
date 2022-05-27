@@ -1,29 +1,20 @@
 ﻿using System.Windows;
-using SIMS.View.Sekretar;
+using SIMS.ViewModel.Sekretar;
 
-namespace SIMS.Sekretar
+namespace SIMS.View.Sekretar
 {
     /// <summary>
     /// Interaction logic for MainSecretaryWindow.xaml
     /// </summary>
     public partial class MainSecretaryWindow : Window
     {
+        public MainSecretaryWindowViewModel MainSecretaryWindowView { get; set; }
         public MainSecretaryWindow()
         {
             InitializeComponent();
+            this.MainSecretaryWindowView = new MainSecretaryWindowViewModel();
+            this.DataContext = this.MainSecretaryWindowView;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Nalozi nalozi = new Nalozi();
-            nalozi.Show();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AppointmentView appointmentView = new AppointmentView();
-            appointmentView.Show();
-
-        }
     }
 }
