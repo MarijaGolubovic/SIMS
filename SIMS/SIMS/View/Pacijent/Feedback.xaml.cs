@@ -120,7 +120,17 @@ namespace SIMS.View.Pacijent
                     Answers answer = new Answers(questionsAboutProf[1], int.Parse(prof2.Text), (Model.Doctor)DoctorComboBox.SelectedItem);
                     answerController.Create(answer);
                 }
-            } 
+
+            }
+            else
+            {
+                signalForDoctor.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void DoctorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            signalForDoctor.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -32,7 +32,7 @@
             <TextBlock Text="Anketa o lekaru" HorizontalAlignment="Center" VerticalAlignment="Center"
                        FontFamily="/Fonts/#Poppins" Foreground="White" FontSize="25"/>
             <ComboBox x:Name="DoctorComboBox" Width="150" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/Fonts/#Poppins" 
-                      ItemsSource="{Binding Doctors}"
+                      ItemsSource="{Binding Doctors}" SelectionChanged="DoctorComboBox_SelectionChanged"
                       BorderThickness="0" Margin="10,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -41,9 +41,14 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
+        <TextBlock x:Name="signalForDoctor" Grid.Row="0" Grid.Column="3" Text="*" VerticalAlignment="Center"
+                   HorizontalAlignment="Left" Foreground="Purple" FontSize="30" Visibility="Hidden"/>
         <TextBlock Text="**Ankete popuniti tako sto ocnacite u kojem stepenu se slazete sa izjavom (1-5)" 
-                   Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" 
+                   Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Top"
                    FontFamily="/Fonts/#Poppins" Foreground="Purple"/>
+        <TextBlock FontFamily="/Fonts/#Poppins" Foreground="Purple"
+                       Text="*Odaberite lekara!" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4"
+                   VerticalAlignment="Center"/>
         <TextBlock Text="Higijena" Grid.Column="0" Grid.Row="1" 
                    FontFamily="/Fonts/#Poppins" Foreground="White" FontSize="20"/>
         <TextBlock Text="Osoblje" Grid.Column="0" Grid.Row="4" 

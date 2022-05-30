@@ -19,7 +19,8 @@ namespace SIMS.Repository
         public List<Notificatoin> GetAllForPatient(String jmbg)
         {
             List<Notificatoin> notifications = new List<Notificatoin>();
-            foreach (Notificatoin n in GetAll())
+            List<Notificatoin> notifications1 = GetAll();
+            foreach (Notificatoin n in notifications1)
             {
                 if (n.Patient.JMBGP == jmbg)
                 {
