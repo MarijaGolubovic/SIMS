@@ -25,6 +25,8 @@ namespace SIMS.ViewModel.Doctor
         private AllAppointmentsViewModel allAppointmentsViewModel = new AllAppointmentsViewModel(); 
         private DaysOffRequestViewModel daysOffRequestViewModel = new DaysOffRequestViewModel();
         private MedicineValidationViewModel medicineValidationViewModel = new MedicineValidationViewModel();
+        private AllRequirentmentsViewModel allRequirentmentsViewModel = new AllRequirentmentsViewModel();
+        private DetailedRequestViewModel detailedRequestViewModel;
         private AddAppointmentViewModel AddAppointmentViewModel;
         private EditAppointmentViewModel editAppointmentViewModel = new EditAppointmentViewModel();
         private SuggestedAppointmentsViewModel suggestedAppointmentsViewModel;
@@ -107,6 +109,10 @@ namespace SIMS.ViewModel.Doctor
                     AddAppointmentViewModel = new AddAppointmentViewModel();
                     CurrentViewModel = AddAppointmentViewModel;
                     break;
+                case "DetailedRequest":
+                    detailedRequestViewModel = new DetailedRequestViewModel();
+                    CurrentViewModel = detailedRequestViewModel;
+                    break;
             }
         }
 
@@ -134,6 +140,9 @@ namespace SIMS.ViewModel.Doctor
                     break;
                 case "AllAppointmentView":
                     CurrentViewModel = allAppointmentsViewModel;
+                    break;
+                case "allReqs":
+                    CurrentViewModel = allRequirentmentsViewModel;
                     break;
             }
         }

@@ -25,7 +25,7 @@
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button x:Name="OK"  Width="80" Height="25" Content="OK" Click="OK_Click" Background="MintCream" Margin="588,235,132,60"/>
+            <Button x:Name="OK"  Width="80" Height="25" Content="UPDATE" Click="OK_Click" Background="MintCream" Margin="588,235,132,60"/>
             <Button Width="80" Height="25" Content="CANCEL" Margin="694,235,26,60"  Click="Button_Click_CANCEL"  Background="MintCream" RenderTransformOrigin="0.684,0.522"/>
         </Grid>
 

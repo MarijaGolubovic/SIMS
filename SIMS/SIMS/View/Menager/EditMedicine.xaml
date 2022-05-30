@@ -22,7 +22,7 @@
         <TextBox x:Name="igredientsBox"  Width="180" Margin="530,207,34,129" Background="MintCream"/>
         <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="530,120,34,230" Background="MintCream"></TextBox>
 
-        <Button Height="25" Width="100"  Background="MintCream" Margin="530,330,150,48" Click="Button_Click_OK">OK</Button>
+        <Button Height="25" Width="100"  Background="MintCream" Margin="530,330,150,48" Click="Button_Click_OK">EDIT</Button>
         <Button Height="25" Width="100" Background="MintCream" Margin="665,330,10,47" Click="Button_Click_CANCEL">CANCEL</Button>
     </Grid>
 </Window>

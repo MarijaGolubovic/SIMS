@@ -49,6 +49,12 @@
         <DataTemplate DataType="{x:Type viewModel:SuggestedAppointmentsViewModel}">
             <view:SuggestedAppointmentsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AllRequirentmentsViewModel}">
+            <view:AllRequirentmentsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:DetailedRequestViewModel}">
+            <view:DetailedRequestView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid Background="#FFB2C7DD">
             <DockPanel>
@@ -286,6 +292,18 @@
                                 <MenuItem.Icon>
                                     <Image Source="/Assets/procurement.png"
                                    Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Prikaži sve"
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="allReqs">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/procurement.png"
+                                           Stretch="None" />
                                 </MenuItem.Icon>
 
                             </MenuItem>

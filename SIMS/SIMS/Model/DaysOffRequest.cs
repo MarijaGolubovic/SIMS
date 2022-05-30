@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.ViewModel.Doctor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace SIMS.Model
         private RequestStatus requestStatus;
         private int requestId;
         private String comment;
+        public String Name { get; set; }
+        public String StartDateForDoctor { get; set; }
+        public String EndDateForDoctor { get; set; }
 
         public String DoctorId
         {
@@ -142,21 +146,7 @@ namespace SIMS.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         public DaysOffRequest() { }
-        public DaysOffRequest(DateTime startDate, DateTime endDate, string reason, bool isUrgently)
-        {
-            StartDate = startDate;
-            EndDate = endDate;
-            Reason = reason;
-            IsUrgently = isUrgently;
-            RequestStatus = RequestStatus.onHold;
-            Random rnd = new Random();
-            RequestId = rnd.Next(1, 100000000);
-            DoctorId = ViewModel.Doctor.MainWindowViewModel.LoggedInUser.Person.JMBG;
-            Comment = "";
-        }
-
-
-
+ 
         public string[] toCSV()
         {
             string[] csvValues =
@@ -185,6 +175,9 @@ namespace SIMS.Model
             RequestStatus = (RequestStatus)Enum.Parse(typeof(RequestStatus), values[5]);
             RequestId = int.Parse(values[6]);
             Comment = values[7];
+            Name = "Slobodan dan";
+            StartDateForDoctor = StartDate.ToString().Split(' ')[0];
+            EndDateForDoctor = EndDate.ToString().Split(' ')[0];
         }
 
         public void AcceptRequest()
@@ -208,6 +201,24 @@ namespace SIMS.Model
             RequestStatus = requestStatus;
             RequestId = requestId;
             Comment = comment;
+            Name = "Slobodan dan";
+            StartDateForDoctor = startDate.ToString().Split(' ')[0];
+            EndDateForDoctor = endDate.ToString().Split(' ')[0];
+        }
+        public DaysOffRequest(DateTime startDate, DateTime endDate, string reason, bool isUrgently)
+        {
+            DoctorId = MainWindowViewModel.LoggedInUser.Person.JMBG;
+            StartDate = startDate;
+            EndDate = endDate;
+            Reason = reason;
+            IsUrgently = isUrgently;
+            RequestStatus = requestStatus;
+            var random = new Random();
+            RequestId = random.Next();
+            Comment = "";
+            Name = "Slobodan dan";
+            StartDateForDoctor = startDate.ToString().Split(' ')[0];
+            EndDateForDoctor = endDate.ToString().Split(' ')[0];
         }
     }
 }
