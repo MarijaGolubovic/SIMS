@@ -22,7 +22,7 @@ namespace SIMS.ViewModel.Doctor
         }
 
         private readonly AppointmentController appointmentController = new AppointmentController();
-
+        //komentar
         public EditRoomViewModel()
         {
             Rooms = appointmentController.FindRoomsForEditAppointment(ViewModel.Doctor.EditAppointmentViewModel.SelectedAppointment);

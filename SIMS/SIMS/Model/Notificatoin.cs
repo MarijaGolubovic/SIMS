@@ -63,7 +63,7 @@ namespace SIMS.Model
             {
                 Patient.JMBGP,
                 NotificationDateTime.ToString(),
-                Details,
+                Details
             };
             return csvValues;
         }

@@ -7,6 +7,11 @@ using System.Windows;
 using SIMS.Controller;
 using Tulpep.NotificationWindow;
 using System.Windows.Navigation;
+using System.Windows.Forms;
+using ToastNotifications;
+using ToastNotifications.Position;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
 
 namespace SIMS.Pacijent
 {
@@ -66,14 +71,43 @@ namespace SIMS.Pacijent
             {
                 if ((n.NotificationDateTime - DateTime.Now).TotalMinutes <= 5)
                 {
-                        //PopupNotifier popup = new PopupNotifier();
-                        //popup.TitleText = "Obavestenje!";
-                        //popup.ContentText = n.Details;
-                        //popup.Popup();
+
+                    //notifier.ShowInformation(n.Details);
+
+                    /*this.Invoke((MethodInvoker)delegate
+                    {
+                        PopupNotifier pop = new PopupNotifier();
+                        pop.TitleText = "Test";
+                        pop.ContentText = "Hello World";
+                        pop.Popup();
+                    });*/
+                    //PopupNotifier popup = new PopupNotifier();
+                    //popup.TitleText = "Obavestenje!";
+                    //popup.ContentText = n.Details;
+                    //popup.Popup();
 
                 }
             }
         }
+
+        /*public static Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+            parentWindow: System.Windows.Application.Current.MainWindow,
+            corner: Corner.TopRight,
+            offsetX: 18,
+            offsetY: 112);
+
+
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+            notificationLifetime: TimeSpan.FromSeconds(5),
+            maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+
+
+            cfg.Dispatcher = System.Windows.Application.Current.Dispatcher;
+        });*/
 
         private void AddAppointment(object sender, RoutedEventArgs e)
         {
