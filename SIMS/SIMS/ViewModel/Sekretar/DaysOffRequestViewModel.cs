@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SIMS.Controller;
 using SIMS.Model;
+using SIMS.View.Sekretar;
 
 namespace SIMS.ViewModel.Sekretar
 {
@@ -15,6 +16,8 @@ namespace SIMS.ViewModel.Sekretar
         public Action CloseAction { get; set; }
 
         public MyICommand SubmitCMD { get; set; }
+
+        public MyICommand DenyCMD { get; set; }
 
         private DaysOffRequestController daysOffRequestController;
 
@@ -39,6 +42,7 @@ namespace SIMS.ViewModel.Sekretar
                 Zahtevi.Add(d);
             }
             SubmitCMD = new MyICommand(Submit);
+            DenyCMD = new MyICommand(DenyRequest);
 
         }
 
@@ -51,6 +55,12 @@ namespace SIMS.ViewModel.Sekretar
                 Zahtevi.Add(d);
             }
 
+        }
+
+        private void DenyRequest()
+        {
+            DenyRequestView denyRequestView = new DenyRequestView(SelectedItem);
+            denyRequestView.Show();
         }
 
     }

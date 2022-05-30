@@ -59,6 +59,11 @@ namespace SIMS.Controller
             daysOffRequestService.AcceptRequest(new DaysOffRequest(daysOffRequestDTO.DoctorId,daysOffRequestDTO.StartDate, daysOffRequestDTO.EndDate, daysOffRequestDTO.Reason, daysOffRequestDTO.IsUrgently, daysOffRequestDTO.RequestStatus, daysOffRequestDTO.RequestId,daysOffRequestDTO.Comment));
         }
 
+        public void DenyRequest(DaysOffRequestDTO daysOffRequestDTO)
+        {
+            daysOffRequestService.DenyRequest(new DaysOffRequest(daysOffRequestDTO.DoctorId, daysOffRequestDTO.StartDate, daysOffRequestDTO.EndDate, daysOffRequestDTO.Reason, daysOffRequestDTO.IsUrgently, daysOffRequestDTO.RequestStatus, daysOffRequestDTO.RequestId, daysOffRequestDTO.Comment));
+        }
+
     }
 
 }

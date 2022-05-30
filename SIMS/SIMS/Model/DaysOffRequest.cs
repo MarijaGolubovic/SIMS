@@ -189,8 +189,13 @@ namespace SIMS.Model
 
         public void AcceptRequest()
         {
+            this.Comment = "";
             this.RequestStatus = RequestStatus.accepted;
-            OnPropertyChanged("RequestStatus");
+        }
+
+        public void DenyRequest()
+        {
+            this.RequestStatus = RequestStatus.refused;
         }
 
         public DaysOffRequest(string doctorId, DateTime startDate, DateTime endDate, string reason, bool isUrgently, RequestStatus requestStatus, int requestId, string comment)

@@ -157,8 +157,6 @@
     <Compile Include="Repository\EquipmentStorage.cs" />
     <Compile Include="Model\Diagnosis.cs" />
     <Compile Include="Model\PatientForAddAppointmentDTO.cs" />
-    <Compile Include="Model\Therapy.cs" />
-    <Compile Include="Repository\AllergyStorage.cs" />
     <Compile Include="Repository\DiagnosisStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
     <Compile Include="Repository\NotificationStorage.cs" />
@@ -195,6 +193,7 @@
     <Compile Include="Validation\ValidationSecretary.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
     <Compile Include="ViewModel\Sekretar\DaysOffRequestViewModel.cs" />
+    <Compile Include="ViewModel\Sekretar\DenyRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\MainSecretaryWindowViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\OrderEquipmentViewModel.cs" />

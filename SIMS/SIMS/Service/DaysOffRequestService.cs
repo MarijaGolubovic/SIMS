@@ -92,13 +92,16 @@ namespace SIMS.Service
 
         public void AcceptRequest (DaysOffRequest daysOffRequest)
         {
-            if (daysOffRequest.RequestStatus == RequestStatus.onHold)
-            {
-                 daysOffRequest.AcceptRequest();
-                 daysOffRequestStorage.Update(daysOffRequest);
-            }
+             daysOffRequest.AcceptRequest();
+             daysOffRequestStorage.Update(daysOffRequest);
                
         }
-        
+
+        public void DenyRequest(DaysOffRequest daysOffRequest)
+        {
+            daysOffRequestStorage.Update(daysOffRequest);
+        }
+
+
     }
 }

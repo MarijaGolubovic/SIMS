@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Model;
+using SIMS.ViewModel.Sekretar;
 
 namespace SIMS.View.Sekretar
 {
@@ -19,9 +21,14 @@ namespace SIMS.View.Sekretar
     /// </summary>
     public partial class DenyRequestView : Window
     {
-        public DenyRequestView()
+        private DenyRequestViewModel DenyRequestViewModel { get; set; }
+        public DenyRequestView(DaysOffRequestDTO daysOffRequest)
         {
             InitializeComponent();
+            this.DenyRequestViewModel = new DenyRequestViewModel(daysOffRequest);
+            this.DataContext = DenyRequestViewModel;
+            if (DenyRequestViewModel.CloseAction == null)
+                DenyRequestViewModel.CloseAction = new Action(this.Close);
         }
     }
 }
