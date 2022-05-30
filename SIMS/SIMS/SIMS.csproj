@@ -132,6 +132,7 @@
     <Compile Include="Model\AppointmentForPatientDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\DaysOffRequestDTO.cs" />
     <Compile Include="Model\EmergencyAppointmentsDTO.cs" />
     <Compile Include="Model\CategoryID.cs" />
     <Compile Include="Model\DaysOffRequest.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\ValidationSecretary.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
+    <Compile Include="ViewModel\Sekretar\DaysOffRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\MainSecretaryWindowViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\OrderEquipmentViewModel.cs" />
@@ -330,6 +332,12 @@
     </Compile>
     <Compile Include="View\Sekretar\CreatePatient.xaml.cs">
       <DependentUpon>CreatePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\DaysOffRequestView.xaml.cs">
+      <DependentUpon>DaysOffRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sekretar\DenyRequestView.xaml.cs">
+      <DependentUpon>DenyRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sekretar\EditAppointmentView.xaml.cs">
       <DependentUpon>EditAppointmentView.xaml</DependentUpon>
@@ -570,6 +578,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Sekretar\DaysOffRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\DenyRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Sekretar\EditAppointmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -785,7 +801,6 @@
   <ItemGroup>
     <Folder Include="ViewModel\Menager\" />
     <Folder Include="ViewModel\Pacijent\" />
-    <Folder Include="ViewModel\Sekretar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

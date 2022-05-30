@@ -90,6 +90,15 @@ namespace SIMS.Service
             return true;
         }
 
+        public void AcceptRequest (DaysOffRequest daysOffRequest)
+        {
+            if (daysOffRequest.RequestStatus == RequestStatus.onHold)
+            {
+                 daysOffRequest.AcceptRequest();
+                 daysOffRequestStorage.Update(daysOffRequest);
+            }
+               
+        }
         
     }
 }

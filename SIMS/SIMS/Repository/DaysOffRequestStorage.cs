@@ -40,5 +40,15 @@ namespace SIMS.Repository
             requirements.Add(request);
             daysOffRequestSerializer.toCSV("daysOfRequirements.txt", requirements);
         }
+
+        public Boolean Update (DaysOffRequest daysOffRequest)
+        {
+            List<DaysOffRequest> daysOffRequests = GetAll();
+            Serialization.Serializer<DaysOffRequest> serializer = new Serialization.Serializer<DaysOffRequest>();
+            daysOffRequests.Remove(daysOffRequests.Find(d => d.RequestId.Equals(daysOffRequest.RequestId)));
+            daysOffRequests.Add(daysOffRequest);
+            serializer.toCSV("daysOfRequirements.txt", daysOffRequests);
+            return true;
+        }
     }
 }
