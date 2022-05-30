@@ -1,6 +1,7 @@
 ﻿using SIMS.Controller;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.ViewModel.Doctor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,5 +101,19 @@ namespace SIMS.Service
                
         }
         
+        public List<DaysOffRequest> GetAllRequirementsForDoctor() 
+        { 
+            List<DaysOffRequest> requirements = new List<DaysOffRequest>();
+
+            foreach (DaysOffRequest req in GetAll()) 
+            {
+                if (req.DoctorId.Equals(MainWindowViewModel.LoggedInUser.Person.JMBG) && req.StartDate > DateTime.Now) 
+                {
+                    requirements.Add(req); 
+                }
+            }
+
+            return requirements;
+        }
     }
 }

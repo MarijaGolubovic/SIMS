@@ -193,6 +193,8 @@
     <Compile Include="Validation\JMBGValidation.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\ValidationSecretary.cs" />
+    <Compile Include="ViewModel\Doctor\AllRequirentmentsViewModel.cs" />
+    <Compile Include="ViewModel\Doctor\DetailedRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
     <Compile Include="ViewModel\Sekretar\DaysOffRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\EquipmentViewModel.cs" />
@@ -218,11 +220,17 @@
     <Compile Include="View\DoctorMVVM\AllAppointmentsView.xaml.cs">
       <DependentUpon>AllAppointmentsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorMVVM\AllRequirentmentsView.xaml.cs">
+      <DependentUpon>AllRequirentmentsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DoctorMVVM\DaysOffRequestView.xaml.cs">
       <DependentUpon>DaysOffRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DoctorMVVM\DetailedAppointmentView.xaml.cs">
       <DependentUpon>DetailedAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorMVVM\DetailedRequestView.xaml.cs">
+      <DependentUpon>DetailedRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DoctorMVVM\EditAppointmentView.xaml.cs">
       <DependentUpon>EditAppointmentView.xaml</DependentUpon>
@@ -411,11 +419,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DoctorMVVM\AllRequirentmentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorMVVM\DaysOffRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorMVVM\DetailedAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorMVVM\DetailedRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
