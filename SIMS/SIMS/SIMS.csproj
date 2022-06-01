@@ -116,6 +116,7 @@
     <Compile Include="Controller\DiagnosisController.cs" />
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineContoller.cs" />
+    <Compile Include="Controller\MeetingController.cs" />
     <Compile Include="Controller\NotificationController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\QuestionController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Model\DaysOffRequest.cs" />
     <Compile Include="Model\EquipmentDTO.cs" />
     <Compile Include="Model\MedicineStatus.cs" />
+    <Compile Include="Model\Meeting.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Model\PatientForAddAppointmentDTO.cs" />
     <Compile Include="Repository\DiagnosisStorage.cs" />
     <Compile Include="Repository\MedicineStorage.cs" />
+    <Compile Include="Repository\MeetingStorage.cs" />
     <Compile Include="Repository\NotificationStorage.cs" />
     <Compile Include="Repository\OccupacyRoomStorage.cs" />
     <Compile Include="Repository\QuestionStorage.cs" />
@@ -176,6 +179,7 @@
     <Compile Include="Service\DiagnosisService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
+    <Compile Include="Service\MeetingService.cs" />
     <Compile Include="Service\NotificationService.cs" />
     <Compile Include="Service\OccupacyRoomService.cs" />
     <Compile Include="Service\PatientService.cs" />
@@ -194,10 +198,12 @@
     <Compile Include="ViewModel\Doctor\AllRequirentmentsViewModel.cs" />
     <Compile Include="ViewModel\Doctor\DetailedRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
+    <Compile Include="ViewModel\Sekretar\CreateMeetingViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\DaysOffRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\DenyRequestViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\EquipmentViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\MainSecretaryWindowViewModel.cs" />
+    <Compile Include="ViewModel\Sekretar\MeetingsViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\OrderEquipmentViewModel.cs" />
     <Compile Include="ViewModel\Doctor\AddAppointmentViewModel.cs" />
     <Compile Include="ViewModel\Doctor\AddTherapyViewModel.cs" />
@@ -338,6 +344,9 @@
     <Compile Include="View\Pacijent\Notification.xaml.cs">
       <DependentUpon>Notification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Sekretar\CreateMeetingView.xaml.cs">
+      <DependentUpon>CreateMeetingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sekretar\CreatePatient.xaml.cs">
       <DependentUpon>CreatePatient.xaml</DependentUpon>
     </Compile>
@@ -388,6 +397,9 @@
     </Compile>
     <Compile Include="Serialization\Serializable.cs" />
     <Compile Include="Serialization\Serializer.cs" />
+    <Compile Include="View\Sekretar\MeetingsView.xaml.cs">
+      <DependentUpon>MeetingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sekretar\NewPatientView.xaml.cs">
       <DependentUpon>NewPatientView.xaml</DependentUpon>
     </Compile>
@@ -590,6 +602,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Sekretar\CreateMeetingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Sekretar\CreatePatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -651,6 +667,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pacijent\EditAppintment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sekretar\MeetingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,6 +5,7 @@ namespace SIMS.Model
         OPPERATING_ROOM,
         EXAMINATION_ROOM,
         HOSPITAL_ROOM,
-        WAREHOUSE
+        WAREHOUSE,
+        MEETING_ROOM
     }
 }

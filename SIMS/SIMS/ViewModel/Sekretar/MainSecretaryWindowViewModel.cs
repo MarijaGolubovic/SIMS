@@ -9,6 +9,7 @@ namespace SIMS.ViewModel.Sekretar
         public MyICommand EquipmentViewCMD { get; set; }
         public MyICommand EmergencyViewCMD { get; set; }
         public MyICommand RequestCMD { get; set; }
+        public MyICommand MeetingsViewCMD { get; set; }
 
 
 
@@ -19,6 +20,7 @@ namespace SIMS.ViewModel.Sekretar
             EquipmentViewCMD = new MyICommand(OpenEquipmentView);
             EmergencyViewCMD = new MyICommand(OpenEmergencyView);
             RequestCMD = new MyICommand(OpenRequestView);
+            MeetingsViewCMD= new MyICommand(OpenMeetingsView);
 
 
         }
@@ -51,6 +53,12 @@ namespace SIMS.ViewModel.Sekretar
         {
             DaysOffRequestView daysOffRequestView = new DaysOffRequestView();
             daysOffRequestView.Show();
+        }
+
+        private void OpenMeetingsView()
+        {
+            MeetingsView meetingsView = new MeetingsView();
+            meetingsView.Show();
         }
 
 

@@ -260,6 +260,7 @@ namespace SIMS.Service
             return doctorAppointments;
         }
 
+        //*******DANIJELA*********
         public List<Appointment> findSuggestedAppointmentsSecretary(Model.Doctor doctor, Patient patient, DateTime dateTime, Boolean doctorPriority, Boolean operation)
         {
             List<Appointment> suggestedAppointments = new List<Appointment>();
@@ -363,6 +364,24 @@ namespace SIMS.Service
             }
 
             return null;
+        }
+
+        public Boolean CheckingAvailabilityOfDoctors(DateTime dateTime, List<User> users)
+        {
+            List<Appointment> appointments = GetAll();
+
+            foreach (User u in users)
+            {
+                if (u.Type == UserType.doctor) 
+                { 
+                    if (appointments.Exists(a => a.Doctor.Person.JMBG.Equals(u.Person.JMBG) && a.DateAndTime == dateTime))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public Room CheckAvaliableRoom(DateTime dateTime)
