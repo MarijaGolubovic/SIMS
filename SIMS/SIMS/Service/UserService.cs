@@ -39,7 +39,7 @@ namespace SIMS.Service
 
         public Boolean Update(User newUser, User oldUser)
         {
-            if (oldUser.Person.JMBG == newUser.Person.JMBG || userStorage.GetOne(newUser.Person.JMBG) == null)
+            if (oldUser.CheckJMBG(newUser.Person.JMBG) || userStorage.GetOne(newUser.Person.JMBG) == null)
             {
                 userStorage.Update(newUser, oldUser);
                 return true;
@@ -58,14 +58,7 @@ namespace SIMS.Service
         public Boolean CheckUserPassword(String Username, String Password)
         {
             User user = FindUserByUsername(Username);
-            if (user.Password.Equals(Password))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return user.CheckPassword(Password);
         }
 
 

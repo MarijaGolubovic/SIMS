@@ -1,16 +1,12 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System.Collections.Generic;
+using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class EditRoomViewModel:BindableBase
+    internal class EditRoomViewModel : BindableBase
     {
         public MyICommand EditCommand { get; set; }
         public List<Room> Rooms { get; set; }

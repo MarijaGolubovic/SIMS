@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -32,7 +23,7 @@ namespace SIMS.View.Menager
             List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
             MoveEquipmentObservable = new System.Collections.ObjectModel.ObservableCollection<Model.Equpment>();
 
-            foreach(Model.Equpment equipmentItem in equipments)
+            foreach (Model.Equpment equipmentItem in equipments)
             {
                 MoveEquipmentObservable.Add(equipmentItem);
             }
@@ -56,7 +47,7 @@ namespace SIMS.View.Menager
             string destination = destinationBox.Text;
             string beginString = beginBox.Text;
             string endString = endBox.Text;
-            string equipnemtId="";
+            string equipnemtId = "";
             string begin = beginString.Split(';')[0];
             string end = endString.Split(';')[0];
             Serialization.Serializer<Model.RoomEqupment> equpmentSerializer = new Serialization.Serializer<Model.RoomEqupment>();
@@ -68,7 +59,7 @@ namespace SIMS.View.Menager
 
             bool flag = false;
             foreach (Model.Equpment eqPom in equipmentsPom)
-            
+
             {
                 if (eqPom.Name.Equals(equipmentName))
                 {
@@ -76,7 +67,7 @@ namespace SIMS.View.Menager
                 }
             }
 
-            something.Add(new Model.RoomEqupment("soba2","r1","12-May-2022"));
+            something.Add(new Model.RoomEqupment("soba2", "r1", "12-May-2022"));
 
             foreach (Model.RoomEqupment eqr in something)
             {
@@ -89,27 +80,27 @@ namespace SIMS.View.Menager
             if (DateTime.Compare(DateTime.Parse(end), DateTime.Parse(begin)) < 0)
             {
                 MessageBox.Show("End before began!");
-            } 
-           else  if (flag)
+            }
+            else if (flag)
             {
 
                 MessageBox.Show("Equipment already move!");
             }
             else
             {
-                   something.Add(new Model.RoomEqupment(idRoom, equipnemtId, begin + "" + end));
-                    MessageBox.Show("Equipment succesfully moved!");
-                    
-                
-               
+                something.Add(new Model.RoomEqupment(idRoom, equipnemtId, begin + "" + end));
+                MessageBox.Show("Equipment succesfully moved!");
+
+
+
             }
         }
 
         private void Button_Click_SEARCHEquipment(object sender, RoutedEventArgs e)
         {
-            string inputSearchContent= searchFiled.Text;
-            
-            if(!(inputSearchContent.Length==null))
+            string inputSearchContent = searchFiled.Text;
+
+            if (!(inputSearchContent.Length == null))
             {
                 List<Model.Equpment> searchedEquipment = new List<Model.Equpment>();
                 searchedEquipment.Clear();
@@ -119,17 +110,18 @@ namespace SIMS.View.Menager
                 {
                     MoveEquipmentObservable.Add(equipmentItem);
                 }
-            }else
-                {
-                    Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
-                    List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
-                    MoveEquipmentObservable = new System.Collections.ObjectModel.ObservableCollection<Model.Equpment>();
+            }
+            else
+            {
+                Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
+                List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
+                MoveEquipmentObservable = new System.Collections.ObjectModel.ObservableCollection<Model.Equpment>();
 
-                    foreach (Model.Equpment equipmentItem in equipments)
-                    {
-                        MoveEquipmentObservable.Add(equipmentItem);
-                    }
+                foreach (Model.Equpment equipmentItem in equipments)
+                {
+                    MoveEquipmentObservable.Add(equipmentItem);
                 }
+            }
         }
     }
 }

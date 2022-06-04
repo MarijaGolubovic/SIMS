@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Controller;
 using SIMS.Model;
 using SIMS.View.Sekretar;
@@ -37,7 +33,7 @@ namespace SIMS.ViewModel.Sekretar
             Zahtevi = new ObservableCollection<DaysOffRequestDTO>();
             daysOffRequestController = new DaysOffRequestController();
 
-            foreach(DaysOffRequestDTO d in daysOffRequestController.GetAllDTO())
+            foreach (DaysOffRequestDTO d in daysOffRequestController.GetAllDTO())
             {
                 Zahtevi.Add(d);
             }

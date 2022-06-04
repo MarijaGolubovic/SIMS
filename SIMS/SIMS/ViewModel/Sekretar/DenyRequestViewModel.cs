@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Controller;
 using SIMS.Model;
 
@@ -18,10 +14,10 @@ namespace SIMS.ViewModel.Sekretar
 
         public MyICommand CancelCMD { get; set; }
 
-        
+
         private DaysOffRequestController daysOffRequestController;
 
-        public DenyRequestViewModel (DaysOffRequestDTO daysOffRequestDTO)
+        public DenyRequestViewModel(DaysOffRequestDTO daysOffRequestDTO)
         {
             selectedItem = daysOffRequestDTO;
             SubmitCMD = new MyICommand(Submit);
@@ -33,7 +29,7 @@ namespace SIMS.ViewModel.Sekretar
         {
             DaysOffRequestDTO daysOffRequestDTO = selectedItem;
             daysOffRequestDTO.Comment = Comment;
-            daysOffRequestDTO.RequestStatus=RequestStatus.refused;
+            daysOffRequestDTO.RequestStatus = RequestStatus.refused;
             daysOffRequestController.DenyRequest(daysOffRequestDTO);
             CloseAction();
         }

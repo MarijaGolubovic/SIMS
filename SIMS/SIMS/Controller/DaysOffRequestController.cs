@@ -1,10 +1,7 @@
-﻿using SIMS.Model;
-using SIMS.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
+using SIMS.Service;
 
 namespace SIMS.Controller
 {
@@ -42,7 +39,7 @@ namespace SIMS.Controller
 
         public List<DaysOffRequestDTO> GetAllDTO()
         {
-            List <DaysOffRequest> daysOffRequests = daysOffRequestService.GetAll();
+            List<DaysOffRequest> daysOffRequests = daysOffRequestService.GetAll();
             List<DaysOffRequestDTO> daysOffRequestDTOs = new List<DaysOffRequestDTO>();
 
             foreach (DaysOffRequest d in daysOffRequests)
@@ -51,12 +48,12 @@ namespace SIMS.Controller
             }
 
             return daysOffRequestDTOs;
-            
+
         }
 
         public void AcceptRequest(DaysOffRequestDTO daysOffRequestDTO)
         {
-            daysOffRequestService.AcceptRequest(new DaysOffRequest(daysOffRequestDTO.DoctorId,daysOffRequestDTO.StartDate, daysOffRequestDTO.EndDate, daysOffRequestDTO.Reason, daysOffRequestDTO.IsUrgently, daysOffRequestDTO.RequestStatus, daysOffRequestDTO.RequestId,daysOffRequestDTO.Comment));
+            daysOffRequestService.AcceptRequest(new DaysOffRequest(daysOffRequestDTO.DoctorId, daysOffRequestDTO.StartDate, daysOffRequestDTO.EndDate, daysOffRequestDTO.Reason, daysOffRequestDTO.IsUrgently, daysOffRequestDTO.RequestStatus, daysOffRequestDTO.RequestId, daysOffRequestDTO.Comment));
         }
 
         public void DenyRequest(DaysOffRequestDTO daysOffRequestDTO)

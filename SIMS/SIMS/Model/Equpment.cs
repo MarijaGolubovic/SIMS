@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SIMS.Model
 {
 
-    public class Equpment: INotifyPropertyChanged, Serialization.Serializable
+    public class Equpment : INotifyPropertyChanged, Serialization.Serializable
     {
         public String Name
         {
@@ -62,7 +61,7 @@ namespace SIMS.Model
             }
         }
 
-        
+
         public Equpment(string name, int quantity, string id)
         {
             Name = name;
@@ -96,6 +95,6 @@ namespace SIMS.Model
         int _Quantity;
         String _Id;
 
-        
+
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Model;
 
 namespace SIMS.Repository
@@ -15,7 +12,7 @@ namespace SIMS.Repository
             List<Meeting> meetings = meetingSerializer.fromCSV("meetings.txt");
             UserStorage userStorage = new UserStorage();
 
-            foreach(Meeting m in meetings)
+            foreach (Meeting m in meetings)
             {
                 foreach (string s in m.UsersID)
                 {
@@ -27,7 +24,7 @@ namespace SIMS.Repository
 
         }
 
-        public Boolean Create (Meeting meeting)
+        public Boolean Create(Meeting meeting)
         {
             List<Meeting> meetings = GetAll();
             meetings = GetAll();

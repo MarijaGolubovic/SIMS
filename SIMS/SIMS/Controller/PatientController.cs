@@ -92,7 +92,7 @@ namespace SIMS.Controller
 
         }
 
-        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
+        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment()
         {
             List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();
 

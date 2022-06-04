@@ -1,17 +1,9 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System;
+using System.Collections.Generic;
+using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToastNotifications;
-using ToastNotifications.Position;
-using static System.Net.Mime.MediaTypeNames;
-using System.Windows;
 using ToastNotifications.Messages;
-using SIMS.View.Pacijent;
 
 namespace SIMS.ViewModel.Doctor
 {
@@ -31,10 +23,10 @@ namespace SIMS.ViewModel.Doctor
                 doctroPriority = value;
             }
         }
-        public List<Patient> Patients{ get; set; }
+        public List<Patient> Patients { get; set; }
         private static Patient selectedPatient;
         private static Model.Doctor selectedDoctor;
-        public static Patient SelectedPatient 
+        public static Patient SelectedPatient
         {
             get { return selectedPatient; }
             set { selectedPatient = value; }
@@ -68,7 +60,7 @@ namespace SIMS.ViewModel.Doctor
 
             return retValue;
         }
-        private void OnAdd() 
+        private void OnAdd()
         {
             if (appointmentController.CheckIfDateIsValidForDoctor(formDateTime()))
             {
@@ -78,7 +70,7 @@ namespace SIMS.ViewModel.Doctor
                 else
                     ShowSuggestedAppointments();
             }
-            else 
+            else
                 MainWindowViewModel.notifier.ShowInformation("Nije moguce zakazati termin u proslosti!");
         }
 
@@ -96,7 +88,7 @@ namespace SIMS.ViewModel.Doctor
             MainWindowViewModel.notifier.ShowSuccess("Uspješno!");
         }
 
-        private void OnCancel() 
+        private void OnCancel()
         {
             Messenger.Default.Send("AllAppointmentView");
         }

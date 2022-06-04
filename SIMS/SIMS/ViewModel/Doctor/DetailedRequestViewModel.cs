@@ -1,9 +1,5 @@
-﻿using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using SIMS.Model;
 
 namespace SIMS.ViewModel.Doctor
 {
@@ -21,7 +17,7 @@ namespace SIMS.ViewModel.Doctor
                 Status = "Na čekanju";
             }
             else if (SelectedRequest.RequestStatus == RequestStatus.accepted)
-            { 
+            {
                 Status = "Odobreno";
             }
             else if (SelectedRequest.RequestStatus == RequestStatus.refused)

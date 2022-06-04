@@ -13,17 +13,22 @@ namespace SIMS.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public String Name {
-            get {
+        public String Name
+        {
+            get
+            {
                 return _Name;
-            } set {
+            }
+            set
+            {
 
                 if (value != _Name)
                 {
                     _Name = value;
                     OnPropertyChanged("Name");
                 }
-            } }
+            }
+        }
 
         private void OnPropertyChanged(string v)
         {
@@ -34,27 +39,33 @@ namespace SIMS.Model
         }
 
         public List<String> Ingredients { get; set; }
-        public MedicineStatus MedicineStatus { 
-            get { return _MedicineStatus; } 
-            set {
+        public MedicineStatus MedicineStatus
+        {
+            get { return _MedicineStatus; }
+            set
+            {
                 if (value != _MedicineStatus)
                 {
                     _MedicineStatus = value;
                     OnPropertyChanged("MedicineStatus");
                 }
 
-            } }
+            }
+        }
 
-        public int Quantity { 
+        public int Quantity
+        {
             get { return _Quantity; }
 
-            set {
+            set
+            {
                 if (value != _Quantity)
                 {
                     _Quantity = value;
                     OnPropertyChanged("Quantity");
                 }
-            } }
+            }
+        }
 
         public Medicine(string name, List<string> ingredients, int quantity)
         {
@@ -63,19 +74,19 @@ namespace SIMS.Model
             Quantity = quantity;
         }
 
-        public Medicine(string name, List<string> ingredients, MedicineStatus medicineStatus, int quantity) : this(name, ingredients,quantity)
+        public Medicine(string name, List<string> ingredients, MedicineStatus medicineStatus, int quantity) : this(name, ingredients, quantity)
         {
             MedicineStatus = medicineStatus;
         }
 
         public string[] toCSV()
         {
-            string[] csvValues = new string[Ingredients.Count +3];
+            string[] csvValues = new string[Ingredients.Count + 3];
 
             csvValues[0] = Name;
             csvValues[1] = Quantity.ToString();
             csvValues[2] = MedicineStatus.ToString();
-           
+
 
             int i = 3;
             foreach (String s in Ingredients)
@@ -90,14 +101,14 @@ namespace SIMS.Model
 
         public void fromCSV(string[] values)
         {
-            if (values[0].Equals("")) 
+            if (values[0].Equals(""))
             {
                 return;
             }
             Name = values[0];
             Quantity = int.Parse(values[1]);
             MedicineStatus = (MedicineStatus)Enum.Parse(typeof(MedicineStatus), values[2]);
-            
+
 
             Ingredients = new List<String>();
             for (int i = 3; i < values.Length; i++)
@@ -105,7 +116,7 @@ namespace SIMS.Model
                 Ingredients.Add(values[i]);
             }
         }
-        
+
         public Medicine() { }
     }
 }

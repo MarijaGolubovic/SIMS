@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using SIMS.Model;
 
 namespace SIMS.Repository
@@ -17,7 +13,7 @@ namespace SIMS.Repository
         {
             Serialization.Serializer<Answers> answerSerializer = new Serialization.Serializer<Answers>();
             List<Answers> answers = new List<Answers>();
-            foreach(Answers a in answerSerializer.fromCSV("answers.txt"))
+            foreach (Answers a in answerSerializer.fromCSV("answers.txt"))
             {
                 answers.Add(a);
             }

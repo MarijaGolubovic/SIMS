@@ -20,7 +20,7 @@ namespace SIMS.ViewModel.Sekretar
             EquipmentViewCMD = new MyICommand(OpenEquipmentView);
             EmergencyViewCMD = new MyICommand(OpenEmergencyView);
             RequestCMD = new MyICommand(OpenRequestView);
-            MeetingsViewCMD= new MyICommand(OpenMeetingsView);
+            MeetingsViewCMD = new MyICommand(OpenMeetingsView);
 
 
         }

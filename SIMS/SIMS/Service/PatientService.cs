@@ -100,7 +100,7 @@ namespace SIMS.Service
         public List<String> LinkPatientInformationsForAddAppointment()
         {
             List<String> retList = new List<String>();
-            foreach(Patient patient in GetAll())
+            foreach (Patient patient in GetAll())
             {
                 String pom = patient.Person.Name + " " + patient.Person.Surname + ", " + patient.Person.DateOfBirth.ToString().Split(' ')[0];
                 retList.Add(pom);

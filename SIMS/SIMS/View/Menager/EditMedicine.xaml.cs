@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -48,7 +39,7 @@ namespace SIMS.View.Menager
                 Rooms.Add(roomItem);
             }
 
-           
+
 
         }
 
@@ -93,13 +84,13 @@ namespace SIMS.View.Menager
                 }
 
                 Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
-                medicineStorage.EditMedicine(selectedMedicine,newMedecine);
-              //  medicineStorage.Delete(selectedMedicine);
-               // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
+                medicineStorage.EditMedicine(selectedMedicine, newMedecine);
+                //  medicineStorage.Delete(selectedMedicine);
+                // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
                 View.Menager.EditMedicine editMedicine = new EditMedicine();
                 editMedicine.Show();
                 this.Close();
-                
+
             }
         }
 

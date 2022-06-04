@@ -32,7 +32,8 @@ namespace SIMS.Service
                         return "Room succesfully added to renovation list ";
                     }
 
-                } else
+                }
+                else
                 {
                     roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
                     occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
@@ -62,14 +63,14 @@ namespace SIMS.Service
             return isOccupacy;
         }
 
-        public bool EndBeforeBegin( DateTime begin, DateTime end)
+        public bool EndBeforeBegin(DateTime begin, DateTime end)
         {
-            bool isEndBeforeBegin = false;   
-                if (DateTime.Compare(end, begin) < 0)
-                {
+            bool isEndBeforeBegin = false;
+            if (DateTime.Compare(end, begin) < 0)
+            {
                 isEndBeforeBegin = true;
-                }
-            
+            }
+
             return isEndBeforeBegin;
         }
 

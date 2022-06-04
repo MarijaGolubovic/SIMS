@@ -3,7 +3,7 @@
 namespace SIMS.Model
 {
 
-    public class RoomOccupacy: Serialization.Serializable
+    public class RoomOccupacy : Serialization.Serializable
     {
         //private String _IDRoom;
         //private DateTime _Begin;

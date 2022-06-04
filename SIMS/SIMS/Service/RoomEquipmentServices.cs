@@ -27,31 +27,31 @@ namespace SIMS.Service
         {
             return roomEquipment.Create(room);
         }
-        
 
-        public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination,string begin, string end)
-        { 
-        Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
+
+        public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination, string begin, string end)
+        {
+            Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
             List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
             List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
             Serialization.Serializer<Model.RoomEqupment> roomEquipmentSerializer = new Serialization.Serializer<Model.RoomEqupment>();
 
-            String[] beginToken  = begin.Split(';');
+            String[] beginToken = begin.Split(';');
             DateTime beginTime = DateTime.Parse(beginToken[0]);
             String[] endToken = end.Split(';');
             DateTime endTime = DateTime.Parse(endToken[0]);
 
-            String equpmentId="";
-            bool succesfullyMove=false;
+            String equpmentId = "";
+            bool succesfullyMove = false;
 
-            foreach(Equpment equpmentItem in equipments)
+            foreach (Equpment equpmentItem in equipments)
             {
                 if (Name.Equals(equpmentItem.Name))
                 {
                     equpmentId = equpmentItem.Id;
                 }
             }
-            foreach(RoomEqupment eqRoom in roomEquipments)
+            foreach (RoomEqupment eqRoom in roomEquipments)
             {
                 if (eqRoom.IdEquipment.Equals(equpmentId))
                 {
@@ -62,20 +62,20 @@ namespace SIMS.Service
             {
                 if (!EquipmentAlreadyOccupacy(equpmentId, beginTime, endTime))
                 {
-                    String movingPeriod = beginToken[0]+ ";" + endToken[0];
+                    String movingPeriod = beginToken[0] + ";" + endToken[0];
                     roomEquipments.Add(new RoomEqupment(roomId, movingPeriod, equpmentId));
-                   // roomEquipmentSerializer.toCSV("RoomEquipment.txt", roomEquipments);
+                    // roomEquipmentSerializer.toCSV("RoomEquipment.txt", roomEquipments);
                     succesfullyMove = true;
 
-                  /*  foreach (Equpment equpmentItem in equipments)
-                    {
-                        if (Name.Equals(equpmentItem.Name))
-                        {
+                    /*  foreach (Equpment equpmentItem in equipments)
+                      {
+                          if (Name.Equals(equpmentItem.Name))
+                          {
 
-                            equpmentItem.Quantity--;
-                        }
-                    }
-                  */
+                              equpmentItem.Quantity--;
+                          }
+                      }
+                    */
                 }
             }
             else
@@ -130,7 +130,8 @@ namespace SIMS.Service
         {
             List<Equpment> allEquipment = equipmentStorage.GetAll();
             List<Equpment> searchedEquipment = new List<Equpment>();
-            foreach(Equpment roomEquipment in allEquipment) {
+            foreach (Equpment roomEquipment in allEquipment)
+            {
                 if (roomEquipment.Name.Trim().Contains(inputSearchContent))
                 {
                     searchedEquipment.Add(roomEquipment);

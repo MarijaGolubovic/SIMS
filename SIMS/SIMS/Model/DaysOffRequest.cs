@@ -1,10 +1,6 @@
-﻿using SIMS.ViewModel.Doctor;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.ViewModel.Doctor;
 
 namespace SIMS.Model
 {
@@ -146,7 +142,7 @@ namespace SIMS.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         public DaysOffRequest() { }
- 
+
         public string[] toCSV()
         {
             string[] csvValues =

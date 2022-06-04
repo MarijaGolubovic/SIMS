@@ -1,17 +1,8 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToastNotifications;
-using ToastNotifications.Lifetime;
-using ToastNotifications.Position;
-using static System.Net.Mime.MediaTypeNames;
-using System.Windows;
-using ToastNotifications.Messages;
+﻿using System;
 using GalaSoft.MvvmLight.Messaging;
+using SIMS.Controller;
+using SIMS.Model;
+using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
@@ -51,23 +42,23 @@ namespace SIMS.ViewModel.Doctor
             {
                 MainWindowViewModel.notifier.ShowError("Niste unijeli validne datume!");
             }
-            else if(IsThereDoctorsWithSameSpetialization)
+            else if (IsThereDoctorsWithSameSpetialization)
             {
                 MainWindowViewModel.notifier.ShowError("Doktor iste specijalizacije je vec zakazao slobodne dane u tom periodu!");
             }
-            else if(IsDatesValid)
+            else if (IsDatesValid)
             {
                 daysOffRequestCotnroller.Create(request);
                 MainWindowViewModel.notifier.ShowSuccess("Uspješno!");
                 Messenger.Default.Send("AllAppointmentView");
             }
-            else 
+            else
             {
                 MainWindowViewModel.notifier.ShowError("Neuspješno");
             }
         }
 
-        private void OnBack() 
+        private void OnBack()
         {
             Messenger.Default.Send("AllAppointmentView");
         }

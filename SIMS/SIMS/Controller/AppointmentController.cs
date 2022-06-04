@@ -13,6 +13,10 @@ namespace SIMS.Controller
         private readonly AppointmentService appointmentService = new AppointmentService();
         private readonly PatientController patientController = new PatientController();
         private readonly OccupacyRoomService occupacyRoomService = new OccupacyRoomService();
+        private readonly SugesstedAppointmentsService sugesstedAppointmentsService = new SugesstedAppointmentsService();
+        private readonly EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService();
+
+
 
         public AppointmentController()
         {
@@ -83,7 +87,7 @@ namespace SIMS.Controller
 
         public bool Create(Appointment appointment, RoomOccupacy roomOccupacy)
         {
-            return appointmentService.Create(appointment,roomOccupacy);
+            return appointmentService.Create(appointment, roomOccupacy);
         }
 
         public int GenerateAppointmentID()
@@ -164,7 +168,7 @@ namespace SIMS.Controller
 
         public List<Appointment> findSuggestedAppointmentsSecretary(Model.Doctor doctor, Patient patient, DateTime dateTime, Boolean doctorPriority, Boolean operation)
         {
-            return appointmentService.findSuggestedAppointmentsSecretary(doctor, patient, dateTime, doctorPriority, operation);
+            return sugesstedAppointmentsService.findSuggestedAppointmentsSecretary(new Appointment(dateTime, 10, new Room(), patient, doctor), operation);
         }
         public Boolean DeleteApp(AppointmentsForSecretaryDTO appointment)
         {
@@ -174,15 +178,15 @@ namespace SIMS.Controller
 
         public List<EmergencyAppointmentsDTO> GetEmergencyAppointments(Patient patient, Specialization specialization)
         {
-            return appointmentService.GetEmergencyAppointments(patient, specialization);
+            return emergencyAppointmentService.GetEmergencyAppointments(patient, specialization);
         }
 
-        public Boolean ReschedulingAppointments (Patient urgentPatient, EmergencyAppointmentsDTO rescheduledAppointment)
+        public Boolean ReschedulingAppointments(Patient urgentPatient, EmergencyAppointmentsDTO rescheduledAppointment)
         {
             Appointment emergency = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, urgentPatient, rescheduledAppointment.Doctor);
-            Appointment oldTermin = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, rescheduledAppointment.Patient,rescheduledAppointment.Doctor);
+            Appointment oldTermin = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, rescheduledAppointment.Patient, rescheduledAppointment.Doctor);
             Appointment newTermin = new Appointment(rescheduledAppointment.NewDateAndTime, 10, rescheduledAppointment.NewRoom, rescheduledAppointment.Patient, rescheduledAppointment.NewDoctor);
-            return appointmentService.ReschedulingAppointments(emergency, oldTermin, newTermin);
+            return emergencyAppointmentService.ReschedulingAppointments(emergency, oldTermin, newTermin);
         }
 
         public List<Room> FindRoomsForEditAppointment(AppointmentsForDoctorDTO appointmentDTO)

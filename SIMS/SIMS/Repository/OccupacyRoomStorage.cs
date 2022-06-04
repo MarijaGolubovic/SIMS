@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Model;
 
 namespace SIMS.Repository
@@ -32,7 +29,7 @@ namespace SIMS.Repository
             }
 
             Serialization.Serializer<RoomOccupacy> roomOccupacySerializer = new Serialization.Serializer<RoomOccupacy>();
-            roomOccupacySerializer.toCSV("OccupacyRoom.txt",roomOccupacies);
+            roomOccupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
             return true;
         }
         public List<Model.RoomOccupacy> GetAll()

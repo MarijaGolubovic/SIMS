@@ -1,15 +1,11 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System.Collections.Generic;
+using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class AllRequirentmentsViewModel: BindableBase
+    internal class AllRequirentmentsViewModel : BindableBase
     {
         public List<DaysOffRequest> DaysOffRequirentments { get; set; }
         private readonly DaysOffRequestController daysOffRequestController = new DaysOffRequestController();
@@ -36,7 +32,7 @@ namespace SIMS.ViewModel.Doctor
             ShowDetailsCommand = new MyICommand(OnShowDetails, CanShowDetails);
         }
 
-        private void OnBack() 
+        private void OnBack()
         {
             Messenger.Default.Send("AllAppointmentView");
         }

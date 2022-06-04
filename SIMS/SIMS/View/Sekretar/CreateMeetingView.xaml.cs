@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using SIMS.Controller;
 using SIMS.Model;
 using SIMS.ViewModel.Sekretar;
@@ -56,12 +46,12 @@ namespace SIMS.View.Sekretar
         {
             List<User> usersList = new List<User>();
 
-            foreach(User u in UsersLB.SelectedItems)
+            foreach (User u in UsersLB.SelectedItems)
             {
                 usersList.Add(u);
             }
-            
-            foreach (Meeting m in meetingController.FindSuggestionsForMeeting(DateTime.Parse(dateTime),usersList))
+
+            foreach (Meeting m in meetingController.FindSuggestionsForMeeting(DateTime.Parse(dateTime), usersList))
             {
                 Sastanci.Add(m);
             }

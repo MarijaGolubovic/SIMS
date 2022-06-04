@@ -60,9 +60,10 @@ namespace SIMS.Controller
         }
 
 
-       public void EditMedicine(Medicine oldMedicine, Medicine newMedicine){
+        public void EditMedicine(Medicine oldMedicine, Medicine newMedicine)
+        {
 
-            medicineService.EditMedicine(oldMedicine,newMedicine);
-       }
+            medicineService.EditMedicine(oldMedicine, newMedicine);
+        }
     }
 }

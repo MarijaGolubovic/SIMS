@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace SIMS.View.Menager
 {
@@ -40,8 +34,8 @@ namespace SIMS.View.Menager
         {
             try
             {
-                
-                if (value==null)
+
+                if (value == null)
                 {
                     return new ValidationResult(true, null);
                 }

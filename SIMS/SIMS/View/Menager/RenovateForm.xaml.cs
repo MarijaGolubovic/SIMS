@@ -28,8 +28,8 @@ namespace SIMS.View.Menager
         private void Label_MouseDoubleClickRooms(object sender, MouseButtonEventArgs e)
         {
             Menager.RenovateForm renovateForm = new RenovateForm();
-           // renovateForm.Show();
-           // this.Close();
+            // renovateForm.Show();
+            // this.Close();
         }
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
@@ -44,22 +44,23 @@ namespace SIMS.View.Menager
         {
             roomItem = Menager.RenovateWindow.selectedRoom;
 
-//            string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
+            //            string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
 
-             if (occupacyRoomService.EndBeforeBegin(DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value))
+            if (occupacyRoomService.EndBeforeBegin(DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value))
             {
                 MessageBox.Show("End before begin!");
             }
 
-            else if(occupacyRoomService.RoomAlreadyOccupacy(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text)){
+            else if (occupacyRoomService.RoomAlreadyOccupacy(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text))
+            {
                 MessageBox.Show("Room occypaced in this period!");
             }
 
             else { MessageBox.Show("Room added to renoavtion list!"); }
-           
-                
-            
-            
+
+
+
+
             //this.Close();
 
 

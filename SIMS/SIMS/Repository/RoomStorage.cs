@@ -73,11 +73,11 @@ namespace SIMS.Repository
 
         public Model.Room GetRoomById(string idRoom)
         {
-            Room room=new Room();
+            Room room = new Room();
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
             rooms = roomSerijalization.fromCSV("Room.txt");
-            foreach(Model.Room roomItem in rooms)
+            foreach (Model.Room roomItem in rooms)
             {
                 if (roomItem.Id.Equals(idRoom))
                     room = roomItem;
@@ -87,7 +87,7 @@ namespace SIMS.Repository
             return room;
         }
 
-            
+
 
         public List<Room> GetByType(RoomType type)
         {

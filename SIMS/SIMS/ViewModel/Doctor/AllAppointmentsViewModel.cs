@@ -1,11 +1,7 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System.Collections.Generic;
+using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace SIMS.ViewModel.Doctor
@@ -19,10 +15,10 @@ namespace SIMS.ViewModel.Doctor
         public static MyICommand ShowDetailsCommand { get; set; }
 
         private static AppointmentsForDoctorDTO selectedAppointment;
-        public static AppointmentsForDoctorDTO SelectedAppointment 
+        public static AppointmentsForDoctorDTO SelectedAppointment
         {
             get { return selectedAppointment; }
-            set 
+            set
             {
                 selectedAppointment = value;
                 ShowDetailsCommand.RaiseCanExecuteChanged();

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Model;
 using SIMS.Repository;
 
 namespace SIMS.Service
 {
+    //*******DANIJELA********
     public class MeetingService
     {
         private MeetingStorage meetingStorage;
@@ -24,7 +22,7 @@ namespace SIMS.Service
             return meetingStorage.GetAll();
         }
 
-        public Boolean Create (Meeting meeting)
+        public Boolean Create(Meeting meeting)
         {
             return meetingStorage.Create(meeting);
         }
@@ -34,27 +32,28 @@ namespace SIMS.Service
             List<Meeting> suggestedMeetings = new List<Meeting>();
             Room room = CheckAvaliableRoom(dateTime);
             Boolean areUsersAvailable = appointmentService.CheckingAvailabilityOfDoctors(dateTime, users) && CheckingAvailabilityOfUsers(dateTime, users);
-            if (room==null || !areUsersAvailable)
+            if (room == null || !areUsersAvailable)
             {
                 return suggestedMeetings;
-            } else
+            }
+            else
             {
                 suggestedMeetings.Add(new Meeting(dateTime, room.Id, users));
                 return suggestedMeetings;
-            }        
+            }
         }
         public Room CheckAvaliableRoom(DateTime dateTime)
         {
             List<Room> rooms = roomService.GetAll();
             List<Meeting> meetings = GetAll();
 
-            foreach (Room r in rooms)
+            foreach (Room room in rooms)
             {
-                if (r.Type==RoomType.MEETING_ROOM)
+                if (room.IsRoomForMeeting())
                 {
-                    if (!meetings.Exists(a => a.DateTime == dateTime && a.RoomID.Equals(r.Id)))
+                    if (!meetings.Exists(meeting => meeting.CheckDateTime(dateTime) && meeting.CheckRoom(room)))
                     {
-                        return r;
+                        return room;
                     }
                 }
 
@@ -64,19 +63,13 @@ namespace SIMS.Service
         public Boolean CheckingAvailabilityOfUsers(DateTime dateTime, List<User> users)
         {
             List<Meeting> meetings = GetAll();
-
-            foreach (User u in users)
+            foreach (Meeting meeting in meetings)
             {
-                foreach(Meeting m in meetings)
+                if (!meeting.CheckUsersAndDateTime(dateTime, users))
                 {
-                    if (m.Users.Exists(p => p.Person.JMBG.Equals(u.Person.JMBG) && m.DateTime == dateTime))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-
             }
-
             return true;
         }
 

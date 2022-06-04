@@ -1,16 +1,10 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using SIMS.Controller;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using ToastNotifications;
-using ToastNotifications.Lifetime;
+using GalaSoft.MvvmLight.Messaging;
+using SIMS.Controller;
+using SIMS.Model;
 using ToastNotifications.Messages;
-using ToastNotifications.Position;
 
 namespace SIMS.ViewModel.Doctor
 {
@@ -27,14 +21,14 @@ namespace SIMS.ViewModel.Doctor
         public String SelectedPeriodInHours { get; set; }
         public String SelectedPeriodInDays { get; set; }
         private String recipe;
-        public String Recipe 
+        public String Recipe
         {
             get { return recipe; }
-            set 
+            set
             {
                 recipe = value;
                 OnPropertyChanged("Recipe");
-            } 
+            }
         }
 
         public AddTherapyViewModel()

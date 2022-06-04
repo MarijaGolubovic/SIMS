@@ -1,12 +1,9 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
@@ -22,7 +19,7 @@ namespace SIMS.ViewModel.Doctor
         private AppointmentController appointmentController = new AppointmentController();
         private readonly MedicineContoller medicineContoller = new MedicineContoller();
 
-        private AllAppointmentsViewModel allAppointmentsViewModel = new AllAppointmentsViewModel(); 
+        private AllAppointmentsViewModel allAppointmentsViewModel = new AllAppointmentsViewModel();
         private DaysOffRequestViewModel daysOffRequestViewModel = new DaysOffRequestViewModel();
         private MedicineValidationViewModel medicineValidationViewModel = new MedicineValidationViewModel();
         private AllRequirentmentsViewModel allRequirentmentsViewModel = new AllRequirentmentsViewModel();
@@ -125,7 +122,7 @@ namespace SIMS.ViewModel.Doctor
                     CurrentViewModel = daysOffRequestViewModel;
                     break;
                 case "MedicineValidationView":
-                    if(medicineContoller.IsThereMedicineForValidation())
+                    if (medicineContoller.IsThereMedicineForValidation())
                         CurrentViewModel = medicineValidationViewModel;
                     else
                         MainWindowViewModel.notifier.ShowInformation("Trenutno nema lijekova za validaciju!");

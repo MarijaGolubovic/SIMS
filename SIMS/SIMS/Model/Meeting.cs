@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
@@ -21,7 +18,7 @@ namespace SIMS.Model
             RoomID = values[1];
             UsersID = new List<string>();
             Users = new List<User>();
-            for (int i=2; i<values.Length; i++)
+            for (int i = 2; i < values.Length; i++)
             {
                 UsersID.Add(values[i]);
             }
@@ -59,6 +56,27 @@ namespace SIMS.Model
 
         public Meeting()
         {
+        }
+        public Boolean CheckDateTime(DateTime dateTime)
+        {
+            return DateTime.Equals(dateTime);
+        }
+
+        public Boolean CheckRoom(Room roomC)
+        {
+            return RoomID.Equals(roomC.Id);
+        }
+        public Boolean CheckUsersAndDateTime(DateTime dateTime, List<User> users)
+        {
+            foreach (User user in users)
+            {
+                if (Users.Exists(u => u.CheckUser(user)) && CheckDateTime(dateTime))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

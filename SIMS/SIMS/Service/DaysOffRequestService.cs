@@ -1,17 +1,9 @@
-﻿using SIMS.Controller;
+﻿using System;
+using System.Collections.Generic;
+using SIMS.Controller;
 using SIMS.Model;
 using SIMS.Repository;
 using SIMS.ViewModel.Doctor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using ToastNotifications;
-using ToastNotifications.Lifetime;
-using ToastNotifications.Messages;
-using ToastNotifications.Position;
 
 namespace SIMS.Service
 {
@@ -43,9 +35,9 @@ namespace SIMS.Service
         public List<SIMS.Model.Doctor> LinkDoctorsWithRequestStatusOnHoldOrAccepted(List<DaysOffRequest> requirements)
         {
             List<SIMS.Model.Doctor> doctors = new List<SIMS.Model.Doctor>();
-            foreach(DaysOffRequest req in GetAll())
+            foreach (DaysOffRequest req in GetAll())
             {
-                if(req.RequestStatus.Equals(RequestStatus.onHold) || req.RequestStatus.Equals(RequestStatus.accepted))
+                if (req.RequestStatus.Equals(RequestStatus.onHold) || req.RequestStatus.Equals(RequestStatus.accepted))
                     doctors.Add(doctorController.GetByID(req.DoctorId));
             }
             return doctors;
@@ -53,9 +45,9 @@ namespace SIMS.Service
         public DaysOffRequest GetByDoctorId(String id)
         {
             DaysOffRequest request = new DaysOffRequest();
-            foreach(DaysOffRequest req in GetAll())
+            foreach (DaysOffRequest req in GetAll())
             {
-                if(req.DoctorId.Equals(id))
+                if (req.DoctorId.Equals(id))
                 {
                     request = req;
                     break;
@@ -66,19 +58,19 @@ namespace SIMS.Service
         public bool IsThereDoctorsWithSameSpetialization(DaysOffRequest request, String doctorId)
         {
             int doctorCounter = 0;
-            foreach(Doctor doc in LinkDoctorsWithRequestStatusOnHoldOrAccepted(GetAll()))
+            foreach (Doctor doc in LinkDoctorsWithRequestStatusOnHoldOrAccepted(GetAll()))
             {
                 if (doc.Specialization.Name.Equals(doctorController.GetByID(doctorId).Specialization.Name))
-                    if((request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate) 
+                    if ((request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate)
                             || (request.StartDate <= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).StartDate)
                                 || (request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.StartDate <= GetByDoctorId(doc.Person.JMBG).EndDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).EndDate)
                                     || (request.StartDate <= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).EndDate))
-                        doctorCounter++;  
+                        doctorCounter++;
             }
             return doctorCounter > 1;
         }
 
-        
+
 
         public bool IsSelectedDatesValid(DateTime startDate, DateTime endDate)
         {
@@ -91,11 +83,11 @@ namespace SIMS.Service
             return true;
         }
 
-        public void AcceptRequest (DaysOffRequest daysOffRequest)
+        public void AcceptRequest(DaysOffRequest daysOffRequest)
         {
-             daysOffRequest.AcceptRequest();
-             daysOffRequestStorage.Update(daysOffRequest);
-               
+            daysOffRequest.AcceptRequest();
+            daysOffRequestStorage.Update(daysOffRequest);
+
         }
 
         public void DenyRequest(DaysOffRequest daysOffRequest)
@@ -103,16 +95,16 @@ namespace SIMS.Service
             daysOffRequestStorage.Update(daysOffRequest);
         }
 
-        
-        public List<DaysOffRequest> GetAllRequirementsForDoctor() 
-        { 
+
+        public List<DaysOffRequest> GetAllRequirementsForDoctor()
+        {
             List<DaysOffRequest> requirements = new List<DaysOffRequest>();
 
-            foreach (DaysOffRequest req in GetAll()) 
+            foreach (DaysOffRequest req in GetAll())
             {
-                if (req.DoctorId.Equals(MainWindowViewModel.LoggedInUser.Person.JMBG) && req.StartDate > DateTime.Now) 
+                if (req.DoctorId.Equals(MainWindowViewModel.LoggedInUser.Person.JMBG) && req.StartDate > DateTime.Now)
                 {
-                    requirements.Add(req); 
+                    requirements.Add(req);
                 }
             }
 

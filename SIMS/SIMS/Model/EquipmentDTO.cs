@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIMS.Model
 {
-    class EquipmentDTO: INotifyPropertyChanged
+    class EquipmentDTO : INotifyPropertyChanged
     {
         private string _Name;
         private int _Quantity;

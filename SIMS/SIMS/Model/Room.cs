@@ -102,5 +102,20 @@ namespace SIMS.Model
         {
             throw new NotImplementedException();
         }
+
+        public Boolean IsRoomForOperation()
+        {
+            return Type == RoomType.OPPERATING_ROOM;
+        }
+
+        public Boolean IsRoomForExamination()
+        {
+            return Type == RoomType.EXAMINATION_ROOM;
+        }
+
+        public Boolean IsRoomForMeeting()
+        {
+            return Type == RoomType.MEETING_ROOM;
+        }
     }
 }

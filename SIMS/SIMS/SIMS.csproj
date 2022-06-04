@@ -175,6 +175,7 @@
     <Compile Include="Service\CountryService.cs" />
     <Compile Include="Service\DaysOffRequestService.cs" />
     <Compile Include="Service\DoctorService.cs" />
+    <Compile Include="Service\EmergencyAppointmentService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\DiagnosisService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Service\RoomEquipmentServices.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecializationsService.cs" />
+    <Compile Include="Service\SugesstedAppointmentsService.cs" />
     <Compile Include="Service\SuppliesService.cs" />
     <Compile Include="Service\TherapyService.cs" />
     <Compile Include="Service\UserService.cs" />

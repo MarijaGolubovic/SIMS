@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 
 namespace SIMS.Model
 {
@@ -65,6 +64,20 @@ namespace SIMS.Model
 
         public User()
         {
+        }
+
+        public Boolean CheckUser(User user)
+        {
+            return Person.JMBG.Equals(user.Person.JMBG);
+        }
+
+        public Boolean CheckPassword(String password)
+        {
+            return Password.Equals(password);
+        }
+        public Boolean CheckJMBG(String jmbg)
+        {
+            return Person.JMBG.Equals(jmbg);
         }
 
 

@@ -12,7 +12,7 @@ namespace SIMS.Model
         public String IdEquipment { get; set; }
         public String Period { get; set; }
 
-       
+
 
         public RoomEqupment()
         {
@@ -23,8 +23,8 @@ namespace SIMS.Model
             RoomId = roomId;
             Period = period;
             IdEquipment = idEquipment;
-           
-            
+
+
         }
 
         List<Equpment> _RoomEquipment { get; set; }
@@ -32,8 +32,8 @@ namespace SIMS.Model
         public string[] toCSV()
         {
             string[] csvValues = { RoomId, Period, IdEquipment };
-            
-            
+
+
             return csvValues;
         }
 
@@ -45,7 +45,7 @@ namespace SIMS.Model
             //Period = values[1];
             //IdEquipment = values[2];
 
-            
+
 
 
         }

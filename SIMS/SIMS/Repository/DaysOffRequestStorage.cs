@@ -1,22 +1,19 @@
-﻿using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SIMS.Model;
 
 namespace SIMS.Repository
 {
     internal class DaysOffRequestStorage
     {
         private readonly Serialization.Serializer<DaysOffRequest> daysOffRequestSerializer;
-        public DaysOffRequestStorage() 
+        public DaysOffRequestStorage()
         {
             daysOffRequestSerializer = new Serialization.Serializer<DaysOffRequest>();
         }
         public List<DaysOffRequest> GetAll()
         {
-            return daysOffRequestSerializer.fromCSV("daysOfRequirements.txt"); 
+            return daysOffRequestSerializer.fromCSV("daysOfRequirements.txt");
         }
 
         public DaysOffRequest GetOne(int requestId)
@@ -41,7 +38,7 @@ namespace SIMS.Repository
             daysOffRequestSerializer.toCSV("daysOfRequirements.txt", requirements);
         }
 
-        public Boolean Update (DaysOffRequest daysOffRequest)
+        public Boolean Update(DaysOffRequest daysOffRequest)
         {
             List<DaysOffRequest> daysOffRequests = GetAll();
             Serialization.Serializer<DaysOffRequest> serializer = new Serialization.Serializer<DaysOffRequest>();

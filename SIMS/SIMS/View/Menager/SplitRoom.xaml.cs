@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -31,7 +21,7 @@ namespace SIMS.View.Menager
         private void Button_Click_SplitRoom(object sender, RoutedEventArgs e)
         {
             Model.Room oldRoom = RenovateWindow.selectedRoom;
-            Model.Room firstNewRoom = new Model.Room(firstRoomId.Text,Double.Parse(firstRoomSize.Text), Model.RoomType.HOSPITAL_ROOM);
+            Model.Room firstNewRoom = new Model.Room(firstRoomId.Text, Double.Parse(firstRoomSize.Text), Model.RoomType.HOSPITAL_ROOM);
             Model.Room secondNewRoom = new Model.Room(secondRoomId.Text, Double.Parse(secondRoomSize.Text), Model.RoomType.OPPERATING_ROOM);
 
             double newRoomSize = Double.Parse(firstRoomSize.Text) + Double.Parse(secondRoomSize.Text);
@@ -42,7 +32,8 @@ namespace SIMS.View.Menager
             else if (roomService.IsRoomAlreadyExist(secondNewRoom))
             {
                 MessageBox.Show("Second room alreday exist!");
-            }else if (newRoomSize != oldRoom.Size )
+            }
+            else if (newRoomSize != oldRoom.Size)
             {
                 MessageBox.Show("Room size is incorect!");
             }
@@ -62,7 +53,7 @@ namespace SIMS.View.Menager
         {
             Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
             List<Model.Room> allRooms = new List<Model.Room>();
-            foreach(Model.Room room in allRooms)
+            foreach (Model.Room room in allRooms)
             {
                 if (room.Id.Equals(roomId))
                     roomType = room.Type;

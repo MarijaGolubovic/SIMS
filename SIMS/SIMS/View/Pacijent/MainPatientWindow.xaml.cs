@@ -1,17 +1,10 @@
-﻿using SIMS.Model;
-using SIMS.View.Pacijent;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Timers;
 using System.Windows;
 using SIMS.Controller;
-using Tulpep.NotificationWindow;
-using System.Windows.Navigation;
-using System.Windows.Forms;
-using ToastNotifications;
-using ToastNotifications.Position;
-using ToastNotifications.Lifetime;
-using ToastNotifications.Messages;
+using SIMS.Model;
+using SIMS.View.Pacijent;
 
 namespace SIMS.Pacijent
 {

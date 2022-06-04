@@ -19,8 +19,8 @@ namespace SIMS.View.Sekretar
         public static ObservableCollection<Country> Countries { get; set; }
         public static ObservableCollection<City> Cities { get; set; }
 
-      
-        
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

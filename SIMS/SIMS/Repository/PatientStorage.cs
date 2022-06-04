@@ -24,11 +24,11 @@ namespace SIMS.Model
                     {
                         if (itemP.ActivatedAccount)
                         {
-                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true),itemP.OffenceCounter));
+                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true), itemP.OffenceCounter));
                         }
                         else
                         {
-                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false),itemP.OffenceCounter));
+                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false), itemP.OffenceCounter));
                         }
                     }
                 }

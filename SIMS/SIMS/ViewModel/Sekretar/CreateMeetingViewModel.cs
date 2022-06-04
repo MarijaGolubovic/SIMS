@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SIMS.Controller;
 using SIMS.Model;
 
@@ -21,7 +17,7 @@ namespace SIMS.ViewModel.Sekretar
         private MeetingController meetingController;
         private UserController userController;
         public String dateTime { get; set; }
-        
+
 
         public CreateMeetingViewModel()
         {

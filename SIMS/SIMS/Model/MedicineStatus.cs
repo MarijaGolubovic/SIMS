@@ -3,7 +3,7 @@
     public enum MedicineStatus
     {
         Valid,
-        Invalid, 
+        Invalid,
         OnHold
     }
 }

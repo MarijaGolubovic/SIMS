@@ -1,7 +1,4 @@
-﻿using SIMS.Controller;
-using SIMS.Model;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -38,24 +35,24 @@ namespace SIMS.View.Menager
 
         private void UpdateBack_Click_Moving(object sender, RoutedEventArgs e)
         {
-           // MovingWindow movingWindow = new MovingWindow();
+            // MovingWindow movingWindow = new MovingWindow();
             //movingWindow.Show();
             //this.Close();
         }
 
-       
+
 
         private void UpdateBack_Click_Back(object sender, RoutedEventArgs e)
         {
-           // MovingWindow movingWindow = new MovingWindow();
-           // movingWindow.Show();
-           // movingWindow.Close();
+            // MovingWindow movingWindow = new MovingWindow();
+            // movingWindow.Show();
+            // movingWindow.Close();
         }
 
         private void DataGridUpdate_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
-           roomItemSelected = (Model.Room)DataGridUpdate.SelectedItem;
+            roomItemSelected = (Model.Room)DataGridUpdate.SelectedItem;
             // List<Model.RoomEqupment> roomEqupments = RoomEquipmentController.GetAll();
             //List<Model.Equpment> equpments = new List<Model.Equpment>();
             //foreach(Model.RoomEqupment roomEq in roomEqupments)
@@ -80,11 +77,11 @@ namespace SIMS.View.Menager
             //   RoomsPanel roomsPanel = new RoomsPanel();
             //  roomsPanel.Owner = this;
             // roomsPanel.Show();
-           // roomSelecred =(Model.Room) DataGridRoomsChose.SelectedItem;
+            // roomSelecred =(Model.Room) DataGridRoomsChose.SelectedItem;
 
-           
-          //  View.Menager.MovingWindow renovateWindow = new View.Menager.MovingWindow();
-           // renovateWindow.Show();
+
+            //  View.Menager.MovingWindow renovateWindow = new View.Menager.MovingWindow();
+            // renovateWindow.Show();
             //this.Close();
         }
 
