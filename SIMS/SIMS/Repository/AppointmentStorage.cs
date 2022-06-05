@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 
 namespace SIMS.Repository
 {
-    public class AppointmentStorage
+    public class AppointmentStorage: IAppointmentStorage
     {
         public AppointmentStorage() { }
         public static List<Appointment> GetAll()
@@ -62,11 +63,6 @@ namespace SIMS.Repository
             appointments.Add(appointment);
             appointmentSerializer.toCSV("appointments.txt", appointments);
             return true;
-        }
-
-        public Boolean Update(Appointment appointment)
-        {
-            throw new NotImplementedException();
         }
 
         public Boolean DeleteApp(DateTime dateTime, String roomId)

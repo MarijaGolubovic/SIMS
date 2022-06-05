@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using SIMS.Controller;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Service
 {
     class OccupacyRoomService
     {
-        private Repository.OccupacyRoomStorage occupacyRoomStorage = new Repository.OccupacyRoomStorage();
+        private IOccupacyRoomStorage occupacyRoomStorage = new Repository.OccupacyRoomStorage();
 
         public String RenovateRoom(Model.Room room, DateTime begin, DateTime end, String reason)
         {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 
 namespace SIMS.Repository
 {
-    public class MedicineStorage
+    public class MedicineStorage: IMedicineStorage
     {
         public List<Medicine> GetAll()
         {
@@ -47,11 +48,6 @@ namespace SIMS.Repository
             Serialization.Serializer<Medicine> medicineSerializer = new Serialization.Serializer<Medicine>();
             medicineSerializer.toCSV("medicine.txt", medicines);
             return true;
-        }
-
-        public Boolean Update(Medicine medicine)
-        {
-            throw new NotImplementedException();
         }
 
         public void ChangeMedicineStatusOnValid(Medicine medicine)

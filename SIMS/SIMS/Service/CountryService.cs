@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Service
 {
     public class CountryService
     {
-        private CountryStorage countryStorage;
+        private ICountryStorage countryStorage;
 
         public CountryService()
         {

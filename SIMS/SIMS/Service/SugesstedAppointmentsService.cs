@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -8,7 +9,7 @@ namespace SIMS.Service
     //*******DANIJELA********
     public class SugesstedAppointmentsService
     {
-        private AppointmentStorage storage;
+        private IAppointmentStorage storage;
         private RoomService roomService { get; set; }
         List<Appointment> appointments;
 

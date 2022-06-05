@@ -1,11 +1,12 @@
-﻿using SIMS.Model;
+﻿using SIMS.Interfaces;
+using SIMS.Model;
 using SIMS.Repository;
 
 namespace SIMS.Service
 {
     public class AnswerService
     {
-        private AnswerStorage answerStorage;
+        private IAnswerStorage answerStorage;
 
         public AnswerService()
         {

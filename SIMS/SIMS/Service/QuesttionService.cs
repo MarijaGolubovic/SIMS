@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -6,7 +7,7 @@ namespace SIMS.Service
 {
     public class QuesttionService
     {
-        private QuestionStorage questionStorage;
+        private IQuestionStorage questionStorage;
 
         public QuesttionService()
         {

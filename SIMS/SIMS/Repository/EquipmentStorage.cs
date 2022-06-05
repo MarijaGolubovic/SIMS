@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Interfaces;
+using System.Collections.Generic;
 
 namespace SIMS.Repository
 {
-    class EquipmentStorage
+    class EquipmentStorage: IEquipmentStorage
     {
 
         public List<Model.Equpment> GetAll()

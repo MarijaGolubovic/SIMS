@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//klasa koju sam dodao radi validacije koja mora pratiti mvvm sablon
+
 namespace SIMS.Model
 {
     internal class ChangePassword: ValidationBase

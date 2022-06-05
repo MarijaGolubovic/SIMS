@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Repository
 {
-    internal class DaysOffRequestStorage
+    internal class DaysOffRequestStorage: IDaysOffRequestStorage
     {
         private readonly Serialization.Serializer<DaysOffRequest> daysOffRequestSerializer;
         public DaysOffRequestStorage()

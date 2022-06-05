@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Repository
 {
-    public class AnswerStorage
+    public class AnswerStorage: IAnswerStorage
     {
         public AnswerStorage()
         {

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Service
 {
     public class SpecializationsService
     {
-        private SpecializationStorage specializationStorage;
+        private ISpecializationStorage specializationStorage;
         public SpecializationsService()
         {
             specializationStorage = new SpecializationStorage();

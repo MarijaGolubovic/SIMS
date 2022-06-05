@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Repository
 {
-    public class DiagnosisStorage
+    public class DiagnosisStorage: IDiagnosisStorage
     {
         public DiagnosisStorage() { }
         public List<Diagnosis> GetAll()

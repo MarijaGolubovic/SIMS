@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SIMS.Controller;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 using SIMS.ViewModel.Doctor;
@@ -9,7 +10,7 @@ namespace SIMS.Service
 {
     internal class DaysOffRequestService
     {
-        private readonly DaysOffRequestStorage daysOffRequestStorage;
+        private readonly IDaysOffRequestStorage daysOffRequestStorage;
         private readonly DoctorController doctorController;
         public DaysOffRequestService()
         {
@@ -42,7 +43,7 @@ namespace SIMS.Service
             }
             return doctors;
         }
-        public DaysOffRequest GetByDoctorId(String id)
+        public DaysOffRequest GetRequestByDoctorId(String id)
         {
             DaysOffRequest request = new DaysOffRequest();
             foreach (DaysOffRequest req in GetAll())
@@ -58,13 +59,11 @@ namespace SIMS.Service
         public bool IsThereDoctorsWithSameSpetialization(DaysOffRequest request, String doctorId)
         {
             int doctorCounter = 0;
+            String specializationName = doctorController.GetByID(doctorId).Specialization.Name;
             foreach (Doctor doc in LinkDoctorsWithRequestStatusOnHoldOrAccepted(GetAll()))
             {
-                if (doc.Specialization.Name.Equals(doctorController.GetByID(doctorId).Specialization.Name))
-                    if ((request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate)
-                            || (request.StartDate <= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate <= GetByDoctorId(doc.Person.JMBG).EndDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).StartDate)
-                                || (request.StartDate >= GetByDoctorId(doc.Person.JMBG).StartDate && request.StartDate <= GetByDoctorId(doc.Person.JMBG).EndDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).EndDate)
-                                    || (request.StartDate <= GetByDoctorId(doc.Person.JMBG).StartDate && request.EndDate >= GetByDoctorId(doc.Person.JMBG).EndDate))
+                if (doc.Specialization.Name.Equals(specializationName))
+                    if (request.DatesOverlap(GetRequestByDoctorId(doc.Person.JMBG)))
                         doctorCounter++;
             }
             return doctorCounter > 1;

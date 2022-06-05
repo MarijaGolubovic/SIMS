@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using SIMS.Controller;
+using SIMS.Interfaces;
 
 namespace SIMS.Model
 {
-    public class MedicalRecordStorage
+    public class MedicalRecordStorage: IMedicalRecordStorage
     {
         public List<MedicalRecord> GetAll()
         {
@@ -41,11 +42,6 @@ namespace SIMS.Model
                 }
             }
             return medicalRecord;
-        }
-
-        public Boolean Delete(String jmbg)
-        {
-            throw new NotImplementedException();
         }
 
         public Boolean Create(MedicalRecord medicalRecord)

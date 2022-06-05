@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SIMS.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-    public class PatientStorage
+    public class PatientStorage: IPatientStorage
     {
         public List<Patient> GetAll()
         {
@@ -46,11 +47,6 @@ namespace SIMS.Model
             patient = Patients.Find(u => u.Person.JMBG.Equals(jmbg));
 
             return patient;
-        }
-
-        public Boolean Delete(String jmbg)
-        {
-            throw new NotImplementedException();
         }
 
         public Boolean Create(Patient patient)

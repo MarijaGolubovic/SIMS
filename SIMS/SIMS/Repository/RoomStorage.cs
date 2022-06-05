@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Repository
 {
 
-    public class RoomStorage
+    public class RoomStorage : IRoomStorage
     {
         public List<Room> GetAll()
         {
@@ -64,11 +65,6 @@ namespace SIMS.Repository
             roomSerijalization.toCSV("Room.txt", rooms);
             status = true;
             return status;
-        }
-
-        public Boolean Update(Room room)
-        {
-            throw new NotImplementedException();
         }
 
         public Model.Room GetRoomById(string idRoom)

@@ -187,6 +187,14 @@ namespace SIMS.Model
             this.RequestStatus = RequestStatus.refused;
         }
 
+        public Boolean DatesOverlap(DaysOffRequest req) 
+        {
+            return (this.StartDate >= req.StartDate && this.EndDate <= req.EndDate)
+                            || (this.StartDate <= req.StartDate && this.EndDate <= req.EndDate && this.EndDate >= req.StartDate)
+                                || (this.StartDate >= req.StartDate && this.StartDate <= req.EndDate && this.EndDate >= req.EndDate)
+                                    || (this.StartDate <= req.StartDate && this.EndDate >= req.EndDate);
+        }
+
         public DaysOffRequest(string doctorId, DateTime startDate, DateTime endDate, string reason, bool isUrgently, RequestStatus requestStatus, int requestId, string comment)
         {
             DoctorId = doctorId;

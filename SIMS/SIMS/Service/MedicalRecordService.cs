@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 
@@ -7,7 +8,7 @@ namespace SIMS.Service
 {
     public class MedicalRecordService
     {
-        private readonly MedicalRecordStorage storage;
+        private readonly IMedicalRecordStorage storage;
 
         public MedicalRecordService()
         {

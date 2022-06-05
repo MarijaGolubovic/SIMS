@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Repository
 {
-    class SuppliesStorage
+    class SuppliesStorage: ISuppliesStorage
     {
         public List<Supplies> GetAll()
         {

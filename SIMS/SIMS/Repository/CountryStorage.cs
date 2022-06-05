@@ -1,9 +1,10 @@
+using SIMS.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-    public class CountryStorage
+    public class CountryStorage: ICountryStorage
     {
         public List<Country> GetAll()
         {

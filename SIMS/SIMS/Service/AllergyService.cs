@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -7,7 +8,7 @@ namespace SIMS.Service
 {
     public class AllergyService
     {
-        private AllergyStorage allergyStorage;
+        private IAllergyStorage allergyStorage;
 
         public AllergyService()
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Interfaces;
+using System.Collections.Generic;
 
 namespace SIMS.Service
 {
@@ -7,7 +8,7 @@ namespace SIMS.Service
         public EquipmentService()
         {
         }
-        private Repository.EquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
+        private IEquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
 
 
         public List<Model.Equpment> GetAll()

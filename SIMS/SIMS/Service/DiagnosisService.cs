@@ -1,4 +1,5 @@
 ﻿using System;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -8,7 +9,7 @@ namespace SIMS.Service
     {
         public DiagnosisService() { }
 
-        private readonly DiagnosisStorage storage = new DiagnosisStorage();
+        private readonly IDiagnosisStorage storage = new DiagnosisStorage();
 
         public Boolean Create(Diagnosis diagnosisForAdd)
         {

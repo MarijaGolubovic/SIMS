@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -7,7 +8,7 @@ namespace SIMS.Service
 {
     public class AppointmentService
     {
-        private AppointmentStorage storage;
+        private IAppointmentStorage storage;
         private RoomService roomService { get; set; }
         private readonly PatientService patientService = new PatientService();
         private readonly DoctorService doctorService = new DoctorService();

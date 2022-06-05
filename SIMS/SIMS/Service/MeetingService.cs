@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -8,7 +9,7 @@ namespace SIMS.Service
     //*******DANIJELA********
     public class MeetingService
     {
-        private MeetingStorage meetingStorage;
+        private IMeetingStorage meetingStorage;
         private readonly AppointmentService appointmentService = new AppointmentService();
         private readonly RoomService roomService = new RoomService();
 

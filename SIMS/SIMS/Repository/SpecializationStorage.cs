@@ -1,9 +1,10 @@
+using SIMS.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-    public class SpecializationStorage
+    public class SpecializationStorage: ISpecializationStorage
     {
         public List<Specialization> GetAll()
         {
@@ -41,16 +42,6 @@ namespace SIMS.Model
                 }
             }
             return specializations;
-        }
-
-        public Boolean Create(Specialization specialization)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Boolean Update(Specialization specialization)
-        {
-            throw new NotImplementedException();
         }
 
         public String fileName;

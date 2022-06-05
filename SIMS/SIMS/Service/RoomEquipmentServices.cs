@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 
 namespace SIMS.Service
 {
     class RoomEquipmentServices
     {
-        Repository.RoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
-        Repository.EquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
+        IRoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
+        IEquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
         public List<Model.RoomEqupment> GetAll()
         {
             return roomEquipment.GetAll();

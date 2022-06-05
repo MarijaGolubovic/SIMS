@@ -1,9 +1,10 @@
+using SIMS.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace SIMS.Model
 {
-    public class CityStorage
+    public class CityStorage: ICityStorage
     {
         public List<City> GetAll()
         {

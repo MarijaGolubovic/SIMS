@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -8,7 +9,7 @@ namespace SIMS.Service
 {
     internal class TherapyService
     {
-        public TherapyStorage therapyStorage;
+        public ITherapyStorage therapyStorage;
 
         public TherapyService()
         {
