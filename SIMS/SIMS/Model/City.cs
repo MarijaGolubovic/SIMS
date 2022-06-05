@@ -1,9 +1,10 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace SIMS.Model
 {
 
-    public class City : Serialization.Serializable
+    public class City : ValidationBase, Serialization.Serializable
     {
         private String _name;
         public String Name
@@ -14,6 +15,7 @@ namespace SIMS.Model
                 if (value != _name)
                 {
                     _name = value;
+                    OnPropertyChanged("City");
                 }
             }
         }
@@ -41,6 +43,16 @@ namespace SIMS.Model
             return csvValues;
         }
 
-
+        protected override void ValidateSelf()
+        {
+            if (string.IsNullOrWhiteSpace(this._name))
+            {
+                this.ValidationErrors["City"] = "Grad ne smije biti prazan!";
+            }
+            else if (!Regex.IsMatch(this._name, "^[a-zA-Z_ ]*$"))
+            {
+                this.ValidationErrors["City"] = "Grad treba da sadrži samo slova!";
+            }
+        }
     }
 }

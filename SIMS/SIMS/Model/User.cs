@@ -3,15 +3,53 @@ using System;
 namespace SIMS.Model
 {
 
-    public class User : Serialization.Serializable
+    public class User : ValidationBase, Serialization.Serializable
     {
 
-        public String Username { get; set; }
-        public String Password { get; set; }
+        public String username;
+        public String password;
         public UserType Type { get; set; }
 
-        public Person Person { get; set; }
+        public Person person;
 
+        public string Username
+        {
+            get { return username; }
+            set
+            {
+                if (username != value)
+                {
+                    username = value;
+                    OnPropertyChanged("Username");
+                }
+            }
+        }
+
+        public Person Person
+        {
+            get { return person; }
+            set
+            {
+                if (person != value)
+                {
+                    person = value;
+                    OnPropertyChanged("Person");
+                }
+            }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                if (password != value)
+                {
+                    password = value;
+                    OnPropertyChanged("Password");
+                }
+            }
+        }
         public User(string username, string password, UserType type, Person person)
         {
             this.Username = username;
@@ -60,6 +98,27 @@ namespace SIMS.Model
                 Person.Address.Country.Name
             };
             return csvValues;
+        }
+
+        protected override void ValidateSelf()
+        {
+            if (string.IsNullOrWhiteSpace(this.username))
+            {
+                this.ValidationErrors["Username"] = "Korisnièko ime ne smije biti prazno!";
+            }else if(this.Username.Length < 8) 
+            {
+                this.ValidationErrors["Username"] = "Korisnièko ime mora imati više od 8 karaktera!";
+            }
+            
+            if (string.IsNullOrWhiteSpace(this.password))
+            {
+                this.ValidationErrors["Password"] = "Lozinka ne smije biti prazna!";
+            }
+            person.Validate();
+            if (!person.IsValid) 
+            {
+                this.ValidationErrors["Person"] = "Osoba nije dobra!";
+            }
         }
 
         public User()

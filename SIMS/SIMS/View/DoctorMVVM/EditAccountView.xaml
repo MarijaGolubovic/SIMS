@@ -1,0 +1,240 @@
+﻿<UserControl x:Class="SIMS.View.DoctorMVVM.EditAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" d:DesignWidth="1290">
+
+    <UserControl.DataContext>
+        <viewModel:EditAccountViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                           Grid.Column="0"
+                           Text="Izmjena naloga" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="160,90,0,50"/>
+
+
+        <Border Background="#FF36547C"
+                    Grid.Row="1"
+                    Width="160"
+                    Height="220"
+                    HorizontalAlignment="Left"
+                    Margin="160,0,0,30"/>
+
+        <Image Source="/Assets/ljekar-slika.jpg"
+                   Grid.Row="1"
+                   Width="200"
+                   Height="200"
+                   Margin="174,0,0,30"
+                   HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="1" 
+                           Grid.Column="0"
+                           Text="{Binding NameAndSurname}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="450,90,0,50"/>
+
+        <TextBlock Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="Korisničko ime:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Username, Mode=TwoWay}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="20" Margin="450,0,160,0"
+                           Width="200"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.ValidationErrors[Username]}"
+                           Foreground="Red" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="12" Margin="900,40,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Left"/>
+        
+        <TextBlock Grid.Row="3" 
+                           Grid.Column="0"
+                           Text="Telefon:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="3" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Telephone, Mode=TwoWay}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="20" Margin="450,0,160,0"
+                           Width="200"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="3" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.ValidationErrors[Telephone]}"
+                           Foreground="Red" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="12" Margin="900,40,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="4" 
+                           Grid.Column="0"
+                           Text="Grad:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="4" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Address.City.Name, Mode=TwoWay}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="20" Margin="450,0,160,0"
+                           Width="200"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="4" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Address.City.ValidationErrors[City]}"
+                           Foreground="Red" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="12" Margin="900,40,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="5" 
+                           Grid.Column="0"
+                           Text="Ulica:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="5" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Address.Street, Mode=TwoWay}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="20" Margin="450,0,160,0"
+                           Width="200"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="5" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Address.ValidationErrors[Street]}"
+                           Foreground="Red" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="12" Margin="900,40,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="6" 
+                           Grid.Column="0"
+                           Text="Broj:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="6" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Address.Number, Mode=TwoWay}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="20" Margin="450,0,160,0"
+                           Width="200"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="6" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Address.ValidationErrors[StreetNumber]}"
+                           Foreground="Red" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="12" Margin="900,40,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="7" 
+                           Grid.Column="0"
+                           Text="E-mail:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="7" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.EMail, Mode=TwoWay}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="20" Margin="450,0,160,0"
+                           Width="200"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="7" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.ValidationErrors[EMail]}"
+                           Foreground="Red" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="12" Margin="900,40,0,0"
+                           Width="400"
+                           VerticalAlignment="Center"
+                 HorizontalAlignment="Left"/>
+
+        <Button x:Name="Button_Back"
+                    Content="Nazad"                     
+                    Grid.Column="0"
+                    Grid.Row="8"
+                    Width="70" 
+                    Height="30" Margin="0,60,260,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                HorizontalAlignment="Right"
+                Command="{Binding CancelCommand}"
+                FontFamily="Bahnschrift Light"/>
+        
+        <Button
+                    Content="Potvrdi"                     
+                    Grid.Column="0"
+                    Grid.Row="8"
+                    Width="70" 
+                    Height="30" Margin="0,60,160,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                HorizontalAlignment="Right"
+                Command="{Binding EditCommand}"
+                FontFamily="Bahnschrift Light"/>
+
+    </Grid>
+</UserControl>

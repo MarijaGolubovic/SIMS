@@ -23,6 +23,10 @@ namespace SIMS.ViewModel.Doctor
         private DaysOffRequestViewModel daysOffRequestViewModel = new DaysOffRequestViewModel();
         private MedicineValidationViewModel medicineValidationViewModel = new MedicineValidationViewModel();
         private AllRequirentmentsViewModel allRequirentmentsViewModel = new AllRequirentmentsViewModel();
+        private VacationRequestViewModel vacationRequestViewModel = new VacationRequestViewModel();
+        private EditAccountViewModel editAccountViewModel = new EditAccountViewModel();
+        private AccountViewModel accountViewModel = new AccountViewModel();
+        private ChangePasswordViewModel changePasswordViewModel = new ChangePasswordViewModel();
         private DetailedRequestViewModel detailedRequestViewModel;
         private AddAppointmentViewModel AddAppointmentViewModel;
         private EditAppointmentViewModel editAppointmentViewModel = new EditAppointmentViewModel();
@@ -31,6 +35,7 @@ namespace SIMS.ViewModel.Doctor
         private DetailedAppointmentViewModel detailedAppointmentViewModel;
         private JoinAppointmentViewModel joinAppointmentViewModel;
         private AddTherapyViewModel addTherapyViewModel;
+        private AddOperationViewModel addOperationViewModel = new AddOperationViewModel();
         public static User LoggedInUser { get; set; }
 
         public BindableBase CurrentViewModel
@@ -44,6 +49,8 @@ namespace SIMS.ViewModel.Doctor
 
         public MainWindowViewModel()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjUwNTgzQDMyMzAyZTMxMmUzMGVRNS9RWVYvWTZ6blNQUE4vcnd2NmFkc3ZGeERTOStmb0x4dTRxbWdzMEE9");
+
             NavCommand = new MyICommand<string>(OnNav);
             CurrentViewModel = allAppointmentsViewModel;
 
@@ -110,6 +117,13 @@ namespace SIMS.ViewModel.Doctor
                     detailedRequestViewModel = new DetailedRequestViewModel();
                     CurrentViewModel = detailedRequestViewModel;
                     break;
+                case "allReqs":
+                    CurrentViewModel = allRequirentmentsViewModel;
+                    break;
+                case "AccountView":
+                    CurrentViewModel = accountViewModel;
+                    break;
+                    
             }
         }
 
@@ -140,6 +154,21 @@ namespace SIMS.ViewModel.Doctor
                     break;
                 case "allReqs":
                     CurrentViewModel = allRequirentmentsViewModel;
+                    break;
+                case "AddOperationView":
+                    CurrentViewModel = addOperationViewModel;
+                    break;
+                case "VacationRequestView":
+                    CurrentViewModel = vacationRequestViewModel;
+                    break;
+                case "AccountView":
+                    CurrentViewModel = accountViewModel;
+                    break;
+                case "EditAccount":
+                    CurrentViewModel = editAccountViewModel;
+                    break;
+                case "ChangePasswordView":
+                    CurrentViewModel = changePasswordViewModel;
                     break;
             }
         }

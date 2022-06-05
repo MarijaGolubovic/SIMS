@@ -113,15 +113,9 @@
                    Margin="400,40,0,0"
                    VerticalAlignment="Center"/>
 
-        <StackPanel Grid.Column="0" Grid.Row="6"
-                    Orientation="Horizontal" 
-                    Margin="600,0,0,60"
-                    VerticalAlignment="Bottom">
 
-            <Button Content="Nazad" Margin="330,0,30,0" Width="70" Height="30" Command="{Binding Back}" Style="{DynamicResource RoundedButtonStyle}" Background="#FF36547C"/>
-            <Button Content="Detaljnije" Width="70" Height="30" Command="{Binding ShowDetailsCommand }" Style="{DynamicResource RoundedButtonStyle}" Background="#FF36547C"/>
+        <Button Content="Nazad" Grid.Row="6" Margin="330,0,160,0" HorizontalAlignment="Right" Width="70" Height="30" Command="{Binding BackCommand}" Style="{DynamicResource RoundedButtonStyle}" Background="#FF36547C"/>
 
-        </StackPanel>
 
     </Grid>
 </UserControl>
