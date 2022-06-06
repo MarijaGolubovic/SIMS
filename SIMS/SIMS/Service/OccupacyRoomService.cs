@@ -14,54 +14,48 @@ namespace SIMS.Service
         {
             List<Model.RoomOccupacy> roomOccupacies = occupacyRoomStorage.GetAll();
             Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
+            String returnMessage = "";
             foreach (Model.RoomOccupacy roomItem in roomOccupacies)
             {
                 if (roomItem.IDRoom.Equals(room.Id))
                 {
-                    if ((DateTime.Compare(roomItem.Begin, begin) <= 0) && (DateTime.Compare(end, roomItem.End) <= 0))
-                    {
-                        return "Room reserved in that period";
-                    }
+                    if (isOccupacy(begin, roomItem.Begin, end, roomItem.End))
+                        returnMessage = "Room reserved in that period";
                     else if (DateTime.Compare(end, begin) < 0)
-                    {
-                        return "End period must be less than begin";
-                    }
+                        returnMessage = "End period must be less than begin";
                     else
                     {
                         roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
                         occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
-                        return "Room succesfully added to renovation list ";
+                        returnMessage = "Room succesfully added to renovation list ";
                     }
 
                 }
-                else
-                {
-                    roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
-                    occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
-                    return "Room succesfully added to renovation list ";
-                }
             }
-            return "";
+            return returnMessage;
         }
 
         public bool RoomAlreadyOccupacy(Model.Room room, DateTime begin, DateTime end, String reason)
         {
             List<Model.RoomOccupacy> roomOccupacies = occupacyRoomStorage.GetAll();
-            Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
-            bool isOccupacy = false;
+            bool occupacy = false;
 
             foreach (Model.RoomOccupacy roomItem in roomOccupacies)
             {
                 if (roomItem.IDRoom.Equals(room.Id))
                 {
-                    if ((DateTime.Compare(roomItem.Begin, begin) >= 0) && (DateTime.Compare(end, roomItem.End) <= 0))
+                    if(isOccupacy(begin, roomItem.Begin,end,roomItem.End))
                     {
-                        isOccupacy = true;
+                        occupacy = true;
                     }
                 }
             }
+            return occupacy;
+        }
 
-            return isOccupacy;
+        public bool isOccupacy(DateTime begin,DateTime occupacyBegin, DateTime end, DateTime occupacyEnd)
+        {
+            return (DateTime.Compare(occupacyBegin, begin) >= 0) && (DateTime.Compare(end,  occupacyBegin) <= 0);
         }
 
         public bool EndBeforeBegin(DateTime begin, DateTime end)

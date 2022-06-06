@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 
@@ -8,7 +7,7 @@ namespace SIMS.Service
 {
     public class RoomService
     {
-        private IRoomStorage roomStorage = new RoomStorage();
+        private IRoomStorage roomStorage = new IRoomStorage();
 
         public RoomService()
         {

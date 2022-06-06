@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Repository;
 
 namespace SIMS.Service
 {
     class RoomEquipmentServices
     {
-        IRoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
-        IEquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
+        RoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
+        EquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
         public List<Model.RoomEqupment> GetAll()
         {
             return roomEquipment.GetAll();
@@ -65,26 +65,13 @@ namespace SIMS.Service
                 {
                     String movingPeriod = beginToken[0] + ";" + endToken[0];
                     roomEquipments.Add(new RoomEqupment(roomId, movingPeriod, equpmentId));
-                    // roomEquipmentSerializer.toCSV("RoomEquipment.txt", roomEquipments);
                     succesfullyMove = true;
-
-                    /*  foreach (Equpment equpmentItem in equipments)
-                      {
-                          if (Name.Equals(equpmentItem.Name))
-                          {
-
-                              equpmentItem.Quantity--;
-                          }
-                      }
-                    */
                 }
             }
             else
             {
                 succesfullyMove = false;
             }
-
-
             return succesfullyMove;
 
         }
@@ -94,7 +81,7 @@ namespace SIMS.Service
         {
             List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
             Serialization.Serializer<Model.RoomEqupment> occupacySerializer = new Serialization.Serializer<Model.RoomEqupment>();
-            bool isOccupacy = false;
+            bool Occupacy = false;
 
             foreach (Model.RoomEqupment roomEquipmentItem in roomEquipments)
             {
@@ -103,16 +90,10 @@ namespace SIMS.Service
                     string[] period = roomEquipmentItem.Period.Trim().Split(';');
                     DateTime beginInStorege = DateTime.Parse(period[0]);
                     DateTime endInStorege = DateTime.Parse(period[1]);
-
-                    //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
-                    //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
-                    //{
-                    isOccupacy = true;
-                    //}
+                    Occupacy = true;
                 }
             }
-
-            return isOccupacy;
+            return Occupacy;
         }
 
         public bool EndBeforeBegin(DateTime begin, DateTime end)
