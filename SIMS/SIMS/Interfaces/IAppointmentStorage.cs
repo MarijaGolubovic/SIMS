@@ -9,7 +9,6 @@ namespace SIMS.Interfaces
 {
     internal interface IAppointmentStorage
     {
-        public static List<Appointment> GetAll();
         public Appointment GetOne(int appointmentID);
         public Boolean Delete(int appointmentID);
         public Boolean Create(Appointment appointment);

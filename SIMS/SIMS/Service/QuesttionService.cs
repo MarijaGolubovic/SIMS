@@ -7,7 +7,7 @@ namespace SIMS.Service
 {
     public class QuesttionService
     {
-        private IQuestionStorage questionStorage;
+        private QuestionStorage questionStorage;
 
         public QuesttionService()
         {

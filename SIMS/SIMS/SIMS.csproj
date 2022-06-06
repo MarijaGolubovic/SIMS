@@ -156,6 +156,27 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Converters\InvertAndBooleansToBooleanConverter.cs" />
     <Compile Include="Converters\LengthToBooleanCoverter.cs" />
+    <Compile Include="Interfaces\IAllergyStorage.cs" />
+    <Compile Include="Interfaces\IAnswerStorage.cs" />
+    <Compile Include="Interfaces\IAppointmentStorage.cs" />
+    <Compile Include="Interfaces\ICityStorage.cs" />
+    <Compile Include="Interfaces\ICountryStorage.cs" />
+    <Compile Include="Interfaces\IDaysOffRequestStorage.cs" />
+    <Compile Include="Interfaces\IDiagnosisStorage.cs" />
+    <Compile Include="Interfaces\IDoctorStorage.cs" />
+    <Compile Include="Interfaces\IEquipmentStorage.cs" />
+    <Compile Include="Interfaces\IMedicalRecordStorage.cs" />
+    <Compile Include="Interfaces\IMedicineStorage.cs" />
+    <Compile Include="Interfaces\IMeetingStorage.cs" />
+    <Compile Include="Interfaces\INotificationStorage.cs" />
+    <Compile Include="Interfaces\IOccupacyRoomStorage.cs" />
+    <Compile Include="Interfaces\IPatientStorage.cs" />
+    <Compile Include="Interfaces\IRoomEquipmentStorage.cs" />
+    <Compile Include="Interfaces\IRoomStorage.cs" />
+    <Compile Include="Interfaces\ISpecializationStorage.cs" />
+    <Compile Include="Interfaces\ISuppliesStorage.cs" />
+    <Compile Include="Interfaces\ITherapyStorage.cs" />
+    <Compile Include="Interfaces\IUserStorage.cs" />
     <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\AllergyDTO.cs" />
     <Compile Include="Model\Answers.cs" />
@@ -371,7 +392,7 @@
     <Compile Include="View\Menager\UpdateRoomWindow.xaml.cs">
       <DependentUpon>UpdateRoomWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Repository\DoctorSpecialization.cs" />
+    <Compile Include="Model\DoctorSpecialization.cs" />
     <Compile Include="View\Pacijent\AddAppointmentPage.xaml.cs">
       <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
     </Compile>

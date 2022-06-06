@@ -11,6 +11,6 @@ namespace SIMS.Interfaces
     {
         public List<Therapy> GetAll();
         public List<Therapy> GetById(String id);
-        public Boolean Create(Therapy therapy)
+        public Boolean Create(Therapy therapy);
     }
 }
