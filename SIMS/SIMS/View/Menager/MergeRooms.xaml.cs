@@ -61,6 +61,9 @@ namespace SIMS.View.Menager
             if (!roomService.IsRoomAlreadyExist(otherMergedRoom))
             {
                 MessageBox.Show("Other merged room don't exist!");
+            }else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
+            {
+                MessageBox.Show("Room occupaccy in this period!");
             }
             else
             {

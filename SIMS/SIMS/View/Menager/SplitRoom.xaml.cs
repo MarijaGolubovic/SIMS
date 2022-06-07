@@ -16,6 +16,7 @@ namespace SIMS.View.Menager
         {
             InitializeComponent();
             splitedRoomName.Text = Menager.RenovateWindow.selectedRoom.Id;
+            
         }
 
         private void Button_Click_SplitRoom(object sender, RoutedEventArgs e)
@@ -36,6 +37,9 @@ namespace SIMS.View.Menager
             else if (newRoomSize != oldRoom.Size)
             {
                 MessageBox.Show("Room size is incorect!");
+            }else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
+            {
+                MessageBox.Show("Room occupacy in this period!");
             }
             else
             {
@@ -45,6 +49,8 @@ namespace SIMS.View.Menager
 
                 this.NavigationService.Navigate(new View.Menager.RenovateWindow());
             }
+
+            
 
         }
 
