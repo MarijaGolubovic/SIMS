@@ -10,7 +10,7 @@
     <RootNamespace>SIMS</RootNamespace>
     <AssemblyName>SIMS</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -808,7 +808,7 @@
     <Compile Include="Repository\PatientStorage.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Room.cs" />
-    <Compile Include="Repository\RoomStorage.cs" />
+    <Compile Include="Repository\IRoomStorage.cs" />
     <Compile Include="Model\RoomType.cs" />
     <Compile Include="Model\Secretary.cs" />
     <Compile Include="Model\Specialization.cs" />

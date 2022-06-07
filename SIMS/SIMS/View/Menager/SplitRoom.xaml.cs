@@ -10,7 +10,7 @@ namespace SIMS.View.Menager
     /// </summary>
     public partial class SplitRoom : Page
     {
-        Repository.IRoomStorage roomStorage = new Repository.IRoomStorage();
+        Repository.RoomStorage roomStorage = new Repository.RoomStorage();
         Service.RoomService roomService = new Service.RoomService();
         public SplitRoom()
         {

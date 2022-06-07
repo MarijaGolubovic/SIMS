@@ -6,7 +6,7 @@ using SIMS.Model;
 namespace SIMS.Repository
 {
 
-    public class IRoomStorage : IRoomStorage
+    public class RoomStorage : IRoomStorage
     {
         public List<Room> GetAll()
         {
@@ -105,5 +105,13 @@ namespace SIMS.Repository
 
         public String fileName;
 
+        public RoomStorage(string fileName)
+        {
+            this.fileName = fileName;
+        }
+
+        public RoomStorage()
+        {
+        }
     }
 }

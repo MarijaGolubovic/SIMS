@@ -7,7 +7,7 @@ namespace SIMS.Service
 {
     public class RoomService
     {
-        private IRoomStorage roomStorage = new IRoomStorage();
+        private RoomStorage roomStorage = new RoomStorage();
 
         public RoomService()
         {
