@@ -32,10 +32,8 @@ namespace SIMS.Service
 
         public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination, string begin, string end)
         {
-            Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
-            List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
+            List<Model.Equpment> equipments = equipmentStorage.GetAll();
             List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
-            Serialization.Serializer<Model.RoomEqupment> roomEquipmentSerializer = new Serialization.Serializer<Model.RoomEqupment>();
 
             String[] beginToken = begin.Split(';');
             DateTime beginTime = DateTime.Parse(beginToken[0]);
@@ -45,20 +43,9 @@ namespace SIMS.Service
             String equpmentId = "";
             bool succesfullyMove = false;
 
-            foreach (Equpment equpmentItem in equipments)
-            {
-                if (Name.Equals(equpmentItem.Name))
-                {
-                    equpmentId = equpmentItem.Id;
-                }
-            }
-            foreach (RoomEqupment eqRoom in roomEquipments)
-            {
-                if (eqRoom.IdEquipment.Equals(equpmentId))
-                {
-                    equpmentId = eqRoom.IdEquipment;
-                }
-            }
+            equpmentId = FindEquipmentIdByName(equipments, Name);
+            equpmentId = FindEquipmentIdByRoom(roomEquipments, equpmentId);
+
             if (!EndBeforeBegin(beginTime, endTime))
             {
                 if (!EquipmentAlreadyOccupacy(equpmentId, beginTime, endTime))
@@ -68,14 +55,30 @@ namespace SIMS.Service
                     succesfullyMove = true;
                 }
             }
-            else
-            {
-                succesfullyMove = false;
-            }
             return succesfullyMove;
 
         }
 
+        public string FindEquipmentIdByRoom(List<Model.RoomEqupment> roomEquipments,string equpmentId)
+        {
+            foreach (RoomEqupment eqRoom in roomEquipments)
+            {
+                if (eqRoom.IdEquipment.Equals(equpmentId))
+                    equpmentId = eqRoom.IdEquipment;
+            }
+            return equpmentId;
+        }
+
+        public string FindEquipmentIdByName(List<Model.Equpment> equipments, string equipmentName)
+        {
+            String equpmentId = "";
+            foreach (Equpment equpmentItem in equipments)
+            {
+                if (equipmentName.Equals(equpmentItem.Name))
+                    equpmentId = equpmentItem.Id;
+            }
+            return equpmentId;
+        }
 
         public bool EquipmentAlreadyOccupacy(string idEq, DateTime begin, DateTime end)
         {
