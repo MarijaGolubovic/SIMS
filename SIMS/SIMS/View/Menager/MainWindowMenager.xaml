@@ -143,7 +143,7 @@
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_Click_EditMedicine">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_Click_CorrectMedicine">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/correct_icon.png" Height="85" Width="127"/>
                                     </MenuItem.Icon>

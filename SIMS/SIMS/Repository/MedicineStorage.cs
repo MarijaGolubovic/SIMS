@@ -90,5 +90,19 @@ namespace SIMS.Repository
             Delete(oldMedicine);
             Create(newMedicine);
         }
+        public List<Medicine> FindInvalidMedicine()
+        {
+            List<Medicine> invalidMedicine = new List<Medicine>();
+            List<Medicine> medicines = GetAll();
+            foreach (Medicine medicineItem in medicines)
+            {
+                if (medicineItem.MedicineStatus == MedicineStatus.Invalid)
+                {
+                    invalidMedicine.Add(medicineItem);
+                }
+            }
+
+            return invalidMedicine;
+        }
     }
 }

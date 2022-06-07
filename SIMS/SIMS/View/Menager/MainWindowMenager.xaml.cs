@@ -81,5 +81,11 @@ namespace SIMS.Menager
             View.Menager.EditMedicine editMedicine = new View.Menager.EditMedicine();
             editMedicine.Show();
         }
+
+        private void MenuItem_Click_CorrectMedicine(object sender, RoutedEventArgs e)
+        {
+            View.Menager.CorrectWindow correctWindow = new View.Menager.CorrectWindow();
+            correctWindow.Show();
+        }
     }
 }

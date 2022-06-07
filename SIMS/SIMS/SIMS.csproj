@@ -332,6 +332,9 @@
     <Compile Include="View\DoctorMVVM\VacationRequestView.xaml.cs">
       <DependentUpon>VacationRequestView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\CorrectWindow.xaml.cs">
+      <DependentUpon>CorrectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
       <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
     </Compile>
@@ -580,6 +583,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\DoctorMVVM\VacationRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\CorrectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
