@@ -142,6 +142,14 @@
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </Border>
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_Click_EditMedicine">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Assets/correct_icon.png" Height="85" Width="127"/>
+                                    </MenuItem.Icon>
+                                    
+                                </MenuItem>
+                            </Border>
                         </Menu>
                     </MenuItem>
                     <MenuItem Header="Polls" FontSize="22" FontWeight="Bold" Width="84">

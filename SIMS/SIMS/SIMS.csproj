@@ -901,6 +901,7 @@
     <Resource Include="Assets\icons8-medicine-32.png" />
     <Resource Include="Assets\icons8-logout-16.png" />
     <Resource Include="Assets\ljekar-slika.jpg" />
+    <Resource Include="Assets\correct_icon.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
