@@ -16,6 +16,30 @@ namespace SIMS.Service
             return pollsStorage.GetAll();
         }
 
+        public double CalculateAverage(Polls pollsItem)
+        {
+            double sum = 0;
+            double numberOfGrade = 0;
+            sum = pollsItem.One + pollsItem.Two * 2 + pollsItem.Three * 3 + pollsItem.Four * 4 + pollsItem.Fift * 5;
+            numberOfGrade = pollsItem.One + pollsItem.Two + pollsItem.Three+ pollsItem.Four+ pollsItem.Fift;
+            
+            return Math.Round( sum/numberOfGrade,2);
+        }
+
+        public void EditAverage()
+        {
+            List<Polls> polls = GetAll();
+            List<Polls> countedAverage = new List<Polls>();
+
+            Serialization.Serializer<Polls> pollsSerijalization = new Serialization.Serializer<Polls>();
+            foreach (Polls pollItem in polls)
+            {
+                pollItem.Average = CalculateAverage(pollItem);
+                countedAverage.Add(pollItem);
+            }
+            pollsSerijalization.toCSV("Polls.txt",  countedAverage);
+        }
+
         public PollsService()
         {
         }

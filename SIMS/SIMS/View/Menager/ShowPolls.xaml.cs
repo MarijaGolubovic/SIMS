@@ -23,20 +23,25 @@ namespace SIMS.View.Menager
     {
         public static ObservableCollection<Model.Polls> PollesData { get; set; }
         Repository.PollsStorage pollsStorage = new Repository.PollsStorage();
+        Service.PollsService pollsService = new Service.PollsService();
         public ShowPolls()
         {
             InitializeComponent();
             this.DataContext = this;
             Serialization.Serializer<Polls> pollsSerializer = new Serialization.Serializer<Polls>();
             List<Model.Polls> allPolls = pollsSerializer.fromCSV("Polls.txt");
-            //List<Model.Polls> allPolls = new List<Polls>();
+            
             PollesData = new ObservableCollection<Model.Polls>();
-           // allPolls.Add(new Polls("Hello Clinic", 12, 1, 2, 3, 12, 9.8));
-            //allPolls.Add(new Polls("123",1,2,3,4,5,12.5));
+            pollsService.EditAverage();
+            List<Polls> polls = new List<Polls>();
             foreach (Model.Polls pollItem in allPolls)
             {
+              pollItem.Average =  pollsService.CalculateAverage(pollItem);
               PollesData.Add(pollItem);
+                polls.Add(pollItem);
             }
+            Serialization.Serializer<Polls> pollsSerijalization = new Serialization.Serializer<Polls>();
+            pollsSerijalization.toCSV("Polls.txt", polls);
         }
 
         private void Button_Click_BACK(object sender, RoutedEventArgs e)
