@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Service
 {
@@ -59,7 +62,7 @@ namespace SIMS.Service
 
         }
 
-        public string FindEquipmentIdByRoom(List<Model.RoomEqupment> roomEquipments,string equpmentId)
+        public string FindEquipmentIdByRoom(List<Model.RoomEqupment> roomEquipments, string equpmentId)
         {
             foreach (RoomEqupment eqRoom in roomEquipments)
             {

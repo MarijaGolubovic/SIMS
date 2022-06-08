@@ -1,9 +1,13 @@
+using SIMS.Model;
+using SIMS.Service;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 
 namespace SIMS.Model
 {
-    public class Person: ValidationBase
+    public class Person : ValidationBase
     {
 
         public String Name { get; set; }
@@ -78,7 +82,7 @@ namespace SIMS.Model
             {
                 this.ValidationErrors["Telephone"] = "Telefon ne smije biti prazan!";
             }
-            else if (this.telephone.Length != 10) 
+            else if (this.telephone.Length != 10)
             {
                 this.ValidationErrors["Telephone"] = "Telefon mora sadržati 10 cifara!";
             }
@@ -91,7 +95,7 @@ namespace SIMS.Model
             {
                 this.ValidationErrors["EMail"] = "E-mail ne smije biti prazan!";
             }
-            else if (!Regex.IsMatch(this.eMail, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")) 
+            else if (!Regex.IsMatch(this.eMail, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
                 this.ValidationErrors["EMail"] = "Format e-maila nije dobar!";
             }

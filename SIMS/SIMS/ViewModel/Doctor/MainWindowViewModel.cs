@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using GalaSoft.MvvmLight.Messaging;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
+using SIMS.Controller;
+using System.Windows.Input;
+using System.Windows;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using GalaSoft.MvvmLight.Messaging;
 using ToastNotifications;
-using ToastNotifications.Lifetime;
+using System;
 using ToastNotifications.Messages;
+using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 
 namespace SIMS.ViewModel.Doctor
@@ -123,7 +126,7 @@ namespace SIMS.ViewModel.Doctor
                 case "AccountView":
                     CurrentViewModel = accountViewModel;
                     break;
-                    
+
             }
         }
 

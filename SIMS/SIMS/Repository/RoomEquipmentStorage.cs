@@ -1,10 +1,13 @@
 ﻿using SIMS.Interfaces;
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    class RoomEquipmentStorage: IRoomEquipmentStorage
+    class RoomEquipmentStorage : IRoomEquipmentStorage
     {
         public List<Model.RoomEqupment> GetAll()
         {

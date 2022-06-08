@@ -1,11 +1,12 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using SIMS.Controller;
+using SIMS.Model;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
-using SIMS.Controller;
-using SIMS.Model;
 
 namespace SIMS.View.Pacijent
 {
@@ -77,7 +78,7 @@ namespace SIMS.View.Pacijent
 
         public void Confirm(object sender, RoutedEventArgs e)
         {
-            if (checkIfFilled() && appointmentController.CheckIfDateIsValid(formDateTime()))
+            if (checkIfFilled() && appointmentController.IfDateInFuture(formDateTime()))
             {
                 AppointmentForPatientDTO appointmentForPatient = new AppointmentForPatientDTO(DoctorComboBox.SelectedItem as Model.Doctor, formDateTime(), logedInUser, (bool)DoctorPriority.IsChecked);
                 if (appointmentController.CheckIfAvailable(appointmentForPatient))

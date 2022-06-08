@@ -1,5 +1,8 @@
+using SIMS.Model;
+using SIMS.Service;
 using System;
-
+using System.Collections.Generic;
+using System.ComponentModel;
 namespace SIMS.Model
 {
 
@@ -105,17 +108,18 @@ namespace SIMS.Model
             if (string.IsNullOrWhiteSpace(this.username))
             {
                 this.ValidationErrors["Username"] = "Korisnièko ime ne smije biti prazno!";
-            }else if(this.Username.Length < 8) 
+            }
+            else if (this.Username.Length < 8)
             {
                 this.ValidationErrors["Username"] = "Korisnièko ime mora imati više od 8 karaktera!";
             }
-            
+
             if (string.IsNullOrWhiteSpace(this.password))
             {
                 this.ValidationErrors["Password"] = "Lozinka ne smije biti prazna!";
             }
             person.Validate();
-            if (!person.IsValid) 
+            if (!person.IsValid)
             {
                 this.ValidationErrors["Person"] = "Osoba nije dobra!";
             }

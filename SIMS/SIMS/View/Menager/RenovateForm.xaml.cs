@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using System.Windows.Input;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace SIMS.View.Menager
 {
@@ -12,7 +12,7 @@ namespace SIMS.View.Menager
         public static System.Collections.ObjectModel.ObservableCollection<Model.Room> RoomRenovate { get; set; }
         Model.Room roomItem;
         private static readonly SIMS.Service.OccupacyRoomService occupacyRoomService = new Service.OccupacyRoomService();
-       
+
 
         public RenovateForm()
         {

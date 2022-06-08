@@ -1,16 +1,16 @@
 ﻿using SIMS.ViewModel.Doctor;
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 //klasa koju sam dodao radi validacije koja mora pratiti mvvm sablon
 
 namespace SIMS.Model
 {
-    internal class ChangePassword: ValidationBase
+    internal class ChangePassword : ValidationBase
     {
         public String oldPassword;
         public String newPassword;
@@ -78,7 +78,7 @@ namespace SIMS.Model
                 this.ValidationErrors["repeatedNewPassword"] = "Nova lozinka ne smije biti prazna!";
             }
 
-            if (!this.newPassword.Equals(this.repeatedNewPassword)) 
+            if (!this.newPassword.Equals(this.repeatedNewPassword))
             {
                 this.ValidationErrors["repeatedNewPassword"] = "Ponovljena lozinka se ne podudara sa novom lozinkom!";
             }

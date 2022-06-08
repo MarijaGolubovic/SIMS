@@ -1,8 +1,7 @@
-﻿
-using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
+using System.Collections.ObjectModel;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor

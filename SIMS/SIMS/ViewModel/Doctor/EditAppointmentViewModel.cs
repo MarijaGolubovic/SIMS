@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
-using GalaSoft.MvvmLight.Messaging;
+﻿using SIMS.Controller;
+using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Model;
+using System.Collections.Generic;
+using System;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace SIMS.ViewModel.Doctor
 {

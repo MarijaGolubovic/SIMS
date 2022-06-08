@@ -1,6 +1,6 @@
-﻿using System;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
+using System;
 
 namespace SIMS.ViewModel.Sekretar
 {

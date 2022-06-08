@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using System;
+using System.Collections.Generic;
 
 namespace SIMS.Service
 {
     public class AppointmentService
     {
         private IAppointmentStorage storage;
-        private RoomService roomService { get; set; }
+        public RoomService roomService { get; set; }
         private readonly PatientService patientService = new PatientService();
         private readonly DoctorService doctorService = new DoctorService();
         private readonly OccupacyRoomService occupacyRoomService = new OccupacyRoomService();
         private List<Appointment> suggestedAppointments = new List<Appointment>();
-        private List<Appointment> allAppointments = AppointmentStorage.GetAll();
         private List<Appointment> rangeList = new List<Appointment>();
 
         public AppointmentService()
@@ -24,7 +23,7 @@ namespace SIMS.Service
         }
         public List<Appointment> GetAll()
         {
-            return AppointmentStorage.GetAll();
+            return storage.GetAll();
         }
 
         public Appointment GetOne(int appointmentID)
@@ -42,10 +41,11 @@ namespace SIMS.Service
             occupacyRoomService.Create(roomOccupacy);
             return storage.Create(appointment);
         }
-
+        //Konverziju appointment -> dto u apointment klasi pa ovu funkciju obrisi
         public bool CheckIfAvailable(AppointmentForPatientDTO appointmentDTO)
         {
             bool availability = true;
+            List<Appointment> allAppointments = storage.GetAll();
             foreach (Appointment a in allAppointments)
             {
                 if (a.DateAndTime.Equals(appointmentDTO.DateTime))
@@ -62,6 +62,7 @@ namespace SIMS.Service
         public bool CheckIfAvailable(Appointment appointment)
         {
             bool availability = true;
+            List<Appointment> allAppointments = storage.GetAll();
             foreach (Appointment a in allAppointments)
             {
                 if (a.DateAndTime.Equals(appointment.DateAndTime))
@@ -138,20 +139,6 @@ namespace SIMS.Service
             {
                 suggestedAppointments = PotentialAppointmentsByDate(appointmentDTO);
             }
-            foreach (Appointment tmp1 in GetAll())
-            {
-                foreach (Appointment tmp2 in suggestedAppointments)
-                {
-                    if (tmp1.DateAndTime.Equals(tmp2.DateAndTime))
-                    {
-                        if (tmp1.Doctor.Equals(tmp2.Doctor))
-                        {
-                            suggestedAppointments.Remove(tmp2);
-                        }
-                    }
-                }
-            }
-
             return suggestedAppointments;
         }
 
@@ -173,19 +160,26 @@ namespace SIMS.Service
 
             for (int i = 0; i < roomOccupacies.Count; i++)
             {
-                foreach (RoomOccupacy ro in allRoomOccupacies)
+                if (roomOccupacies.Count == 0)
+                    break;
+                if (occupacyRoomService.IfRoomIsOccupied(roomOccupacies[i]))
                 {
-                    if (roomOccupacies[i].IDRoom == ro.IDRoom)
-                    {
-                        if ((DateTime.Compare(roomOccupacies[i].Begin, ro.Begin) <= 0) && (DateTime.Compare(ro.End, roomOccupacies[i].End) <= 0))
-                        {
-                            roomOccupacies.Remove(roomOccupacies[i]);
-                        }
-                    }
+                    roomOccupacies.Remove(roomOccupacies[i]);
                 }
             }
             Room room = roomService.GetOne(roomOccupacies[0].IDRoom);
             return room;
+        }
+
+        public List<RoomOccupacy> FindRoomOccupaciesForAppointment(AppointmentForPatientDTO appointmentDTO)
+        {
+            List<Room> examinationRooms = roomService.GetByType(RoomType.EXAMINATION_ROOM);
+            List<RoomOccupacy> roomOccupacies = new List<RoomOccupacy>();
+            foreach (Room r in examinationRooms)
+            {
+                roomOccupacies.Add(new RoomOccupacy(r.Id, appointmentDTO.DateTime, appointmentDTO.DateTime.AddMinutes(30), "appointment"));
+            }
+            return roomOccupacies;
         }
 
         public List<Room> FindRoomsForEditAppointment(AppointmentsForDoctorDTO appointmentDTO)

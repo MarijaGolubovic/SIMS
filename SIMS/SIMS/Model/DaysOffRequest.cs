@@ -1,6 +1,9 @@
-﻿using System;
+﻿using SIMS.ViewModel.Doctor;
+using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using SIMS.ViewModel.Doctor;
 
 namespace SIMS.Model
 {
@@ -187,7 +190,7 @@ namespace SIMS.Model
             this.RequestStatus = RequestStatus.refused;
         }
 
-        public Boolean DatesOverlap(DaysOffRequest req) 
+        public Boolean DatesOverlap(DaysOffRequest req)
         {
             return (this.StartDate >= req.StartDate && this.EndDate <= req.EndDate)
                             || (this.StartDate <= req.StartDate && this.EndDate <= req.EndDate && this.EndDate >= req.StartDate)

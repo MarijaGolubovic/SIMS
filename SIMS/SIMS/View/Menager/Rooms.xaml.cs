@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using SIMS.Controller;
 using System.Windows.Input;
-using SIMS.Controller;
+using System.Windows;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace SIMS.View.Menager
 {

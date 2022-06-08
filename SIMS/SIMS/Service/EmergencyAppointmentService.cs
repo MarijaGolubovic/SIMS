@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 namespace SIMS.Service
 {
@@ -17,7 +20,7 @@ namespace SIMS.Service
         public EmergencyAppointmentService()
         {
             storage = new AppointmentStorage();
-            appointments = AppointmentStorage.GetAll();
+            appointments = storage.GetAll();
         }
         public List<EmergencyAppointmentsDTO> GetEmergencyAppointments(Patient patient, Specialization specialization)
         {

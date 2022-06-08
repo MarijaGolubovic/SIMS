@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Service
 {
@@ -18,7 +20,7 @@ namespace SIMS.Service
         {
             storage = new AppointmentStorage();
             roomService = new RoomService();
-            appointments = AppointmentStorage.GetAll();
+            appointments = storage.GetAll();
         }
         //*******DANIJELA********
         public List<Appointment> findSuggestedAppointmentsSecretary(Appointment appointment, Boolean operation)

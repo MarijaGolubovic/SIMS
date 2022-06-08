@@ -1,14 +1,13 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
+using SIMS.Controller;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class VacationRequestViewModel: BindableBase
+    internal class VacationRequestViewModel : BindableBase
     {
         public MyICommand FinishCommand { get; set; }
         public MyICommand BackCommand { get; set; }

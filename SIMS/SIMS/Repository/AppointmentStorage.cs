@@ -1,20 +1,23 @@
-using System;
-using System.Collections.Generic;
 using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 
 namespace SIMS.Repository
 {
-    public class AppointmentStorage: IAppointmentStorage
+    public class AppointmentStorage : IAppointmentStorage
     {
-        public AppointmentStorage() { }
-        public static List<Appointment> GetAll()
+        public AppointmentStorage()
+        {
+        }
+        public List<Appointment> GetAll()
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
-            List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
-
-            return appointments;
+            List<Appointment> Appointments = appointmentSerializer.fromCSV("appointments.txt");
+            return Appointments;
         }
 
         public Appointment GetOne(int appointmentID)

@@ -58,7 +58,33 @@ namespace SIMS.Service
             return (DateTime.Compare(occupacyBegin, begin) >= 0) && (DateTime.Compare(end,  occupacyBegin) <= 0);
         }
 
-        public bool EndBeforeBegin(DateTime begin, DateTime end)
+        //Ova funkcija je ista kao RoomAlreadyOccupacy ali kompaktnija
+        public bool IfRoomIsOccupied(RoomOccupacy roomOccupacy)
+        {
+            List<RoomOccupacy> allRoomOccupacies = GetAll();
+            foreach (RoomOccupacy ro in allRoomOccupacies)
+            {
+                if (IfRoomOccupaciesEqual(roomOccupacy, ro))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IfRoomOccupaciesEqual(RoomOccupacy r1, RoomOccupacy r2)
+        {
+            if (r1.IDRoom == r2.IDRoom)
+            {
+                if ((DateTime.Compare(r1.Begin, r2.Begin) <= 0) && (DateTime.Compare(r2.End, r1.End) <= 0))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool EndBeforeBegin( DateTime begin, DateTime end)
         {
             bool isEndBeforeBegin = false;
             if (DateTime.Compare(end, begin) < 0)

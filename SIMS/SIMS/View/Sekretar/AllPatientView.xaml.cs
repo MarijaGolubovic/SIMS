@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
+using System.Collections.Generic;
+using System;
+using System.Windows.Controls;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Linq;
 
 namespace SIMS.View.Sekretar
 {

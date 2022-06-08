@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Model;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using SIMS.Model;
 
 namespace SIMS.View.Menager
 {
@@ -61,7 +61,8 @@ namespace SIMS.View.Menager
             if (!roomService.IsRoomAlreadyExist(otherMergedRoom))
             {
                 MessageBox.Show("Other merged room don't exist!");
-            }else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
+            }
+            else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
             {
                 MessageBox.Show("Room occupaccy in this period!");
             }

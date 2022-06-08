@@ -3,8 +3,16 @@ using System.ComponentModel;
 using System.Timers;
 using System.Windows;
 using SIMS.Controller;
-using SIMS.Model;
+using Tulpep.NotificationWindow;
+using System.Windows.Navigation;
+using System.Windows.Forms;
+using ToastNotifications;
+using ToastNotifications.Position;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using System.Threading;
 using SIMS.View.Pacijent;
+using SIMS.Model;
 
 namespace SIMS.Pacijent
 {
@@ -13,6 +21,8 @@ namespace SIMS.Pacijent
     /// </summary>
     public partial class MainPatientWindow : Window, INotifyPropertyChanged
     {
+        private BackgroundWorker worker;
+        private MainWindow mainWindow;
         readonly User logedInUser;
         private string _username;
         private readonly NotificationController notificationController = new NotificationController();
@@ -47,18 +57,41 @@ namespace SIMS.Pacijent
         {
             InitializeComponent();
             this.DataContext = this;
-            InitializeComponent();
             logedInUser = user;
             Username = user.Username;
             MainFrame.Content = new HomePage(logedInUser);
 
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 100;
+            worker = new BackgroundWorker();
+            worker.DoWork += worker_DoWork;
+            System.Timers.Timer timer = new System.Timers.Timer(60000);
             timer.Elapsed += timer_Elapsed;
             timer.Start();
+
+        }
+        void timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (!worker.IsBusy)
+                worker.RunWorkerAsync();
         }
 
-        public void timer_Elapsed(object sender, ElapsedEventArgs e)
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            foreach (Model.Notificatoin n in notificationController.GetAllForPatient(logedInUser.Person.JMBG))
+            {
+                if (n.NotificationDateTime.Hour.Equals(DateTime.Now.Hour) && n.NotificationDateTime.Minute.Equals(DateTime.Now.Minute))
+                {
+                    this.Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        PopupNotifier pop = new PopupNotifier();
+                        pop.TitleText = "Test";
+                        pop.ContentText = n.Details;
+                        pop.Popup();
+                    });
+                }
+            }
+        }
+
+        /*public void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             foreach (Model.Notificatoin n in notificationController.GetAllForPatient(logedInUser.Person.JMBG))
             {
@@ -67,21 +100,21 @@ namespace SIMS.Pacijent
 
                     //notifier.ShowInformation(n.Details);
 
-                    /*this.Invoke((MethodInvoker)delegate
+                    this.Invoke((MethodInvoker)delegate
                     {
                         PopupNotifier pop = new PopupNotifier();
                         pop.TitleText = "Test";
                         pop.ContentText = "Hello World";
                         pop.Popup();
-                    });*/
-                    //PopupNotifier popup = new PopupNotifier();
-                    //popup.TitleText = "Obavestenje!";
-                    //popup.ContentText = n.Details;
-                    //popup.Popup();
+                    });
+                    PopupNotifier popup = new PopupNotifier();
+                    popup.TitleText = "Obavestenje!";
+                    popup.ContentText = n.Details;
+                    popup.Popup();
 
                 }
             }
-        }
+        }*/
 
         /*public static Notifier notifier = new Notifier(cfg =>
         {
@@ -121,6 +154,10 @@ namespace SIMS.Pacijent
         private void Button_Click_Feedback(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Feedback();
+        }
+        private void Click_Notes(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new Notes(logedInUser);
         }
     }
 }

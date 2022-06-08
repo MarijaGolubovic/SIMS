@@ -399,8 +399,14 @@
     <Compile Include="View\Pacijent\AddAppointmentPage.xaml.cs">
       <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pacijent\AddNote.xaml.cs">
+      <DependentUpon>AddNote.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pacijent\Appointments.xaml.cs">
       <DependentUpon>Appointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\DetailsAppointmentPage.xaml.cs">
+      <DependentUpon>DetailsAppointmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pacijent\EditAppointmentPage.xaml.cs">
       <DependentUpon>EditAppointmentPage.xaml</DependentUpon>
@@ -410,6 +416,9 @@
     </Compile>
     <Compile Include="View\Pacijent\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pacijent\Notes.xaml.cs">
+      <DependentUpon>Notes.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pacijent\SuggestedAppointments.xaml.cs">
       <DependentUpon>SuggestedAppointments.xaml</DependentUpon>
@@ -674,7 +683,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pacijent\AddNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pacijent\Appointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\DetailsAppointmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -691,6 +708,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pacijent\MainPatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pacijent\Notes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

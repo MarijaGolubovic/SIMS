@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
 using SIMS.ViewModel.Doctor;
+using System;
+using System.Collections.Generic;
 
 namespace SIMS.Service
 {

@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 
 namespace SIMS.Service
@@ -70,6 +73,6 @@ namespace SIMS.Service
             medicineStorage.EditMedicine(oldMedicine, newMedicine);
         }
 
-       
+
     }
 }
