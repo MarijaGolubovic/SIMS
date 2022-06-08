@@ -1,11 +1,8 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using GalaSoft.MvvmLight.Messaging;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
@@ -20,11 +17,11 @@ namespace SIMS.ViewModel.Doctor
         public String Height { get; set; }
         public String Weight { get; set; }
         private String diagnosis;
-        public String Diagnosis 
+        public String Diagnosis
         {
             get { return diagnosis; }
-            set 
-            { 
+            set
+            {
                 diagnosis = value;
                 OnPropertyChanged("Diagnosis");
                 FinishCommand.RaiseCanExecuteChanged();

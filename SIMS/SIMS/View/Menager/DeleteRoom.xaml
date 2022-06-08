@@ -46,7 +46,7 @@
                 <ColumnDefinition Width="102*"></ColumnDefinition>
                 <ColumnDefinition Width="126*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="9" Focusable="True" Click="Button_Click_OK" Background="MintCream" IsDefault="True" Margin="10,11,17,74" RenderTransformOrigin="0.496,-0.122" >OK</Button>
+            <Button Grid.Column="9" Focusable="True" Click="Button_Click_OK" Background="MintCream" IsDefault="True" Margin="10,11,17,74" RenderTransformOrigin="0.496,-0.122" >DELETE</Button>
             <Button Grid.Column="10" Focusable="True" Click="Button_Click_CANCEL" Background="MintCream" IsCancel="True" Margin="10,11,39,74">CANCEL</Button>
             <Button Grid.Column="0" Focusable="True" Click="Button_Click_TUTORIJAL" Background="MintCream" IsCancel="True" Margin="44,11,40,74" Grid.ColumnSpan="3">TUTORIJAL</Button>
         </Grid>

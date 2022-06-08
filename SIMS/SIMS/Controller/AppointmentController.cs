@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SIMS.Model;
+using SIMS.Service;
+using System;
 using System.Collections.Generic;
 using System.Windows;
-using SIMS.Model;
-using SIMS.Service;
-
 
 namespace SIMS.Controller
 {
@@ -11,12 +10,13 @@ namespace SIMS.Controller
     {
 
         private readonly AppointmentService appointmentService = new AppointmentService();
-        private readonly PatientController patientController = new PatientController();
         private readonly OccupacyRoomService occupacyRoomService = new OccupacyRoomService();
+        private readonly SugesstedAppointmentsService sugesstedAppointmentsService = new SugesstedAppointmentsService();
+        private readonly EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService();
 
-        public AppointmentController()
-        {
-        }
+
+
+        public AppointmentController() { }
 
         public void EditRoom(int appointmentId, Room room)
         {
@@ -83,7 +83,7 @@ namespace SIMS.Controller
 
         public bool Create(Appointment appointment, RoomOccupacy roomOccupacy)
         {
-            return appointmentService.Create(appointment,roomOccupacy);
+            return appointmentService.Create(appointment, roomOccupacy);
         }
 
         public int GenerateAppointmentID()
@@ -111,16 +111,6 @@ namespace SIMS.Controller
             return appointmentService.FindSuggestedAppointments(appointmentDTO);
         }
 
-        public bool CheckIfDateIsValid(DateTime date)
-        {
-            if (DateTime.Compare(DateTime.Now, date) > 0)
-            {
-                MessageBox.Show("Nije moguce zakazati termin u proslosti!");
-                return false;
-            }
-            return true;
-        }
-
         public bool CheckIfDateIsValidForDoctor(DateTime date)
         {
             if (DateTime.Compare(DateTime.Now, date) > 0)
@@ -130,21 +120,38 @@ namespace SIMS.Controller
             return true;
         }
 
-        public bool CheckIfDateIsValidForEdit(DateTime old, DateTime chosen)
+        public bool CheckIfDateIsValidForEdit(DateTime old, DateTime selected)
         {
-            if (DateTime.Compare(DateTime.Now, chosen) > 0)
+            if (IfDateInFuture(selected))
+            {
+                return false;
+            }
+            if (IfDateInNearFuture(old, selected))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool IfDateInFuture(DateTime selected)
+        {
+            if (DateTime.Compare(DateTime.Now, selected) > 0)
             {
                 MessageBox.Show("Nije moguce zakazati termin u proslosti!");
                 return false;
             }
-            if ((chosen - old).TotalDays > 7)
+            return true;
+        }
+
+        public bool IfDateInNearFuture(DateTime old, DateTime selected)
+        {
+            if ((selected - old).TotalDays > 7)
             {
                 MessageBox.Show("Termin pregleda je moguce pomjeriti do 7 dana!");
                 return false;
             }
             return true;
         }
-
 
         public Boolean Delete(int appointmentID)
         {
@@ -164,7 +171,7 @@ namespace SIMS.Controller
 
         public List<Appointment> findSuggestedAppointmentsSecretary(Model.Doctor doctor, Patient patient, DateTime dateTime, Boolean doctorPriority, Boolean operation)
         {
-            return appointmentService.findSuggestedAppointmentsSecretary(doctor, patient, dateTime, doctorPriority, operation);
+            return sugesstedAppointmentsService.findSuggestedAppointmentsSecretary(new Appointment(dateTime, 10, new Room(), patient, doctor), operation);
         }
         public Boolean DeleteApp(AppointmentsForSecretaryDTO appointment)
         {
@@ -174,15 +181,15 @@ namespace SIMS.Controller
 
         public List<EmergencyAppointmentsDTO> GetEmergencyAppointments(Patient patient, Specialization specialization)
         {
-            return appointmentService.GetEmergencyAppointments(patient, specialization);
+            return emergencyAppointmentService.GetEmergencyAppointments(patient, specialization);
         }
 
-        public Boolean ReschedulingAppointments (Patient urgentPatient, EmergencyAppointmentsDTO rescheduledAppointment)
+        public Boolean ReschedulingAppointments(Patient urgentPatient, EmergencyAppointmentsDTO rescheduledAppointment)
         {
             Appointment emergency = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, urgentPatient, rescheduledAppointment.Doctor);
-            Appointment oldTermin = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, rescheduledAppointment.Patient,rescheduledAppointment.Doctor);
+            Appointment oldTermin = new Appointment(rescheduledAppointment.DateAndTime, 10, rescheduledAppointment.Room, rescheduledAppointment.Patient, rescheduledAppointment.Doctor);
             Appointment newTermin = new Appointment(rescheduledAppointment.NewDateAndTime, 10, rescheduledAppointment.NewRoom, rescheduledAppointment.Patient, rescheduledAppointment.NewDoctor);
-            return appointmentService.ReschedulingAppointments(emergency, oldTermin, newTermin);
+            return emergencyAppointmentService.ReschedulingAppointments(emergency, oldTermin, newTermin);
         }
 
         public List<Room> FindRoomsForEditAppointment(AppointmentsForDoctorDTO appointmentDTO)

@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    internal class AllergyStorage
+    internal class AllergyStorage : IAllergyStorage
     {
         private Serialization.Serializer<Allergy> allergySerializer;
 
@@ -41,7 +44,7 @@ namespace SIMS.Repository
         {
             throw new NotImplementedException();
         }
-        public static Boolean Create(Medicine medicine)
+        public Boolean Create(Medicine medicine)
         {
             throw new NotImplementedException();
         }

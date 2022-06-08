@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Model;
+﻿using SIMS.Model;
 using SIMS.Service;
-
+using System;
+using System.Collections.Generic;
 
 namespace SIMS.Controller
 {
@@ -46,6 +45,7 @@ namespace SIMS.Controller
             patientService.Update(patient.Person.JMBG, patient.AccountStatus);
         }
 
+
         public Boolean Create(Patient patient)
         {
             return patientService.Create(patient);
@@ -56,6 +56,32 @@ namespace SIMS.Controller
             return patientService.UpdateJMBG(jmbgOld, jmbgNew);
         }
 
+        public void UpdatePatient(Patient patient)
+        {
+            patientService.Update(patient);
+        }
+
+
+        public Patient IncreaceOffeneseCounter(Patient patient)
+        {
+            patient.OffenceCounter += 1;
+            patient = CheckOffenseCouter(patient);
+            return patient;
+        }
+
+        public Patient CheckOffenseCouter(Patient patient)
+        {
+            if (patient.OffenceCounter > 5)
+            {
+                patient.AccountStatus.activatedAccount = false;
+                Update(patient);
+            }
+            else
+            {
+                Update(patient);
+            }
+            return patient;
+        }
 
         public Patient CreateNewPatient(NewPatientDTO patientDTO)
         {
@@ -92,7 +118,7 @@ namespace SIMS.Controller
 
         }
 
-        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment() 
+        public List<PatientForAddAppointmentDTO> GetPatientForAddAppointment()
         {
             List<PatientForAddAppointmentDTO> list = new List<PatientForAddAppointmentDTO>();
 

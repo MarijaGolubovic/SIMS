@@ -1,18 +1,7 @@
 ﻿using SIMS.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -34,17 +23,17 @@ namespace SIMS.View.Menager
             this.NavigationService.Navigate(new RenovateWindow());
         }
 
-        private void  Button_Click_OKMergeRoom(object sender, RoutedEventArgs e)
+        private void Button_Click_OKMergeRoom(object sender, RoutedEventArgs e)
         {
             Model.Room oldRoom = roomStorage.GetRoomById(oldRoomBox.Text);
             Model.Room otherMergedRoom = roomStorage.GetRoomById(otherMergedRoomBox.Text);
-   
-            double newRoomSize= oldRoom.Size + otherMergedRoom.Size;
+
+            double newRoomSize = oldRoom.Size + otherMergedRoom.Size;
             Model.RoomType newRoomType = Model.RoomType.HOSPITAL_ROOM;
             int selectedItemInCombobox = -1;
             selectedItemInCombobox = newRoomTypeBox.SelectedIndex;
 
-            if(otherMergedRoom == null)
+            if (otherMergedRoom == null)
             {
                 MessageBox.Show("Other merged room not exist!");
             }
@@ -67,31 +56,35 @@ namespace SIMS.View.Menager
                     break;
             }
 
-            Model.Room newRoom = new Model.Room(newRoomBox.Text, newRoomSize,newRoomType);
+            Model.Room newRoom = new Model.Room(newRoomBox.Text, newRoomSize, newRoomType);
 
             if (!roomService.IsRoomAlreadyExist(otherMergedRoom))
             {
                 MessageBox.Show("Other merged room don't exist!");
             }
+            else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
+            {
+                MessageBox.Show("Room occupaccy in this period!");
+            }
             else
             {
                 MessageBox.Show("Room successfuly merged!");
-                
-               List<Room> rooms = new List<Room>();
+
+                List<Room> rooms = new List<Room>();
                 Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
                 rooms = roomSerijalization.fromCSV("Room.txt");
                 //roomStorage.Create(newRoom);
                 roomService.IsRoomMerge(oldRoom, otherMergedRoom, newRoom);
                 rooms.Remove(otherMergedRoom);
                 //roomStorage.Delete(oldRoomBox.Text);
-                
+
                 roomSerijalization.toCSV("Room.txt", rooms);
-               
+
                 this.NavigationService.Navigate(new RenovateWindow());
             }
-            
-            
-            
+
+
+
         }
     }
 }

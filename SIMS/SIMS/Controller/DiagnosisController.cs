@@ -1,6 +1,8 @@
-﻿using System;
-using SIMS.Model;
+﻿using SIMS.Model;
 using SIMS.Service;
+using System;
+using System.Collections.Generic;
+
 
 namespace SIMS.Controller
 {
@@ -13,6 +15,14 @@ namespace SIMS.Controller
         public Boolean Create(Diagnosis diagnosisForAdd)
         {
             return service.Create(diagnosisForAdd);
+        }
+        public List<Diagnosis> GetByPatient(Patient patient)
+        {
+            return service.GetByPatient(patient);
+        }
+        public Diagnosis GetOne(int appointmentID)
+        {
+            return service.GetOne(appointmentID);
         }
     }
 }

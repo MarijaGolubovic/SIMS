@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using System;
+using System.Collections.Generic;
 
 namespace SIMS.Service
 {
     public class DoctorService
     {
-        private Repository.DoctorStorage doctorStorage = new Repository.DoctorStorage();
+        private IDoctorStorage doctorStorage = new Repository.DoctorStorage();
 
         public DoctorService()
         {

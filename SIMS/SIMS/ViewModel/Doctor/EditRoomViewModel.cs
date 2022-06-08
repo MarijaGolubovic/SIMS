@@ -1,16 +1,14 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using SIMS.Controller;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using GalaSoft.MvvmLight.Messaging;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class EditRoomViewModel:BindableBase
+    internal class EditRoomViewModel : BindableBase
     {
         public MyICommand EditCommand { get; set; }
         public List<Room> Rooms { get; set; }
@@ -22,7 +20,7 @@ namespace SIMS.ViewModel.Doctor
         }
 
         private readonly AppointmentController appointmentController = new AppointmentController();
-
+        //komentar
         public EditRoomViewModel()
         {
             Rooms = appointmentController.FindRoomsForEditAppointment(ViewModel.Doctor.EditAppointmentViewModel.SelectedAppointment);

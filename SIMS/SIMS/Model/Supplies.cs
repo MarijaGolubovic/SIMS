@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Timers;
-
 namespace SIMS.Model
 {
     public class Supplies : INotifyPropertyChanged, Serialization.Serializable
@@ -98,4 +99,4 @@ namespace SIMS.Model
     }
 
 
-    }
+}

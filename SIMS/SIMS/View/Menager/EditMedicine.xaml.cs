@@ -1,24 +1,18 @@
-﻿using System;
+﻿using System.Windows.Input;
+using SIMS.Controller;
+using SIMS.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace SIMS.View.Menager
 {
     /// <summary>
     /// Interaction logic for EditMedicine.xaml
     /// </summary>
-    public partial class EditMedicine : Window
+    public partial class EditMedicine : Page
     {
         public static ObservableCollection<Model.Medicine> Rooms { get; set; }
         public static Model.Medicine selectedMedicine;
@@ -48,7 +42,7 @@ namespace SIMS.View.Menager
                 Rooms.Add(roomItem);
             }
 
-           
+
 
         }
 
@@ -93,19 +87,22 @@ namespace SIMS.View.Menager
                 }
 
                 Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
-                medicineStorage.EditMedicine(selectedMedicine,newMedecine);
-              //  medicineStorage.Delete(selectedMedicine);
-               // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
+                medicineStorage.EditMedicine(selectedMedicine, newMedecine);
+                //  medicineStorage.Delete(selectedMedicine);
+                // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
                 View.Menager.EditMedicine editMedicine = new EditMedicine();
-                editMedicine.Show();
-                this.Close();
-                
+                // editMedicine.Show();
+                this.NavigationService.Navigate(new EditMedicine());
+                //this.Close();
+
             }
         }
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.NavigationService.Navigate(new Report());
         }
+
+       
     }
 }

@@ -1,25 +1,19 @@
-﻿ 
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using SIMS.Controller;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class MedicineValidationViewModel:BindableBase
+    internal class MedicineValidationViewModel : BindableBase
     {
         public MyICommand ValidateCommand { get; set; }
         public MyICommand SendToDirectorCommand { get; set; }
         public MyICommand FinishCommand { get; set; }
         public ObservableCollection<Medicine> Medicines { get; set; }
         private Medicine selectedMedicine;
-        
+
         private readonly MedicineContoller medicineContoller = new MedicineContoller();
         public Medicine SelectedMedicine
         {
@@ -35,7 +29,7 @@ namespace SIMS.ViewModel.Doctor
         public MedicineValidationViewModel()
         {
             Medicines = new ObservableCollection<Medicine>();
-            foreach(Medicine medicine in medicineController.GetAllWithStatusOnHold())
+            foreach (Medicine medicine in medicineController.GetAllWithStatusOnHold())
             {
                 Medicines.Add(medicine);
             }

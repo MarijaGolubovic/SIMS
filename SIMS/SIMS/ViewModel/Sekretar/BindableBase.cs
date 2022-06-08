@@ -1,4 +1,9 @@
 ﻿using System.ComponentModel;
+using SIMS.Controller;
+using SIMS.Model;
+using SIMS.View.Sekretar;
+using System;
+using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 
 namespace SIMS.ViewModel.Sekretar

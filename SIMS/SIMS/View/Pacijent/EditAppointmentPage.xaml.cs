@@ -1,20 +1,12 @@
-﻿using SIMS.Controller;
+﻿using GalaSoft.MvvmLight.Messaging;
+using SIMS.Controller;
 using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Pacijent
 {
@@ -28,7 +20,7 @@ namespace SIMS.View.Pacijent
         private readonly DoctorController doctorController = new DoctorController();
         private readonly AppointmentController appointmentController = new AppointmentController();
         private readonly PatientController patientController = new PatientController();
-        public static ObservableCollection<Patient> Patients { get; set; }
+        public static System.Collections.ObjectModel.ObservableCollection<Patient> Patients { get; set; }
         public EditAppointmentPage(Model.Appointment appointment)
         {
             InitializeComponent();

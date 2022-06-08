@@ -1,4 +1,7 @@
+using SIMS.Model;
+using SIMS.Service;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SIMS.Model
@@ -88,6 +91,7 @@ namespace SIMS.Model
             }
         }
 
+        public string JMBG { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Room(string id, double size, RoomType type)
         {
@@ -101,6 +105,21 @@ namespace SIMS.Model
         public static explicit operator Room(string v)
         {
             throw new NotImplementedException();
+        }
+
+        public Boolean IsRoomForOperation()
+        {
+            return Type == RoomType.OPPERATING_ROOM;
+        }
+
+        public Boolean IsRoomForExamination()
+        {
+            return Type == RoomType.EXAMINATION_ROOM;
+        }
+
+        public Boolean IsRoomForMeeting()
+        {
+            return Type == RoomType.MEETING_ROOM;
         }
     }
 }

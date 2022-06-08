@@ -49,6 +49,27 @@
         <DataTemplate DataType="{x:Type viewModel:SuggestedAppointmentsViewModel}">
             <view:SuggestedAppointmentsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AllRequirentmentsViewModel}">
+            <view:AllRequirentmentsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:DetailedRequestViewModel}">
+            <view:DetailedRequestView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AddOperationViewModel}">
+            <view:AddOperationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:VacationRequestViewModel}">
+            <view:VacationRequestView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:AccountViewModel}">
+            <view:AccountView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:EditAccountViewModel}">
+            <view:EditAccountView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ChangePasswordViewModel}">
+            <view:ChangePasswordView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid Background="#FFB2C7DD">
             <DockPanel>
@@ -219,7 +240,9 @@
                             </MenuItem.Icon>
 
                             <MenuItem Header="Zakaži"
-                                  Template="{StaticResource Item_Template}">
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="AddOperationView">
 
                                 <MenuItem.Icon>
                                     <Image Source="/Assets/addAppointment.png"
@@ -259,7 +282,9 @@
                             </MenuItem.Icon>
 
                             <MenuItem Header="Godišnji odmor"
-                                  Template="{StaticResource Item_Template}">
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="VacationRequestView">
 
                                 <MenuItem.Icon>
                                     <Image Source="/Assets/vacation.png"
@@ -290,6 +315,18 @@
 
                             </MenuItem>
 
+                            <MenuItem Header="Prikaži sve"
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="allReqs">
+
+                                <MenuItem.Icon>
+                                    <Image Source="/Assets/procurement.png"
+                                           Stretch="None" />
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
                         </MenuItem>
 
                         <MenuItem Header="Nalog"
@@ -301,7 +338,9 @@
                             </MenuItem.Icon>
 
                             <MenuItem Header="Prikaz"
-                                  Template="{StaticResource Item_Template}">
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="AccountView">
 
                                 <MenuItem.Icon>
                                     <Image Source="/Assets/viewAccount.png"
@@ -311,7 +350,9 @@
                             </MenuItem>
 
                             <MenuItem Header="Izmjeni"
-                                  Template="{StaticResource Item_Template}">
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="EditAccount">
 
                                 <MenuItem.Icon>
                                     <Image Source="/Assets/editAppointment.png"
@@ -321,7 +362,9 @@
                             </MenuItem>
 
                             <MenuItem Header="Izmjeni lozinku"
-                                  Template="{StaticResource Item_Template}">
+                                  Template="{StaticResource Item_Template}"
+                                      Command="{Binding NavCommand}"
+                                      CommandParameter="ChangePasswordView">
 
                                 <MenuItem.Icon>
                                     <Image Source="/Assets/changePassword.png"

@@ -1,7 +1,12 @@
-﻿using System.Windows;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
 using SIMS.View.Sekretar;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace SIMS
 {
@@ -99,8 +104,7 @@ namespace SIMS
                         }
                         else
                         {
-                            patient.AccountStatus.activatedAccount = false;
-                            patientController.Update(patient);
+                            patientController.UpdatePatient(patient);
                             string messageBoxText = "Vas profil je blokiran!";
                             string caption = "Greska";
                             MessageBoxButton button = MessageBoxButton.OK;

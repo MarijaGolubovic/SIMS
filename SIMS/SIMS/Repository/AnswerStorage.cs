@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    public class AnswerStorage
+    public class AnswerStorage : IAnswerStorage
     {
         public AnswerStorage()
         {
@@ -17,7 +17,7 @@ namespace SIMS.Repository
         {
             Serialization.Serializer<Answers> answerSerializer = new Serialization.Serializer<Answers>();
             List<Answers> answers = new List<Answers>();
-            foreach(Answers a in answerSerializer.fromCSV("answers.txt"))
+            foreach (Answers a in answerSerializer.fromCSV("answers.txt"))
             {
                 answers.Add(a);
             }

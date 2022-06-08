@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace SIMS.Menager
 {
@@ -15,7 +14,7 @@ namespace SIMS.Menager
         {
             InitializeComponent();
             _mainFrame = this.FindName("MainFrameMenager") as Frame;
-           // _mainFrame.NavigationService.Navigate(new MainWindowMenager());
+            // _mainFrame.NavigationService.Navigate(new MainWindowMenager());
         }
 
 
@@ -63,7 +62,7 @@ namespace SIMS.Menager
         private void MenuItem_ClickMoveEquipment(object sender, RoutedEventArgs e)
         {
             View.Menager.Rooms moveWindow = new View.Menager.Rooms();
-             moveWindow.Show();
+            moveWindow.Show();
             this.Close();
         }
 
@@ -79,8 +78,23 @@ namespace SIMS.Menager
 
         private void MenuItem_Click_EditMedicine(object sender, RoutedEventArgs e)
         {
-            View.Menager.EditMedicine editMedicine = new View.Menager.EditMedicine();
-            editMedicine.Show();
+            
+            _mainFrame.NavigationService.Navigate(new View.Menager.EditMedicine());
+        }
+
+        private void MenuItem_Click_CorrectMedicine(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.CorrectWindow());
+        }
+
+        private void MenuItem_ShowPolls(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.ShowPolls());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using SIMS.Interfaces;
+using SIMS.Model;
+using SIMS.Service;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Model
 {
-    public class PatientStorage
+    public class PatientStorage : IPatientStorage
     {
         public List<Patient> GetAll()
         {
@@ -24,11 +28,11 @@ namespace SIMS.Model
                     {
                         if (itemP.ActivatedAccount)
                         {
-                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true),itemP.OffenceCounter));
+                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, true), itemP.OffenceCounter));
                         }
                         else
                         {
-                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false),itemP.OffenceCounter));
+                            Patients.Add(new Patient(item, new MedicalRecord(), new AccountStatus(false, false), itemP.OffenceCounter));
                         }
                     }
                 }
@@ -48,11 +52,6 @@ namespace SIMS.Model
             return patient;
         }
 
-        public Boolean Delete(String jmbg)
-        {
-            throw new NotImplementedException();
-        }
-
         public Boolean Create(Patient patient)
         {
             Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
@@ -64,6 +63,26 @@ namespace SIMS.Model
             patients.Add(patient);
             patientSerializer.toCSV("patients.txt", patients);
             return true;
+        }
+
+        public void Update(Patient patient)
+        {
+            Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
+            List<Patient> patients = new List<Patient>();
+            foreach (Patient p in patientSerializer.fromCSV("patients.txt"))
+            {
+                patients.Add(p);
+            }
+            foreach (Patient p in patients)
+            {
+                if (p.JMBGP.Equals(patient.JMBGP))
+                {
+                    p.OffenceCounter = patient.OffenceCounter;
+                    p.ActivatedAccount = false;
+                }
+            }
+            patientSerializer.toCSV("patients.txt", patients);
+            return;
         }
 
         public Boolean Update(String jmbg, AccountStatus accountStatus)
@@ -79,6 +98,7 @@ namespace SIMS.Model
             patientSerializer.toCSV("patients.txt", patients);
             return true;
         }
+
         public Boolean UpdateJMBG(String jmbgOld, String jmbgNew)
         {
             Serialization.Serializer<Patient> patientSerializer = new Serialization.Serializer<Patient>();
@@ -94,8 +114,6 @@ namespace SIMS.Model
             return true;
         }
 
-
-        public String fileName;
 
     }
 }

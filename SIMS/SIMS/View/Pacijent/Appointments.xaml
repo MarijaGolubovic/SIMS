@@ -26,6 +26,8 @@
                             <DataGridTextColumn Header="Lekar" Binding="{Binding Doctor.Username}" Width="*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button Grid.Column="0" Grid.Row="1" Content="Prikazi detalje" Click="Button_Click"
+                            Background="#ff64ccf1" Foreground="White" Style="{DynamicResource RoundedButtonStyle}"></Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Predstojeci pregledi">

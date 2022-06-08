@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using SIMS.Model;
+﻿using SIMS.Model;
 using SIMS.Service;
+using System;
+using System.Collections.Generic;
+
 
 
 namespace SIMS.Controller
@@ -60,9 +62,10 @@ namespace SIMS.Controller
         }
 
 
-       public void EditMedicine(Medicine oldMedicine, Medicine newMedicine){
+        public void EditMedicine(Medicine oldMedicine, Medicine newMedicine)
+        {
 
-            medicineService.EditMedicine(oldMedicine,newMedicine);
-       }
+            medicineService.EditMedicine(oldMedicine, newMedicine);
+        }
     }
 }

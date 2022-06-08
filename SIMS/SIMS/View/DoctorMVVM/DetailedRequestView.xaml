@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="SIMS.View.DoctorMVVM.DetailedRequestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
+             mc:Ignorable="d" 
+             d:DesignHeight="742" d:DesignWidth="1290">
+
+    <UserControl.DataContext>
+        <viewModel:DetailedRequestViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                           Grid.Column="0"
+                           Text="Detaljan prikaz zahtjeva" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="160,90,0,0"/>
+
+        <TextBlock Text="Vrsta zahtjeva:"
+                  FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="1"
+                   Grid.Column="0" 
+                   Margin="160,60,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="{Binding Path=SelectedRequest.Name}"
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="1"
+                   Grid.Column="0" 
+                   Margin="400,60,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="Datum početka:"
+                  FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="2"
+                   Grid.Column="0" 
+                   Margin="160,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="{Binding Path=SelectedRequest.StartDateForDoctor}"
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="2"
+                   Grid.Column="0" 
+                   Margin="400,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="Datum završetka:"
+                  FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="3"
+                   Grid.Column="0" 
+                   Margin="160,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="{Binding Path=SelectedRequest.EndDateForDoctor}"
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="3"
+                   Grid.Column="0" 
+                   Margin="400,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="Status zahtjeva:"
+                  FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="4"
+                   Grid.Column="0" 
+                   Margin="160,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="{Binding Path=Status}"
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="4"
+                   Grid.Column="0" 
+                   Margin="400,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="Komentar sekretara:"
+                  FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="5"
+                   Grid.Column="0" 
+                   Margin="160,40,0,0"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="{Binding Path=SelectedRequest.Comment}"
+                   FontFamily="Bahnschrift Light"
+                   FontSize="25" 
+                   Grid.Row="5"
+                   Grid.Column="0" 
+                   Margin="400,40,0,0"
+                   VerticalAlignment="Center"/>
+
+
+        <Button Content="Nazad" Grid.Row="6" Margin="330,0,160,0" HorizontalAlignment="Right" Width="70" Height="30" Command="{Binding BackCommand}" Style="{DynamicResource RoundedButtonStyle}" Background="#FF36547C"/>
+
+
+    </Grid>
+</UserControl>

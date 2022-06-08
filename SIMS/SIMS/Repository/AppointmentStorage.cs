@@ -1,19 +1,23 @@
+using SIMS.Interfaces;
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
-using SIMS.Model;
+using System.ComponentModel;
 
 
 namespace SIMS.Repository
 {
-    public class AppointmentStorage
+    public class AppointmentStorage : IAppointmentStorage
     {
-        public AppointmentStorage() { }
-        public static List<Appointment> GetAll()
+        public AppointmentStorage()
+        {
+        }
+        public List<Appointment> GetAll()
         {
             Serialization.Serializer<Appointment> appointmentSerializer = new Serialization.Serializer<Appointment>();
-            List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
-
-            return appointments;
+            List<Appointment> Appointments = appointmentSerializer.fromCSV("appointments.txt");
+            return Appointments;
         }
 
         public Appointment GetOne(int appointmentID)
@@ -62,11 +66,6 @@ namespace SIMS.Repository
             appointments.Add(appointment);
             appointmentSerializer.toCSV("appointments.txt", appointments);
             return true;
-        }
-
-        public Boolean Update(Appointment appointment)
-        {
-            throw new NotImplementedException();
         }
 
         public Boolean DeleteApp(DateTime dateTime, String roomId)

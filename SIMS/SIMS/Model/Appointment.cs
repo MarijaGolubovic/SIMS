@@ -1,6 +1,6 @@
+using SIMS.Controller;
 using System;
 using System.ComponentModel;
-using SIMS.Controller;
 
 namespace SIMS.Model
 {
@@ -128,6 +128,46 @@ namespace SIMS.Model
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
+        }
+
+        public Boolean CheckDoctor(Appointment app)
+        {
+            return doctor.Person.JMBG.Equals(app.Doctor.Person.JMBG);
+        }
+
+        public Boolean CheckDoctor(Doctor doctor)
+        {
+            return doctor.Person.JMBG.Equals(doctor.Person.JMBG);
+        }
+
+        public Boolean CheckDoctor(User doctor)
+        {
+            return doctor.Person.JMBG.Equals(doctor.Person.JMBG);
+        }
+
+        public Boolean CheckDateTime(Appointment app)
+        {
+            return DateAndTime.Equals(app.DateAndTime);
+        }
+
+        public Boolean CheckDateTime(DateTime dateTime)
+        {
+            return DateAndTime.Equals(dateTime);
+        }
+
+        public Boolean CheckRoom(Room roomC)
+        {
+            return Room.Id.Equals(roomC.Id);
+        }
+
+        public Boolean CheckRoom(Appointment app)
+        {
+            return Room.Id.Equals(app.Room.Id);
+        }
+
+        public Boolean CheckSpecialization(Specialization specialization)
+        {
+            return Doctor.Specialization.Name.Equals(specialization.Name);
         }
     }
 }

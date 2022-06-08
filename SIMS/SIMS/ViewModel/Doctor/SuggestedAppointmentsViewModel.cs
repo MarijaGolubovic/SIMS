@@ -1,11 +1,8 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using GalaSoft.MvvmLight.Messaging;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
@@ -13,14 +10,14 @@ namespace SIMS.ViewModel.Doctor
     internal class SuggestedAppointmentsViewModel : BindableBase
     {
         public MyICommand ConfirmCommand { get; set; }
-        public  List<Appointment> Appointments { get; set; }
+        public List<Appointment> Appointments { get; set; }
         private readonly AppointmentController appointmentController = new AppointmentController();
 
         private Appointment selectedAppointment;
-        public Appointment SelectedAppointment 
+        public Appointment SelectedAppointment
         {
             get { return selectedAppointment; }
-            set 
+            set
             {
                 selectedAppointment = value;
                 ConfirmCommand.RaiseCanExecuteChanged();

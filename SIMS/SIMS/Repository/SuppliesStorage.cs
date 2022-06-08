@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    class SuppliesStorage
+    class SuppliesStorage : ISuppliesStorage
     {
         public List<Supplies> GetAll()
         {

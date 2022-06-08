@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
-
+using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Service
 {
     public class PatientService
     {
-        private PatientStorage patientStorage;
+        private IPatientStorage patientStorage;
 
         public PatientService()
         {
@@ -70,6 +73,11 @@ namespace SIMS.Service
 
         }
 
+        internal void Update(Patient patient)
+        {
+            patientStorage.Update(patient);
+        }
+
         public void Update(String jmbg, AccountStatus accountStatus)
         {
             patientStorage.Update(jmbg, accountStatus);
@@ -100,7 +108,7 @@ namespace SIMS.Service
         public List<String> LinkPatientInformationsForAddAppointment()
         {
             List<String> retList = new List<String>();
-            foreach(Patient patient in GetAll())
+            foreach (Patient patient in GetAll())
             {
                 String pom = patient.Person.Name + " " + patient.Person.Surname + ", " + patient.Person.DateOfBirth.ToString().Split(' ')[0];
                 retList.Add(pom);

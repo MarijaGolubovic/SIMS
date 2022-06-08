@@ -1,21 +1,13 @@
 ﻿using SIMS.Controller;
 using SIMS.Model;
-using SIMS.Pacijent;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Windows.Forms;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Pacijent
 {
@@ -46,7 +38,7 @@ namespace SIMS.View.Pacijent
 
             //ucitavam termine iz fajla
             List<Appointment> appointments = appointmentSerializer.fromCSV("appointments.txt");
-            List<Patient> patients = patientSerializer.fromCSV("patients.txt"); 
+            List<Patient> patients = patientSerializer.fromCSV("patients.txt");
 
             //inicijalizujem kolekciju
             AppointmentHistory = new ObservableCollection<Appointment>();
@@ -60,7 +52,7 @@ namespace SIMS.View.Pacijent
                 if (item.Patient.JMBGP.Equals(logedInUser.Person.JMBG))
                 {
                     DateTime date = DateTime.UtcNow;
-                    if (DateTime.Compare(date,item.DateAndTime) < 0)
+                    if (DateTime.Compare(date, item.DateAndTime) < 0)
                     {
                         //termin u buducnosti
                         AppointmentFuture.Add(item);
@@ -106,6 +98,13 @@ namespace SIMS.View.Pacijent
                     if (item.JMBGP.Equals(logedInUser.Person.JMBG))
                     {
                         item.OffenceCounter += 1;
+                        if (item.OffenceCounter >= 5)
+                        {
+                            patientController.UpdatePatient(item);
+
+                            //ovo ne ugasi prozor
+                            //System.Net.Mime.MediaTypeNames.Application.Exit();
+                        }
                     }
                 }
 
@@ -121,6 +120,15 @@ namespace SIMS.View.Pacijent
             if (SelectedItem != null)
             {
                 NavigationService.Navigate(new EditAppointmentPage(SelectedItem));
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedItem = dataGridAppointmentHistory.SelectedItem as Appointment;
+            if (SelectedItem != null)
+            {
+                NavigationService.Navigate(new DetailsAppointmentPage(SelectedItem));
             }
         }
     }

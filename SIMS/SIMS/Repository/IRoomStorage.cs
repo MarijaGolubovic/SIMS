@@ -1,11 +1,12 @@
+using SIMS.Interfaces;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
-using SIMS.Model;
 
 namespace SIMS.Repository
 {
 
-    public class RoomStorage
+    public class RoomStorage : IRoomStorage
     {
         public List<Room> GetAll()
         {
@@ -66,18 +67,13 @@ namespace SIMS.Repository
             return status;
         }
 
-        public Boolean Update(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
         public Model.Room GetRoomById(string idRoom)
         {
-            Room room=new Room();
+            Room room = new Room();
             List<Room> rooms = new List<Room>();
             Serialization.Serializer<Room> roomSerijalization = new Serialization.Serializer<Room>();
             rooms = roomSerijalization.fromCSV("Room.txt");
-            foreach(Model.Room roomItem in rooms)
+            foreach (Model.Room roomItem in rooms)
             {
                 if (roomItem.Id.Equals(idRoom))
                     room = roomItem;
@@ -87,7 +83,7 @@ namespace SIMS.Repository
             return room;
         }
 
-            
+
 
         public List<Room> GetByType(RoomType type)
         {
@@ -109,5 +105,13 @@ namespace SIMS.Repository
 
         public String fileName;
 
+        public RoomStorage(string fileName)
+        {
+            this.fileName = fileName;
+        }
+
+        public RoomStorage()
+        {
+        }
     }
 }

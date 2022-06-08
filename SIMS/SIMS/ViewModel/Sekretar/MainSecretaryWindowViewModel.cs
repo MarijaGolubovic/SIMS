@@ -7,8 +7,9 @@ namespace SIMS.ViewModel.Sekretar
         public MyICommand AllPatientViewCMD { get; set; }
         public MyICommand AppointmentViewCMD { get; set; }
         public MyICommand EquipmentViewCMD { get; set; }
-
         public MyICommand EmergencyViewCMD { get; set; }
+        public MyICommand RequestCMD { get; set; }
+        public MyICommand MeetingsViewCMD { get; set; }
 
 
 
@@ -18,6 +19,8 @@ namespace SIMS.ViewModel.Sekretar
             AppointmentViewCMD = new MyICommand(OpenAppointmentView);
             EquipmentViewCMD = new MyICommand(OpenEquipmentView);
             EmergencyViewCMD = new MyICommand(OpenEmergencyView);
+            RequestCMD = new MyICommand(OpenRequestView);
+            MeetingsViewCMD = new MyICommand(OpenMeetingsView);
 
 
         }
@@ -44,6 +47,18 @@ namespace SIMS.ViewModel.Sekretar
         {
             EmergencyView emergencyView = new EmergencyView();
             emergencyView.Show();
+        }
+
+        private void OpenRequestView()
+        {
+            DaysOffRequestView daysOffRequestView = new DaysOffRequestView();
+            daysOffRequestView.Show();
+        }
+
+        private void OpenMeetingsView()
+        {
+            MeetingsView meetingsView = new MeetingsView();
+            meetingsView.Show();
         }
 
 

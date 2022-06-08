@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 
 namespace SIMS.Service
 {
     public class MedicineService
     {
-        private MedicineStorage medicineStorage { get; set; }
+        private IMedicineStorage medicineStorage { get; set; }
 
         public MedicineService()
         {
@@ -19,12 +23,12 @@ namespace SIMS.Service
             return medicineStorage.GetAll();
         }
 
-        public List<Medicine> GetAllWithStatusOnHold() 
+        public List<Medicine> GetAllWithStatusOnHold()
         {
             List<Medicine> medicines = new List<Medicine>();
-            foreach(Medicine med in GetAll())
+            foreach (Medicine med in GetAll())
             {
-                if(med.MedicineStatus.Equals(MedicineStatus.OnHold))
+                if (med.MedicineStatus.Equals(MedicineStatus.OnHold))
                     medicines.Add(med);
             }
             return medicines;
@@ -66,8 +70,9 @@ namespace SIMS.Service
 
         public void EditMedicine(Medicine oldMedicine, Medicine newMedicine)
         {
-            medicineStorage.EditMedicine(oldMedicine,newMedicine);
+            medicineStorage.EditMedicine(oldMedicine, newMedicine);
         }
+
 
     }
 }

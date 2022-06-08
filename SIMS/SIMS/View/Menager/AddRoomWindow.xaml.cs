@@ -1,13 +1,9 @@
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using SIMS.Repository;
-
-
 
 namespace SIMS.Menager
 {
@@ -80,7 +76,7 @@ namespace SIMS.Menager
             Menager.MainWindowMenager mainWindow = new MainWindowMenager();
             // mainWindow.Show();
             this.NavigationService.Navigate(new View.Menager.Report());
-           // this.Close();
+            // this.Close();
 
         }
 

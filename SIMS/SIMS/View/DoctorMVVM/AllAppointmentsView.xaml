@@ -34,7 +34,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding CurrentViewModel}"/>
         <TextBlock Grid.Row="1" 
                            Grid.Column="0"
                            Text="Prikaz pregleda" 
@@ -48,8 +47,7 @@
                            FontFamily="Bahnschrift Light"
                            FontSize="30" Margin="160,0,0,0"/>
 
-        <DataGrid x:Name="allAppointmentsDataGrid"
-                          Grid.Row="3" 
+        <DataGrid Grid.Row="3" 
                           Grid.Column="0"
                           ItemsSource="{Binding Path = Appointments}" 
                           IsReadOnly="True" 

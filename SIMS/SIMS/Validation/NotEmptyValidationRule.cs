@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
-
 namespace SIMS.Validation
 {
     public class NotEmptyValidationRule : ValidationRule

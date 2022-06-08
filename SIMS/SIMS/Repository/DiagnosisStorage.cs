@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    public class DiagnosisStorage
+    public class DiagnosisStorage : IDiagnosisStorage
     {
         public DiagnosisStorage() { }
         public List<Diagnosis> GetAll()
@@ -30,6 +33,21 @@ namespace SIMS.Repository
                 }
             }
             return dia;
+        }
+
+        public List<Diagnosis> GetByPatient(Patient patient)
+        {
+            Serialization.Serializer<Diagnosis> diagnosisSerializer = new Serialization.Serializer<Diagnosis>();
+            List<Diagnosis> allDiagnosis = diagnosisSerializer.fromCSV("diagnosis.txt");
+            List<Diagnosis> diagnosisForPatient = diagnosisSerializer.fromCSV("diagnosis.txt");
+            foreach (Diagnosis d in allDiagnosis)
+            {
+                if (d.Patient.JMBGP.Equals(patient.JMBGP))
+                {
+                    diagnosisForPatient.Add(d);
+                }
+            }
+            return diagnosisForPatient;
         }
 
         public Boolean Delete(int appointmentID)

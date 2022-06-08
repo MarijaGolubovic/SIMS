@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Service
 {
     class RoomEquipmentServices
     {
-        Repository.RoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
-        Repository.EquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
+        RoomEquipmentStorage roomEquipment = new Repository.RoomEquipmentStorage();
+        EquipmentStorage equipmentStorage = new Repository.EquipmentStorage();
         public List<Model.RoomEqupment> GetAll()
         {
             return roomEquipment.GetAll();
@@ -27,73 +31,63 @@ namespace SIMS.Service
         {
             return roomEquipment.Create(room);
         }
-        
 
-        public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination,string begin, string end)
-        { 
-        Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
-            List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");
+
+        public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination, string begin, string end)
+        {
+            List<Model.Equpment> equipments = equipmentStorage.GetAll();
             List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
-            Serialization.Serializer<Model.RoomEqupment> roomEquipmentSerializer = new Serialization.Serializer<Model.RoomEqupment>();
 
-            String[] beginToken  = begin.Split(';');
+            String[] beginToken = begin.Split(';');
             DateTime beginTime = DateTime.Parse(beginToken[0]);
             String[] endToken = end.Split(';');
             DateTime endTime = DateTime.Parse(endToken[0]);
 
-            String equpmentId="";
-            bool succesfullyMove=false;
+            String equpmentId = "";
+            bool succesfullyMove = false;
 
-            foreach(Equpment equpmentItem in equipments)
-            {
-                if (Name.Equals(equpmentItem.Name))
-                {
-                    equpmentId = equpmentItem.Id;
-                }
-            }
-            foreach(RoomEqupment eqRoom in roomEquipments)
-            {
-                if (eqRoom.IdEquipment.Equals(equpmentId))
-                {
-                    equpmentId = eqRoom.IdEquipment;
-                }
-            }
+            equpmentId = FindEquipmentIdByName(equipments, Name);
+            equpmentId = FindEquipmentIdByRoom(roomEquipments, equpmentId);
+
             if (!EndBeforeBegin(beginTime, endTime))
             {
                 if (!EquipmentAlreadyOccupacy(equpmentId, beginTime, endTime))
                 {
-                    String movingPeriod = beginToken[0]+ ";" + endToken[0];
+                    String movingPeriod = beginToken[0] + ";" + endToken[0];
                     roomEquipments.Add(new RoomEqupment(roomId, movingPeriod, equpmentId));
-                   // roomEquipmentSerializer.toCSV("RoomEquipment.txt", roomEquipments);
                     succesfullyMove = true;
-
-                  /*  foreach (Equpment equpmentItem in equipments)
-                    {
-                        if (Name.Equals(equpmentItem.Name))
-                        {
-
-                            equpmentItem.Quantity--;
-                        }
-                    }
-                  */
                 }
             }
-            else
-            {
-                succesfullyMove = false;
-            }
-
-
             return succesfullyMove;
 
         }
 
+        public string FindEquipmentIdByRoom(List<Model.RoomEqupment> roomEquipments, string equpmentId)
+        {
+            foreach (RoomEqupment eqRoom in roomEquipments)
+            {
+                if (eqRoom.IdEquipment.Equals(equpmentId))
+                    equpmentId = eqRoom.IdEquipment;
+            }
+            return equpmentId;
+        }
+
+        public string FindEquipmentIdByName(List<Model.Equpment> equipments, string equipmentName)
+        {
+            String equpmentId = "";
+            foreach (Equpment equpmentItem in equipments)
+            {
+                if (equipmentName.Equals(equpmentItem.Name))
+                    equpmentId = equpmentItem.Id;
+            }
+            return equpmentId;
+        }
 
         public bool EquipmentAlreadyOccupacy(string idEq, DateTime begin, DateTime end)
         {
             List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
             Serialization.Serializer<Model.RoomEqupment> occupacySerializer = new Serialization.Serializer<Model.RoomEqupment>();
-            bool isOccupacy = false;
+            bool Occupacy = false;
 
             foreach (Model.RoomEqupment roomEquipmentItem in roomEquipments)
             {
@@ -102,16 +96,10 @@ namespace SIMS.Service
                     string[] period = roomEquipmentItem.Period.Trim().Split(';');
                     DateTime beginInStorege = DateTime.Parse(period[0]);
                     DateTime endInStorege = DateTime.Parse(period[1]);
-
-                    //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
-                    //if ((DateTime.Compare(beginInStorege, begin) >= 0) && (DateTime.Compare(endInStorege, end) <= 0))
-                    //{
-                    isOccupacy = true;
-                    //}
+                    Occupacy = true;
                 }
             }
-
-            return isOccupacy;
+            return Occupacy;
         }
 
         public bool EndBeforeBegin(DateTime begin, DateTime end)
@@ -130,7 +118,8 @@ namespace SIMS.Service
         {
             List<Equpment> allEquipment = equipmentStorage.GetAll();
             List<Equpment> searchedEquipment = new List<Equpment>();
-            foreach(Equpment roomEquipment in allEquipment) {
+            foreach (Equpment roomEquipment in allEquipment)
+            {
                 if (roomEquipment.Name.Trim().Contains(inputSearchContent))
                 {
                     searchedEquipment.Add(roomEquipment);

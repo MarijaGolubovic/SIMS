@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
+using System.Collections.Generic;
+using System;
+using System.Windows.Controls;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Linq;
 
 namespace SIMS.View.Sekretar
 {
@@ -29,12 +29,12 @@ namespace SIMS.View.Sekretar
             PatientsBlock = new ObservableCollection<Patient>();
             userController = new UserController();
             patientController = new PatientController();
-  
+
             foreach (Patient p in patientController.GetAllActiv())
             {
                 Patients.Add(p);
             }
-            
+
 
             foreach (Patient p in patientController.GetAllBlock())
             {
@@ -107,7 +107,7 @@ namespace SIMS.View.Sekretar
         public static void UpdateView()
         {
             Patients.Clear();
-            PatientsBlock.Clear();        
+            PatientsBlock.Clear();
             foreach (Patient p in patientController.GetAllActiv())
             {
                 Patients.Add(p);
@@ -144,13 +144,14 @@ namespace SIMS.View.Sekretar
                 {
                     PatientsBlock.Add(p);
                 }
-            } else
+            }
+            else
             {
                 UpdateView();
                 //AktivniNalazi.ItemsSource = patientActivList;
             }
 
-            
+
         }
 
         private void searchBlocks_TextChanged(object sender, TextChangedEventArgs e)

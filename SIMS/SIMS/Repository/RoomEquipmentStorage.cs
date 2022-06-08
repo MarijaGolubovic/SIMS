@@ -1,9 +1,13 @@
-﻿using System;
+﻿using SIMS.Interfaces;
+using SIMS.Model;
+using SIMS.Service;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    class RoomEquipmentStorage
+    class RoomEquipmentStorage : IRoomEquipmentStorage
     {
         public List<Model.RoomEqupment> GetAll()
         {
@@ -61,11 +65,6 @@ namespace SIMS.Repository
             roomSerijalization.toCSV("RoomEquipment.txt", rooms);
             status = true;
             return status;
-        }
-
-        public Boolean Update(Model.RoomEqupment room)
-        {
-            throw new NotImplementedException();
         }
     }
 }

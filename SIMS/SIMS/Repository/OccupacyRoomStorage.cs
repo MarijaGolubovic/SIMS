@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    class OccupacyRoomStorage
+    class OccupacyRoomStorage : IOccupacyRoomStorage
     {
         public OccupacyRoomStorage()
         {
@@ -32,7 +32,7 @@ namespace SIMS.Repository
             }
 
             Serialization.Serializer<RoomOccupacy> roomOccupacySerializer = new Serialization.Serializer<RoomOccupacy>();
-            roomOccupacySerializer.toCSV("OccupacyRoom.txt",roomOccupacies);
+            roomOccupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
             return true;
         }
         public List<Model.RoomOccupacy> GetAll()

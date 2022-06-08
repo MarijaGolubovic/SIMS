@@ -1,5 +1,8 @@
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Timers;
 
 namespace SIMS.Model
@@ -8,8 +11,8 @@ namespace SIMS.Model
     {
         public MedicalRecord MedicalRecord { get; set; }
         public AccountStatus AccountStatus { get; set; }
-        
-        public String Date { get; set; } 
+
+        public String Date { get; set; }
         public String JMBGP { get; set; }
         public Boolean InitialAccount { get; set; }
         public Boolean ActivatedAccount { get; set; }
@@ -45,13 +48,13 @@ namespace SIMS.Model
 
         public void Start30DayTimer()
         {
-                TimeSpan span = new TimeSpan(30, 0, 0, 0);
-                TimeSpan disablePeriodic = new TimeSpan(0, 0, 0, 0, -1);
-                _timer = new System.Threading.Timer(timer_TimerCallback, null,
-                    span, disablePeriodic);
+            TimeSpan span = new TimeSpan(30, 0, 0, 0);
+            TimeSpan disablePeriodic = new TimeSpan(0, 0, 0, 0, -1);
+            _timer = new System.Threading.Timer(timer_TimerCallback, null,
+                span, disablePeriodic);
         }
 
-            public void timer_TimerCallback(object state)
+        public void timer_TimerCallback(object state)
         {
             this.OffenceCounter += 1;
         }
@@ -99,6 +102,12 @@ namespace SIMS.Model
             JMBGP = jMBGP;
             InitialAccount = initialAccount;
             ActivatedAccount = activatedAccount;
+        }
+
+        public Patient(bool initialAccount, bool activatedAccount, int offenseAccount)
+        {
+            ActivatedAccount = activatedAccount;
+            OffenceCounter = offenseAccount;
         }
     }
 }

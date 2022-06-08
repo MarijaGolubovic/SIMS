@@ -1,9 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 namespace SIMS.Repository
 {
-    public class DoctorStorage
+    public class DoctorStorage : IDoctorStorage
     {
         private Serialization.Serializer<DoctorSpecialization> doctorSerializer;
         private Serialization.Serializer<User> userSerializer;
@@ -16,21 +19,26 @@ namespace SIMS.Repository
 
         public List<Model.Doctor> LinkDoctorsWithSpecializations(List<User> users, List<DoctorSpecialization> specializationsForDoctors)
         {
-            List<Model.Doctor> doctors = new List<SIMS.Model.Doctor>();
+            List<Model.Doctor> doctors = new List<Model.Doctor>();
 
             foreach (User user in users)
             {
-                foreach (DoctorSpecialization doctorSpecialization in specializationsForDoctors)
-                {
-                    if (user.Person.JMBG.Equals(doctorSpecialization.JMBG))
-                    {
-                        Model.Doctor doctor = new Model.Doctor(user, new Specialization(doctorSpecialization.Spec));
-                        doctors.Add(doctor);
-                    }
-                }
+                IfSameJMBGLinkSpecialization(specializationsForDoctors, doctors, user);
             }
 
             return doctors;
+        }
+
+        public void IfSameJMBGLinkSpecialization(List<DoctorSpecialization> specializationsForDoctors, List<Doctor> doctors, User user)
+        {
+            foreach (DoctorSpecialization doctorSpecialization in specializationsForDoctors)
+            {
+                if (user.Person.JMBG.Equals(doctorSpecialization.JMBG))
+                {
+                    Model.Doctor doctor = new Model.Doctor(user, new Specialization(doctorSpecialization.Spec));
+                    doctors.Add(doctor);
+                }
+            }
         }
 
         public List<SIMS.Model.Doctor> GetAll()
@@ -69,21 +77,6 @@ namespace SIMS.Repository
                 }
             }
             return doctor;
-        }
-
-        public Boolean Delete(String jmbg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Boolean Create(String jmbg, Specialization specialization)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Boolean Update(String jmbg, Specialization specialization)
-        {
-            throw new NotImplementedException();
         }
 
         public List<SIMS.Model.Doctor> GetBySpecialization(Specialization specialization)

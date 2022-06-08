@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using SIMS.Service;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SIMS.Controller;
 
 namespace SIMS.Model
 {
@@ -16,12 +15,12 @@ namespace SIMS.Model
         public string DoctorID { get; set; }
 
         private readonly QuestionController questionController = new QuestionController();
-                private readonly DoctorController doctorController = new DoctorController();
+        private readonly DoctorController doctorController = new DoctorController();
 
         public Answers()
         {
         }
-        public Answers( Question question, int answer,Doctor doctor)
+        public Answers(Question question, int answer, Doctor doctor)
         {
             ID = 0;
             Question = question;

@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 
 namespace SIMS.Repository
 {
-    public class MedicineStorage
+    public class MedicineStorage : IMedicineStorage
     {
         public List<Medicine> GetAll()
         {
@@ -49,11 +52,6 @@ namespace SIMS.Repository
             return true;
         }
 
-        public Boolean Update(Medicine medicine)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ChangeMedicineStatusOnValid(Medicine medicine)
         {
             List<Medicine> medicines = GetAll();
@@ -93,6 +91,21 @@ namespace SIMS.Repository
         {
             Delete(oldMedicine);
             Create(newMedicine);
+        }
+
+        public List<Medicine> FindInvalidMedicine()
+        {
+            List<Medicine> invalidMedicine = new List<Medicine>();
+            List<Medicine> medicines = GetAll();
+            foreach (Medicine medicineItem in medicines)
+            {
+                if (medicineItem.MedicineStatus == MedicineStatus.Invalid)
+                {
+                    invalidMedicine.Add(medicineItem);
+                }
+            }
+
+            return invalidMedicine;
         }
     }
 }

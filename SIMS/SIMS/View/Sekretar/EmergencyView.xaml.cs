@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using SIMS.Controller;
-using SIMS.Model;
+using System.Windows.Controls;
 
 namespace SIMS.View.Sekretar
 {
@@ -51,7 +53,7 @@ namespace SIMS.View.Sekretar
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             List<EmergencyAppointmentsDTO> emergencyAppointmentsDTOs = appointmentController.GetEmergencyAppointments(pacijentCombobox.SelectedItem as Patient, specijalistaCombobox.SelectedItem as Specialization);
-            if (emergencyAppointmentsDTOs==null)
+            if (emergencyAppointmentsDTOs == null)
             {
                 string messageBoxText = "Termin za pacijenta " + (pacijentCombobox.SelectedItem as Patient).Username + " je zakazan";
                 string caption = "Termin je zakazan";

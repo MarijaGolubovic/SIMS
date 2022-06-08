@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="SIMS.View.DoctorMVVM.AccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.View.DoctorMVVM"
+             xmlns:viewModel="clr-namespace:SIMS.ViewModel.Doctor"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1290">
+
+    <UserControl.DataContext>
+        <viewModel:AccountViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" 
+                           Grid.Column="0"
+                           Text="Prikaz naloga" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="160,90,0,50"/>
+
+
+        <Border Background="#FF36547C"
+                    Grid.Row="1"
+                    Width="160"
+                    Height="220"
+                    HorizontalAlignment="Left"
+                    Margin="160,0,0,30"/>
+
+            <Image Source="/Assets/ljekar-slika.jpg"
+                   Grid.Row="1"
+                   Width="200"
+                   Height="200"
+                   Margin="174,0,0,30"
+                   HorizontalAlignment="Left"/>
+
+            <TextBlock Grid.Row="1" 
+                           Grid.Column="0"
+                           Text="{Binding NameAndSurname}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="40" 
+                           Margin="450,90,0,50"/>
+
+            <TextBlock Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="Korisničko ime:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="2" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Username}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="450,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="3" 
+                           Grid.Column="0"
+                           Text="JMBG:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="3" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.JMBG}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="450,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="4" 
+                           Grid.Column="0"
+                           Text="Telephone:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="4" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.Telephone}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="450,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="5" 
+                           Grid.Column="0"
+                           Text="Datum rodjenja:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="5" 
+                           Grid.Column="0"
+                           Text="{Binding Date}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="450,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="6" 
+                           Grid.Column="0"
+                           Text="E-mail:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="6" 
+                           Grid.Column="0"
+                           Text="{Binding LoggedInUser.Person.EMail}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="450,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="7" 
+                           Grid.Column="0"
+                           Text="Adresa:" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="160,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="7" 
+                           Grid.Column="0"
+                           Text="{Binding Address}" 
+                           FontFamily="Bahnschrift Light"
+                           FontSize="25" Margin="450,0,0,0"
+                           VerticalAlignment="Center"/>
+
+            <Button x:Name="Button_Back"
+                    Content="Nazad"                     
+                    Grid.Column="0"
+                    Grid.Row="9"
+                    Width="70" 
+                    Height="30" Margin="0,60,160,60"
+                Style="{DynamicResource RoundedButtonStyle}"
+                Background="#FF36547C"
+                HorizontalAlignment="Right"
+                Command="{Binding CancelCommand}"
+                FontFamily="Bahnschrift Light"/>
+
+        </Grid>
+</UserControl>

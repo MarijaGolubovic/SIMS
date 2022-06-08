@@ -1,21 +1,12 @@
-﻿using SIMS.Controller;
+﻿using GalaSoft.MvvmLight.Messaging;
+using SIMS.Controller;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SIMS.Model;
 
 namespace SIMS.View.Pacijent
 {
@@ -87,7 +78,7 @@ namespace SIMS.View.Pacijent
 
         public void Confirm(object sender, RoutedEventArgs e)
         {
-            if (checkIfFilled() && appointmentController.CheckIfDateIsValid(formDateTime()))
+            if (checkIfFilled() && appointmentController.IfDateInFuture(formDateTime()))
             {
                 AppointmentForPatientDTO appointmentForPatient = new AppointmentForPatientDTO(DoctorComboBox.SelectedItem as Model.Doctor, formDateTime(), logedInUser, (bool)DoctorPriority.IsChecked);
                 if (appointmentController.CheckIfAvailable(appointmentForPatient))
@@ -127,7 +118,7 @@ namespace SIMS.View.Pacijent
         {
             if (DatePicker.SelectedDate != null)
             {
-                if (DateTime.Compare((DateTime)DatePicker.SelectedDate,DateTime.Now) < 0)
+                if (DateTime.Compare((DateTime)DatePicker.SelectedDate, DateTime.Now) < 0)
                 {
                     DateLabel.Text = "Odaberite datum u buducnosti!";
                     DateLabel.Visibility = Visibility.Visible;

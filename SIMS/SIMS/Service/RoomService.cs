@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Service
 {
@@ -24,7 +27,8 @@ namespace SIMS.Service
         }
 
 
-        public Boolean Delete(string roomID) {
+        public Boolean Delete(string roomID)
+        {
 
             return roomStorage.Delete(roomID);
         }
@@ -41,24 +45,25 @@ namespace SIMS.Service
             return roomStorage.GetRoomById(idRoom);
         }
 
-        public List<Room> GetByType(RoomType type) {
+        public List<Room> GetByType(RoomType type)
+        {
 
 
             return roomStorage.GetByType(type);
 
         }
 
-        public bool isSplitRoom(Room oldRoom, Room firtsNewRoom, Room secondNewRoom) 
+        public bool isSplitRoom(Room oldRoom, Room firtsNewRoom, Room secondNewRoom)
         {
             bool isRoomSplited = false;
             bool isFirstAdded = IsNewRoomAdd(firtsNewRoom);
             bool isSecondAdded = IsNewRoomAdd(secondNewRoom);
-            
+
             if (isFirstAdded && isSecondAdded)
             {
-                roomStorage.Delete(oldRoom.Id);    
+                roomStorage.Delete(oldRoom.Id);
                 isRoomSplited = true;
-                
+
             }
 
             return isRoomSplited;
@@ -77,7 +82,8 @@ namespace SIMS.Service
         }
 
 
-        public bool IsNewRoomAdd(Room newRoom) {
+        public bool IsNewRoomAdd(Room newRoom)
+        {
 
             bool isAdded = false;
             if (!IsRoomAlreadyExist(newRoom))
@@ -104,6 +110,6 @@ namespace SIMS.Service
             }
             return isRoomMerged;
         }
-        
+
     }
 }

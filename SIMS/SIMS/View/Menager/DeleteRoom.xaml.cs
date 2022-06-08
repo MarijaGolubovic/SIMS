@@ -37,16 +37,16 @@ namespace SIMS.Menager
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
-            
-                    Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
-                    List<Room> rooms = roomSerializer.fromCSV("Room.txt");
-                    
+
+            Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
+            List<Room> rooms = roomSerializer.fromCSV("Room.txt");
 
 
 
-                    Rooms.Remove((Room)dataGridRooms.SelectedItem);
-                    roomSerializer.toCSV("Room.txt", Rooms.ToList());
-                    this.NavigationService.Navigate(new RoomsList());
+
+            Rooms.Remove((Room)dataGridRooms.SelectedItem);
+            roomSerializer.toCSV("Room.txt", Rooms.ToList());
+            this.NavigationService.Navigate(new RoomsList());
 
             //  Menager.MainWindowMenager mainWindow = new MainWindowMenager();
             // mainWindow.Show();
@@ -54,10 +54,10 @@ namespace SIMS.Menager
 
             HiddenDeleteLabel.Visibility = Visibility.Visible;
             this.NavigationService.Navigate(new View.Menager.DeleteSuccesfully());
-                    
 
 
-            
+
+
         }
 
         private void Button_Click_TUTORIJAL(object sender, RoutedEventArgs e)
