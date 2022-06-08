@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    internal class TherapyStorage: ITherapyStorage
+    internal class TherapyStorage : ITherapyStorage
     {
         private Serialization.Serializer<Therapy> therapySerializer;
 
@@ -33,7 +35,7 @@ namespace SIMS.Repository
             }
             return therapyForDoctor;
 
-        } 
+        }
         public Boolean Create(Therapy therapy)
         {
             List<Therapy> Therapies = new List<Therapy>();

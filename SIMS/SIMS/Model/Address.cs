@@ -1,10 +1,13 @@
+using SIMS.Model;
+using SIMS.Service;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace SIMS.Model
 {
 
-    public class Address: ValidationBase
+    public class Address : ValidationBase
     {
 
         public String street;

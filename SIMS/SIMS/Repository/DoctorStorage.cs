@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 namespace SIMS.Repository
 {
-    public class DoctorStorage: IDoctorStorage
+    public class DoctorStorage : IDoctorStorage
     {
         private Serialization.Serializer<DoctorSpecialization> doctorSerializer;
         private Serialization.Serializer<User> userSerializer;

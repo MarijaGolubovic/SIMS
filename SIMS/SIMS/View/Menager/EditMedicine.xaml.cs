@@ -1,8 +1,11 @@
-﻿using System;
+﻿using System.Windows.Input;
+using SIMS.Controller;
+using SIMS.Model;
 using System.Collections.Generic;
+using System;
+using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Input;
 
 namespace SIMS.View.Menager
 {

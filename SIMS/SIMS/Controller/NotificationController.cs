@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Model;
+﻿using SIMS.Model;
 using SIMS.Service;
+using System;
+using System.Collections.Generic;
+
 
 namespace SIMS.Controller
 {
@@ -15,6 +16,11 @@ namespace SIMS.Controller
         public List<Notificatoin> GetAllForPatient(String jmbg)
         {
             return notificationService.GetAllForPatient(jmbg);
+        }
+
+        public bool Create(Notificatoin notificatoin)
+        {
+            return notificationService.Create(notificatoin);
         }
     }
 }

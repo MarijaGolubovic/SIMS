@@ -1,8 +1,8 @@
-
-
+using SIMS.Controller;
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
-using SIMS.Controller;
 
 namespace SIMS.Model
 {

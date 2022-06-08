@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using SIMS.Controller;
+﻿using SIMS.Controller;
 using SIMS.Model;
+using System;
+using System.Collections.ObjectModel;
 
 namespace SIMS.ViewModel.Sekretar
 {

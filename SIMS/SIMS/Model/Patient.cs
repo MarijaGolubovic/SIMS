@@ -1,5 +1,8 @@
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Timers;
 
 namespace SIMS.Model
@@ -99,6 +102,12 @@ namespace SIMS.Model
             JMBGP = jMBGP;
             InitialAccount = initialAccount;
             ActivatedAccount = activatedAccount;
+        }
+
+        public Patient(bool initialAccount, bool activatedAccount, int offenseAccount)
+        {
+            ActivatedAccount = activatedAccount;
+            OffenceCounter = offenseAccount;
         }
     }
 }

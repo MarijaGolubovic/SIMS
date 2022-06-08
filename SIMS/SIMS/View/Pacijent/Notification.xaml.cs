@@ -1,8 +1,11 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows;
-using SIMS.Model;
+﻿using SIMS.Model;
 using SIMS.Repository;
+using SIMS.Model;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace SIMS.View.Pacijent
 {

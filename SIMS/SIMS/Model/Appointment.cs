@@ -1,6 +1,6 @@
+using SIMS.Controller;
 using System;
 using System.ComponentModel;
-using SIMS.Controller;
 
 namespace SIMS.Model
 {

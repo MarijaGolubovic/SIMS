@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Repository
 {
-    internal class AllergyStorage: IAllergyStorage
+    internal class AllergyStorage : IAllergyStorage
     {
         private Serialization.Serializer<Allergy> allergySerializer;
 

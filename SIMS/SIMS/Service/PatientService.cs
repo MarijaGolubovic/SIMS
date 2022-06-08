@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
-
+using SIMS.Repository;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Service
 {
@@ -69,6 +71,11 @@ namespace SIMS.Service
                 return false;
             }
 
+        }
+
+        internal void Update(Patient patient)
+        {
+            patientStorage.Update(patient);
         }
 
         public void Update(String jmbg, AccountStatus accountStatus)

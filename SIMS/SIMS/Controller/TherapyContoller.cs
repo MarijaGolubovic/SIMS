@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Model;
+﻿using SIMS.Model;
 using SIMS.Repository;
 using SIMS.Service;
+using System;
+using System.Collections.Generic;
+
 
 
 namespace SIMS.Controller

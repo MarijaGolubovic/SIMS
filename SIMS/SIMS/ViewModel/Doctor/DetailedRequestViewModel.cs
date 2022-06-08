@@ -1,6 +1,6 @@
-﻿using System;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using SIMS.Model;
+using System;
 
 namespace SIMS.ViewModel.Doctor
 {

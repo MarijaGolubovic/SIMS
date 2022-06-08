@@ -1,15 +1,10 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using SIMS.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class ChangePasswordViewModel: BindableBase
+    internal class ChangePasswordViewModel : BindableBase
     {
         public MyICommand ChangePasswordCommand { get; set; }
         public MyICommand CancelCommand { get; set; }
@@ -41,12 +36,12 @@ namespace SIMS.ViewModel.Doctor
         private void OnChange()
         {
             ChangePassword.Validate();
-            if (ChangePassword.IsValid) 
+            if (ChangePassword.IsValid)
             {
                 Messenger.Default.Send("AccountView");
                 MainWindowViewModel.notifier.ShowSuccess("Uspješno!");
             }
-            
+
         }
     }
 }

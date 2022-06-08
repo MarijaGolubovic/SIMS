@@ -1,9 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GalaSoft.MvvmLight.Messaging;
+﻿using SIMS.Controller;
+using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Model;
+using SIMS.Model;
+using SIMS.Repository;
+using SIMS.Model;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.ComponentModel;
+using System;
+using System.Linq;
+using GalaSoft.MvvmLight.Messaging;
 using ToastNotifications.Messages;
 
 namespace SIMS.ViewModel.Doctor

@@ -1,6 +1,9 @@
-﻿using System;
-using SIMS.Controller;
-
+﻿using SIMS.Controller;
+using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 namespace SIMS.Model
 {
     public class Therapy : Serialization.Serializable

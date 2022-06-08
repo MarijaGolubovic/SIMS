@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
 using SIMS.Interfaces;
 using SIMS.Model;
+using System;
+using System.Collections.Generic;
 
 namespace SIMS.Repository
 {

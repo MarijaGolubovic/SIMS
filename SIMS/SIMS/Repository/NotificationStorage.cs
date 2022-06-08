@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using SIMS.Interfaces;
+﻿using SIMS.Interfaces;
 using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 
 namespace SIMS.Repository
 {
-    public class NotificationStorage: INotificationStorage
+    public class NotificationStorage : INotificationStorage
     {
         private PatientStorage patientStorage = new PatientStorage();
 

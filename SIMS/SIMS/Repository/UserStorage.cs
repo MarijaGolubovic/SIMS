@@ -1,10 +1,13 @@
 using SIMS.Interfaces;
+using SIMS.Model;
+using SIMS.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Model
 {
-    public class UserStorage: IUserStorage
+    public class UserStorage : IUserStorage
     {
         public List<User> GetAll()
         {

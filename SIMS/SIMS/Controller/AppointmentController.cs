@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SIMS.Model;
+using SIMS.Service;
+using System;
 using System.Collections.Generic;
 using System.Windows;
-using SIMS.Model;
-using SIMS.Service;
-
 
 namespace SIMS.Controller
 {
@@ -11,16 +10,13 @@ namespace SIMS.Controller
     {
 
         private readonly AppointmentService appointmentService = new AppointmentService();
-        private readonly PatientController patientController = new PatientController();
         private readonly OccupacyRoomService occupacyRoomService = new OccupacyRoomService();
         private readonly SugesstedAppointmentsService sugesstedAppointmentsService = new SugesstedAppointmentsService();
         private readonly EmergencyAppointmentService emergencyAppointmentService = new EmergencyAppointmentService();
 
 
 
-        public AppointmentController()
-        {
-        }
+        public AppointmentController() { }
 
         public void EditRoom(int appointmentId, Room room)
         {
@@ -115,16 +111,6 @@ namespace SIMS.Controller
             return appointmentService.FindSuggestedAppointments(appointmentDTO);
         }
 
-        public bool CheckIfDateIsValid(DateTime date)
-        {
-            if (DateTime.Compare(DateTime.Now, date) > 0)
-            {
-                MessageBox.Show("Nije moguce zakazati termin u proslosti!");
-                return false;
-            }
-            return true;
-        }
-
         public bool CheckIfDateIsValidForDoctor(DateTime date)
         {
             if (DateTime.Compare(DateTime.Now, date) > 0)
@@ -134,21 +120,38 @@ namespace SIMS.Controller
             return true;
         }
 
-        public bool CheckIfDateIsValidForEdit(DateTime old, DateTime chosen)
+        public bool CheckIfDateIsValidForEdit(DateTime old, DateTime selected)
         {
-            if (DateTime.Compare(DateTime.Now, chosen) > 0)
+            if (IfDateInFuture(selected))
+            {
+                return false;
+            }
+            if (IfDateInNearFuture(old, selected))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool IfDateInFuture(DateTime selected)
+        {
+            if (DateTime.Compare(DateTime.Now, selected) > 0)
             {
                 MessageBox.Show("Nije moguce zakazati termin u proslosti!");
                 return false;
             }
-            if ((chosen - old).TotalDays > 7)
+            return true;
+        }
+
+        public bool IfDateInNearFuture(DateTime old, DateTime selected)
+        {
+            if ((selected - old).TotalDays > 7)
             {
                 MessageBox.Show("Termin pregleda je moguce pomjeriti do 7 dana!");
                 return false;
             }
             return true;
         }
-
 
         public Boolean Delete(int appointmentID)
         {

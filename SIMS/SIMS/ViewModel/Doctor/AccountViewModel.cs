@@ -1,14 +1,17 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using SIMS.Model;
+using SIMS.Controller;
 using SIMS.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace SIMS.ViewModel.Doctor
 {
-    internal class AccountViewModel: BindableBase
+    internal class AccountViewModel : BindableBase
     {
         public MyICommand CancelCommand { get; set; }
         public User LoggedInUser { get; set; }

@@ -1,17 +1,11 @@
-﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS.View.Menager
 {
@@ -39,14 +33,14 @@ namespace SIMS.View.Menager
                 Rooms.Add(roomItem);
             }
             selectedMedicine = (Model.Medicine)dataGridMedicinesCorrect.SelectedItem;
-            
-         }
+
+        }
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
             List<Model.Medicine> medicine = medicineStorage.GetAll();
-            
-            foreach(Model.Medicine medicineItem in medicine)
+
+            foreach (Model.Medicine medicineItem in medicine)
             {
                 if (medicineItem.Name.Equals(selectedMedicine.Name))
                 {
@@ -56,8 +50,8 @@ namespace SIMS.View.Menager
                     break;
                 }
             }
-           
-         
+
+
             if (flag)
             {
                 int quantity = int.Parse(quantityBox.Text);
@@ -69,8 +63,8 @@ namespace SIMS.View.Menager
                 }
 
                 Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
-                
-                
+
+
 
                 medicineStorage.EditMedicine(selectedMedicine, newMedecine);
                 View.Menager.EditMedicine editMedicine = new EditMedicine();

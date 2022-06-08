@@ -1,11 +1,14 @@
-using System;
-using System.Collections.Generic;
 using SIMS.Controller;
 using SIMS.Interfaces;
+using SIMS.Model;
+using SIMS.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS.Model
 {
-    public class MedicalRecordStorage: IMedicalRecordStorage
+    public class MedicalRecordStorage : IMedicalRecordStorage
     {
         public List<MedicalRecord> GetAll()
         {

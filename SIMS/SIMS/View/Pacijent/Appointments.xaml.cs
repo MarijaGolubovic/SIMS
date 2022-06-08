@@ -1,12 +1,13 @@
-﻿using System;
+﻿using SIMS.Controller;
+using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Navigation;
-using SIMS.Controller;
-using SIMS.Model;
 
 namespace SIMS.View.Pacijent
 {
@@ -97,6 +98,13 @@ namespace SIMS.View.Pacijent
                     if (item.JMBGP.Equals(logedInUser.Person.JMBG))
                     {
                         item.OffenceCounter += 1;
+                        if (item.OffenceCounter >= 5)
+                        {
+                            patientController.UpdatePatient(item);
+
+                            //ovo ne ugasi prozor
+                            //System.Net.Mime.MediaTypeNames.Application.Exit();
+                        }
                     }
                 }
 
@@ -112,6 +120,15 @@ namespace SIMS.View.Pacijent
             if (SelectedItem != null)
             {
                 NavigationService.Navigate(new EditAppointmentPage(SelectedItem));
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedItem = dataGridAppointmentHistory.SelectedItem as Appointment;
+            if (SelectedItem != null)
+            {
+                NavigationService.Navigate(new DetailsAppointmentPage(SelectedItem));
             }
         }
     }
