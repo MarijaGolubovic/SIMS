@@ -32,7 +32,7 @@ namespace SIMS.View.Menager
             List<Model.Polls> allPolls = pollsSerializer.fromCSV("Polls.txt");
             
             PollesData = new ObservableCollection<Model.Polls>();
-            pollsService.EditAverage();
+            pollsService.SetAverage();
             List<Polls> polls = new List<Polls>();
             foreach (Model.Polls pollItem in allPolls)
             {

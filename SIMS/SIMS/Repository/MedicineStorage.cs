@@ -92,6 +92,7 @@ namespace SIMS.Repository
             Delete(oldMedicine);
             Create(newMedicine);
         }
+
         public List<Medicine> FindInvalidMedicine()
         {
             List<Medicine> invalidMedicine = new List<Medicine>();

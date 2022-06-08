@@ -26,7 +26,7 @@ namespace SIMS.Service
             return Math.Round( sum/numberOfGrade,2);
         }
 
-        public void EditAverage()
+        public void SetAverage()
         {
             List<Polls> polls = GetAll();
             List<Polls> countedAverage = new List<Polls>();
