@@ -78,14 +78,13 @@ namespace SIMS.Menager
 
         private void MenuItem_Click_EditMedicine(object sender, RoutedEventArgs e)
         {
-            View.Menager.EditMedicine editMedicine = new View.Menager.EditMedicine();
-            editMedicine.Show();
+            
+            _mainFrame.NavigationService.Navigate(new View.Menager.EditMedicine());
         }
 
         private void MenuItem_Click_CorrectMedicine(object sender, RoutedEventArgs e)
         {
-            View.Menager.CorrectWindow correctWindow = new View.Menager.CorrectWindow();
-            correctWindow.Show();
+            _mainFrame.NavigationService.Navigate(new View.Menager.CorrectWindow());
         }
 
         private void MenuItem_ShowPolls(object sender, RoutedEventArgs e)

@@ -12,7 +12,7 @@ namespace SIMS.View.Menager
     /// <summary>
     /// Interaction logic for CorrectWindow.xaml
     /// </summary>
-    public partial class CorrectWindow : Window
+    public partial class CorrectWindow : Page
     {
         public static ObservableCollection<Model.Medicine> Rooms { get; set; }
         public static Model.Medicine selectedMedicine;
@@ -68,8 +68,9 @@ namespace SIMS.View.Menager
 
                 medicineStorage.EditMedicine(selectedMedicine, newMedecine);
                 View.Menager.EditMedicine editMedicine = new EditMedicine();
-                editMedicine.Show();
-                this.Close();
+                //editMedicine.Show();
+                //this.Close();
+                this.NavigationService.Navigate(new View.Menager.EditMedicine());
 
             }
 
@@ -77,7 +78,7 @@ namespace SIMS.View.Menager
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.NavigationService.Navigate(new View.Menager.Report());
         }
 
         private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)

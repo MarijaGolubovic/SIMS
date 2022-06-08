@@ -18,11 +18,11 @@
         <DataGrid x:Name="dataGridPolls" ItemsSource="{Binding PollesData}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="53,119,49,100">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Clinic/Doctor" Binding="{Binding JMBG}" Width="*"/>
-                <DataGridTextColumn Header="One" Binding="{Binding One}" Width="*"/>
-                <DataGridTextColumn Header="Two" Binding="{Binding Two}" Width="*"/>
-                <DataGridTextColumn Header="Three" Binding="{Binding Three}" Width="*"/>
-                <DataGridTextColumn Header="Four" Binding="{Binding Four}" Width="*"/>
-                <DataGridTextColumn Header="Fift" Binding="{Binding Fift}" Width="*"/>
+                <DataGridTextColumn Header="One(1)" Binding="{Binding One}" Width="*"/>
+                <DataGridTextColumn Header="Two(2)" Binding="{Binding Two}" Width="*"/>
+                <DataGridTextColumn Header="Three(3)" Binding="{Binding Three}" Width="*"/>
+                <DataGridTextColumn Header="Four(4)" Binding="{Binding Four}" Width="*"/>
+                <DataGridTextColumn Header="Fift(5)" Binding="{Binding Fift}" Width="*"/>
                 <DataGridTextColumn Header="Average" Binding="{Binding Average}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
