@@ -9,6 +9,21 @@
       Title="Report">
 
     <Grid>
-        
+
+        <Grid Height="393" Width="375" HorizontalAlignment="Left" Margin="25,0,0,25">
+            <Viewbox Stretch="Fill" >
+                <Calendar Background="MintCream"  BorderThickness="0"/>
+            </Viewbox>
+        </Grid>
+        <Border BorderBrush="Green" BorderThickness="3" Margin="23,14,23,36">
+            <DataGrid Margin="370,0,0,0" Background="MintCream" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Reason" Binding="{Binding MedicineStatus}" Width="*"/>
+                    <DataGridTextColumn Header="Employer" Binding="{Binding Quantity}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
     </Grid>
 </Page>

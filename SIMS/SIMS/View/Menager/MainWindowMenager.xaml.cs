@@ -15,6 +15,7 @@ namespace SIMS.Menager
             InitializeComponent();
             _mainFrame = this.FindName("MainFrameMenager") as Frame;
             // _mainFrame.NavigationService.Navigate(new MainWindowMenager());
+            _mainFrame.NavigationService.Navigate(new View.Menager.Report());
         }
 
 
