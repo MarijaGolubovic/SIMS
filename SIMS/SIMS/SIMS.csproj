@@ -147,6 +147,7 @@
     <Compile Include="Controller\MeetingController.cs" />
     <Compile Include="Controller\NotificationController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Controller\PollsController.cs" />
     <Compile Include="Controller\QuestionController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\SpecializationController.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\Notificatoin.cs" />
+    <Compile Include="Model\Polls.cs" />
     <Compile Include="Model\Question.cs" />
     <Compile Include="Model\ReportID.cs" />
     <Compile Include="Model\RequestStatus.cs" />
@@ -214,6 +216,7 @@
     <Compile Include="Repository\MeetingStorage.cs" />
     <Compile Include="Repository\NotificationStorage.cs" />
     <Compile Include="Repository\OccupacyRoomStorage.cs" />
+    <Compile Include="Repository\PollsStorage.cs" />
     <Compile Include="Repository\QuestionStorage.cs" />
     <Compile Include="Repository\RoomEquipmentStorage.cs" />
     <Compile Include="Repository\SuppliesStorage.cs" />
@@ -234,6 +237,7 @@
     <Compile Include="Service\NotificationService.cs" />
     <Compile Include="Service\OccupacyRoomService.cs" />
     <Compile Include="Service\PatientService.cs" />
+    <Compile Include="Service\PollsService.cs" />
     <Compile Include="Service\QuesttionService.cs" />
     <Compile Include="Service\RoomEquipmentServices.cs" />
     <Compile Include="Service\RoomService.cs" />
@@ -367,6 +371,9 @@
     </Compile>
     <Compile Include="View\Menager\Rooms.xaml.cs">
       <DependentUpon>Rooms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\ShowPolls.xaml.cs">
+      <DependentUpon>ShowPolls.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\SplitRoom.xaml.cs">
       <DependentUpon>SplitRoom.xaml</DependentUpon>
@@ -631,6 +638,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\ShowPolls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -909,6 +920,7 @@
     <Resource Include="Assets\icons8-logout-16.png" />
     <Resource Include="Assets\ljekar-slika.jpg" />
     <Resource Include="Assets\correct_icon.png" />
+    <Resource Include="Assets\polls_diagram.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

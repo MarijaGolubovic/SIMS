@@ -152,7 +152,7 @@
                             </Border>
                         </Menu>
                     </MenuItem>
-                    <MenuItem Header="Polls" FontSize="22" FontWeight="Bold" Width="84">
+                    <MenuItem Header="Polls" FontSize="22" FontWeight="Bold" Width="84" Click="MenuItem_Click">
                         <Menu  Background="White">
                             <Border BorderBrush="Black" BorderThickness="2">
                                 <MenuItem Background="White" Width="137">
@@ -176,7 +176,7 @@
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_ShowPolls">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/show.png" Height="79" Width="127"></Image>
                                     </MenuItem.Icon>

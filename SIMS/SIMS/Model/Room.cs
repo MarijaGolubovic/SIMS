@@ -88,6 +88,7 @@ namespace SIMS.Model
             }
         }
 
+        public string JMBG { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Room(string id, double size, RoomType type)
         {

@@ -67,6 +67,8 @@ namespace SIMS.Model
             }
         }
 
+        public string JMBG { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public Medicine(string name, List<string> ingredients, int quantity)
         {
             Name = name;

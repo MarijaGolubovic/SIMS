@@ -87,5 +87,15 @@ namespace SIMS.Menager
             View.Menager.CorrectWindow correctWindow = new View.Menager.CorrectWindow();
             correctWindow.Show();
         }
+
+        private void MenuItem_ShowPolls(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.ShowPolls());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
