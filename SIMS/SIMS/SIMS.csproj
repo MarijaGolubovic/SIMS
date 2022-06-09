@@ -198,6 +198,7 @@
     <Compile Include="Model\Notificatoin.cs" />
     <Compile Include="Model\Polls.cs" />
     <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Model\ReportID.cs" />
     <Compile Include="Model\RequestStatus.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
