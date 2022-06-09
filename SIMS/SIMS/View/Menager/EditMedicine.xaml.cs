@@ -6,6 +6,7 @@ using System;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Media.Animation;
 
 namespace SIMS.View.Menager
 {
@@ -26,24 +27,11 @@ namespace SIMS.View.Menager
             Serialization.Serializer<Model.Medicine> medicinceSerializer = new Serialization.Serializer<Model.Medicine>();
             List<Model.Medicine> rooms = medicinceSerializer.fromCSV("medicine.txt");
             Rooms = new ObservableCollection<Model.Medicine>();
-            /*List<string> ingrediets = new List<string>();
-            ingrediets.Add("sastojak 1");
-            ingrediets.Add("sastojak 2");
-            ingrediets.Add("sastojak 3");
-
-           Rooms.Add(new Model.Medicine("Paracetamol", ingrediets, Model.MedicineStatus.Valid, 2));
-           Rooms.Add(new Model.Medicine("Brufen", ingrediets, Model.MedicineStatus.Invalid, 10));
-           Rooms.Add(new Model.Medicine("Efedrin", ingrediets, Model.MedicineStatus.Invalid, 3));
-           Rooms.Add(new Model.Medicine("Omnitus", ingrediets, Model.MedicineStatus.Valid, 6));
-           Rooms.Add(new Model.Medicine("Tylol Hot", ingrediets, Model.MedicineStatus.Valid, 4));*/
-
+            
             foreach (Model.Medicine roomItem in rooms)
             {
                 Rooms.Add(roomItem);
             }
-
-
-
         }
 
         private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -87,14 +75,14 @@ namespace SIMS.View.Menager
                 }
 
                 Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
-                medicineStorage.EditMedicine(selectedMedicine, newMedecine);
-                //  medicineStorage.Delete(selectedMedicine);
-                // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
-                View.Menager.EditMedicine editMedicine = new EditMedicine();
-                // editMedicine.Show();
-                this.NavigationService.Navigate(new EditMedicine());
-                //this.Close();
 
+
+                medicineStorage.EditMedicine(selectedMedicine, newMedecine);
+                
+                feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(feedbackMessage);
+                
             }
         }
 

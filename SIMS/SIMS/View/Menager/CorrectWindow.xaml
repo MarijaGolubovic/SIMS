@@ -24,8 +24,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label FontSize="18" Margin="445,86,281,327" RenderTransformOrigin="0.648,-1.541">Name:</Label>
-        <Label FontSize="18" Width="100"  Margin="445,207,255,204">Ingrediets:</Label>
-        <Label FontSize="18" Width="100" Margin="445,146,255,268">Quantity:</Label>
+        <Label FontSize="18" Width="100"  Margin="445,174,255,237">Ingrediets:</Label>
+        <Label FontSize="18" Width="100" Margin="445,128,255,286">Quantity:</Label>
         <Label FontSize="25" FontWeight="Bold" Margin="528,17,57,386">Correct Medicine</Label>
         <Image HorizontalAlignment="Right" Margin="0,5,281,389" Width="56" RenderTransformOrigin="0.448,-0.109">
             <Image.Source >
@@ -33,19 +33,19 @@
             </Image.Source>
         </Image>
 
-        <TextBox x:Name="nameBox"  Height="25" Width="180" Margin="530,80,34,309" Background="MintCream"></TextBox>
-        <TextBox x:Name="igredientsBox"  Width="180" Margin="554,207,58,167" Background="MintCream"/>
-        <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="530,120,34,230" Background="MintCream"></TextBox>
+        <TextBox x:Name="nameBox"  Height="25" Width="180" Margin="558,90,62,327" Background="MintCream"></TextBox>
+        <TextBox x:Name="igredientsBox"  Width="180" Margin="558,174,62,200" Background="MintCream"/>
+        <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="558,133,62,292" Background="MintCream"></TextBox>
 
-        <Label FontSize="18" Height="35" Width="100" Margin="445,300,255,115">Comment:</Label>
-        <TextBox x:Name="commentBox" Width="180" Margin="558,300,62,90" IsReadOnly="True" TextWrapping="Wrap" Background="MintCream"/>
+        <Label FontSize="18" Height="35" Width="100" Margin="445,268,255,147">Comment:</Label>
+        <TextBox x:Name="commentBox" Width="180" Margin="558,268,62,120" IsReadOnly="True" TextWrapping="Wrap" Background="MintCream"/>
 
         <Button x:Name="buttonCORRECT" Height="25" Width="100"  Background="MintCream" Margin="568,385,95,40" Click="Button_Click_OK">CORRECT</Button>
         <Button Height="25" Width="100" Background="MintCream" Margin="698,385,0,40" Click="Button_Click_CANCEL">CANCEL</Button>
 
 
 
-        <Label x:Name="feedbackMessage" Foreground="Green" FontSize="18" RenderTransformOrigin="-0.358,1.454" Margin="59,385,490,27" Opacity="0">Medicine succesfully correct!</Label>
+        <Label x:Name="feedbackMessage" Foreground="Green" FontSize="18" RenderTransformOrigin="-0.358,1.454" Margin="59,385,490,27" Opacity="0">Medicine succesfully corrected!</Label>
     </Grid>
 
 </Page>
