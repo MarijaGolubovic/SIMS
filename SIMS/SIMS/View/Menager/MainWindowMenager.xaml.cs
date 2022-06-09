@@ -97,5 +97,10 @@ namespace SIMS.Menager
         {
 
         }
+
+        private void MenuItem_OccupacyRoom(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.Report());
+        }
     }
 }

@@ -111,7 +111,7 @@
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_OccupacyRoom">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/clock.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
