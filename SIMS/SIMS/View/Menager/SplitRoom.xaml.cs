@@ -17,6 +17,8 @@ namespace SIMS.View.Menager
         {
             InitializeComponent();
             splitedRoomName.Text = Menager.RenovateWindow.selectedRoom.Id;
+            firstRoomSize.Text = (RenovateWindow.selectedRoom.Size/2).ToString();
+            secondRoomSize.Text = (RenovateWindow.selectedRoom.Size / 2).ToString();
 
         }
 
@@ -25,7 +27,7 @@ namespace SIMS.View.Menager
             Model.Room oldRoom = RenovateWindow.selectedRoom;
             Model.Room firstNewRoom = new Model.Room(firstRoomId.Text, Double.Parse(firstRoomSize.Text), Model.RoomType.HOSPITAL_ROOM);
             Model.Room secondNewRoom = new Model.Room(secondRoomId.Text, Double.Parse(secondRoomSize.Text), Model.RoomType.OPPERATING_ROOM);
-
+            
             double newRoomSize = Double.Parse(firstRoomSize.Text) + Double.Parse(secondRoomSize.Text);
             if (roomService.IsRoomAlreadyExist(firstNewRoom))
             {
@@ -72,6 +74,50 @@ namespace SIMS.View.Menager
         private void Button_Click_CANCELSplit(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new RenovateWindow());
+        }
+
+        private void firstRoomSize_LostFocus(object sender, RoutedEventArgs e)
+        {
+            double oldSize = RenovateWindow.selectedRoom.Size;
+            double firstSize = double.Parse(firstRoomSize.Text);
+            secondRoomSize.Text = (oldSize - firstSize).ToString();
+        }
+
+        private void firstRoomId_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            if (firstRoomId.Text.Equals(""))
+            {
+                firstRoomId.Foreground = System.Windows.Media.Brushes.Red;
+                firstRoomId.Text = "Enter room id!";
+            }
+            else
+            {
+                firstRoomId.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+
+        private void firstRoomId_GotFocus(object sender, RoutedEventArgs e)
+        {
+            firstRoomId.Foreground = System.Windows.Media.Brushes.Black;
+        }
+
+        private void secondRoomId_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            if (secondRoomId.Text.Equals(""))
+            {
+                secondRoomId.Foreground = System.Windows.Media.Brushes.Red;
+                secondRoomId.Text = "Enter room id!";
+            }
+            else
+            {
+                secondRoomId.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private void secondRoomId_GotFocus(object sender, RoutedEventArgs e)
+        {
+            secondRoomId.Foreground = System.Windows.Media.Brushes.Black;
         }
     }
 }
