@@ -6,12 +6,14 @@ using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace SIMS.View.Menager
 {
     /// <summary>
     /// Interaction logic for CorrectWindow.xaml
     /// </summary>
+    /// 
     public partial class CorrectWindow : Page
     {
         public static ObservableCollection<Model.Medicine> Rooms { get; set; }
@@ -70,7 +72,19 @@ namespace SIMS.View.Menager
                 View.Menager.EditMedicine editMedicine = new EditMedicine();
                 //editMedicine.Show();
                 //this.Close();
-                this.NavigationService.Navigate(new View.Menager.EditMedicine());
+                List<Model.Medicine> rooms = medicineService.FindInvalidMedicine();
+
+                rooms.Remove(selectedMedicine);
+                if (selectedMedicine != null)
+                {
+                    dataGridMedicinesCorrect.ItemsSource = rooms;
+                    dataGridMedicinesCorrect.Items.Refresh();
+                }
+                feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(feedbackMessage);
+                // this.NavigationService.Navigate(new View.Menager.EditMedicine());
+                
 
             }
 
