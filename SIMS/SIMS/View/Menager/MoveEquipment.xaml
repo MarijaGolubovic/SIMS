@@ -1,4 +1,4 @@
-﻿<Window x:Class="SIMS.View.Menager.MoveEquipment"
+﻿<Page x:Class="SIMS.View.Menager.MoveEquipment"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,27 +6,69 @@
         xmlns:local="clr-namespace:SIMS.View.Menager"
         mc:Ignorable="d"
         Title="MoveEquipment" Height="450" Width="800">
+
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:5" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
     <Grid>
-        <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding MoveEquipmentObservable}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="0,66,599,10" PreviewMouseDoubleClick="DataGridEquipment_PreviewMouseDoubleClickEquipment">
+        <Label FontSize="18" Margin="-8,75,0,341" HorizontalAlignment="Left">Select equipment who wont to move!</Label>
+        <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding MoveEquipmentObservable}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="0,114,552,68" MouseDoubleClick="DataGridUpdate_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                <!--DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/-->
             </DataGrid.Columns>
         </DataGrid>
-        <Label FontSize="18" Height="40" Margin="336,66,385,314">Room:</Label>
-        <TextBox x:Name="RoomChoose1" Height=" 30" Width="200" Margin="469,66,123,324"></TextBox>
-        <Label FontSize="18" Height="40" Margin="336,111,345,269" >Equipment:</Label>
-        <TextBox x:Name="EquipmentBox" Height=" 30" Width="200" Margin="469,121,123,269" ></TextBox>
-        <Label FontSize="18" Height="40" Margin="336,156,345,224" >Destination:</Label>
-        <TextBox x:Name="destinationBox" Height=" 30" Width="200" Margin="469,166,123,224"  ></TextBox>
-        <Label FontSize="18" Height="40" Margin="336,215,345,165" RenderTransformOrigin="0.503,-0.184" >Begin:</Label>
-        <TextBox  x:Name="beginBox" Height=" 30" Width="200" Margin="469,225,123,165" ></TextBox>
-        <Label FontSize="18" Height="40" Margin="336,273,345,107" >End:</Label>
-        <TextBox x:Name="endBox" Height=" 30" Width="200" Margin="469,283,123,107" RenderTransformOrigin="0.511,-0.408" ></TextBox>
-        <Button x:Name="OkButton" Height="25" Width="100" Background="MintCream" Margin="493,342,199,53" Click="OkButton_MoveEquipment">OK</Button>
-        <Button x:Name= "CancelButon" Height="25" Width="100" Background="MintCream" Margin="623,342,69,53" RenderTransformOrigin="0.88,0.447" >CANCEL</Button>
-        <Label FontSize="18" Height="30" Margin="10,0,716,376">Search:</Label>
-        <TextBox x:Name="searchFiled" Height="25" Width="150" Margin="94,0,548,375"></TextBox>
-        <Button Height="25" Width="100" Background="MintCream" Margin="265,0,427,376" Click="Button_Click_SEARCHEquipment">SEARCH</Button>
+
+        <Label FontSize="25" FontWeight="Bold" Margin="475,43,103,364">Move equipment</Label>
+
+        <Image HorizontalAlignment="Right" Margin="0,27,330,341" Width="56">
+            <Image.Source >
+                <BitmapImage  UriSource="/Assets/png_move_equipment.png"  />
+            </Image.Source>
+        </Image>
+
+        <Label FontSize="18" Height="40" Margin="357,114,364,296">Room:</Label>
+        <TextBox x:Name="RoomChoose1" Height=" 25" Width="200" Margin="497,114,103,311" Background="MintCream" IsReadOnly="True"></TextBox>
+
+        <Label FontSize="18" Height="40" Margin="357,149,324,261" >Equipment:</Label>
+        <TextBox x:Name="EquipmentBox" Height=" 25" Width="200" Margin="497,154,103,271" Background="MintCream" ></TextBox>
+
+        <Label FontSize="18" Height="40" Margin="357,187,324,223" RenderTransformOrigin="0.464,0.21" >Destination:</Label>
+        <ComboBox x:Name="destinationCombo" Height="25" Margin="497,194,103,231" Background="MintCream" GotFocus="destinationCombo_GotFocus" Mouse.MouseEnter="destinationCombo_MouseEnter" MouseDown="destinationCombo_MouseDown">
+            <ComboBoxItem Background="MintCream">soba 213</ComboBoxItem>
+            <ComboBoxItem Background="MintCream">soba 2</ComboBoxItem>
+            <ComboBoxItem Background="MintCream">soba 21</ComboBoxItem>
+            <ComboBoxItem Background="MintCream">w3</ComboBoxItem>
+            <ComboBoxItem Background="MintCream">soba 212</ComboBoxItem>
+            <ComboBoxItem Background="MintCream">op1</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="destinationError" Foreground="LightGray" Height="25" Margin="697,194,-9,231">Choose destination!</Label>
+
+        <Label FontSize="18" Height="40" Margin="357,225,324,185" RenderTransformOrigin="0.503,-0.184" >Begin period:</Label>
+        <DatePicker x:Name="beginPeriod" Height="25" Background="MintCream" Margin="497,232,103,193" GotFocus="beginPeriod_GotFocus"></DatePicker>
+        <Label x:Name="beginError"  Height="25" Width="100" Margin="702,232,-2,193" Foreground="LightGray">Choose date!</Label>
+
+        <Label FontSize="18" Height="40" Margin="357,270,324,140" >End period:</Label>
+        <DatePicker x:Name="endPeriod" Height="25" Background="MintCream" Margin="495,277,105,148" RenderTransformOrigin="0.797,0.393" GotFocus="endPeriod_GotFocus"></DatePicker>
+        <Label x:Name="endError" Height="25" Width="100" Margin="702,276,-2,149" Foreground="LightGray">Choose date!</Label>
+
+        <Button x:Name="OkButton" Height="25" Width="100" Background="MintCream" Margin="585,357,115,68" Click="OkButton_MoveEquipment">MOVE</Button>
+        <Button x:Name= "CancelButon" Height="25" Width="100" Background="MintCream" Margin="690,357,10,68" RenderTransformOrigin="0.88,0.447" Click="CancelButon_BACK">BACK</Button>
+        <Label x:Name="okError" Height="26" Margin="559,389,55,35" Foreground="LightGray">You must entered data in fields!</Label>
+        
+        
+        <Label FontSize="18" Height="30" Margin="-8,17,0,403" HorizontalAlignment="Left">Search:</Label>
+        <TextBox x:Name="searchFiled" Height="25" Width="150" Margin="54,22,576,403" Background="MintCream"></TextBox>
+        <Button Height="25" Width="100" Background="MintCream" Margin="219,22,481,403" Click="Button_Click_SEARCHEquipment" RenderTransformOrigin="0.346,0.543">SEARCH</Button>
+
+        <Button x:Name="buttonCOOSE" Height="25" Width="100" Background="MintCream" Margin="148,387,552,38" Click="Button_Click_COOSE">CHOOSE</Button>
+        <Label x:Name="cooseError" Foreground="LightGray" Margin="130,407,524,12">Must choose a equipment!</Label>
+        <TextBox x:Name="feedbackMessageBox" FontSize="18" Margin="276,357,241,54" Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Opacity="0"/>
+
+        <Button Height="25" Width="100" Background="MintCream" Margin="0,387,700,38">TUTORIAL</Button>
     </Grid>
-</Window>
+</Page>

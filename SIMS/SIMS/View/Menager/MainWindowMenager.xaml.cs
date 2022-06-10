@@ -62,9 +62,10 @@ namespace SIMS.Menager
 
         private void MenuItem_ClickMoveEquipment(object sender, RoutedEventArgs e)
         {
-            View.Menager.Rooms moveWindow = new View.Menager.Rooms();
-            moveWindow.Show();
-            this.Close();
+            // View.Menager.Rooms moveWindow = new View.Menager.Rooms();
+            //moveWindow.Show();
+            //this.Close();
+            _mainFrame.NavigationService.Navigate(new View.Menager.Rooms());
         }
 
         private void MenuItem_BackToHomePage(object sender, RoutedEventArgs e)
