@@ -209,7 +209,7 @@
                             </Border>
                         </Menu>
                     </MenuItem>
-                    <MenuItem Header="Tutorial" FontSize="22" FontWeight="Bold" Width="125"></MenuItem>
+                    <MenuItem Header="Tutorial" FontSize="22" FontWeight="Bold" Width="125" Click="MenuItem_Click_Tutorial"></MenuItem>
                     <MenuItem Header="My Account" FontSize="22" FontWeight="Bold" RenderTransformOrigin="1.023,0.559" Width="150" Click="MenuItem_Click_MyAccount"/>
                 </Menu>
             </Grid>
