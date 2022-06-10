@@ -24,7 +24,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>obj\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -346,9 +346,6 @@
     <Compile Include="View\Menager\EditMedicine.xaml.cs">
       <DependentUpon>EditMedicine.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
-      <DependentUpon>EqupmentPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
     </Compile>
@@ -360,6 +357,9 @@
     </Compile>
     <Compile Include="View\Menager\MoveEquipment.xaml.cs">
       <DependentUpon>MoveEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MyAccount.xaml.cs">
+      <DependentUpon>MyAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\RenovateForm.xaml.cs">
       <DependentUpon>RenovateForm.xaml</DependentUpon>
@@ -615,10 +615,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Menager\EqupmentPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Menager\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -632,6 +628,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\MoveEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\MyAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -944,6 +944,8 @@
     <Resource Include="Assets\correct_icon.png" />
     <Resource Include="Assets\polls_diagram.png" />
     <Resource Include="Assets\correct.png" />
+    <Resource Include="Assets\png_move_equipment.png" />
+    <Resource Include="Assets\account_icon.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

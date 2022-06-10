@@ -103,5 +103,10 @@ namespace SIMS.Menager
         {
             _mainFrame.NavigationService.Navigate(new View.Menager.Report());
         }
+
+        private void MenuItem_Click_MyAccount(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.MyAccount());
+        }
     }
 }
