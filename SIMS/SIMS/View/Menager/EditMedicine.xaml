@@ -15,7 +15,7 @@
         </Storyboard>
     </Page.Resources>
     <Grid>
-        <Label Width="300" FontSize="15" Margin="49,7,451,413">Select medicine who want to change!</Label>
+        <Label FontSize="18" Margin="10,7,473,408">Select medicine who want to change!</Label>
         <DataGrid x:Name="dataGridMedicines" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  MouseDoubleClick="dataGridMedicines_MouseDoubleClick"  HorizontalAlignment="Left" Width="350" Margin="-1,42,0,72">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
