@@ -34,33 +34,7 @@ namespace SIMS.View.Menager
             }
         }
 
-        private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            selectedMedicine = (Model.Medicine)dataGridMedicines.SelectedItem;
-
-            List<string> medecineIgredients = new List<string>();
-            foreach (string item in selectedMedicine.Ingredients)
-            {
-                medecineIgredients.Add(item);
-            }
-
-
-            string igredients = "";
-
-            for (int i = 1; i < medecineIgredients.Count; i++)
-            {
-                igredients = medecineIgredients[0];
-                igredients += ",";
-                igredients += medecineIgredients[i];
-
-            }
-
-
-            nameBox.Text = selectedMedicine.Name;
-            quantityBox.Text = selectedMedicine.Quantity.ToString();
-            igredientsBox.Text = igredients;
-            flag = true;
-        }
+       
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
@@ -91,6 +65,32 @@ namespace SIMS.View.Menager
             this.NavigationService.Navigate(new Report());
         }
 
-       
+        private void Button_Click_CHOSE(object sender, RoutedEventArgs e)
+        {
+            selectedMedicine = (Model.Medicine)dataGridMedicines.SelectedItem;
+
+            List<string> medecineIgredients = new List<string>();
+            foreach (string item in selectedMedicine.Ingredients)
+            {
+                medecineIgredients.Add(item);
+            }
+
+
+            string igredients = "";
+
+            for (int i = 1; i < medecineIgredients.Count; i++)
+            {
+                igredients = medecineIgredients[0];
+                igredients += ",";
+                igredients += medecineIgredients[i];
+
+            }
+
+
+            nameBox.Text = selectedMedicine.Name;
+            quantityBox.Text = selectedMedicine.Quantity.ToString();
+            igredientsBox.Text = igredients;
+            flag = true;
+        }
     }
 }
