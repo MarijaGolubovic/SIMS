@@ -13,20 +13,21 @@ namespace SIMS.View.Menager
     public partial class Report : Page
     {
         public static ObservableCollection<Model.Report> ReportData { get; set; }
+        String sectedDate = "";
+        List<Model.Report> allReport = new List<Model.Report>();
+        int date = 0;
         public Report()
+
         {
             InitializeComponent();
             this.DataContext = this;
-            List<Model.Report> allReport = new List<Model.Report>();
+            
             ReportData = new ObservableCollection<Model.Report>();
 
-            Model.Report r1 = new Model.Report("op1", "operacija", "Dejan");
             allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
             allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
             allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
-            allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
-            allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
-            allReport.Add(r1);
+         
 
             foreach (Model.Report report in allReport)
             {
@@ -36,9 +37,5 @@ namespace SIMS.View.Menager
             
         }
 
-        private void calendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
-        {
-            //calendar.DisplayDate = DateTime.Now;
-        }
     }
 }

@@ -8,11 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Report">
 
+    
     <Grid>
-
+        
         <Grid Height="393" Width="375" HorizontalAlignment="Left" Margin="25,0,0,25">
             <Viewbox Stretch="Fill" >
-                <Calendar x:Name="calendar" Background="MintCream"  BorderThickness="0" DisplayDateChanged="calendar_DisplayDateChanged"/>
+                <Calendar x:Name="calendar" Background="MintCream"  BorderThickness="0"/>
             </Viewbox>
         </Grid>
         <Border BorderBrush="Green" BorderThickness="3" Margin="23,14,23,36">
@@ -24,6 +25,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-
     </Grid>
 </Page>
