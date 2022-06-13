@@ -33,5 +33,15 @@ namespace SIMS.View.Menager
         {
             _mainTutorial.NavigationService.Navigate(new Tutorials.AddRoomTutorial());
         }
+
+        private void Button_Click_DELETE(object sender, RoutedEventArgs e)
+        {
+           _mainTutorial.NavigationService.Navigate(new Tutorials.DelateRoomTutorial());
+        }
+
+        private void Button_Click_EDIT(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.UpdateRoomTutorial());
+        }
     }
 }

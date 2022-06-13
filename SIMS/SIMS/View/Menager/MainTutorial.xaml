@@ -10,8 +10,8 @@
 
     <Grid>
         <Button Height="25" Margin="0,10,760,395" Background="MintCream" Click="Button_Click_TutorialADD">ADD ROOM</Button>
-        <Button Height="25" Margin="0,40,760,365" Background="MintCream">EDIT ROOM</Button>
-        <Button Height="25" Margin="0,70,760,335" Background="MintCream">DELETE ROOM</Button>
+        <Button Height="25" Margin="0,40,760,365" Background="MintCream" Click="Button_Click_EDIT">EDIT ROOM</Button>
+        <Button Height="25" Margin="0,70,760,335" Background="MintCream" Click="Button_Click_DELETE">DELETE ROOM</Button>
         <Button Height="25" Margin="0,100,760,305" Background="MintCream">RENOVATE ROOM</Button>
         <Button Height="25" Margin="0,130,760,275" Background="MintCream" RenderTransformOrigin="0.485,-0.198">ADD MEDICINE</Button>
         <Button Height="25" Background="MintCream" Margin="0,160,760,245">UPDATE MEDICINE</Button>

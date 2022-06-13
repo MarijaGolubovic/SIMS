@@ -8,12 +8,15 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DelateRoomTutorial">
 
-    <Grid>
-        <Label  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="367,23,269,375" FontWeight="Black" Width="164" Height="52">Delete room</Label>
-        <Image RenderTransformOrigin="0.482,0.735" Margin="293,23,438,376">
-            <Image.Source >
-                <BitmapImage  UriSource="/Assets/delete_room.png"  />
-            </Image.Source>
-        </Image>
-    </Grid>
+        <Grid RenderTransformOrigin="0.617,0.502" HorizontalAlignment="Left" Width="800">
+            <Image Source="/Assets/delete_room_image.png"  VerticalAlignment="Bottom" Margin="10,0,357,108" RenderTransformOrigin="-0.021,6.656" />
+            <Label Content="Delete room tutorial" RenderTransformOrigin="0.834,1.411" FontSize="18"  FontWeight="Bold" Margin="517,23,85,380"/>
+            <Grid Height="270" Width="320"  Margin="450,90,20,67">
+
+                <Label FontSize="15" Margin="10,38,10,199">1. Clic on Rooms->Delete (mark red dart)</Label>
+                <Label FontSize="15" Margin="10,73,0,164">2. Select room from data grid</Label>
+                <Label FontSize="15" Margin="10,108,10,126" >3.Clic on button DELETE</Label>
+
+            </Grid>
+        </Grid>
 </Page>

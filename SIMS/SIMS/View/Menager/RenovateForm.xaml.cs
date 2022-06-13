@@ -46,7 +46,7 @@ namespace SIMS.View.Menager
 
             //            string message= occupacyRoomService.RenovateRoom(roomItem, DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value, renovationMethod.Text);
 
-            if (occupacyRoomService.EndBeforeBegin(DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value))
+            if (occupacyRoomService.IsEndBeforeBegin(DatePickerBegin.SelectedDate.Value, DatePickerEnd.SelectedDate.Value))
             {
                 MessageBox.Show("End before begin!");
             }
