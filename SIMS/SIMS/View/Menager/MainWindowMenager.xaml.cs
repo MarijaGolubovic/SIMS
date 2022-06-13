@@ -114,5 +114,10 @@ namespace SIMS.Menager
         {
             _mainFrame.NavigationService.Navigate(new View.Menager.MainTutorial());
         }
+
+        private void MenuItem_Click_DeleteMedicine(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.DeleteMedicine());
+        }
     }
 }

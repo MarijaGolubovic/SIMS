@@ -43,5 +43,25 @@ namespace SIMS.View.Menager
         {
             _mainTutorial.NavigationService.Navigate(new Tutorials.UpdateRoomTutorial());
         }
+
+        private void Button_Click_RENOVATE(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.RenovateRoomTutorial());
+        }
+
+        private void Button_Click_ADD_MEDICINE(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.AddMedicineTutorial());
+        }
+
+        private void Button_Click_UPDATE_MEDICINE(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.UpdateMedicineTutorial());
+        }
+
+        private void Button_Click_DELETE_MEDICINE(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.DeleteMedicineTutorial());
+        }
     }
 }

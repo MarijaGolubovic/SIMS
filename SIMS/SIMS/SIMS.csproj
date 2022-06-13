@@ -184,6 +184,7 @@
     <Compile Include="Model\AppointmentForPatientDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\BeginEndTime.cs" />
     <Compile Include="Model\ChangePassword.cs" />
     <Compile Include="Model\DaysOffRequestDTO.cs" />
     <Compile Include="Model\EmergencyAppointmentsDTO.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Model\EquipmentDTO.cs" />
     <Compile Include="Model\MedicineStatus.cs" />
     <Compile Include="Model\Meeting.cs" />
+    <Compile Include="Model\MoveRoomEquipmentDTO.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
@@ -340,6 +342,9 @@
     <Compile Include="View\Menager\CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\DeleteMedicine.xaml.cs">
+      <DependentUpon>DeleteMedicine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
       <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
     </Compile>
@@ -348,6 +353,9 @@
     </Compile>
     <Compile Include="View\Menager\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MainTutorial.xaml.cs">
+      <DependentUpon>MainTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\MedecineList.xaml.cs">
       <DependentUpon>MedecineList.xaml</DependentUpon>
@@ -385,17 +393,29 @@
     <Compile Include="View\Menager\AddMedicine.xaml.cs">
       <DependentUpon>AddMedicine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\AddMedicineTutorial.xaml.cs">
+      <DependentUpon>AddMedicineTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\AddRoomTutorial.xaml.cs">
       <DependentUpon>AddRoomTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\Tutorials\DelateRoomTutorial.xaml.cs">
       <DependentUpon>DelateRoomTutorial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\DeleteMedicineTutorial.xaml.cs">
+      <DependentUpon>DeleteMedicineTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\RenovateRoomTutorial.xaml.cs">
       <DependentUpon>RenovateRoomTutorial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\UpdateMedicineTutorial.xaml.cs">
+      <DependentUpon>UpdateMedicineTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\UpdateRoomTutorial.xaml.cs">
       <DependentUpon>UpdateRoomTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\TutorialVideo.xaml.cs">
+      <DependentUpon>TutorialVideo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
@@ -607,6 +627,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\DeleteMedicine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\DeleteSuccesfully.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -616,6 +640,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Menager\LogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\MainTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -667,6 +695,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Menager\Tutorials\AddMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\AddRoomTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -675,11 +707,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\Tutorials\DeleteMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\RenovateRoomTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\Tutorials\UpdateMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\UpdateRoomTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\TutorialVideo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -890,6 +934,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\update_medicine_image.png" />
+    <Resource Include="Assets\update_room_image.png" />
     <Resource Include="Assets\vesti10.png" />
     <Resource Include="Assets\vesti9.png" />
     <Resource Include="Assets\vesti8.png" />
@@ -929,7 +975,7 @@
     <Resource Include="Assets\renovate_room.png" />
     <Resource Include="Assets\edit_room.png" />
     <Resource Include="Assets\delete_room.png" />
-    <Resource Include="Assets\select_room_image.png" />
+    <Resource Include="Assets\add_room_image.png" />
     <Resource Include="Assets\max_def.png" />
     <Resource Include="Assets\max_mo.png" />
     <Resource Include="Assets\terapija.jpg" />
@@ -946,6 +992,10 @@
     <Resource Include="Assets\correct.png" />
     <Resource Include="Assets\png_move_equipment.png" />
     <Resource Include="Assets\account_icon.png" />
+    <Resource Include="Assets\delete_room_image.png" />
+    <Resource Include="Assets\renovate_room_image.png" />
+    <Resource Include="Assets\add_medicine_image.png" />
+    <Resource Include="Assets\delete_medicine_image.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -10,7 +10,7 @@
 
     <Grid>
         <Image Source="/Assets/update_room_image.png"  VerticalAlignment="Bottom" Margin="10,0,357,108"  />
-        <Label Content="Update room tutorial"  FontSize="18"  FontWeight="Bold" Margin="517,23,85,380"/>
+        <Label Content="Update room tutorial"  FontSize="18"  FontWeight="Bold" Margin="470,23,30,380"/>
         <Grid Height="270" Width="320"  Margin="450,90,20,67">
 
             <Label FontSize="15" Margin="10,38,10,199">1. Clic on Rooms->Update (mark red dart)</Label>

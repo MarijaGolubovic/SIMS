@@ -12,10 +12,10 @@
         <Button Height="25" Margin="0,10,760,395" Background="MintCream" Click="Button_Click_TutorialADD">ADD ROOM</Button>
         <Button Height="25" Margin="0,40,760,365" Background="MintCream" Click="Button_Click_EDIT">EDIT ROOM</Button>
         <Button Height="25" Margin="0,70,760,335" Background="MintCream" Click="Button_Click_DELETE">DELETE ROOM</Button>
-        <Button Height="25" Margin="0,100,760,305" Background="MintCream">RENOVATE ROOM</Button>
-        <Button Height="25" Margin="0,130,760,275" Background="MintCream" RenderTransformOrigin="0.485,-0.198">ADD MEDICINE</Button>
-        <Button Height="25" Background="MintCream" Margin="0,160,760,245">UPDATE MEDICINE</Button>
-        <Button Height="25" Background="MintCream" Margin="0,190,760,215">DELETE MEDICINE</Button>
+        <Button Height="25" Margin="0,100,760,305" Background="MintCream" Click="Button_Click_RENOVATE">RENOVATE ROOM</Button>
+        <Button Height="25" Margin="0,130,760,275" Background="MintCream" Click="Button_Click_ADD_MEDICINE" RenderTransformOrigin="0.485,-0.198">ADD MEDICINE</Button>
+        <Button Height="25" Background="MintCream" Margin="0,160,760,245" Click="Button_Click_UPDATE_MEDICINE">UPDATE MEDICINE</Button>
+        <Button Height="25" Background="MintCream" Margin="0,190,760,215" Click="Button_Click_DELETE_MEDICINE">DELETE MEDICINE</Button>
         <Button Height="25" Background="MintCream" Margin="0,220,760,185">ADD POOL</Button>
         <Button Height="25" Background="MintCream" Margin="0,250,760,155">EDIT POOL</Button>
         <Button Height="25" Background="MintCream" Margin="0,280,760,125">DELETE POOL</Button>

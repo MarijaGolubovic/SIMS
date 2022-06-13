@@ -136,7 +136,7 @@
                                 </MenuItem>
                             </Border>
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137" FontWeight="Bold">
+                                <MenuItem Background="White" Width="137" FontWeight="Bold" Click="MenuItem_Click_DeleteMedicine">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/delete.png" Height="79" Width="127"/>
                                     </MenuItem.Icon>
