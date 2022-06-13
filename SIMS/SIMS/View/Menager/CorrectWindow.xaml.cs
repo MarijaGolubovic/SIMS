@@ -69,9 +69,6 @@ namespace SIMS.View.Menager
 
 
                 medicineStorage.EditMedicine(selectedMedicine, newMedecine);
-                View.Menager.EditMedicine editMedicine = new EditMedicine();
-                //editMedicine.Show();
-                //this.Close();
                 List<Model.Medicine> rooms = medicineService.FindInvalidMedicine();
 
                 rooms.Remove(selectedMedicine);
@@ -83,7 +80,6 @@ namespace SIMS.View.Menager
                 feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
                 Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
                 sb.Begin(feedbackMessage);
-                // this.NavigationService.Navigate(new View.Menager.EditMedicine());
                 
 
             }
@@ -95,7 +91,8 @@ namespace SIMS.View.Menager
             this.NavigationService.Navigate(new View.Menager.Report());
         }
 
-        private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void Button_Click_CHOOSE(object sender, RoutedEventArgs e)
         {
             selectedMedicine = (Model.Medicine)dataGridMedicinesCorrect.SelectedItem;
 
@@ -133,7 +130,6 @@ namespace SIMS.View.Menager
             quantityBox.Text = selectedMedicine.Quantity.ToString();
             igredientsBox.Text = igredients;
             flag = true;
-
         }
     }
 }

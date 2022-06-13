@@ -12,23 +12,23 @@ namespace SIMS.View.Menager
     /// </summary>
     public partial class Report : Page
     {
-        public static ObservableCollection<Model.Report> ReportData { get; set; }
-        String sectedDate = "";
+        public  ObservableCollection<Model.Report> ReportData { get; set; }
+       
         List<Model.Report> allReport = new List<Model.Report>();
-        int date = 0;
+        
         public Report()
 
         {
             InitializeComponent();
-            this.DataContext = this;
+            
             
             ReportData = new ObservableCollection<Model.Report>();
 
             allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
             allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
             allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
-         
 
+            this.DataContext = this;
             foreach (Model.Report report in allReport)
             {
                 ReportData.Add(report);

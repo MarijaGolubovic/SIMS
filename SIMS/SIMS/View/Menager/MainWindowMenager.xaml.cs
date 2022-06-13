@@ -23,7 +23,8 @@ namespace SIMS.Menager
         private void Label_MouseDoubleClickSignOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             View.Menager.LogWindow logWindow = new View.Menager.LogWindow();
-            logWindow.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 

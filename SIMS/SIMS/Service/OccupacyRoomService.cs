@@ -10,30 +10,31 @@ namespace SIMS.Service
     {
         private IOccupacyRoomStorage occupacyRoomStorage = new Repository.OccupacyRoomStorage();
 
-        public String RenovateRoom(Model.Room room, DateTime begin, DateTime end, String reason)
+
+        public String RenovateRoom(Model.Room room, BeginEndTime beginEnd, String reason)
         {
             List<Model.RoomOccupacy> roomOccupacies = occupacyRoomStorage.GetAll();
-            Serialization.Serializer<Model.RoomOccupacy> occupacySerializer = new Serialization.Serializer<Model.RoomOccupacy>();
             String returnMessage = "";
             foreach (Model.RoomOccupacy roomItem in roomOccupacies)
             {
                 if (roomItem.IDRoom.Equals(room.Id))
                 {
-                    if (isOccupacy(begin, roomItem.Begin, end, roomItem.End))
+                    if (IsOccupacy(beginEnd.Begin, roomItem.Begin, beginEnd.End, roomItem.End))
                         returnMessage = "Room reserved in that period";
-                    else if (DateTime.Compare(end, begin) < 0)
+                    else if (IsEndBeforeBegin(beginEnd.End, beginEnd.Begin))
                         returnMessage = "End period must be less than begin";
                     else
-                    {
-                        roomOccupacies.Add(new Model.RoomOccupacy(room.Id, begin, end, reason));
-                        occupacySerializer.toCSV("OccupacyRoom.txt", roomOccupacies);
+                    { 
+                        occupacyRoomStorage.Create(new Model.RoomOccupacy(room.Id, beginEnd.Begin, beginEnd.End, reason));
                         returnMessage = "Room succesfully added to renovation list ";
                     }
-
                 }
             }
             return returnMessage;
         }
+
+
+
 
         public bool RoomAlreadyOccupacy(Model.Room room, DateTime begin, DateTime end, String reason)
         {
@@ -44,7 +45,7 @@ namespace SIMS.Service
             {
                 if (roomItem.IDRoom.Equals(room.Id))
                 {
-                    if(isOccupacy(begin, roomItem.Begin,end,roomItem.End))
+                    if(IsOccupacy(begin, roomItem.Begin,end,roomItem.End))
                     {
                         occupacy = true;
                     }
@@ -53,12 +54,11 @@ namespace SIMS.Service
             return occupacy;
         }
 
-        public bool isOccupacy(DateTime begin,DateTime occupacyBegin, DateTime end, DateTime occupacyEnd)
+        public bool IsOccupacy(DateTime begin,DateTime occupacyBegin, DateTime end, DateTime occupacyEnd)
         {
             return (DateTime.Compare(occupacyBegin, begin) >= 0) && (DateTime.Compare(end,  occupacyBegin) <= 0);
         }
 
-        //Ova funkcija je ista kao RoomAlreadyOccupacy ali kompaktnija
         public bool IfRoomIsOccupied(RoomOccupacy roomOccupacy)
         {
             List<RoomOccupacy> allRoomOccupacies = GetAll();
@@ -84,7 +84,7 @@ namespace SIMS.Service
             return false;
         }
 
-        public bool EndBeforeBegin( DateTime begin, DateTime end)
+        public bool IsEndBeforeBegin( DateTime begin, DateTime end)
         {
             bool isEndBeforeBegin = false;
             if (DateTime.Compare(end, begin) < 0)

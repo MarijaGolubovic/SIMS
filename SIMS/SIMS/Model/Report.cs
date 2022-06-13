@@ -17,7 +17,7 @@ namespace SIMS.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
-        String RoomId {
+       public  String RoomId {
             get
             {
                 return _RoomId;
@@ -35,7 +35,7 @@ namespace SIMS.Model
 
        
 
-        String Reason
+      public  String Reason
         {
             get
             {
@@ -52,14 +52,14 @@ namespace SIMS.Model
             }
         }
 
-        public Report(String roomId, String reason, String employer)
+       public Report(String roomId, String reason, String employer)
         {
             RoomId = roomId;
             Reason = reason;
             Employer = employer;
         }
 
-        String Employer {
+      public String Employer {
             get
             {
                 return _Employer;

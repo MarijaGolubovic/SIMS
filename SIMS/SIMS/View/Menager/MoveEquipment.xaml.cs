@@ -25,8 +25,6 @@ namespace SIMS.View.Menager
         {
             InitializeComponent();
             this.DataContext = this;
-            
-           
 
             Serialization.Serializer<Model.Equpment> equpmentSerializer = new Serialization.Serializer<Model.Equpment>();
             List<Model.Equpment> equipments = equpmentSerializer.fromCSV("Equipment.txt");

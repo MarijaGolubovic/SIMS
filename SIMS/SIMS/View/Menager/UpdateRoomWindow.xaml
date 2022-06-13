@@ -8,8 +8,8 @@
         Title="Hello Clinic" Height="450" Width="800">
     <Grid Margin="-2,0,2,0">
 
-        <Grid Margin="0,100,0,113" >
-            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="32,0,29,10">
+        <Grid Margin="0,140,0,102" >
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="37,0,24,10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -24,6 +24,8 @@
                 <BitmapImage  UriSource="/Assets/edit_room.png"  />
             </Image.Source>
         </Image>
+
+        <Label Margin="67,98,438,315" FontSize="18">Choose room who want to update!</Label>
 
         <Button x:Name="UpdateBack" Width="80" Height="24" Margin="694,366,26,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
         <Button x:Name="UpdateOK" Width="80" Height="24" Margin="587,367,133,0" Content="UPDATE" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
