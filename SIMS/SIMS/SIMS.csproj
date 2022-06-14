@@ -1027,6 +1027,7 @@
     <Resource Include="Assets\delete_medicine_image.png" />
     <Resource Include="Assets\ordering_icon.png" />
     <Resource Include="Assets\distribution_icon.png" />
+    <Content Include="Assets\basketball.avi" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

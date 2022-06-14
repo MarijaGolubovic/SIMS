@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SIMS.View.Menager
 {
@@ -23,6 +24,25 @@ namespace SIMS.View.Menager
         public TutorialVideo()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+           
+            timer.Start();
+        }
+
+        private void pause_Click(object sender, RoutedEventArgs e)
+        {
+            video.Pause();
+        }
+
+        private void play_Click(object sender, RoutedEventArgs e)
+        {
+            video.Play();
+        }
+
+        private void stop_Click(object sender, RoutedEventArgs e)
+        {
+            video.Stop();
         }
     }
 }

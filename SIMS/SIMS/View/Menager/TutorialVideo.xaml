@@ -9,6 +9,13 @@
       Title="TutorialVideo">
 
     <Grid>
-        <Label FontSize="35"  Height="50" Width="130">VIDEO</Label>
+        <Label Height="60" Width="600" FontSize="28" Margin="123,198,127,198">Click on button play to start video tutorial!</Label>
+        <MediaElement x:Name="video" Source="C:\Users\TOSHIBA\Desktop\SIMS\SIMS\SIMS\Assets/basketball.avi"  Margin="75,25,103,98"  LoadedBehavior="Manual"/>
+        <Button x:Name="play" Height="25" BorderThickness="0" BorderBrush="MintCream" Width="100" Background="MintCream"  Click="play_Click"  Margin="308,320,292,30" FontWeight="Bold">PLAY</Button>
+
+        <Button x:Name="pause" BorderThickness="0" Height="25" BorderBrush="MintCream" Width="100" Background="MintCream" Margin="188,320,412,30" Click="pause_Click"  FontWeight="Bold">PAUSE</Button>
+
+        <Button x:Name="stop" BorderThickness="0" Height="25" BorderBrush="MintCream" Width="100" Background="MintCream" Click="stop_Click" FontWeight="Bold" RenderTransformOrigin="0.691,0.613" Margin="432,320,168,30">STOP</Button>
+       
     </Grid>
 </Page>
