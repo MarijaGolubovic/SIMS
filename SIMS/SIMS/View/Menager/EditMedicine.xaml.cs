@@ -60,6 +60,9 @@ namespace SIMS.View.Menager
                     Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
                     sb.Begin(feedbackMessage);
                     errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+                    nameBox.Text = "";
+                    quantityBox.Text = "";
+                    igredientsBox.Text = "";
                 }
             }
         }
@@ -107,6 +110,7 @@ namespace SIMS.View.Menager
         private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             chooseError.Foreground = System.Windows.Media.Brushes.LightGray;
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
         }
     }
 }

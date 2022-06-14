@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 namespace SIMS.Menager
@@ -19,8 +20,8 @@ namespace SIMS.Menager
         {
             roomItem = Menager.UpdateRoomWindow.selectedRoom;
             InitializeComponent();
-            IDInput.Text = roomItem.Id;
-            SizeInput.Text = roomItem.Size.ToString();
+            IDInput.Text = roomItem.Size.ToString();
+            SizeInput.Text = roomItem.Id;
 
 
             if (roomItem.Type.Equals(Model.RoomType.OPPERATING_ROOM))
@@ -89,7 +90,8 @@ namespace SIMS.Menager
                 }
 
 
-                Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
+
+                Model.Room newRoom = (new Model.Room { Id = SizeInput.Text, Size = Double.Parse(IDInput.Text), Type = roomType });
                 RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
                 RoomsList.Rooms.Add(newRoom);
 
@@ -111,6 +113,23 @@ namespace SIMS.Menager
         private void IDInput_GotFocus(object sender, RoutedEventArgs e)
         {
             erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+
+        private void IDInput_GotKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            invalidDataInput.Foreground = System.Windows.Media.Brushes.LightGray;
+            
+        }
+
+        private void IDInput_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            Regex regex = new Regex("[0-9]+\".\"[0-9]*");
+            if (regex.IsMatch(IDInput.Text))
+            {
+                invalidDataInput.Foreground = System.Windows.Media.Brushes.Red;
+
+            }
         }
     }
 }

@@ -15,7 +15,7 @@
         </Image>
         <Grid Margin="0,120,0,10">
             <Label Content="Room ID:" FontSize="18" Margin="164,28,529,253"/>
-            <TextBox x:Name="IDInput" Height="30"  Text="" Margin="300,83,269,207" Background="MintCream" GotFocus="IDInput_GotFocus"/>
+            <TextBox x:Name="IDInput" Height="30"  Text="" Margin="300,83,269,207" Background="MintCream" GotFocus="IDInput_GotFocus" LostKeyboardFocus="IDInput_LostKeyboardFocus" GotKeyboardFocus="IDInput_GotKeyboardFocus"/>
             <Label Content="Size:" Margin="164,77,537,207" FontSize="18" />
             <TextBox x:Name="SizeInput" Height="30"  Text="" RenderTransformOrigin="0.51,-1.542" Margin="300,28,269,262" Background="MintCream" GotFocus="SizeInput_GotFocus"/>
             <Label Content="Type:" FontSize="18" RenderTransformOrigin="0.418,2.509" Margin="164,128,554,148"/>
@@ -30,6 +30,7 @@
             
 
             <Label x:Name="erroeEmpty" Height="25" Width="200" Margin="535,265,65,30" Foreground="LightGray">Input data in the empty fields!</Label>
+            <Label x:Name="invalidDataInput" Height="25" Width="200" Margin="536,88,64,207" Foreground="LightGray"> Invalid input type!</Label>
         </Grid>
 
     </Grid>

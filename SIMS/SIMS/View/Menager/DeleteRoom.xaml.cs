@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace SIMS.Menager
 {
@@ -40,29 +41,38 @@ namespace SIMS.Menager
 
             Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
             List<Room> rooms = roomSerializer.fromCSV("Room.txt");
+            if ((Room)dataGridRooms.SelectedItem == null)
+            {
+                buttonDelete.IsEnabled = false;
+                errorMessage.Foreground = System.Windows.Media.Brushes.Red;
+            }
+            else
+            {
+                buttonDelete.IsEnabled = true;
+                Rooms.Remove((Room)dataGridRooms.SelectedItem);
+                roomSerializer.toCSV("Room.txt", Rooms.ToList());
+                if ((Room)dataGridRooms.SelectedItem != null)
+                {
+                    dataGridRooms.ItemsSource = Rooms;
+                    dataGridRooms.Items.Refresh();
+                }
+                feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(feedbackMessage);
+               // this.NavigationService.Navigate(new RoomsList());
 
-
-
-
-            Rooms.Remove((Room)dataGridRooms.SelectedItem);
-            roomSerializer.toCSV("Room.txt", Rooms.ToList());
-            this.NavigationService.Navigate(new RoomsList());
-
-            //  Menager.MainWindowMenager mainWindow = new MainWindowMenager();
-            // mainWindow.Show();
-            // this.Close();
-
-            HiddenDeleteLabel.Visibility = Visibility.Visible;
-            this.NavigationService.Navigate(new View.Menager.DeleteSuccesfully());
-
-
-
-
+            }
         }
 
         private void Button_Click_TUTORIJAL(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new View.Menager.Tutorials.DelateRoomTutorial());
+        }
+
+        private void dataGridRooms_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            errorMessage.Foreground = System.Windows.Media.Brushes.LightGray;
+            buttonDelete.IsEnabled = true;
         }
     }
 }

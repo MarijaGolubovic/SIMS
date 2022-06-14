@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace SIMS.Menager
 {
@@ -23,16 +24,14 @@ namespace SIMS.Menager
             Serialization.Serializer<Room> roomSerializer = new Serialization.Serializer<Room>();
             List<Room> rooms = roomSerializer.fromCSV("Room.txt");
             Rooms = new ObservableCollection<Room>();
-            //Room room = new Room("1", 5,Model.RoomType.EXAMINATION_ROOM);
-
-            // Rooms.Add(new Room("opb",12.1,Model.RoomType.OPPERATING_ROOM));
-            // Rooms.Add(new Room("h21",15.2,Model.RoomType.HOSPITAL_ROOM));
-            // Rooms.Add(new Room("h2", 15.2, Model.RoomType.HOSPITAL_ROOM));
-
+           
             foreach (Room roomItem in rooms)
             {
                 Rooms.Add(roomItem);
             }
+            HiddenDeleteLabel.Foreground = System.Windows.Media.Brushes.Green;
+            Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+            sb.Begin(HiddenDeleteLabel);
 
         }
 
