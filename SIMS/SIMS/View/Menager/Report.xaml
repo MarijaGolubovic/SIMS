@@ -13,7 +13,7 @@
         
         <Grid Height="393" Width="375" HorizontalAlignment="Left" Margin="25,0,0,25">
             <Viewbox Stretch="Fill" >
-                <Calendar x:Name="calendar" Background="MintCream"  BorderThickness="0"/>
+                <Calendar x:Name="calendar" Background="MintCream"  BorderThickness="0" MouseDoubleClick="calendar_MouseDoubleClick"/>
             </Viewbox>
         </Grid>
         <Border BorderBrush="Green" BorderThickness="3" Margin="23,14,23,36">
