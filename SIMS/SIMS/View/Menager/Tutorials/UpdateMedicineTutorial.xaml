@@ -9,8 +9,8 @@
       Title="UpdateMedicineTutorial">
 
     <Grid>
-        <Image Source="/Assets/add_room_image.png"  Focusable="False" VerticalAlignment="Bottom" Margin="10,0,357,108" RenderTransformOrigin="-0.021,6.656" Height="280" />
-        <Label Content="Update medicine tutorial" RenderTransformOrigin="0.834,1.411" FontSize="18"  FontWeight="Bold" Margin="502,23,40,380"/>
+        <Image Source="/Assets/update_medicine_image.png"  Focusable="False" VerticalAlignment="Bottom" Margin="10,0,357,108" RenderTransformOrigin="-0.021,6.656" Height="280" />
+        <Label Content="Update medicine tutorial" RenderTransformOrigin="0.834,1.411" FontSize="18"  FontWeight="Bold" Margin="473,23,40,380"/>
         <Grid  Margin="430,75,0,38">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="57*"/>

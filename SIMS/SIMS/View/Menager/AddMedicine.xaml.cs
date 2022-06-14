@@ -101,5 +101,10 @@ namespace SIMS.View.Menager
             allErrors.Foreground = System.Windows.Media.Brushes.LightGray;
             invalidType.Foreground = System.Windows.Media.Brushes.LightGray;
         }
+
+        private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Tutorials.AddMedicineTutorial());
+        }
     }
 }

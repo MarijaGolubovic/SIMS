@@ -74,5 +74,7 @@ namespace SIMS.Menager
             errorMessage.Foreground = System.Windows.Media.Brushes.LightGray;
             buttonDelete.IsEnabled = true;
         }
+
+       
     }
 }

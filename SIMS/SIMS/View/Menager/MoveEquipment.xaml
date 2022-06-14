@@ -69,6 +69,6 @@
         <Label x:Name="cooseError" Foreground="LightGray" Margin="130,407,524,12">Must choose a equipment!</Label>
         <TextBox x:Name="feedbackMessageBox" FontSize="18" Margin="276,357,241,54" Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Opacity="0"/>
 
-        <Button Height="25" Width="100" Background="MintCream" Margin="0,387,700,38">TUTORIAL</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="0,387,700,38" Click="Button_Click_TUTORIAL">TUTORIAL</Button>
     </Grid>
 </Page>

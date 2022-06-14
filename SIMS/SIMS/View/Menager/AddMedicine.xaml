@@ -48,6 +48,7 @@
             <Label x:Name="invalidType" Height="25" Width="120" Grid.ColumnSpan="2" Grid.Column="2" Margin="66,54,134,33" Grid.Row="5" Grid.RowSpan="2" Foreground="LightGray">Invalid data type!</Label>
 
             <Label x:Name="allErrors" Foreground="LightGray" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Column="3" Margin="38,40,132,46" Grid.Row="6" Grid.RowSpan="2">Input data in the fields!</Label>
+            <Button Height="25" Width="100" Background="MintCream" Margin="30,16" Grid.Row="6" Click="Button_Click_TUTORIAL">TUTORIAL</Button>
         </Grid>
     </Grid>
 </Page>

@@ -409,6 +409,9 @@
     <Compile Include="View\Menager\Tutorials\AddMedicineTutorial.xaml.cs">
       <DependentUpon>AddMedicineTutorial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\AddPollTutorial.xaml.cs">
+      <DependentUpon>AddPollTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\AddRoomTutorial.xaml.cs">
       <DependentUpon>AddRoomTutorial.xaml</DependentUpon>
     </Compile>
@@ -417,6 +420,18 @@
     </Compile>
     <Compile Include="View\Menager\Tutorials\DeleteMedicineTutorial.xaml.cs">
       <DependentUpon>DeleteMedicineTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\DeletePollTutorial.xaml.cs">
+      <DependentUpon>DeletePollTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\DistributionEquipmentTutorial.xaml.cs">
+      <DependentUpon>DistributionEquipmentTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\MoveEquipmentTutorial.xaml.cs">
+      <DependentUpon>MoveEquipmentTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\OrderingEquipmentTutorial.xaml.cs">
+      <DependentUpon>OrderingEquipmentTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\Tutorials\RenovateRoomTutorial.xaml.cs">
       <DependentUpon>RenovateRoomTutorial.xaml</DependentUpon>
@@ -728,6 +743,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\Tutorials\AddPollTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\AddRoomTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -737,6 +756,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\Tutorials\DeleteMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\DeletePollTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\DistributionEquipmentTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\MoveEquipmentTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\OrderingEquipmentTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -963,6 +998,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\add_poll_image.png" />
+    <Resource Include="Assets\delete_poll_image.png" />
+    <Resource Include="Assets\distribut_equipment_image.png" />
+    <Resource Include="Assets\ordering_equipment_image.png" />
+    <Resource Include="Assets\moving_equipment_image.png" />
+    <Content Include="Assets\video_tutorial.avi" />
     <Resource Include="Assets\update_medicine_image.png" />
     <Resource Include="Assets\update_room_image.png" />
     <Resource Include="Assets\vesti10.png" />

@@ -16,13 +16,13 @@
         <Button Height="25" Margin="0,130,760,275" Background="MintCream" Click="Button_Click_ADD_MEDICINE" RenderTransformOrigin="0.485,-0.198">ADD MEDICINE</Button>
         <Button Height="25" Background="MintCream" Margin="0,160,760,245" Click="Button_Click_UPDATE_MEDICINE">UPDATE MEDICINE</Button>
         <Button Height="25" Background="MintCream" Margin="0,190,760,215" Click="Button_Click_DELETE_MEDICINE">DELETE MEDICINE</Button>
-        <Button Height="25" Background="MintCream" Margin="0,220,760,185">ADD POOL</Button>
-        <Button Height="25" Background="MintCream" Margin="0,250,760,155">EDIT POOL</Button>
-        <Button Height="25" Background="MintCream" Margin="0,280,760,125">DELETE POOL</Button>
-        <Button Height="25" Background="MintCream" Margin="0,310,760,95">DISTRIBUTION EQUIPMENT</Button>
-        <Button Height="25" Background="MintCream" Margin="0,340,760,65">ORDERING EQUIPMENT</Button>
-        <Button Height="25" Background="MintCream" Margin="0,370,760,35">MOVING EQUIPMENT</Button>
-        
+        <Button Height="25" Background="MintCream" Margin="0,220,760,185" Click="Button_Click_ADD_POLL">ADD POOL</Button>
+        <Button Height="25" Background="MintCream" Margin="0,250,760,155" Click="Button_Click_DELETE_POLL">DELETE POOL</Button>
+        <Button Height="25" Background="MintCream" Margin="0,280,760,125" Click="Button_Click_DISTRIBUTION" >DISTRIBUTION EQUIPMENT</Button>
+        <Button Height="25" Background="MintCream" Margin="0,310,760,95" Click="Button_Click_ORDERING">ORDERING EQUIPMENT</Button>
+        <Button Height="25" Background="MintCream" Margin="0,340,760,65" Click="Button_Click_MOVING_EQUIPMENT">MOVING EQUIPMENT</Button>
+        <Button Height="25" Background="MintCream" Margin="0,370,760,35" Click="Button_Click_VIDEO_TUTORIAL">VIDEO TUTORIAL</Button>
+
         <Grid Margin="180,0,0,0" Background="MintCream">
             <Frame x:Name="MainTutorialFrame"  NavigationUIVisibility="Hidden" />
         </Grid>

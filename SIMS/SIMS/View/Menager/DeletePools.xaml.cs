@@ -82,5 +82,12 @@ namespace SIMS.View.Menager
             buttonDelete.IsEnabled = true;
 
         }
+
+        private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Tutorials.DeletePollTutorial());
+        }
+
+      
     }
 }

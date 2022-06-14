@@ -28,7 +28,7 @@ namespace SIMS.View.Menager
 
         private void Button_Click_Tutorial(object sender, RoutedEventArgs e)
         {
-            
+            this.NavigationService.Navigate(new Tutorials.AddPollTutorial());
         }
 
 

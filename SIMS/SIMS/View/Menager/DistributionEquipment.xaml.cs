@@ -127,5 +127,10 @@ namespace SIMS.View.Menager
             errorMessage.Foreground = System.Windows.Media.Brushes.LightGray;
             buttonChoose.IsEnabled = true;
         }
+
+        private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Tutorials.DistributionEquipmentTutorial());
+        }
     }
 }

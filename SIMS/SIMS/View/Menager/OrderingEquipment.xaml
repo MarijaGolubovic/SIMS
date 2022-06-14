@@ -39,7 +39,7 @@
         <Button x:Name="buttonAllow"  Height="25" Width=" 100" Background="MintCream" Margin="573,378,127,27" Click="buttonAllow_Click">ALLOW</Button>
         <Button Height="25" Width=" 100" Background="MintCream" Margin="700,378,0,27" Click="Button_CANCEL">CANCEL</Button>
         <Button x:Name="buttonChoose"  Height="25" Width=" 100" Background="MintCream" Margin="140,378,540,27" Click="buttonChoose_CHOOSE">CHOOSE</Button>
-        <Button Height="25" Width=" 100" Background="MintCream" Margin="10,378,680,27" HorizontalAlignment="Left">TUTORIAL</Button>
+        <Button Height="25" Width=" 100" Background="MintCream" Margin="10,378,680,27" HorizontalAlignment="Left" Click="Button_Click_TUTOTIAL">TUTORIAL</Button>
 
         <Label x:Name="feedbackMessage" Foreground="Green" Opacity="0"  Height="35" FontSize="18" Margin="350,310,160,65" >Request sent to the distributer!</Label>
         <Label x:Name="errorMessage" Height="25" Width="200" Margin="133,400,460,0" Foreground="LightGray">Must select item from list!</Label>

@@ -93,5 +93,10 @@ namespace SIMS.View.Menager
             sb.Begin(feedbackMessage);
             buttonAllow.IsEnabled = false;
         }
+
+        private void Button_Click_TUTOTIAL(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Tutorials.OrderingEquipmentTutorial());
+        }
     }
 }

@@ -63,5 +63,35 @@ namespace SIMS.View.Menager
         {
             _mainTutorial.NavigationService.Navigate(new Tutorials.DeleteMedicineTutorial());
         }
+
+        private void Button_Click_ADD_POLL(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.AddPollTutorial());
+        }
+
+        private void Button_Click_DELETE_POLL(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.DeletePollTutorial());
+        }
+
+        private void Button_Click_DISTRIBUTION(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.DistributionEquipmentTutorial());
+        }
+
+        private void Button_Click_ORDERING(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.OrderingEquipmentTutorial());
+        }
+
+        private void Button_Click_MOVING_EQUIPMENT(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new Tutorials.MoveEquipmentTutorial());
+        }
+
+        private void Button_Click_VIDEO_TUTORIAL(object sender, RoutedEventArgs e)
+        {
+            _mainTutorial.NavigationService.Navigate(new TutorialVideo());
+        }
     }
 }

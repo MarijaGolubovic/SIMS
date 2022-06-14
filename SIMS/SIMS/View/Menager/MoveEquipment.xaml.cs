@@ -236,5 +236,10 @@ namespace SIMS.View.Menager
         {
             destination = destinationCombo.SelectedItem.ToString();
         }
+
+        private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Tutorials.MoveEquipmentTutorial());
+        }
     }
 }

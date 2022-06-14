@@ -32,7 +32,7 @@
         </DataGrid>
         <Button x:Name="buttonDelete"  Height="25" Width="100" Background="MintCream" Margin="586,365,94,30" Click="buttonDelete_DELETE"> DELETE</Button>
         <Button x:Name="buttonCancel" Height="25" Width=" 100" Background="MintCream" Margin="706,365,0,30" Click="buttonCancel_CANCEL">CANCEL</Button>
-        <Button Height="25" Width="100" Background="MintCream" Margin="31,365,669,30"> TUTORIAL</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="31,365,669,30" Click="Button_Click_TUTORIAL"> TUTORIAL</Button>
 
         <Label x:Name="errorMessage" Height="25" Width="210" Margin="544,390,46,0" Foreground="LightGray">Must select poll who want to delate!</Label>
 

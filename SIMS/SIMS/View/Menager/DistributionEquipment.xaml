@@ -34,7 +34,7 @@
         <Button x:Name="buttonDistribut"  Height="25" Width=" 100" Background="MintCream" Margin="573,378,127,27" Click="buttonDistribut_Click">DISTRIBUT</Button>
         <Button Height="25" Width=" 100" Background="MintCream" Margin="700,378,0,27" Click="Button_Click_CANCEL">CANCEL</Button>
         <Button x:Name="buttonChoose"  Height="25" Width=" 100" Background="MintCream" Margin="140,378,540,27" Click="buttonChoose_Click">CHOOSE</Button>
-        <Button Height="25" Width=" 100" Background="MintCream" Margin="10,378,680,27" HorizontalAlignment="Left">TUTORIAL</Button>
+        <Button Height="25" Width=" 100" Background="MintCream" Margin="10,378,680,27" HorizontalAlignment="Left" Click="Button_Click_TUTORIAL">TUTORIAL</Button>
 
         <Label FontSize="18" Height="35" Width="120"  Margin="320,133,360,262">Equipment:</Label>
         <TextBox x:Name="equipmentBox" Height="30" Width="200" Margin="473,138,127,262" IsReadOnly="True" Background="MintCream"></TextBox>
