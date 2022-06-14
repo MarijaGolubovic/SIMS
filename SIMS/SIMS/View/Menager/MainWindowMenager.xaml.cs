@@ -119,5 +119,15 @@ namespace SIMS.Menager
         {
             _mainFrame.NavigationService.Navigate(new View.Menager.DeleteMedicine());
         }
+
+        private void MenuItem_Click_ADD_POLLS(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.AddPolls());
+        }
+
+        private void MenuItem_Click_DELETE_POLL(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.DeletePools());
+        }
     }
 }

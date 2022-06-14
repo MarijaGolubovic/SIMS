@@ -155,6 +155,5 @@ namespace SIMS.Model
         int _Fift;
         double _Average;
 
-        
     }
 }

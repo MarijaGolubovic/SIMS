@@ -198,6 +198,7 @@
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\Notificatoin.cs" />
+    <Compile Include="Model\PollDTO.cs" />
     <Compile Include="Model\Polls.cs" />
     <Compile Include="Model\Question.cs" />
     <Compile Include="Model\Report.cs" />
@@ -339,11 +340,17 @@
     <Compile Include="View\DoctorMVVM\VacationRequestView.xaml.cs">
       <DependentUpon>VacationRequestView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\AddPolls.xaml.cs">
+      <DependentUpon>AddPolls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\DeleteMedicine.xaml.cs">
       <DependentUpon>DeleteMedicine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\DeletePools.xaml.cs">
+      <DependentUpon>DeletePools.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
       <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
@@ -623,11 +630,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\AddPolls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\CorrectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\DeleteMedicine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\DeletePools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
