@@ -38,14 +38,28 @@ namespace SIMS.View.Menager
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
             selectedRoom = (Model.Room)dataGridRenovate.SelectedItem;
-            indexSelected = dataGridRenovate.SelectedIndex;
+            if (selectedRoom == null)
+            {
+                errorMessage.Foreground = System.Windows.Media.Brushes.Red;
+                buttonOk.IsEnabled = false;
+            }
+            else
+            {
+                indexSelected = dataGridRenovate.SelectedIndex;
 
-            this.NavigationService.Navigate(new RenovateForm());
+                this.NavigationService.Navigate(new RenovateForm());
+            }
         }
 
         private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new View.Menager.Tutorials.RenovateRoomTutorial());
+        }
+
+        private void dataGridRenovate_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            errorMessage.Foreground = System.Windows.Media.Brushes.LightGray;
+            buttonOk.IsEnabled = true;
         }
     }
 }

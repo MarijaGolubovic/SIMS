@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
+
 namespace SIMS.View.Menager
 {
     /// <summary>
@@ -29,32 +31,59 @@ namespace SIMS.View.Menager
             Model.Room secondNewRoom = new Model.Room(secondRoomId.Text, Double.Parse(secondRoomSize.Text), Model.RoomType.OPPERATING_ROOM);
             
             double newRoomSize = Double.Parse(firstRoomSize.Text) + Double.Parse(secondRoomSize.Text);
-            if (roomService.IsRoomAlreadyExist(firstNewRoom))
+            if (firstRoomId.Text.Equals("") || secondRoomId.Text.Equals(""))
             {
-                MessageBox.Show("First room already existe");
-            }
-            else if (roomService.IsRoomAlreadyExist(secondNewRoom))
-            {
-                MessageBox.Show("Second room alreday exist!");
-            }
-            else if (newRoomSize != oldRoom.Size)
-            {
-                MessageBox.Show("Room size is incorect!");
-            }
-            else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
-            {
-                MessageBox.Show("Room occupacy in this period!");
+                allError.Foreground = System.Windows.Media.Brushes.Red ;
+                buttonSplit.IsEnabled = false;
             }
             else
             {
+                if (roomService.IsRoomAlreadyExist(firstNewRoom))
+                {
+                    feedbackMessage.Text = "First room already existe!";
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Red;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
+                }
+                else if (roomService.IsRoomAlreadyExist(secondNewRoom))
+                {
 
-                MessageBox.Show("Room successfully splited!");
-                bool isRoomSplited = roomService.isSplitRoom(oldRoom, firstNewRoom, secondNewRoom);
+                    feedbackMessage.Text = "Second room alreday exist!";
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Red;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
+                }
+                else if (newRoomSize != oldRoom.Size)
+                {
+                    feedbackMessage.Text = "Room size is incorect!";
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Red;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
 
-                this.NavigationService.Navigate(new View.Menager.RenovateWindow());
+                }
+                else if (Menager.RenovateWindow.selectedRoom.Id.Contains("oba"))
+                {
+                    feedbackMessage.Text = "Room occupacy in this period!";
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Red;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
+
+                }
+                else
+                {
+
+                    feedbackMessage.Text = "Room successfully splited";
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
+
+                    this.NavigationService.Navigate(new View.Menager.RenovateWindow());
+                   // bool isRoomSplited = roomService.isSplitRoom(oldRoom, firstNewRoom, secondNewRoom);
+
+                   
+                }
+
             }
-
-
 
         }
 
@@ -100,6 +129,8 @@ namespace SIMS.View.Menager
         private void firstRoomId_GotFocus(object sender, RoutedEventArgs e)
         {
             firstRoomId.Foreground = System.Windows.Media.Brushes.Black;
+            buttonSplit.IsEnabled = true;
+            allError.Foreground= System.Windows.Media.Brushes.LightGray;
         }
 
         private void secondRoomId_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
@@ -118,6 +149,8 @@ namespace SIMS.View.Menager
         private void secondRoomId_GotFocus(object sender, RoutedEventArgs e)
         {
             secondRoomId.Foreground = System.Windows.Media.Brushes.Black;
+            allError.Foreground = System.Windows.Media.Brushes.LightGray;
+            buttonSplit.IsEnabled = true;
         }
     }
 }
