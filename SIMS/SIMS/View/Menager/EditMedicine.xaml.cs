@@ -40,23 +40,27 @@ namespace SIMS.View.Menager
         {
             if (flag)
             {
-                int quantity = int.Parse(quantityBox.Text);
-                List<String> ingredients = new List<String>();
-                string[] tokens = igredientsBox.Text.Trim().Split(',');
-                for (int i = 0; i < tokens.Length; i++)
-                {
-                    ingredients.Add(tokens[i]);
+                errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+                
+                if (nameBox.Text.Trim().Equals("") || quantityBox.Text.Trim().Equals("") || igredientsBox.Text.Trim().Equals("")) {
+                    errorEmptyFields.Foreground = System.Windows.Media.Brushes.Red;
+                    
+                } else {
+                    editButton.IsEnabled = true;
+                    int quantity = int.Parse(quantityBox.Text);
+                    List<String> ingredients = new List<String>();
+                    string[] tokens = igredientsBox.Text.Trim().Split(',');
+                    for (int i = 0; i < tokens.Length; i++)
+                    {
+                        ingredients.Add(tokens[i]);
+                    }
+                    Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
+                    medicineStorage.EditMedicine(selectedMedicine, newMedecine);
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
+                    errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
                 }
-
-                Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
-
-
-                medicineStorage.EditMedicine(selectedMedicine, newMedecine);
-                
-                feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
-                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
-                sb.Begin(feedbackMessage);
-                
             }
         }
 
@@ -68,29 +72,41 @@ namespace SIMS.View.Menager
         private void Button_Click_CHOSE(object sender, RoutedEventArgs e)
         {
             selectedMedicine = (Model.Medicine)dataGridMedicines.SelectedItem;
-
-            List<string> medecineIgredients = new List<string>();
-            foreach (string item in selectedMedicine.Ingredients)
+            if (selectedMedicine == null)
             {
-                medecineIgredients.Add(item);
+                chooseError.Foreground= System.Windows.Media.Brushes.Red;
             }
-
-
-            string igredients = "";
-
-            for (int i = 1; i < medecineIgredients.Count; i++)
+            else
             {
-                igredients = medecineIgredients[0];
-                igredients += ",";
-                igredients += medecineIgredients[i];
 
+                List<string> medecineIgredients = new List<string>();
+                foreach (string item in selectedMedicine.Ingredients)
+                {
+                    medecineIgredients.Add(item);
+                }
+
+
+                string igredients = "";
+
+                for (int i = 1; i < medecineIgredients.Count; i++)
+                {
+                    igredients = medecineIgredients[0];
+                    igredients += ",";
+                    igredients += medecineIgredients[i];
+
+                }
+
+
+                nameBox.Text = selectedMedicine.Name;
+                quantityBox.Text = selectedMedicine.Quantity.ToString();
+                igredientsBox.Text = igredients;
+                flag = true;
             }
+        }
 
-
-            nameBox.Text = selectedMedicine.Name;
-            quantityBox.Text = selectedMedicine.Quantity.ToString();
-            igredientsBox.Text = igredients;
-            flag = true;
+        private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            chooseError.Foreground = System.Windows.Media.Brushes.LightGray;
         }
     }
 }
