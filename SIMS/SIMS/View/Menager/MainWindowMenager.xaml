@@ -180,7 +180,7 @@
                     <MenuItem Header="Equipment" FontSize="22" FontWeight="Bold" Width="149">
                         <Menu  Background="White">
                             <Border BorderBrush="Black" BorderThickness="2">
-                                <MenuItem Background="White" Width="137">
+                                <MenuItem Background="White" Width="137" Click="MenuItem_Click_DISTRIBUTION">
                                     <MenuItem.Icon>
                                         <Image Source="/Assets/distribution.png" Height="79" Width="123"></Image>
                                     </MenuItem.Icon>

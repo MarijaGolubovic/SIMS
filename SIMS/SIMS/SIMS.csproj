@@ -355,6 +355,9 @@
     <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
       <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\DistributionEquipment.xaml.cs">
+      <DependentUpon>DistributionEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\EditMedicine.xaml.cs">
       <DependentUpon>EditMedicine.xaml</DependentUpon>
     </Compile>
@@ -650,6 +653,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\DeleteSuccesfully.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\DistributionEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1019,6 +1026,7 @@
     <Resource Include="Assets\add_medicine_image.png" />
     <Resource Include="Assets\delete_medicine_image.png" />
     <Resource Include="Assets\ordering_icon.png" />
+    <Resource Include="Assets\distribution_icon.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

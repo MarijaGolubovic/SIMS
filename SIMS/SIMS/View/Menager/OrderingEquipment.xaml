@@ -16,8 +16,8 @@
         </Storyboard>
     </Page.Resources>
     <Grid>
-        <Label  FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Black"  Margin="320,10,175,370" Width="305">Ordering equipment</Label>
-        <Image  Margin="209,0,438,361">
+        <Label  FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Black"  Margin="397,10,98,350" Width="305">Ordering equipment</Label>
+        <Image  Margin="287,10,360,351">
             <Image.Source >
                 <BitmapImage  UriSource="/Assets/ordering_icon.png"  />
             </Image.Source>

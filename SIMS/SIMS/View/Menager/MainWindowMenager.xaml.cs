@@ -134,5 +134,10 @@ namespace SIMS.Menager
         {
             _mainFrame.NavigationService.Navigate(new View.Menager.OrderingEquipment());
         }
+
+        private void MenuItem_Click_DISTRIBUTION(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.DistributionEquipment());
+        }
     }
 }
