@@ -376,6 +376,9 @@
     <Compile Include="View\Menager\MyAccount.xaml.cs">
       <DependentUpon>MyAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\OrderingEquipment.xaml.cs">
+      <DependentUpon>OrderingEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\RenovateForm.xaml.cs">
       <DependentUpon>RenovateForm.xaml</DependentUpon>
     </Compile>
@@ -675,6 +678,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\MyAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\OrderingEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1011,6 +1018,7 @@
     <Resource Include="Assets\renovate_room_image.png" />
     <Resource Include="Assets\add_medicine_image.png" />
     <Resource Include="Assets\delete_medicine_image.png" />
+    <Resource Include="Assets\ordering_icon.png" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

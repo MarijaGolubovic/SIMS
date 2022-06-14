@@ -129,5 +129,10 @@ namespace SIMS.Menager
         {
             _mainFrame.NavigationService.Navigate(new View.Menager.DeletePools());
         }
+
+        private void MenuItem_Click_ORDERING(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.OrderingEquipment());
+        }
     }
 }

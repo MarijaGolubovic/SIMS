@@ -25,7 +25,7 @@
         </Image>
 
 
-        <DataGrid x:Name="DataGridDeletePoll" ItemsSource="{Binding Polls}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="227,77,282,56" MouseDoubleClick="DataGridDeletePoll_MouseDoubleClick">
+        <DataGrid x:Name="DataGridDeletePoll" ItemsSource="{Binding Polls}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="227,128,282,56" MouseDoubleClick="DataGridDeletePoll_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Poll" Binding="{Binding Name}" Width="*"/>
             </DataGrid.Columns>
@@ -37,5 +37,7 @@
         <Label x:Name="errorMessage" Height="25" Width="210" Margin="544,390,46,0" Foreground="LightGray">Must select poll who want to delate!</Label>
 
         <Label x:Name="feedbackMessage" Foreground="Green" Opacity="0" FontSize="18" Margin="244,389,305,0" >Poll succesfully deleted!</Label>
+
+        <Label Height="35" Width="300" FontSize="18" Margin="244,70,256,300"> Select poll who want to delete!</Label>
     </Grid>
 </Page>

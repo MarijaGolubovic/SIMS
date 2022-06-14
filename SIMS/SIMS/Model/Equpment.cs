@@ -72,6 +72,12 @@ namespace SIMS.Model
             Id = id;
         }
 
+        public Equpment(string name, int quantity)
+        {
+            Name = name;
+            Quantity = quantity;
+        }
+
         public Equpment()
         {
         }
