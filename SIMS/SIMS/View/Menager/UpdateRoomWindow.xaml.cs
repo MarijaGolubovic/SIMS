@@ -41,13 +41,26 @@ namespace SIMS.Menager
         private void UpdateOK_Click(object sender, RoutedEventArgs e)
         {
             selectedRoom = (Model.Room)DataGridUpdate.SelectedItem;
-            indexSelected = DataGridUpdate.SelectedIndex;
-            this.NavigationService.Navigate(new UpdateForm());
+            if (selectedRoom == null) { 
+                errorMesage.Foreground = System.Windows.Media.Brushes.Red;
+                UpdateOK.IsEnabled = false;
+            }
+            else
+            {
+                indexSelected = DataGridUpdate.SelectedIndex;
+                this.NavigationService.Navigate(new UpdateForm());
+            }
         }
 
         private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new View.Menager.Tutorials.UpdateRoomTutorial());
+        }
+
+        private void DataGridUpdate_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            errorMesage.Foreground = System.Windows.Media.Brushes.LightGray;
+            UpdateOK.IsEnabled = true;
         }
     }
 }

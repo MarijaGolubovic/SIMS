@@ -58,41 +58,59 @@ namespace SIMS.Menager
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             RoomsList.Rooms = new ObservableCollection<Model.Room>();
 
+
             foreach (Model.Room roomIterator in rooms)
             {
                 RoomsList.Rooms.Add(roomIterator);
             }
-
-            Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
-            if (comboboxField.SelectedIndex == 0)
+            if (SizeInput.Text.Trim().Equals("") || IDInput.Text.Trim().Equals(""))
             {
-                roomType = Model.RoomType.OPPERATING_ROOM;
-            }
-            else if (comboboxField.SelectedIndex == 1)
-            {
-                roomType = Model.RoomType.EXAMINATION_ROOM;
-            }
-            else if (comboboxField.SelectedIndex == 2)
-            {
-                roomType = Model.RoomType.HOSPITAL_ROOM;
+                erroeEmpty.Foreground= System.Windows.Media.Brushes.Red;
             }
             else
             {
-                roomType = Model.RoomType.WAREHOUSE;
+                erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
+                Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
+                if (comboboxField.SelectedIndex == 0)
+                {
+                    roomType = Model.RoomType.OPPERATING_ROOM;
+                }
+                else if (comboboxField.SelectedIndex == 1)
+                {
+                    roomType = Model.RoomType.EXAMINATION_ROOM;
+                }
+                else if (comboboxField.SelectedIndex == 2)
+                {
+                    roomType = Model.RoomType.HOSPITAL_ROOM;
+                }
+                else
+                {
+                    roomType = Model.RoomType.WAREHOUSE;
+                }
+
+
+                Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
+                RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
+                RoomsList.Rooms.Add(newRoom);
+
+                roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
+
+
+                //    Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
+                //  updateRoomWindow.Show();
+                //this.Close();
+                this.NavigationService.Navigate(new View.Menager.SuccesfullyUpdate());
             }
+        }
 
+        private void SizeInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
 
-            Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
-            RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
-            RoomsList.Rooms.Add(newRoom);
-
-            roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
-
-
-            //    Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
-            //  updateRoomWindow.Show();
-            //this.Close();
-            this.NavigationService.Navigate(new View.Menager.SuccesfullyUpdate());
+        private void IDInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
         }
     }
 }

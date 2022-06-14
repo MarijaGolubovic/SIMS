@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace SIMS.View.Menager
 {
@@ -30,6 +31,9 @@ namespace SIMS.View.Menager
             {
                 Rooms.Add(roomItem);
             }
+            HiddenDeleteLabel.Foreground = System.Windows.Media.Brushes.Green;
+            Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+            sb.Begin(HiddenDeleteLabel);
         }
 
         private void UpdateBack_Click(object sender, RoutedEventArgs e)
@@ -39,11 +43,5 @@ namespace SIMS.View.Menager
             this.NavigationService.Navigate(new View.Menager.Report());
         }
 
-        private void UpdateOK_Click(object sender, RoutedEventArgs e)
-        {
-            selectedRoom = (Model.Room)DataGridUpdate.SelectedItem;
-            indexSelected = DataGridUpdate.SelectedIndex;
-            this.NavigationService.Navigate(new UpdateForm());
-        }
     }
 }
