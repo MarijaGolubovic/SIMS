@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Animation;
+using System.Text.RegularExpressions;
 
 namespace SIMS.View.Menager
 {
@@ -41,11 +42,17 @@ namespace SIMS.View.Menager
             if (flag)
             {
                 errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
-                
+                Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+
                 if (nameBox.Text.Trim().Equals("") || quantityBox.Text.Trim().Equals("") || igredientsBox.Text.Trim().Equals("")) {
                     errorEmptyFields.Foreground = System.Windows.Media.Brushes.Red;
                     
-                } else {
+                } else if (!regex.IsMatch(quantityBox.Text))
+                {
+                    typeError.Foreground = System.Windows.Media.Brushes.Red;
+                    errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+                }
+                else {
                     editButton.IsEnabled = true;
                     int quantity = int.Parse(quantityBox.Text);
                     List<String> ingredients = new List<String>();
@@ -111,6 +118,33 @@ namespace SIMS.View.Menager
         {
             chooseError.Foreground = System.Windows.Media.Brushes.LightGray;
             errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void quantityBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            if (!regex.IsMatch(quantityBox.Text))
+            {
+                typeError.Foreground = System.Windows.Media.Brushes.Red;
+                errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+            }
+        }
+
+
+        private void nameBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void igredientsBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void quantityBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+            typeError.Foreground = System.Windows.Media.Brushes.LightGray;
         }
     }
 }

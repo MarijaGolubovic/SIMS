@@ -34,9 +34,9 @@
             </Image.Source>
         </Image>
 
-        <TextBox x:Name="nameBox"  Height="25" Margin="540,110,66,315" Background="MintCream"/>
-        <TextBox x:Name="igredientsBox" Margin="540,207,66,129" Background="MintCream"/>
-        <TextBox x:Name="quantityBox" Height="25" Margin="540,157,66,268" Background="MintCream"/>
+        <TextBox x:Name="nameBox"  Height="25" Margin="540,110,66,315" Background="MintCream" GotKeyboardFocus="nameBox_GotKeyboardFocus"/>
+        <TextBox x:Name="igredientsBox" Margin="540,207,66,129" Background="MintCream" GotKeyboardFocus="igredientsBox_GotKeyboardFocus"/>
+        <TextBox x:Name="quantityBox" Height="25" Margin="540,157,66,268" Background="MintCream" LostFocus="quantityBox_LostFocus" GotKeyboardFocus="quantityBox_GotKeyboardFocus"/>
 
         <Button x:Name="editButton" Height="25" Width="100"  Background="MintCream" Margin="570,330,100,48" Click="Button_Click_OK">EDIT</Button>
         <Button Height="25" Width="100" Background="MintCream" Margin="700,330,0,47" Click="Button_Click_CANCEL" HorizontalAlignment="Right">CANCEL</Button>
@@ -46,6 +46,7 @@
 
         <Label x:Name="errorEmptyFields" Foreground="LightGray" Height="25" Width="170" Margin="564,384,66,41">Enter data in the fieds!</Label>
 
+        <Label x:Name="typeError" Height="25" Width="100" Margin="585,177,115,248" Foreground="LightGray">Invalid type!</Label>
         <Label x:Name="chooseError" Height="25" Width="180" Margin="249,400,371,0" Foreground="LightGray">Select medicine!</Label>
     </Grid>
 </Page>
