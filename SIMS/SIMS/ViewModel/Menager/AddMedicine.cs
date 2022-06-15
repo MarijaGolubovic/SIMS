@@ -9,19 +9,19 @@ using SIMS.Model;
 
 namespace SIMS.ViewModel.Menager
 {
-   public class AddRoom
+    class AddMedicine
     {
-        private Room room;
+        private Medicine medicine;
         private NavigationService navService;
 
         public Injector Inject { get; set; }
 
-        public Room Room
+        public Medicine Medicine
         {
-            get { return room; }
+            get { return medicine; }
             set
             {
-                room = value;
+                medicine = value;
                 OnPropertyChanged();
             }
         }
@@ -29,7 +29,7 @@ namespace SIMS.ViewModel.Menager
         public void Executed_RoomCommand(object obj)
         {
             this.navService.Navigate(
-            new Uri("Views/AddRoom.xaml", UriKind.Relative));
+            new Uri("Views/AddMedicine.xaml", UriKind.Relative));
             //NavigationCommands.BrowseBack.Execute;
         }
 
@@ -38,18 +38,19 @@ namespace SIMS.ViewModel.Menager
             throw new NotImplementedException();
         }
 
-        public RelayCommand AddRoomCommand { get; set; }
+        public RelayCommand AddMedicineCommand { get; set; }
 
-        public bool CanExecute_RoomCommand(object obj)
+        public bool CanExecute_AddMedicineCommand(object obj)
         {
             return true;
         }
 
-        public AddRoom(Room room, NavigationService navService, Injector inject,  RelayCommand addRoomCommand)
+        public AddMedicine(Medicine medicine, NavigationService navService, Injector inject, RelayCommand addMedicineCommand)
         {
+            Medicine = medicine;
             this.navService = navService;
-            Inject = inject;  
-            AddRoomCommand = addRoomCommand;
+            Inject = inject;
+            AddMedicineCommand = addMedicineCommand;
         }
     }
 }

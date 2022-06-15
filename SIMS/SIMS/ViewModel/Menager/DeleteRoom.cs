@@ -9,7 +9,7 @@ using SIMS.Model;
 
 namespace SIMS.ViewModel.Menager
 {
-   public class AddRoom
+    class DeleteRoom
     {
         private Room room;
         private NavigationService navService;
@@ -26,30 +26,29 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
-        public void Executed_RoomCommand(object obj)
-        {
-            this.navService.Navigate(
-            new Uri("Views/AddRoom.xaml", UriKind.Relative));
-            //NavigationCommands.BrowseBack.Execute;
-        }
-
         private void OnPropertyChanged()
         {
             throw new NotImplementedException();
         }
-
-        public RelayCommand AddRoomCommand { get; set; }
+        public void Executed_RoomCommand(object obj)
+        {
+            this.navService.Navigate(
+            new Uri("Views/DeleteRoom.xaml", UriKind.Relative));
+            //NavigationCommands.BrowseBack.Execute;
+        }
+        public RelayCommand DeleteRoomCommand { get; set; }
 
         public bool CanExecute_RoomCommand(object obj)
         {
             return true;
         }
 
-        public AddRoom(Room room, NavigationService navService, Injector inject,  RelayCommand addRoomCommand)
+        public DeleteRoom(NavigationService navService, Injector inject, Room room, RelayCommand deleteRoomCommand)
         {
             this.navService = navService;
-            Inject = inject;  
-            AddRoomCommand = addRoomCommand;
+            Inject = inject;
+            Room = room;
+            DeleteRoomCommand = deleteRoomCommand;
         }
     }
 }
