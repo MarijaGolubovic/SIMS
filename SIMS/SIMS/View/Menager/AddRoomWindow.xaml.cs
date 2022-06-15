@@ -35,58 +35,67 @@ namespace SIMS.Menager
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             RoomsList.Rooms = new ObservableCollection<Model.Room>();
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
 
             foreach (Model.Room roomItem in rooms)
             {
                 RoomsList.Rooms.Add(roomItem);
             }
-            if (IDInput.Text.Trim().Equals("") && SizeInput.Text.Trim().Equals(""))
+            if (!regex.IsMatch(SizeInput.Text))
             {
-                allError.Foreground = System.Windows.Media.Brushes.Red;
-                buttonAdd.IsEnabled = false;
-            }
-            else if (IDInput.Text.Trim().Equals(""))
-            {
-                nameError.Foreground = System.Windows.Media.Brushes.Red;
-                buttonAdd.IsEnabled = false;
-            }
-            else if (SizeInput.Text.Trim().Equals(""))
-            {
-                sizeError.Foreground = System.Windows.Media.Brushes.Red;
-                buttonAdd.IsEnabled = false;
+                invalidType.Foreground = System.Windows.Media.Brushes.Red;
+
             }
             else
             {
-
-                Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
-                if (comboboxField.SelectedIndex == 0)
+                if (IDInput.Text.Trim().Equals("") && SizeInput.Text.Trim().Equals(""))
                 {
-                    roomType = Model.RoomType.OPPERATING_ROOM;
+                    allError.Foreground = System.Windows.Media.Brushes.Red;
+                    buttonAdd.IsEnabled = false;
                 }
-                else if (comboboxField.SelectedIndex == 1)
+                else if (IDInput.Text.Trim().Equals(""))
                 {
-                    roomType = Model.RoomType.EXAMINATION_ROOM;
+                    nameError.Foreground = System.Windows.Media.Brushes.Red;
+                    buttonAdd.IsEnabled = false;
                 }
-                else if (comboboxField.SelectedIndex == 2)
+                else if (SizeInput.Text.Trim().Equals(""))
                 {
-                    roomType = Model.RoomType.HOSPITAL_ROOM;
+                    sizeError.Foreground = System.Windows.Media.Brushes.Red;
+                    buttonAdd.IsEnabled = false;
                 }
                 else
                 {
-                    roomType = Model.RoomType.WAREHOUSE;
+
+                    Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
+                    if (comboboxField.SelectedIndex == 0)
+                    {
+                        roomType = Model.RoomType.OPPERATING_ROOM;
+                    }
+                    else if (comboboxField.SelectedIndex == 1)
+                    {
+                        roomType = Model.RoomType.EXAMINATION_ROOM;
+                    }
+                    else if (comboboxField.SelectedIndex == 2)
+                    {
+                        roomType = Model.RoomType.HOSPITAL_ROOM;
+                    }
+                    else
+                    {
+                        roomType = Model.RoomType.WAREHOUSE;
+                    }
+
+
+
+                    Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
+
+                    RoomsList.Rooms.Add(newRoom);
+                    roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
+
+                    Menager.RoomsList roomList = new Menager.RoomsList();
+                    // roomList.Show();
+                    //this.Close();
+                    this.NavigationService.Navigate(new RoomsList());
                 }
-
-
-
-                Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
-
-                RoomsList.Rooms.Add(newRoom);
-                roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
-
-                Menager.RoomsList roomList = new Menager.RoomsList();
-                // roomList.Show();
-                //this.Close();
-                this.NavigationService.Navigate(new RoomsList());
             }
         }
 

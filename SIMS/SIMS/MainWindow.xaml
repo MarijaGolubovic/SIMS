@@ -8,10 +8,6 @@
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="600" Width="950" ResizeMode="NoResize">
     <Grid>
-
-        <Button Content="Direktor" HorizontalAlignment="Left" Margin="61,319,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menager" />
-
-        
         <Label Content="Username" HorizontalAlignment="Left" Height="29" Margin="450,212,0,0" VerticalAlignment="Top" Width="69"/>
         <Label Content="Password" HorizontalAlignment="Left" Height="29" Margin="450,312,0,0" VerticalAlignment="Top" Width="69"/>
         <TextBox HorizontalAlignment="Left" Name="Username" Height="46" Margin="360,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" FontSize="24"/>

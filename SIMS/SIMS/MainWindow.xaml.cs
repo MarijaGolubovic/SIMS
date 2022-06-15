@@ -25,32 +25,7 @@ namespace SIMS
         }
 
 
-        private void Button_Click_Secretary(object sender, RoutedEventArgs e)
-        {
-            MainSecretaryWindow secretaryWindow = new MainSecretaryWindow();
-            secretaryWindow.Show();
-        }
-
-        private void Button_Click_Menager(object sender, RoutedEventArgs e)
-        {
-            Menager.MainWindowMenager menagerWindow = new Menager.MainWindowMenager();
-            menagerWindow.Show();
-            this.Close();
-        }
-
-        private void Button_Click_Doctor(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_Doctor2(object sender, RoutedEventArgs e)
-        {
-            DoctorController doctorController = new DoctorController();
-            ViewModel.Doctor.MainWindowViewModel.LoggedInUser = doctorController.GetByID("2408000103256");
-            View.DoctorMVVM.MainWindow doctorWindow = new View.DoctorMVVM.MainWindow();
-            doctorWindow.Show();
-            this.Close();
-        }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
