@@ -264,7 +264,9 @@
     <Compile Include="ViewModel\Doctor\DetailedRequestViewModel.cs" />
     <Compile Include="ViewModel\Doctor\EditAccountViewModel.cs" />
     <Compile Include="ViewModel\Doctor\VacationRequestViewModel.cs" />
+    <Compile Include="ViewModel\Menager\AddMedicine.cs" />
     <Compile Include="ViewModel\Menager\AddRoom.cs" />
+    <Compile Include="ViewModel\Menager\DeleteRoom.cs" />
     <Compile Include="ViewModel\Menager\Injector.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
     <Compile Include="ViewModel\Sekretar\CreateMeetingViewModel.cs" />

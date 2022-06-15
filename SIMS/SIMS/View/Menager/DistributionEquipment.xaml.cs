@@ -67,7 +67,7 @@ namespace SIMS.View.Menager
                     DataGridDistribution.Items.Refresh();
                     errorQuantity.Foreground = System.Windows.Media.Brushes.LightGray;
                 }
-                if (distributionBox.Text != "" || destinationCombo.SelectedItem != null)
+                if (distributionBox.Text != "" && destinationCombo.SelectedItem != null)
                 {
                     feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
                     Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
