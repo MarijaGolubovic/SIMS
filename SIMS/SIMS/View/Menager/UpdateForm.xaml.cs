@@ -124,12 +124,14 @@ namespace SIMS.Menager
 
         private void IDInput_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
         {
-            Regex regex = new Regex("[0-9]+\".\"[0-9]*");
-            if (regex.IsMatch(IDInput.Text))
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            if (!regex.IsMatch(IDInput.Text))
             {
                 invalidDataInput.Foreground = System.Windows.Media.Brushes.Red;
 
             }
         }
+
+        
     }
 }

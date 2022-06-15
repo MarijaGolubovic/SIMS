@@ -38,7 +38,7 @@
             <Label FontSize="18" Grid.ColumnSpan="2" Grid.Column="1" Margin="85,10,123,10" Grid.Row="3">Ingredients:</Label>
             <TextBox x:Name="ingredientsBox"  Grid.ColumnSpan="2" Grid.Column="2" Margin="47,10,97,10" Grid.Row="3" Grid.RowSpan="2" TextWrapping="Wrap" Background="MintCream" GotKeyboardFocus="ingredientsBox_GotKeyboardFocus"></TextBox>
             <Label FontSize="18" Margin="85,20,149,0" RenderTransformOrigin="3.56,7.074" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="5">Quantity:</Label>
-            <TextBox x:Name="quantityBox" Height="25" Grid.ColumnSpan="2" Grid.Column="2" Margin="47,21,97,10" Grid.Row="5" Background="MintCream" GotKeyboardFocus="quantityBox_GotKeyboardFocus"></TextBox>
+            <TextBox x:Name="quantityBox" Height="25" Grid.ColumnSpan="2" Grid.Column="2" Margin="47,21,97,10" Grid.Row="5" Background="MintCream" GotKeyboardFocus="quantityBox_GotKeyboardFocus" LostFocus="quantityBox_LostFocus"></TextBox>
             <Button Height="25" Width="100" Background="MintCream" IsDefault="True" Grid.Column="3" Margin="60,10,0,10" Grid.Row="6" Click="Button_Click_OKAddMedicine">OK</Button>
             <Button Height="25" Width="100" Background="MintCream" IsCancel="True" Grid.Column="4" Margin="22,10,38,10" Grid.Row="6" Click="Button_Click_CANCELAddMedicine">CANCEL</Button>
 

@@ -9,7 +9,7 @@ using SIMS.Model;
 
 namespace SIMS.ViewModel.Menager
 {
-    class AddMedicine
+    class AddMedicine:ViewModel
     {
         private Medicine medicine;
         private NavigationService navService;

@@ -9,7 +9,7 @@ using SIMS.Model;
 
 namespace SIMS.ViewModel.Menager
 {
-   public class AddRoom
+    class AddRoom : ViewModel
     {
         private Room room;
         private NavigationService navService;
@@ -30,7 +30,6 @@ namespace SIMS.ViewModel.Menager
         {
             this.navService.Navigate(
             new Uri("Views/AddRoom.xaml", UriKind.Relative));
-            //NavigationCommands.BrowseBack.Execute;
         }
 
         private void OnPropertyChanged()

@@ -266,8 +266,11 @@
     <Compile Include="ViewModel\Doctor\VacationRequestViewModel.cs" />
     <Compile Include="ViewModel\Menager\AddMedicine.cs" />
     <Compile Include="ViewModel\Menager\AddRoom.cs" />
+    <Compile Include="ViewModel\Menager\AddRoomForm.cs" />
+    <Compile Include="ViewModel\Menager\ClassesPageViewModel.cs" />
     <Compile Include="ViewModel\Menager\DeleteRoom.cs" />
     <Compile Include="ViewModel\Menager\Injector.cs" />
+    <Compile Include="ViewModel\Menager\ViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
     <Compile Include="ViewModel\Sekretar\CreateMeetingViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\DaysOffRequestViewModel.cs" />

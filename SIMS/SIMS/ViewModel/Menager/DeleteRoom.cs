@@ -9,7 +9,7 @@ using SIMS.Model;
 
 namespace SIMS.ViewModel.Menager
 {
-    class DeleteRoom
+    class DeleteRoom : ViewModel
     {
         private Room room;
         private NavigationService navService;
