@@ -44,5 +44,10 @@ namespace SIMS.View.Menager
         {
             video.Stop();
         }
+
+        private void ChangeMediaSpeedRatio(object sender, RoutedPropertyChangedEventArgs<double> args)
+        {
+            video.SpeedRatio = (double)speedRatioSlider.Value;
+        }
     }
 }
