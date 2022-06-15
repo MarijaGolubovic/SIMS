@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace SIMS.ViewModel.Menager
 {
@@ -12,13 +13,18 @@ namespace SIMS.ViewModel.Menager
         private string id;
 
         private string size;
-
+        private NavigationService navService;
         private Model.RoomType type;
 
         private ObservableCollection<AddRoom> rooms;
 
         public Injector Inject { get; set; }
 
+        public void Executed_RoomCommand(object obj)
+        {
+            this.navService.Navigate(
+            new Uri("View/RoomList.xaml", UriKind.Relative));
+        }
         public string Id
         {
             get { return id; }

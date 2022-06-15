@@ -29,7 +29,7 @@ namespace SIMS.ViewModel.Menager
         public void Executed_RoomCommand(object obj)
         {
             this.navService.Navigate(
-            new Uri("Views/AddRoom.xaml", UriKind.Relative));
+            new Uri("View/AddRoom.xaml", UriKind.Relative));
         }
 
         private void OnPropertyChanged()

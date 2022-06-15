@@ -22,6 +22,7 @@
                     <DataGridTextColumn Header="Room" Binding="{Binding RoomId}" Width="*"/>
                     <DataGridTextColumn Header="Reason" Binding="{Binding Reason}" Width="*"/>
                     <DataGridTextColumn Header="Employer" Binding="{Binding Employer}" Width="*"/>
+                    <DataGridTextColumn Header="Period" Binding="{Binding Period}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

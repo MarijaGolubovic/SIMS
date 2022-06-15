@@ -27,10 +27,10 @@ namespace SIMS.View.Menager
 
             //allReport.Add(new Model.Report("op1", "operacija", "Dejan"));
             // allReport.Add(new Model.Report("op1", "operacija srca", "Dejan"));
-            ReportData.Add(new Model.Report("op", "pregled", "Danijela"));
-            ReportData.Add(new Model.Report("sala2", "pregled", "Dejan"));
-            ReportData.Add(new Model.Report("sala2", "krecenje", "-"));
-            ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo"));
+            ReportData.Add(new Model.Report("op", "pregled", "Danijela","12:15-13:00"));
+            ReportData.Add(new Model.Report("sala2", "pregled", "Dejan", "8:00-9:00"));
+            ReportData.Add(new Model.Report("sala2", "krecenje", "-","all day"));
+            ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo","all day"));
 
 
             this.DataContext = this;
@@ -51,34 +51,34 @@ namespace SIMS.View.Menager
             if ( DateTime.Compare( calendar.SelectedDate.Value, dateNew1 ) < 0)
             {
                 ReportData.Clear();
-                ReportData.Add(new Model.Report("op1", "krecenje", "-"));
-                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo"));
+                ReportData.Add(new Model.Report("op1", "krecenje", "-", "all day"));
+                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo", "all day"));
             }
             else if(DateTime.Compare(calendar.SelectedDate.Value, dateNew2) == 0)
             {
                 ReportData.Clear();
-                ReportData.Add(new Model.Report("sala3", "operacija srca", "Danijela"));
-                ReportData.Add(new Model.Report("sala2", "operacija", "Tamara"));
-                ReportData.Add(new Model.Report("sala5", "krecenje", "-"));
-                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo"));
+                ReportData.Add(new Model.Report("sala3", "operacija srca", "Danijela", "10:00-17:00"));
+                ReportData.Add(new Model.Report("sala2", "operacija", "Tamara", "9:15-15:00"));
+                ReportData.Add(new Model.Report("sala5", "krecenje", "-","all day"));
+                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo", "all day"));
             }else if (DateTime.Compare(calendar.SelectedDate.Value, dateNew4) == 0)
             {
                 ReportData.Clear();
-                ReportData.Add(new Model.Report("op", "pregled", "Danijela"));
-                ReportData.Add(new Model.Report("sala2", "pregled", "Dejan"));
-                ReportData.Add(new Model.Report("sala2", "krecenje", "-"));
-                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo"));
+                ReportData.Add(new Model.Report("op", "pregled", "Danijela","10:00-10:45"));
+                ReportData.Add(new Model.Report("sala2", "pregled", "Dejan", "12:30-13:00"));
+                ReportData.Add(new Model.Report("sala2", "krecenje", "-", "all day"));
+                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo", "all day"));
             }
             else if(DateTime.Compare(calendar.SelectedDate.Value, dateNew4) > 0 && DateTime.Compare(calendar.SelectedDate.Value, new DateTime(2022, 7, 15) ) < 0)
             {
                 ReportData.Clear();
-                ReportData.Add(new Model.Report("sala2", "krecenje", "-"));
-                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo"));
-                ReportData.Add(new Model.Report("soba12", "pregled", "Tamara"));
+                ReportData.Add(new Model.Report("sala2", "krecenje", "-", "all day"));
+                ReportData.Add(new Model.Report("magacin1", "renoviranje", "radovi.doo", "all day"));
+                ReportData.Add(new Model.Report("soba12", "pregled", "Tamara", "8:15-9:00"));
             }else
             {
                 ReportData.Clear();
-                ReportData.Add(new Model.Report("No", "scheduled", "activity!"));
+                ReportData.Add(new Model.Report("No", "scheduled", "activity","today!"));
             }
         }
     }

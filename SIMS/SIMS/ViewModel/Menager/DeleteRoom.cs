@@ -33,8 +33,8 @@ namespace SIMS.ViewModel.Menager
         public void Executed_RoomCommand(object obj)
         {
             this.navService.Navigate(
-            new Uri("Views/DeleteRoom.xaml", UriKind.Relative));
-            //NavigationCommands.BrowseBack.Execute;
+            new Uri("View/DeleteRoom.xaml", UriKind.Relative));
+            
         }
         public RelayCommand DeleteRoomCommand { get; set; }
 

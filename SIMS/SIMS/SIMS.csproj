@@ -265,10 +265,14 @@
     <Compile Include="ViewModel\Doctor\EditAccountViewModel.cs" />
     <Compile Include="ViewModel\Doctor\VacationRequestViewModel.cs" />
     <Compile Include="ViewModel\Menager\AddMedicine.cs" />
+    <Compile Include="ViewModel\Menager\AddPoll.cs" />
     <Compile Include="ViewModel\Menager\AddRoom.cs" />
     <Compile Include="ViewModel\Menager\AddRoomForm.cs" />
     <Compile Include="ViewModel\Menager\ClassesPageViewModel.cs" />
+    <Compile Include="ViewModel\Menager\DeleteMedicine.cs" />
+    <Compile Include="ViewModel\Menager\DeletePoll.cs" />
     <Compile Include="ViewModel\Menager\DeleteRoom.cs" />
+    <Compile Include="ViewModel\Menager\EditRoom.cs" />
     <Compile Include="ViewModel\Menager\Injector.cs" />
     <Compile Include="ViewModel\Menager\ViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />

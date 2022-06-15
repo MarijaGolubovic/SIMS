@@ -33,9 +33,26 @@ namespace SIMS.Model
             }
         }
 
-       
+        public string _period;
+        public String Period
+        {
+            get
+            {
+                return _period;
+            }
+            set
+            {
 
-      public  String Reason
+                if (value != _period)
+                {
+                    _period = value;
+                    OnPropertyChanged("Period");
+                }
+            }
+        }
+
+
+        public String Reason
         {
             get
             {
@@ -52,11 +69,12 @@ namespace SIMS.Model
             }
         }
 
-       public Report(String roomId, String reason, String employer)
+       public Report(String roomId, String reason, String employer, string period)
         {
             RoomId = roomId;
             Reason = reason;
             Employer = employer;
+            Period = period;
         }
 
       public String Employer {
