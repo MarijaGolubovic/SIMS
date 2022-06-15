@@ -1,22 +1,24 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
-using GalaSoft.MvvmLight.Command;
-using SIMS.Model;
 
 namespace SIMS.ViewModel.Menager
 {
-    class EditRoom:ViewModel
+    class MovingEquipment:ViewModel
     {
         private NavigationService navService;
         private Room room;
         private string idRoom;
-        private double size;
-        private RoomType type;
+        private Equpment equpments;
+        private string name;
+        private int quntity;
+
         public Injector Inject { get; set; }
 
         public Model.Room Room
@@ -30,6 +32,16 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
+        public Model.Equpment Equpment
+
+        {
+            get { return equpments; }
+            set
+            {
+                equpments = value;
+                OnPropertyChanged();
+            }
+        }
         public string IdRoom
         {
             get { return idRoom; }
@@ -39,26 +51,26 @@ namespace SIMS.ViewModel.Menager
                 OnPropertyChanged();
             }
         }
-        public double Size
+
+        public string Name
         {
-            get { return size; }
+            get { return name; }
             set
             {
-                size = value;
+                name = value;
                 OnPropertyChanged();
             }
         }
 
-        public RoomType Type
+        public int Quantity
         {
-            get { return type; }
+            get { return quntity; }
             set
             {
-                type= value;
+                quntity = value;
                 OnPropertyChanged();
             }
         }
-
         private void OnPropertyChanged()
         {
             throw new NotImplementedException();
@@ -66,16 +78,17 @@ namespace SIMS.ViewModel.Menager
         public void Executed_RoomCommand(object obj)
         {
             this.navService.Navigate(
-            new Uri("View/EditRoom.xaml", UriKind.Relative));
+            new Uri("View/MoveEquipment.xaml", UriKind.Relative));
 
         }
-        private ObservableCollection<Room> rooms;
-        public RelayCommand EditRoomCommand { get; set; }
+        public RelayCommand MoveEquipmentCommand { get; set; }
 
-        public bool CanExecuteRoomCommand(object obj)
+        public bool CanExecuteRoomEquipmentCommand(object obj)
         {
             return true;
         }
+        private ObservableCollection<Room> rooms;
+        private ObservableCollection<Equpment> equipments;
         public ObservableCollection<Room> Rooms
         {
             get { return rooms; }
@@ -86,16 +99,28 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
-        public EditRoom(NavigationService navService, Injector inject, Room room, string idRoom, double size, RoomType type, RelayCommand deleteRoomCommand, ObservableCollection<Room> rooms)
+        public ObservableCollection<Equpment> Equipment
+        {
+            get { return equipments; }
+            set
+            {
+                equipments = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public MovingEquipment(NavigationService navService, Injector inject, Room room, Equpment equpment, string idRoom, string name, int quantity, RelayCommand moveEquipmentCommand, ObservableCollection<Room> rooms, ObservableCollection<Equpment> equipment)
         {
             this.navService = navService;
             Inject = inject;
             Room = room;
+            Equpment = equpment;
             IdRoom = idRoom;
-            Size = size;
-            Type = type;
-            EditRoomCommand = deleteRoomCommand;
+            Name = name;
+            Quantity = quantity;
+            MoveEquipmentCommand = moveEquipmentCommand;
             Rooms = rooms;
+            Equipment = equipment;
         }
     }
 }

@@ -41,7 +41,8 @@ namespace SIMS.View.Menager
 
         private void buttonDistribut_Click(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            //Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            Regex regex = new Regex("^[0-9]+$");
             if (!regex.IsMatch(distributionBox.Text))
             {
                 errorQuantity.Text = "Invalid type!";
@@ -147,7 +148,8 @@ namespace SIMS.View.Menager
 
         private void distributionBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            // Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            Regex regex = new Regex("^[0-9]+$");
             if (!regex.IsMatch(distributionBox.Text))
             {
                 errorQuantity.Text = "Invalid type!";

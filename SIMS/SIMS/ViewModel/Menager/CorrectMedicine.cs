@@ -1,15 +1,16 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
-using GalaSoft.MvvmLight.Command;
-using SIMS.Model;
+
 namespace SIMS.ViewModel.Menager
 {
-    class DeleteMedicine:ViewModel
+    class CorrectMedicine:ViewModel
     {
         private NavigationService navService;
         private Medicine medicine;
@@ -17,6 +18,7 @@ namespace SIMS.ViewModel.Menager
         public string name;
         public string igredisnts;
         public int quantity;
+        public MedicineStatus medicineStatus;
 
         public Model.Medicine Medicine
         {
@@ -28,7 +30,17 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
-        
+        public MedicineStatus MedicineStatus
+        {
+            get { return medicineStatus; }
+            set
+            {
+                medicineStatus = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public string Naee
         {
@@ -67,7 +79,7 @@ namespace SIMS.ViewModel.Menager
         public void Executed_RoomCommand(object obj)
         {
             this.navService.Navigate(
-            new Uri("View/DeleteMedicine.xaml", UriKind.Relative));
+            new Uri("View/CorrectMedicine.xaml", UriKind.Relative));
 
         }
         private ObservableCollection<Medicine> medicines;
@@ -88,15 +100,15 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
-        public DeleteMedicine(NavigationService navService, Injector inject, Medicine medicine, string naee, string igredients, int quantity, RelayCommand deletePollCommand, ObservableCollection<Medicine> medicines)
+        public CorrectMedicine(Injector inject, Medicine medicine, MedicineStatus medicineStatus, string naee, string igredients, int quantity, RelayCommand deleteRoomCommand, ObservableCollection<Medicine> medicines)
         {
-            this.navService = navService;
             Inject = inject;
             Medicine = medicine;
+            MedicineStatus = medicineStatus;
             Naee = naee;
             Igredients = igredients;
             Quantity = quantity;
-            DeleteRoomCommand = deletePollCommand;
+            DeleteRoomCommand = deleteRoomCommand;
             Medicines = medicines;
         }
     }

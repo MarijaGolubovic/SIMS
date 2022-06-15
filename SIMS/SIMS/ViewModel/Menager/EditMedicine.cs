@@ -1,15 +1,16 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Navigation;
-using GalaSoft.MvvmLight.Command;
 using SIMS.Model;
+using System.Windows.Navigation;
+
 namespace SIMS.ViewModel.Menager
 {
-    class DeleteMedicine:ViewModel
+    class EditMedicine:ViewModel
     {
         private NavigationService navService;
         private Medicine medicine;
@@ -28,7 +29,7 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
-        
+
 
         public string Naee
         {
@@ -67,7 +68,7 @@ namespace SIMS.ViewModel.Menager
         public void Executed_RoomCommand(object obj)
         {
             this.navService.Navigate(
-            new Uri("View/DeleteMedicine.xaml", UriKind.Relative));
+            new Uri("View/EditMedicine.xaml", UriKind.Relative));
 
         }
         private ObservableCollection<Medicine> medicines;
@@ -88,7 +89,7 @@ namespace SIMS.ViewModel.Menager
             }
         }
 
-        public DeleteMedicine(NavigationService navService, Injector inject, Medicine medicine, string naee, string igredients, int quantity, RelayCommand deletePollCommand, ObservableCollection<Medicine> medicines)
+        public EditMedicine(NavigationService navService, Injector inject, Medicine medicine, string naee, string igredients, int quantity, RelayCommand deletePollCommand, ObservableCollection<Medicine> medicines)
         {
             this.navService = navService;
             Inject = inject;

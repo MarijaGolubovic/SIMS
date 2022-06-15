@@ -42,7 +42,8 @@ namespace SIMS.View.Menager
             if (flag)
             {
                 errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
-                Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+                //Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+                Regex regex = new Regex("^[0-9]+$");
 
                 if (nameBox.Text.Trim().Equals("") || quantityBox.Text.Trim().Equals("") || igredientsBox.Text.Trim().Equals("")) {
                     errorEmptyFields.Foreground = System.Windows.Media.Brushes.Red;
@@ -122,7 +123,8 @@ namespace SIMS.View.Menager
 
         private void quantityBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            // Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            Regex regex = new Regex("^[0-9]+$");
             if (!regex.IsMatch(quantityBox.Text))
             {
                 typeError.Foreground = System.Windows.Media.Brushes.Red;
