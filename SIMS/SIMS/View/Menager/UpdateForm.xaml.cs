@@ -58,7 +58,7 @@ namespace SIMS.Menager
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             RoomsList.Rooms = new ObservableCollection<Model.Room>();
-
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
 
             foreach (Model.Room roomIterator in rooms)
             {
@@ -67,6 +67,9 @@ namespace SIMS.Menager
             if (SizeInput.Text.Trim().Equals("") || IDInput.Text.Trim().Equals(""))
             {
                 erroeEmpty.Foreground= System.Windows.Media.Brushes.Red;
+            }else if (!regex.IsMatch(IDInput.Text))
+            {
+                invalidDataInput.Foreground = System.Windows.Media.Brushes.Red;
             }
             else
             {

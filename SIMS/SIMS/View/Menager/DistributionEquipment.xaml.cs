@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,49 +41,59 @@ namespace SIMS.View.Menager
 
         private void buttonDistribut_Click(object sender, RoutedEventArgs e)
         {
-            if (distributionBox.Text.Trim().Equals("")) {
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            if (!regex.IsMatch(distributionBox.Text))
+            {
+                errorQuantity.Text = "Invalid type!";
                 errorQuantity.Foreground = System.Windows.Media.Brushes.Red;
-                errorQuantity.Text = "Input quantity";
-                
-            }
 
-            if (destinationCombo.SelectedItem == null)
-            {
-                errorRoom.Foreground = System.Windows.Media.Brushes.Red; 
             }
-            int inputQuantity = int.Parse(distributionBox.Text);
-            if (selectedItem.Quantity < inputQuantity)
+            else
             {
-                errorQuantity.Foreground = System.Windows.Media.Brushes.Red;
-                errorQuantity.Text = "Invalid quantity";
-                
-            }
-            else if (selectedItem.Quantity > 0)
-            {
-                selectedItem.Quantity -= inputQuantity;
-
-                if (selectedItem != null)
+                if (distributionBox.Text.Trim().Equals(""))
                 {
-                    DataGridDistribution.ItemsSource = Equipment;
-                    DataGridDistribution.Items.Refresh();
-                    errorQuantity.Foreground = System.Windows.Media.Brushes.LightGray;
-                }
-                if (distributionBox.Text != "" && destinationCombo.SelectedItem != null)
-                {
-                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
-                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
-                    sb.Begin(feedbackMessage);
+                    errorQuantity.Foreground = System.Windows.Media.Brushes.Red;
+                    errorQuantity.Text = "Input quantity";
 
                 }
-                else
+
+                if (destinationCombo.SelectedItem == null)
                 {
-                    emptyFiend.Foreground = System.Windows.Media.Brushes.Red;
+                    errorRoom.Foreground = System.Windows.Media.Brushes.Red;
+                }
+                int inputQuantity = int.Parse(distributionBox.Text);
+                if (selectedItem.Quantity < inputQuantity)
+                {
+                    errorQuantity.Foreground = System.Windows.Media.Brushes.Red;
+                    errorQuantity.Text = "Invalid quantity";
 
                 }
+                else if (selectedItem.Quantity > 0)
+                {
+                    selectedItem.Quantity -= inputQuantity;
+
+                    if (selectedItem != null)
+                    {
+                        DataGridDistribution.ItemsSource = Equipment;
+                        DataGridDistribution.Items.Refresh();
+                        errorQuantity.Foreground = System.Windows.Media.Brushes.LightGray;
+                    }
+                    if (distributionBox.Text != "" && destinationCombo.SelectedItem != null)
+                    {
+                        feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                        Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                        sb.Begin(feedbackMessage);
+
+                    }
+                    else
+                    {
+                        emptyFiend.Foreground = System.Windows.Media.Brushes.Red;
+
+                    }
+                }
+
+
             }
-
-           
-
         }
 
         private void Button_Click_CANCEL(object sender, RoutedEventArgs e)
@@ -120,6 +131,7 @@ namespace SIMS.View.Menager
             errorQuantity.Text = "Enter quantity";
             errorQuantity.Foreground = System.Windows.Media.Brushes.LightGray;
             emptyFiend.Foreground = System.Windows.Media.Brushes.LightGray;
+
         }
 
         private void DataGridDistribution_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -131,6 +143,17 @@ namespace SIMS.View.Menager
         private void Button_Click_TUTORIAL(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Tutorials.DistributionEquipmentTutorial());
+        }
+
+        private void distributionBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            if (!regex.IsMatch(distributionBox.Text))
+            {
+                errorQuantity.Text = "Invalid type!";
+                errorQuantity.Foreground = System.Windows.Media.Brushes.Red;
+
+            }
         }
     }
 }

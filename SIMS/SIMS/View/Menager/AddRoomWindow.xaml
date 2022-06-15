@@ -47,7 +47,7 @@
             </TextBox>
             
             <Label Content="Size:" Margin="239,136,123,279" RenderTransformOrigin="1.019,0.565" FontSize="18"/>
-            <TextBox x:Name="SizeInput" Height="30" Margin="370,136,354,284"  Background="MintCream" Grid.ColumnSpan="2" GotKeyboardFocus="SizeInput_GotKeyboardFocus">
+            <TextBox x:Name="SizeInput" Height="30" Margin="370,136,354,284"  Background="MintCream" Grid.ColumnSpan="2" GotKeyboardFocus="SizeInput_GotKeyboardFocus" LostFocus="SizeInput_LostFocus">
                 <TextBox.Text>
                     <Binding Path="Room.Size" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -88,6 +88,7 @@
             <Label x:Name="nameError" Foreground="LightGray" Height="25" Width="150" Grid.Column="1" Margin="139,87,183,338">Input room ID</Label>
             <Label x:Name="sizeError" Foreground="LightGray" Height="25" Width="150" Grid.Column="1" Margin="139,142,183,283"> Input size!</Label>
             <Label x:Name="allError" Foreground="LightGray" Height="25" Width="180" Grid.Column="1" Margin="139,315,153,110"> Input data in empty fields!</Label>
+            <Label x:Name="invalidType"  Height="25" Width="100" Grid.ColumnSpan="2" Margin="393,166,457,259" Foreground="LightGray">Invalid type!</Label>
             
         </Grid>
     </Grid>

@@ -35,10 +35,11 @@
 
         <TextBox x:Name="nameBox"  Height="25" Width="180" Margin="558,90,62,327" Background="MintCream" GotKeyboardFocus="nameBox_GotKeyboardFocus"></TextBox>
         <TextBox x:Name="igredientsBox"  Width="180" Margin="558,174,62,200" Background="MintCream" GotKeyboardFocus="igredientsBox_GotKeyboardFocus"/>
-        <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="558,133,62,292" Background="MintCream" GotKeyboardFocus="quantityBox_GotKeyboardFocus"></TextBox>
+        <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="558,133,62,292" Background="MintCream" GotKeyboardFocus="quantityBox_GotKeyboardFocus" LostFocus="quantityBox_LostFocus"></TextBox>
 
         <Label FontSize="18" Height="35" Width="100" Margin="445,268,255,147">Comment:</Label>
         <TextBox x:Name="commentBox" Width="180" Margin="558,268,62,120" IsReadOnly="True" TextWrapping="Wrap" Background="MintCream" GotKeyboardFocus="commentBox_GotKeyboardFocus"/>
+        <Label x:Name="errrType" Height="25" Width="100" Margin="599,149,101,276" Foreground="LightGray">Invalid type!</Label>
 
         <Button x:Name="buttonCORRECT" Height="25" Width="100"  Background="MintCream" Margin="568,385,95,40" Click="Button_Click_OK">CORRECT</Button>
         <Button Height="25" Width="100" Background="MintCream" Margin="698,385,0,40" Click="Button_Click_CANCEL">CANCEL</Button>

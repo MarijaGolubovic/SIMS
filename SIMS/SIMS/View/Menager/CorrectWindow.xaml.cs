@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using System.Text.RegularExpressions;
 
 namespace SIMS.View.Menager
 {
@@ -42,6 +43,7 @@ namespace SIMS.View.Menager
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
             List<Model.Medicine> medicine = medicineStorage.GetAll();
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
 
             foreach (Model.Medicine medicineItem in medicine)
             {
@@ -58,6 +60,9 @@ namespace SIMS.View.Menager
             {
                 allError.Foreground= System.Windows.Media.Brushes.Red;
                 buttonCORRECT.IsEnabled = false;
+            }else if (!regex.IsMatch(quantityBox.Text))
+            {
+                errrType.Foreground = System.Windows.Media.Brushes.Red;
             }
             else
             {
@@ -169,6 +174,7 @@ namespace SIMS.View.Menager
         {
             allError.Foreground = System.Windows.Media.Brushes.LightGray;
             buttonCORRECT.IsEnabled = true;
+            errrType.Foreground = System.Windows.Media.Brushes.LightGray;
         }
 
         private void igredientsBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
@@ -181,6 +187,16 @@ namespace SIMS.View.Menager
         {
             allError.Foreground = System.Windows.Media.Brushes.LightGray;
             buttonCORRECT.IsEnabled = true;
+        }
+
+        private void quantityBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            if (!regex.IsMatch(quantityBox.Text))
+            {
+                errrType.Foreground = System.Windows.Media.Brushes.Red;
+
+            }
         }
     }
 }

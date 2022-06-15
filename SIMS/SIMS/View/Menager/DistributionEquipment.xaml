@@ -52,7 +52,7 @@
             <ComboBoxItem Background="MintCream">op1</ComboBoxItem>
         </ComboBox>
 
-        <TextBox x:Name="distributionBox" Height="30" Width="200" Background="MintCream" Margin="473,290,127,113" GotKeyboardFocus="distributionBox_GotKeyboardFocus"></TextBox>
+        <TextBox x:Name="distributionBox" Height="30" Width="200" Background="MintCream" Margin="473,290,127,113" GotKeyboardFocus="distributionBox_GotKeyboardFocus" LostFocus="distributionBox_LostFocus"></TextBox>
         <Label FontSize="18" Height="35" Width="200" Margin="320,290,280,113">Distribut quantity:</Label>
 
         <TextBox  x:Name="errorQuantity" Height="25" Width="100" Margin="678,290,22,110"  BorderThickness="0" Background="LightGray"></TextBox>
