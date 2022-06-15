@@ -9,16 +9,16 @@
       Title="TutorialVideo">
 
     <Grid>
-        <Label Height="60" Width="700" FontSize="28" Margin="53,198,0,192" HorizontalAlignment="Center">Click on button play to start video tutorial!</Label>
-        <MediaElement x:Name="video" Source="C:\Users\TOSHIBA\Desktop\SIMS\SIMS\SIMS\Assets/video_tutorial.avi"  Margin="75,25,103,98"  LoadedBehavior="Manual" />
+        <Label Height="60" Width="650" FontSize="28" Margin="53,198,0,192" HorizontalAlignment="Center">Click on button play to start video tutorial!</Label>
+        <MediaElement x:Name="video" Source="C:\Users\TOSHIBA\Desktop\SIMS\SIMS\SIMS\Assets/video_tutorial.avi"  Margin="10,25,64,98"  LoadedBehavior="Manual" />
 
-        <Label  FontWeight="Bold" Margin="455,348,228,48">Speed</Label>
+        <Label  FontWeight="Bold" Margin="400,348,228,48">SPEED</Label>
         <Slider Name="speedRatioSlider" VerticalAlignment="Center" ValueChanged="ChangeMediaSpeedRatio" 
-       Value="1" Margin="500,343,150,40" Height="38" RenderTransformOrigin="0.492,0.793" />
+       Value="1" Margin="450,338,250,40"  RenderTransformOrigin="0.492,0.793" />
 
-        <Button x:Name="play" Height="25" BorderThickness="0" BorderBrush="MintCream" Width="100" Background="MintCream"  Click="play_Click"  Margin="308,320,292,30" FontWeight="Bold">PLAY</Button>
+        <Button x:Name="play" Height="25" BorderThickness="0" BorderBrush="MintCream" Width="100" Background="MintCream"  Click="play_Click"  Margin="208,320,292,30" FontWeight="Bold">PLAY</Button>
 
-        <Button x:Name="pause" BorderThickness="0" Height="25" BorderBrush="MintCream" Width="100" Background="MintCream" Margin="188,320,412,30" Click="pause_Click"  FontWeight="Bold">PAUSE</Button>
+        <Button x:Name="pause" BorderThickness="0" Height="25" BorderBrush="MintCream" Width="100" Background="MintCream" Margin="88,320,412,30" Click="pause_Click"  FontWeight="Bold">PAUSE</Button>
 
         <!--Button x:Name="stop" BorderThickness="0" Height="25" BorderBrush="MintCream" Width="100" Background="MintCream" Click="stop_Click" FontWeight="Bold" RenderTransformOrigin="0.691,0.613" Margin="432,320,168,30">STOP</Button-->
 
