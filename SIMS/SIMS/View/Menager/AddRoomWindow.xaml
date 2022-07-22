@@ -20,7 +20,7 @@
                     FontWeight="Bold" Margin="393,10,416,400" RenderTransformOrigin="0.476,0.765" Grid.ColumnSpan="2"
              />
             <Label Content="Room ID:" Margin="239,82,131,338" RenderTransformOrigin="0.968,0.268" FontSize="18"/>
-            <TextBox x:Name="IDInput" Height="30" Margin="370,82,355,338"  Background="MintCream" Grid.ColumnSpan="2">
+            <TextBox x:Name="IDInput" Height="30" Margin="370,82,355,338"  Background="MintCream" Grid.ColumnSpan="2" GotKeyboardFocus="IDInput_GotKeyboardFocus">
                 <TextBox.Text>
                     <Binding Path="Id" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -47,7 +47,7 @@
             </TextBox>
             
             <Label Content="Size:" Margin="239,136,123,279" RenderTransformOrigin="1.019,0.565" FontSize="18"/>
-            <TextBox x:Name="SizeInput" Height="30" Margin="368,136,357,284"  Background="MintCream" Grid.ColumnSpan="2" >
+            <TextBox x:Name="SizeInput" Height="30" Margin="370,136,354,284"  Background="MintCream" Grid.ColumnSpan="2" GotKeyboardFocus="SizeInput_GotKeyboardFocus" LostFocus="SizeInput_LostFocus">
                 <TextBox.Text>
                     <Binding Path="Room.Size" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -81,9 +81,15 @@
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button Width="80" Height="25" Content="OK" Margin="169,285,223,140" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467" IsDefault="True" Background="MintCream" Grid.Column="1"/>
-            <Button Width="80" Height="25" Content="CANCEL" Margin="280,285,112,140" Click="Button_Click_CANCEL" IsCancel="True" Background="MintCream" RenderTransformOrigin="0.785,0.383" Grid.Column="1"/>
+            <Button x:Name="buttonAdd" Width="100" Height="25" Content="ADD" Margin="169,285,203,140" Click="Button_Click_OK" RenderTransformOrigin="0.013,0.467" IsDefault="True" Background="MintCream" Grid.Column="1"/>
+            <Button Width="100" Height="25" Content="CANCEL" Margin="280,285,92,140" Click="Button_Click_CANCEL" IsCancel="True" Background="MintCream" RenderTransformOrigin="0.785,0.383" Grid.Column="1"/>
             <Button Width="100" Height="25" Content="TUTORIAL"  Click="Button_Click_TUTORIAL"  Background="MintCream" Margin="90,285,288,140"/>
+
+            <Label x:Name="nameError" Foreground="LightGray" Height="25" Width="150" Grid.Column="1" Margin="139,87,183,338">Input room ID</Label>
+            <Label x:Name="sizeError" Foreground="LightGray" Height="25" Width="150" Grid.Column="1" Margin="139,142,183,283"> Input size!</Label>
+            <Label x:Name="allError" Foreground="LightGray" Height="25" Width="180" Grid.Column="1" Margin="139,315,153,110"> Input data in empty fields!</Label>
+            <Label x:Name="invalidType"  Height="25" Width="100" Grid.ColumnSpan="2" Margin="393,166,457,259" Foreground="LightGray">Invalid type!</Label>
+            
         </Grid>
     </Grid>
 </Page>

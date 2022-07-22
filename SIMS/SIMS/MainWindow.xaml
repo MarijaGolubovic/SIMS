@@ -5,20 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="600" Width="950" ResizeMode="NoResize">
     <Grid>
-
-        <Button Content="Sekretar" HorizontalAlignment="Left" Margin="61,267,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Secretary"/>
-
-        <Button Content="Lekar" HorizontalAlignment="Left" Margin="61,216,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Doctor"/>
-
-        <Button Content="Direktor" HorizontalAlignment="Left" Margin="61,319,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menager" />
-
-        <Button Content="Lekar2" HorizontalAlignment="Left" Margin="61,127,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Doctor2"/>
-        <Label Content="Username" HorizontalAlignment="Left" Height="29" Margin="346,102,0,0" VerticalAlignment="Top" Width="69"/>
-        <Label Content="Password" HorizontalAlignment="Left" Height="29" Margin="346,187,0,0" VerticalAlignment="Top" Width="69"/>
-        <TextBox HorizontalAlignment="Left" Name="Username" Height="46" Margin="258,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Name="Password" Height="46" Margin="258,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" FontSize="24"/>
-        <Button Content="ULOGUJ SE" HorizontalAlignment="Left" Height="51" Margin="289,235,0,0" VerticalAlignment="Top" Width="183" FontSize="24" Click="Button_Click"/>
+        <Label Content="Username" HorizontalAlignment="Left" Height="29" Margin="450,212,0,0" VerticalAlignment="Top" Width="69"/>
+        <Label Content="Password" HorizontalAlignment="Left" Height="29" Margin="450,312,0,0" VerticalAlignment="Top" Width="69"/>
+        <TextBox HorizontalAlignment="Left" Name="Username" Height="46" Margin="360,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" FontSize="24"/>
+        <TextBox HorizontalAlignment="Left" Name="Password" Height="46" Margin="360,251,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" FontSize="24"/>
+        <Button Content="ULOGUJ SE" HorizontalAlignment="Left" Height="51" Margin="390,350,0,0" VerticalAlignment="Top" Width="183" FontSize="24" Click="Button_Click"/>
     </Grid>
 </Window>

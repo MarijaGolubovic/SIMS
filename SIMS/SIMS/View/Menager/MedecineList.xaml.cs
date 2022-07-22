@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
+
 namespace SIMS.View.Menager
 {
     /// <summary>
@@ -24,6 +26,10 @@ namespace SIMS.View.Menager
             {
                 Medicines.Add(roomItem);
             }
+            feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+            Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+            sb.Begin(feedbackMessage);
+
         }
 
         private void Button_Click_BACK(object sender, RoutedEventArgs e)

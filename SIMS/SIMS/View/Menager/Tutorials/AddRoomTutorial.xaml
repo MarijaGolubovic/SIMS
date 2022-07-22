@@ -9,14 +9,14 @@
       Title="AddRoomTutorial">
 
     <Grid RenderTransformOrigin="0.617,0.502" HorizontalAlignment="Left" Width="800">
-        <ScrollBar Margin="783,0,0,0" x:Name="AddRoomTutorijalScroll" Scroll="AddRoomTutorijalScroll_Scroll"></ScrollBar>
-        <Image Source="/Assets/plus.png"  Focusable="False" VerticalAlignment="Top" Height="56" RenderTransformOrigin="0.45,0.69" Width="45" Margin="304,26,451,0"/>
-        <Label Name="Label1"  
-                    Content="Add room"  
-                    FontSize="25"  
-                    FontWeight="Bold" 
-                    Width="150" VerticalAlignment="Top" Margin="354,26,296,0"
-             />
-        <Image Source="/Assets/select_room_image.png"  Focusable="False" VerticalAlignment="Bottom" Margin="39,0,328,57" RenderTransformOrigin="-0.021,6.656" Height="306" />
+        <Image Source="/Assets/add_room_image.png"  Focusable="False" VerticalAlignment="Bottom" Margin="10,0,357,108" RenderTransformOrigin="-0.021,6.656" Height="280" />
+        <Label Content="Add room tutorial" RenderTransformOrigin="0.834,1.411" FontSize="18"  FontWeight="Bold" Margin="517,23,111,380"/>
+        <Grid Height="270" Width="320"  Margin="450,90,20,67">
+
+            <Label FontSize="15" Margin="10,38,10,199">1. Clic on Rooms->Add (mark red dart)</Label>
+            <Label FontSize="15" Margin="10,73,0,164">2. Enter data in fields(RoomId, Size, Type)</Label>
+            <Label FontSize="15" Margin="10,108,10,126" >3.Clic on button OK</Label>
+
+        </Grid>
     </Grid>
 </Page>

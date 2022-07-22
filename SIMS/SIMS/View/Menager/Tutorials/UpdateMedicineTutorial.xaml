@@ -1,0 +1,28 @@
+﻿<Page x:Class="SIMS.View.Menager.Tutorials.UpdateMedicineTutorial"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Menager.Tutorials"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UpdateMedicineTutorial">
+
+    <Grid>
+        <Image Source="/Assets/update_medicine_image.png"  Focusable="False" VerticalAlignment="Bottom" Margin="10,0,357,108" RenderTransformOrigin="-0.021,6.656" Height="280" />
+        <Label Content="Update medicine tutorial" RenderTransformOrigin="0.834,1.411" FontSize="18"  FontWeight="Bold" Margin="473,23,40,380"/>
+        <Grid  Margin="430,75,0,38">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="57*"/>
+                <ColumnDefinition Width="58*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label FontSize="15" Margin="10,38,0,199" Grid.ColumnSpan="2">1. Clic on Medicine->Update (mark red dart)</Label>
+            <Label FontSize="15" Margin="10,73,0,164" Grid.ColumnSpan="2">2. Choose medicine from data grid</Label>
+            <Label FontSize="15" Margin="10,108,10,126" Grid.ColumnSpan="2" >3.Clic on button CHOOSE</Label>
+            <Label FontSize="15" Margin="10,144,10,90" Grid.ColumnSpan="2" >4.Edit data in the fields</Label>
+            <Label FontSize="15" Margin="10,180,10,54" Grid.ColumnSpan="2" >5.Clic on button UPDATE</Label>
+
+        </Grid>
+    </Grid>
+</Page>

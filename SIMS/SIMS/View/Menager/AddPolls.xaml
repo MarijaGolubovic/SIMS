@@ -1,0 +1,54 @@
+﻿<Page x:Class="SIMS.View.Menager.AddPolls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Menager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPolls">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+        <Label  FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Black"  Margin="339,10,278,365">Add pools</Label>
+        <Image RenderTransformOrigin="0.482,0.735" Margin="240,10,399,370">
+            <Image.Source >
+                <BitmapImage  UriSource="/Assets/plus.png"  />
+            </Image.Source>
+        </Image>
+
+
+        <TextBox x:Name="firstBox" Height="25" Width="500" Background="MintCream" Margin="65,108,185,290">
+            Enter first question!
+        </TextBox>
+        <TextBox x:Name="secondBox" Height="25" Width="500" Background="MintCream" Margin="65,155,185,240">
+            Enter second question!
+        </TextBox>
+        <TextBox x:Name="thirtBox" Height="25" Width="500" Background="MintCream" Margin="65,215,185,185">
+            Enter third question!
+        </TextBox>
+        <TextBox x:Name="fourthBox" Height="25" Width="500" Background="MintCream" Margin="65,272,185,130">
+            Enter fourth question!
+        </TextBox>
+
+        <TextBox Height="25" Width="200" Background="MintCream" Margin="90,60,510,340">Poll name</TextBox>
+
+        <TextBox Height="25" Width="150" Background="MintCream" Margin="614,108,36,290">Answer</TextBox>
+        <TextBox Height="25" Width="150" Background="MintCream" Margin="614,155,36,240">Answer</TextBox>
+        <TextBox Height="25" Width="150" Background="MintCream" Margin="614,215,36,185">Answer</TextBox>
+        <TextBox Height="25" Width="150" Background="MintCream" Margin="614,272,36,130">Answer</TextBox>
+        
+        <Button Height="25" Width="100" Background="MintCream" Margin="553,342,147,62" Click="Button_Click_ADD">ADD</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="677,342,23,62" Click="Button_Click_CANCEL">CANCEL</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="90,342,610,62" Click="Button_Click_Tutorial">TUTORIAL</Button>
+
+        <Label x:Name="feedbackMessage" Foreground="Green" FontSize="18" Opacity="0" Margin="280,341,272,0" >Pool succesfully created!</Label>
+    </Grid>
+</Page>

@@ -33,33 +33,35 @@ namespace SIMS.Service
         }
 
 
-        public bool MoveEquipmentToAnatherRoom(string Name, string roomId, string destination, string begin, string end)
+      public bool MoveEquipmentToAnatherRoom(MoveRoomEquipmentDTO moveRoomEquipment)
         {
-            List<Model.Equpment> equipments = equipmentStorage.GetAll();
-            List<Model.RoomEqupment> roomEquipments = roomEquipment.GetAll();
+            BeginEndTime beginEnd = ParseOccupacyPeriod(moveRoomEquipment.Begin, moveRoomEquipment.End);
+            String equpmentId = FindEquipmentIdByName(equipmentStorage.GetAll(), moveRoomEquipment.Name);
 
-            String[] beginToken = begin.Split(';');
-            DateTime beginTime = DateTime.Parse(beginToken[0]);
-            String[] endToken = end.Split(';');
-            DateTime endTime = DateTime.Parse(endToken[0]);
-
-            String equpmentId = "";
             bool succesfullyMove = false;
 
-            equpmentId = FindEquipmentIdByName(equipments, Name);
-            equpmentId = FindEquipmentIdByRoom(roomEquipments, equpmentId);
-
-            if (!EndBeforeBegin(beginTime, endTime))
+            if (!EndBeforeBegin(beginEnd.Begin, beginEnd.End))
             {
-                if (!EquipmentAlreadyOccupacy(equpmentId, beginTime, endTime))
+                if (!EquipmentAlreadyOccupacy(equpmentId, beginEnd.Begin, beginEnd.End))
                 {
-                    String movingPeriod = beginToken[0] + ";" + endToken[0];
-                    roomEquipments.Add(new RoomEqupment(roomId, movingPeriod, equpmentId));
+                    String movingPeriod = beginEnd.Begin.ToString() + ";" + beginEnd.End.ToString();
+                    roomEquipment.GetAll().Add(new RoomEqupment(moveRoomEquipment.RoomId, movingPeriod, equpmentId));
                     succesfullyMove = true;
                 }
             }
             return succesfullyMove;
+        }
 
+
+        public BeginEndTime ParseOccupacyPeriod(string begin, string end)
+        {
+            String[] beginToken = begin.Split(';');
+            DateTime beginTime = DateTime.Parse(beginToken[0]);
+            String[] endToken = end.Split(';');
+            DateTime endTime = DateTime.Parse(endToken[0]);
+            BeginEndTime occupacyPeriod = new BeginEndTime(beginTime, endTime);
+
+            return  occupacyPeriod;
         }
 
         public string FindEquipmentIdByRoom(List<Model.RoomEqupment> roomEquipments, string equpmentId)

@@ -6,9 +6,17 @@
         xmlns:local="clr-namespace:SIMS.View.Menager"
         mc:Ignorable="d"
         Title="CorrectWindow" Height="450" Width="800">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
     <Grid>
-        <Label FontSize="15" Height="30" Margin="46,10,510,410">Select medicine who want to edit!</Label>
-        <DataGrid x:Name="dataGridMedicinesCorrect" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="0,45,457,40" MouseDoubleClick="dataGridMedicines_MouseDoubleClick" RenderTransformOrigin="0.5,0.5">
+        <Label FontSize="15" Height="30" Margin="46,10,510,410">Choose medicine who want to edit!</Label>
+        <DataGrid x:Name="dataGridMedicinesCorrect" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="0,45,457,90"  RenderTransformOrigin="0.5,0.5" MouseDoubleClick="dataGridMedicinesCorrect_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding MedicineStatus}" Width="*"/>
@@ -16,8 +24,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label FontSize="18" Margin="445,86,281,327" RenderTransformOrigin="0.648,-1.541">Name:</Label>
-        <Label FontSize="18" Width="100"  Margin="445,207,255,204">Ingrediets:</Label>
-        <Label FontSize="18" Width="100" Margin="445,146,255,268">Quantity:</Label>
+        <Label FontSize="18" Width="100"  Margin="445,174,255,237">Ingrediets:</Label>
+        <Label FontSize="18" Width="100" Margin="445,128,255,286">Quantity:</Label>
         <Label FontSize="25" FontWeight="Bold" Margin="528,17,57,386">Correct Medicine</Label>
         <Image HorizontalAlignment="Right" Margin="0,5,281,389" Width="56" RenderTransformOrigin="0.448,-0.109">
             <Image.Source >
@@ -25,15 +33,25 @@
             </Image.Source>
         </Image>
 
-        <TextBox x:Name="nameBox"  Height="25" Width="180" Margin="530,80,34,309" Background="MintCream"></TextBox>
-        <TextBox x:Name="igredientsBox"  Width="180" Margin="554,207,58,167" Background="MintCream"/>
-        <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="530,120,34,230" Background="MintCream"></TextBox>
+        <TextBox x:Name="nameBox"  Height="25" Width="180" Margin="558,90,62,327" Background="MintCream" GotKeyboardFocus="nameBox_GotKeyboardFocus"></TextBox>
+        <TextBox x:Name="igredientsBox"  Width="180" Margin="558,174,62,200" Background="MintCream" GotKeyboardFocus="igredientsBox_GotKeyboardFocus"/>
+        <TextBox x:Name="quantityBox" Height="25" Width="180" Margin="558,133,62,292" Background="MintCream" GotKeyboardFocus="quantityBox_GotKeyboardFocus" LostFocus="quantityBox_LostFocus"></TextBox>
 
-        <Label FontSize="18" Height="35" Width="100" Margin="445,300,255,115">Comment:</Label>
-        <TextBox x:Name="commentBox" Width="180" Margin="558,300,62,90" IsReadOnly="True" TextWrapping="Wrap" Background="MintCream"/>
+        <Label FontSize="18" Height="35" Width="100" Margin="445,268,255,147">Comment:</Label>
+        <TextBox x:Name="commentBox" Width="180" Margin="558,268,62,120" IsReadOnly="True" TextWrapping="Wrap" Background="MintCream" GotKeyboardFocus="commentBox_GotKeyboardFocus"/>
+        <Label x:Name="errrType" Height="25" Width="100" Margin="599,149,101,276" Foreground="LightGray">Invalid type!</Label>
 
-        <Button Height="25" Width="100"  Background="MintCream" Margin="568,385,95,40" Click="Button_Click_OK">CORRECT</Button>
+        <Button x:Name="buttonCORRECT" Height="25" Width="100"  Background="MintCream" Margin="568,385,95,40" Click="Button_Click_OK">CORRECT</Button>
         <Button Height="25" Width="100" Background="MintCream" Margin="698,385,0,40" Click="Button_Click_CANCEL">CANCEL</Button>
+
+            
+
+        <Label x:Name="feedbackMessage" Foreground="Green" FontSize="18" RenderTransformOrigin="-0.358,1.454" Margin="0,385,532,27" Opacity="0">Medicine succesfully corrected!</Label>
+        <Button x:Name="buutonChoose" Height="25" Width="100" Background="MintCream" Margin="243,365,457,60" Click="Button_Click_CHOOSE">CHOOSE</Button>
+
+        <Label x:Name="chooseError" Height="25" Width="180" Margin="214,395,406,30" Foreground="LightGray">Select medicine from the list!</Label>
+        <Label x:Name="allError"  Height="25" Width="150" Margin="572,410,78,15" Foreground="LightGray">Input data in the fields!</Label>
+        
     </Grid>
 
 </Page>

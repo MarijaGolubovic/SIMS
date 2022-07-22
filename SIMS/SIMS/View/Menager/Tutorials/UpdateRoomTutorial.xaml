@@ -9,11 +9,15 @@
       Title="UpdateRoomTutorial">
 
     <Grid>
-        <Label  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="344,21,283,377" FontWeight="Black" Width="173" Height="52">Update room</Label>
-        <Image RenderTransformOrigin="0.482,0.735" Margin="275,22,456,377">
-            <Image.Source >
-                <BitmapImage  UriSource="/Assets/edit_room.png"  />
-            </Image.Source>
-        </Image>
+        <Image Source="/Assets/update_room_image.png"  VerticalAlignment="Bottom" Margin="10,0,357,108"  />
+        <Label Content="Update room tutorial"  FontSize="18"  FontWeight="Bold" Margin="470,23,30,380"/>
+        <Grid Height="270" Width="320"  Margin="450,90,20,67">
+
+            <Label FontSize="15" Margin="10,38,10,199">1. Clic on Rooms->Update (mark red dart)</Label>
+            <Label FontSize="15" Margin="10,73,0,164">2. Select room from data grid, click UPDATE</Label>
+            <Label FontSize="15" Margin="10,108,10,126">3.Change data in the fields</Label>
+            <Label FontSize="15" Margin="10,144,10,90">4.Click UPDATE</Label>
+
+        </Grid>
     </Grid>
 </Page>

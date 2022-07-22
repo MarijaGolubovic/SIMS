@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:SIMS.View.Menager"
         mc:Ignorable="d"
         Title="RenovateForm" Height="450" Width="800">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
     <Grid>
 
 
@@ -23,12 +31,19 @@
         <Label   FontSize="18" VerticalAlignment="Center" Margin="231,212,486,201" RenderTransformOrigin="0.039,0.489" Height="37">Type:</Label>
         <TextBox x:Name="TypeRenovateRoom" IsReadOnly="True" Height="25" RenderTransformOrigin="0.491,-2.494" Margin="330,212,263,213" Background="MintCream"/>
         <Label  FontSize="18" VerticalAlignment="Center" Margin="231,254,501,161" RenderTransformOrigin="0.039,0.489" Height="35">Begin:</Label>
-        <DatePicker Name="DatePickerBegin" HorizontalAlignment="Left" Height="23" Margin="330,261,0,0"  VerticalAlignment="Top"  Background="MintCream" Width="207" />
+        <DatePicker Name="DatePickerBegin" HorizontalAlignment="Left" Height="23" Margin="330,261,0,0"  VerticalAlignment="Top"  Background="MintCream" Width="207"  GotFocus="DatePickerBegin_GotFocus"/>
         <Label  VerticalAlignment="Center" FontSize="18" Margin="231,294,501,116" RenderTransformOrigin="0.039,0.489" Height="40">End:</Label>
-        <DatePicker Name="DatePickerEnd" HorizontalAlignment="Left" Height="23" Margin="330,301,0,0"  VerticalAlignment="Top"  Background="MintCream" Width="207"/>
+        <DatePicker Name="DatePickerEnd" HorizontalAlignment="Left" Height="23" Margin="330,301,0,0"  VerticalAlignment="Top"  Background="MintCream" Width="207" GotFocus="DatePickerEnd_GotFocus"/>
 
         <Label  FontSize="18" VerticalAlignment="Center" Margin="231,334,486,70" RenderTransformOrigin="0.039,0.489" Height="46">Method:</Label>
-        <TextBox x:Name="renovationMethod" Margin="330,340,263,84" RenderTransformOrigin="0.811,0.287" Background="MintCream"/>
+        <TextBox x:Name="renovationMethod" Margin="330,340,263,84" RenderTransformOrigin="0.811,0.287" Background="MintCream" GotKeyboardFocus="renovationMethod_GotKeyboardFocus"/>
+
+        <Label x:Name="beginDateError" Height="25" Width="180" Margin="556,259,64,166" Foreground="LightGray">Choose begin date!</Label>
+        <Label x:Name="endDateError"  Height="25" Width="150" Margin="556,299,94,126" Foreground="LightGray">Choose end date!</Label>
+        <Label x:Name="methodError" Height="25" Width="180" Margin="556,334,64,91" Foreground="LightGray">Input renovation method!</Label>
+
+
+
         <Grid VerticalAlignment="Bottom" Height="75">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -46,11 +61,14 @@
                 <ColumnDefinition Width="133*"></ColumnDefinition>
                 <ColumnDefinition Width="133*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button  Grid.Column="9" Height="25" Width="80"  HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_ClickOK" Margin="43,15,0,35" Background="MintCream" IsDefault="True">OK</Button>
-            <Button  Grid.Column="10" Height="25" Width="80" Click="Button_Click_CANCEL"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15,43,35" Background="MintCream" IsCancel="True" RenderTransformOrigin="0.41,0.606">CANCEL</Button>
+            <Button x:Name="buttonRenovate"  Grid.Column="9" Height="25" Width="100"  HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_ClickOK" Margin="23,15,0,35" Background="MintCream" IsDefault="True">RENOVATE</Button>
+            <Button x:Name="buttonCancel"  Grid.Column="10" Height="25" Width="100" Click="Button_Click_CANCEL"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15,23,35" Background="MintCream" IsCancel="True" RenderTransformOrigin="0.41,0.606">CANCEL</Button>
+
+            <TextBox x:Name="feedbackMessage" Background="LightGray" BorderThickness="0" Foreground="Green" Opacity="0" FontSize="18" Grid.ColumnSpan="4" Grid.Column="5" Margin="10,16,0,-16"  ></TextBox>
+
         </Grid>
-        <Button Height="25" Width="100" Background="MintCream" Click="Button_Click" RenderTransformOrigin="0.43,1.812" Margin="42,299,658,126">SPLIT ROOM</Button>
-        <Button  Height="25" Width="100" Background="MintCream" RenderTransformOrigin="0.486,1.413" Margin="42,341,658,84" Click="Button_Click_MergeRooms">MERGE ROOM</Button>
+        <Button x:Name="buttonSplit" Height="25" Width="100" Background="MintCream" Click="Button_Click" RenderTransformOrigin="0.43,1.812" Margin="42,299,658,126">SPLIT ROOM</Button>
+        <Button x:Name="buttnMerge"  Height="25" Width="100" Background="MintCream" RenderTransformOrigin="0.486,1.413" Margin="42,341,658,84" Click="Button_Click_MergeRooms">MERGE ROOM</Button>
     </Grid>
 
 

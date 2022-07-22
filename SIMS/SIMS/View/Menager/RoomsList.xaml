@@ -6,9 +6,17 @@
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
         Title="Hello Clinic" Height="400" Width="800" VerticalAlignment="Top">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
     <Grid>
-        <Grid Margin="0,24,0,121">
-            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="40,0">
+        <Grid Margin="0,88,0,82">
+            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="40,0,40,10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -19,6 +27,15 @@
         </Grid>
 
         <Label x:Name="HiddenDeleteLabel"  Foreground="Green" FontSize="18" Margin="66,318,451,39" >Room successfullu added!</Label>
-        <Button x:Name="Back" Width="80" Height="24" Margin="660,325,60,0" Content="BACK" Click="Back_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream" IsCancel="True"/>
+        <Button x:Name="Back" Width="100" Height="24" Margin="660,325,40,0" Content="BACK" Click="Back_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream" IsCancel="True"/>
+
+        <Image Source="/Assets/plus.png" Height="56" Width="60"  Focusable="False" Margin="289,10,451,334" />
+        <Label Name="Label1"  
+                    Content="Add room" Height="40"  
+                    FontSize="25"  Width="150"
+                    FontWeight="Bold" Margin="354,10,296,350" 
+             />
+
     </Grid>
+    
 </Page>

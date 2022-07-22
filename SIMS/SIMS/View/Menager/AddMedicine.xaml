@@ -34,13 +34,21 @@
                 </Image.Source>
             </Image>
             <Label FontSize="18" Height="35" Grid.Column="1" Margin="85,1,149,20" Grid.Row="2" Grid.ColumnSpan="2">Name:</Label>
-            <TextBox  x:Name="nameBox" Height="25" Grid.Column="2" Margin="47,11,97,20" Grid.Row="2" Grid.ColumnSpan="2" Background="MintCream"/>
+            <TextBox  x:Name="nameBox" Height="25" Grid.Column="2" Margin="47,11,97,20" Grid.Row="2" Grid.ColumnSpan="2" Background="MintCream" GotKeyboardFocus="nameBox_GotKeyboardFocus"/>
             <Label FontSize="18" Grid.ColumnSpan="2" Grid.Column="1" Margin="85,10,123,10" Grid.Row="3">Ingredients:</Label>
-            <TextBox x:Name="ingredientsBox"  Grid.ColumnSpan="2" Grid.Column="2" Margin="47,10,97,10" Grid.Row="3" Grid.RowSpan="2" TextWrapping="Wrap" Background="MintCream"></TextBox>
+            <TextBox x:Name="ingredientsBox"  Grid.ColumnSpan="2" Grid.Column="2" Margin="47,10,97,10" Grid.Row="3" Grid.RowSpan="2" TextWrapping="Wrap" Background="MintCream" GotKeyboardFocus="ingredientsBox_GotKeyboardFocus"></TextBox>
             <Label FontSize="18" Margin="85,20,149,0" RenderTransformOrigin="3.56,7.074" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="5">Quantity:</Label>
-            <TextBox x:Name="quantityBox" Height="25" Grid.ColumnSpan="2" Grid.Column="2" Margin="47,21,97,10" Grid.Row="5" Background="MintCream"></TextBox>
+            <TextBox x:Name="quantityBox" Height="25" Grid.ColumnSpan="2" Grid.Column="2" Margin="47,21,97,10" Grid.Row="5" Background="MintCream" GotKeyboardFocus="quantityBox_GotKeyboardFocus" LostFocus="quantityBox_LostFocus"></TextBox>
             <Button Height="25" Width="100" Background="MintCream" IsDefault="True" Grid.Column="3" Margin="60,10,0,10" Grid.Row="6" Click="Button_Click_OKAddMedicine">OK</Button>
             <Button Height="25" Width="100" Background="MintCream" IsCancel="True" Grid.Column="4" Margin="22,10,38,10" Grid.Row="6" Click="Button_Click_CANCELAddMedicine">CANCEL</Button>
+
+            <Label x:Name="errorName" Height="25" Width="100" Grid.ColumnSpan="2" Grid.Column="3" Margin="104,11,116,20" Grid.Row="2" Foreground="LightGray">Input name!</Label>
+            <Label x:Name="errorIgredients" Height="25" Width="100" Grid.ColumnSpan="2" Grid.Column="3" Margin="104,38,116,49" Grid.Row="3" Grid.RowSpan="2" Foreground="LightGray">Input Igredients!</Label>
+            <Label x:Name="errorQuantity" Height="25" Width="100" Grid.ColumnSpan="2" Grid.Column="3" Margin="104,10,116,21" Grid.Row="5" Foreground="LightGray">Input quantity!</Label>
+            <Label x:Name="invalidType" Height="25" Width="120" Grid.ColumnSpan="2" Grid.Column="2" Margin="66,54,134,33" Grid.Row="5" Grid.RowSpan="2" Foreground="LightGray">Invalid data type!</Label>
+
+            <Label x:Name="allErrors" Foreground="LightGray" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Column="3" Margin="38,40,132,46" Grid.Row="6" Grid.RowSpan="2">Input data in the fields!</Label>
+            <Button Height="25" Width="100" Background="MintCream" Margin="30,16" Grid.Row="6" Click="Button_Click_TUTORIAL">TUTORIAL</Button>
         </Grid>
     </Grid>
 </Page>

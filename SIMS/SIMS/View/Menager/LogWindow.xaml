@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.View.Menager"
         mc:Ignorable="d"
-        Title="Hello Clinic" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="Hello Clinic" Height="600" Width="950" ResizeMode="NoResize">
     <Grid>
-        <Image Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="31,26,716,0" Height="45" VerticalAlignment="Top">
+        <Image Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="92,44,784,0" Height="69" VerticalAlignment="Top" Width="66">
             <Image.Source>
                 <BitmapImage  UriSource="/Assets/hospital.png" />
             </Image.Source>
         </Image>
-        <Label FontSize="20" FontWeight="Bold" Margin="81,26,587,349">Hello Clinic</Label>
+        <Label FontSize="22" FontWeight="Bold" Margin="163,68,633,457" RenderTransformOrigin="0.333,1.29">Hello Clinic</Label>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -23,13 +24,13 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label FontSize="25" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Margin="53,77,-53,296" Height="47" >Wellcame to Hello Clinic</Label>
-            <Label Grid.Column="1" Grid.ColumnSpan="3" FontSize="25" VerticalAlignment="Center"  Height="52" Margin="141,124,-141,244">Login</Label>
-            <Label Grid.Row="0" Grid.Column="1"  Height="25" Width="100">Username:</Label>
-            <TextBox Grid.Column="2" Height="25" Width="150"></TextBox>
-            <Label Grid.Row="0" Grid.Column="1" Width="100" RenderTransformOrigin="0.536,2.545" Height="420" Margin="53,0,45,-244" VerticalAlignment="Bottom" >Password:</Label>
-            <TextBox Grid.Column="2" Width="150" Height="25" RenderTransformOrigin="0.472,2.854" Margin="24,244,24,151" />
-            <Button  Grid.Column="3" Grid.Row="0" Height="25"  VerticalAlignment="Bottom" RenderTransformOrigin="0.428,-0.201" Margin="59,0,57,32"  >Sign in</Button>
+            <Label FontSize="25" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="68,152,29,371" Height="47" >Wellcame to Hello Clinic</Label>
+            <Label Grid.Column="1" Grid.ColumnSpan="2" FontSize="25" VerticalAlignment="Center"  Height="52" Margin="165,199,143,319">Login</Label>
+            <Label Grid.Row="0" Grid.Column="1" Width="100" FontSize="18" Margin="68,272,68,249">Username:</Label>
+            <TextBox Grid.Column="1"   Grid.ColumnSpan="2" Margin="201,265,65,270" Background="MintCream"></TextBox>
+            <Label Grid.Row="0"  FontSize="18" Grid.Column="1" Width="100" RenderTransformOrigin="0.536,2.545" Height="46" Margin="68,0,0,195" VerticalAlignment="Bottom" HorizontalAlignment="Left" >Password:</Label>
+            <TextBox Grid.Column="1" RenderTransformOrigin="0.472,2.854" Margin="201,324,65,214" Grid.ColumnSpan="2"  Background="MintCream"/>
+            <Button  Grid.Column="3" Grid.Row="0" Height="25" Background="MintCream" VerticalAlignment="Bottom" RenderTransformOrigin="0.428,-0.201" Margin="10,0,106,115"  >Sign in</Button>
         </Grid>
 
 

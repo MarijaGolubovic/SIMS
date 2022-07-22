@@ -9,12 +9,17 @@
       Title="RenovateRoomTutorial">
 
     <Grid>
-        <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="345,40,253,358" FontWeight="Black" Width="202" Height="52">Renovate room</Label>
-        <Image HorizontalAlignment="Right" Margin="0,25,460,343" Width="56" RenderTransformOrigin="0.448,-0.109">
-            <Image.Source >
-                <BitmapImage  UriSource="/Assets/renovate_room.png"  />
-            </Image.Source>
-        </Image>
+        <Image Source="/Assets/renovate_room_image.png"  VerticalAlignment="Bottom" Margin="10,0,389,108"  />
+        <Label Content="Renovate room tutorial"  FontSize="18"  FontWeight="Bold" Margin="498,25,62,378"/>
+        <Grid Height="270"  Margin="432,89,0,91">
+
+            <Label FontSize="15" Margin="10,38,10,199">1. Clic on Rooms->Renovate (mark red dart)</Label>
+            <Label FontSize="15" Margin="10,73,0,164">2. Select room from data grid, click RENOVATE</Label>
+            <Label FontSize="15" Margin="10,108,10,126">3.Change data in the fields</Label>
+            <Label FontSize="15" Margin="10,144,10,90">4.Click RENOVATE</Label>
+            <Label FontSize="15" Margin="10,180,10,54" Content="If you want to merge or split room click"/>
+            <Label FontSize="15" Margin="0,216,0,18">MERGE/SPLIT, enter data and accept action</Label>
+        </Grid>
 
     </Grid>
 </Page>

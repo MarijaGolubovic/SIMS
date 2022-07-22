@@ -6,19 +6,28 @@
         xmlns:local="clr-namespace:SIMS.Menager" xmlns:model="clr-namespace:SIMS.Model" d:DataContext="{d:DesignInstance Type=model:Room}"
       mc:Ignorable="d"
         Title="Hello Clinic" Height="450" Width="800">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
+
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="91*"/>
             <ColumnDefinition Width="309*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Margin="0,80,0,134" Grid.ColumnSpan="2" >
+        <Grid Margin="0,128,0,109" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="402*"/>
                 <ColumnDefinition Width="127*"/>
                 <ColumnDefinition Width="271*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Margin="40,10,39,0" Grid.ColumnSpan="3" Background="MintCream" Height="224" VerticalAlignment="Top">
+            <DataGrid x:Name="dataGridRooms" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Margin="40,0,39,-1" Grid.ColumnSpan="3" Background="MintCream" Height="214" VerticalAlignment="Top" MouseDoubleClick="dataGridRooms_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -27,6 +36,7 @@
             </DataGrid>
 
         </Grid>
+        <Label Height="35" Width="250" FontSize="18" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,88,480,327">Select room who want delete!</Label>
 
         <Label x:Name="HiddenDeleteLabel"  Foreground="Green" FontSize="18" Margin="10,341,504,70" Grid.ColumnSpan="2"  Visibility="Hidden">Room successfullu deleted!</Label>
         <Grid VerticalAlignment="Bottom" Height="110 " Grid.ColumnSpan="2">
@@ -46,9 +56,12 @@
                 <ColumnDefinition Width="102*"></ColumnDefinition>
                 <ColumnDefinition Width="126*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="9" Focusable="True" Click="Button_Click_OK" Background="MintCream" IsDefault="True" Margin="10,11,17,74" RenderTransformOrigin="0.496,-0.122" >DELETE</Button>
-            <Button Grid.Column="10" Focusable="True" Click="Button_Click_CANCEL" Background="MintCream" IsCancel="True" Margin="10,11,39,74">CANCEL</Button>
+            <Button x:Name="buttonDelete" Grid.Column="8" Focusable="True" Click="Button_Click_OK" Background="MintCream" IsDefault="True" Margin="86,11,10,74" Width="100" Grid.ColumnSpan="2">DELETE</Button>
+            <Button Grid.Column="9" Focusable="True" Click="Button_Click_CANCEL" Background="MintCream" IsCancel="True" Margin="87,11,41,74" Width="100" Grid.ColumnSpan="2">BACK</Button>
             <Button Grid.Column="0" Focusable="True" Click="Button_Click_TUTORIJAL" Background="MintCream" IsCancel="True" Margin="44,11,40,74" Grid.ColumnSpan="3">TUTORIJAL</Button>
+
+            <Label x:Name="errorMessage" Foreground="LightGray" Height="25" Width="150" Grid.ColumnSpan="3" Grid.Column="8" Margin="96,41,96,44">Must select room!</Label>
+            <Label x:Name="feedbackMessage" Opacity="0" Foreground="Green" FontSize="18" Grid.ColumnSpan="3" Grid.Column="6" Margin="10,24,39,-24"  >Room succesfully deleted!</Label>
         </Grid>
 
         <Label  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="185,23,269,375" FontWeight="Black" Width="164" Height="52" Grid.Column="1">Delete room</Label>

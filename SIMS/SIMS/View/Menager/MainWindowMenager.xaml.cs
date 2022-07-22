@@ -15,6 +15,7 @@ namespace SIMS.Menager
             InitializeComponent();
             _mainFrame = this.FindName("MainFrameMenager") as Frame;
             // _mainFrame.NavigationService.Navigate(new MainWindowMenager());
+            _mainFrame.NavigationService.Navigate(new View.Menager.Report());
         }
 
 
@@ -22,7 +23,8 @@ namespace SIMS.Menager
         private void Label_MouseDoubleClickSignOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             View.Menager.LogWindow logWindow = new View.Menager.LogWindow();
-            logWindow.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 
@@ -61,9 +63,10 @@ namespace SIMS.Menager
 
         private void MenuItem_ClickMoveEquipment(object sender, RoutedEventArgs e)
         {
-            View.Menager.Rooms moveWindow = new View.Menager.Rooms();
-            moveWindow.Show();
-            this.Close();
+            // View.Menager.Rooms moveWindow = new View.Menager.Rooms();
+            //moveWindow.Show();
+            //this.Close();
+            _mainFrame.NavigationService.Navigate(new View.Menager.Rooms());
         }
 
         private void MenuItem_BackToHomePage(object sender, RoutedEventArgs e)
@@ -95,6 +98,46 @@ namespace SIMS.Menager
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MenuItem_OccupacyRoom(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.Report());
+        }
+
+        private void MenuItem_Click_MyAccount(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.MyAccount());
+        }
+
+        private void MenuItem_Click_Tutorial(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.MainTutorial());
+        }
+
+        private void MenuItem_Click_DeleteMedicine(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.DeleteMedicine());
+        }
+
+        private void MenuItem_Click_ADD_POLLS(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.AddPolls());
+        }
+
+        private void MenuItem_Click_DELETE_POLL(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.DeletePools());
+        }
+
+        private void MenuItem_Click_ORDERING(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.OrderingEquipment());
+        }
+
+        private void MenuItem_Click_DISTRIBUTION(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.Navigate(new View.Menager.DistributionEquipment());
         }
     }
 }

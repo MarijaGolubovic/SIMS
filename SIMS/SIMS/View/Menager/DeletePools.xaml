@@ -1,0 +1,43 @@
+﻿<Page x:Class="SIMS.View.Menager.DeletePools"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.View.Menager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DeletePools">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+        <Label  FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Black"  Margin="334,0,268,358" Width="188">Delete poll</Label>
+        <Image RenderTransformOrigin="0.482,0.735" Margin="208,10,431,370">
+            <Image.Source >
+                <BitmapImage  UriSource="/Assets/delete_room.png"  />
+            </Image.Source>
+        </Image>
+
+
+        <DataGrid x:Name="DataGridDeletePoll" ItemsSource="{Binding Polls}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" Margin="227,128,282,56" MouseDoubleClick="DataGridDeletePoll_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Poll" Binding="{Binding Name}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonDelete"  Height="25" Width="100" Background="MintCream" Margin="586,365,94,30" Click="buttonDelete_DELETE"> DELETE</Button>
+        <Button x:Name="buttonCancel" Height="25" Width=" 100" Background="MintCream" Margin="706,365,0,30" Click="buttonCancel_CANCEL">CANCEL</Button>
+        <Button Height="25" Width="100" Background="MintCream" Margin="31,365,669,30" Click="Button_Click_TUTORIAL"> TUTORIAL</Button>
+
+        <Label x:Name="errorMessage" Height="25" Width="210" Margin="544,390,46,0" Foreground="LightGray">Must select poll who want to delate!</Label>
+
+        <Label x:Name="feedbackMessage" Foreground="Green" Opacity="0" FontSize="18" Margin="244,389,305,0" >Poll succesfully deleted!</Label>
+
+        <Label Height="35" Width="300" FontSize="18" Margin="244,70,256,300"> Select poll who want to delete!</Label>
+    </Grid>
+</Page>

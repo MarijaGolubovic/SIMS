@@ -6,6 +6,8 @@ using System;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Media.Animation;
+using System.Text.RegularExpressions;
 
 namespace SIMS.View.Menager
 {
@@ -26,75 +28,50 @@ namespace SIMS.View.Menager
             Serialization.Serializer<Model.Medicine> medicinceSerializer = new Serialization.Serializer<Model.Medicine>();
             List<Model.Medicine> rooms = medicinceSerializer.fromCSV("medicine.txt");
             Rooms = new ObservableCollection<Model.Medicine>();
-            /*List<string> ingrediets = new List<string>();
-            ingrediets.Add("sastojak 1");
-            ingrediets.Add("sastojak 2");
-            ingrediets.Add("sastojak 3");
-
-           Rooms.Add(new Model.Medicine("Paracetamol", ingrediets, Model.MedicineStatus.Valid, 2));
-           Rooms.Add(new Model.Medicine("Brufen", ingrediets, Model.MedicineStatus.Invalid, 10));
-           Rooms.Add(new Model.Medicine("Efedrin", ingrediets, Model.MedicineStatus.Invalid, 3));
-           Rooms.Add(new Model.Medicine("Omnitus", ingrediets, Model.MedicineStatus.Valid, 6));
-           Rooms.Add(new Model.Medicine("Tylol Hot", ingrediets, Model.MedicineStatus.Valid, 4));*/
-
+            
             foreach (Model.Medicine roomItem in rooms)
             {
                 Rooms.Add(roomItem);
             }
-
-
-
         }
 
-        private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            selectedMedicine = (Model.Medicine)dataGridMedicines.SelectedItem;
-
-            List<string> medecineIgredients = new List<string>();
-            foreach (string item in selectedMedicine.Ingredients)
-            {
-                medecineIgredients.Add(item);
-            }
-
-
-            string igredients = "";
-
-            for (int i = 1; i < medecineIgredients.Count; i++)
-            {
-                igredients = medecineIgredients[0];
-                igredients += ",";
-                igredients += medecineIgredients[i];
-
-            }
-
-
-            nameBox.Text = selectedMedicine.Name;
-            quantityBox.Text = selectedMedicine.Quantity.ToString();
-            igredientsBox.Text = igredients;
-            flag = true;
-        }
+       
 
         private void Button_Click_OK(object sender, RoutedEventArgs e)
         {
             if (flag)
             {
-                int quantity = int.Parse(quantityBox.Text);
-                List<String> ingredients = new List<String>();
-                string[] tokens = igredientsBox.Text.Trim().Split(',');
-                for (int i = 0; i < tokens.Length; i++)
+                errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+                //Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+                Regex regex = new Regex("^[0-9]+$");
+
+                if (nameBox.Text.Trim().Equals("") || quantityBox.Text.Trim().Equals("") || igredientsBox.Text.Trim().Equals("")) {
+                    errorEmptyFields.Foreground = System.Windows.Media.Brushes.Red;
+                    
+                } else if (!regex.IsMatch(quantityBox.Text))
                 {
-                    ingredients.Add(tokens[i]);
+                    typeError.Foreground = System.Windows.Media.Brushes.Red;
+                    errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
                 }
-
-                Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
-                medicineStorage.EditMedicine(selectedMedicine, newMedecine);
-                //  medicineStorage.Delete(selectedMedicine);
-                // medicineStorage.Create(new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity));
-                View.Menager.EditMedicine editMedicine = new EditMedicine();
-                // editMedicine.Show();
-                this.NavigationService.Navigate(new EditMedicine());
-                //this.Close();
-
+                else {
+                    editButton.IsEnabled = true;
+                    int quantity = int.Parse(quantityBox.Text);
+                    List<String> ingredients = new List<String>();
+                    string[] tokens = igredientsBox.Text.Trim().Split(',');
+                    for (int i = 0; i < tokens.Length; i++)
+                    {
+                        ingredients.Add(tokens[i]);
+                    }
+                    Model.Medicine newMedecine = new Model.Medicine(nameBox.Text, ingredients, Model.MedicineStatus.OnHold, quantity);
+                    medicineStorage.EditMedicine(selectedMedicine, newMedecine);
+                    feedbackMessage.Foreground = System.Windows.Media.Brushes.Green;
+                    Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                    sb.Begin(feedbackMessage);
+                    errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+                    nameBox.Text = "";
+                    quantityBox.Text = "";
+                    igredientsBox.Text = "";
+                }
             }
         }
 
@@ -103,6 +80,73 @@ namespace SIMS.View.Menager
             this.NavigationService.Navigate(new Report());
         }
 
-       
+        private void Button_Click_CHOSE(object sender, RoutedEventArgs e)
+        {
+            selectedMedicine = (Model.Medicine)dataGridMedicines.SelectedItem;
+            if (selectedMedicine == null)
+            {
+                chooseError.Foreground= System.Windows.Media.Brushes.Red;
+            }
+            else
+            {
+
+                List<string> medecineIgredients = new List<string>();
+                foreach (string item in selectedMedicine.Ingredients)
+                {
+                    medecineIgredients.Add(item);
+                }
+
+
+                string igredients = "";
+
+                for (int i = 1; i < medecineIgredients.Count; i++)
+                {
+                    igredients = medecineIgredients[0];
+                    igredients += ",";
+                    igredients += medecineIgredients[i];
+
+                }
+
+
+                nameBox.Text = selectedMedicine.Name;
+                quantityBox.Text = selectedMedicine.Quantity.ToString();
+                igredientsBox.Text = igredients;
+                flag = true;
+            }
+        }
+
+        private void dataGridMedicines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            chooseError.Foreground = System.Windows.Media.Brushes.LightGray;
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void quantityBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            Regex regex = new Regex("^[0-9]+$");
+            if (!regex.IsMatch(quantityBox.Text))
+            {
+                typeError.Foreground = System.Windows.Media.Brushes.Red;
+                errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+            }
+        }
+
+
+        private void nameBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void igredientsBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void quantityBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            errorEmptyFields.Foreground = System.Windows.Media.Brushes.LightGray;
+            typeError.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
     }
 }

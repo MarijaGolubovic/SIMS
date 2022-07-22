@@ -6,9 +6,17 @@
         xmlns:local="clr-namespace:SIMS.View.Menager"
         mc:Ignorable="d"
         Title="EditMedicine" Height="450" Width="800">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
     <Grid>
-        <Label Width="300" FontSize="15" Margin="49,7,451,413">Select medicine who want to change!</Label>
-        <DataGrid x:Name="dataGridMedicines" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  MouseDoubleClick="dataGridMedicines_MouseDoubleClick"  HorizontalAlignment="Left" Width="350" Margin="-1,42,0,10">
+        <Label FontSize="18" Margin="10,7,473,408">Choose medicine who want to change!</Label>
+        <DataGrid x:Name="dataGridMedicines" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream" HorizontalAlignment="Left" Width="350" Margin="-1,42,0,72" MouseDoubleClick="dataGridMedicines_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding MedicineStatus}" Width="*"/>
@@ -26,11 +34,19 @@
             </Image.Source>
         </Image>
 
-        <TextBox x:Name="nameBox"  Height="25" Margin="540,110,66,315" Background="MintCream"/>
-        <TextBox x:Name="igredientsBox" Margin="540,207,66,129" Background="MintCream"/>
-        <TextBox x:Name="quantityBox" Height="25" Margin="540,157,66,268" Background="MintCream"/>
+        <TextBox x:Name="nameBox"  Height="25" Margin="540,110,66,315" Background="MintCream" GotKeyboardFocus="nameBox_GotKeyboardFocus"/>
+        <TextBox x:Name="igredientsBox" Margin="540,207,66,129" Background="MintCream" GotKeyboardFocus="igredientsBox_GotKeyboardFocus"/>
+        <TextBox x:Name="quantityBox" Height="25" Margin="540,157,66,268" Background="MintCream" LostFocus="quantityBox_LostFocus" GotKeyboardFocus="quantityBox_GotKeyboardFocus"/>
 
-        <Button Height="25" Width="100"  Background="MintCream" Margin="570,330,100,48" Click="Button_Click_OK">EDIT</Button>
+        <Button x:Name="editButton" Height="25" Width="100"  Background="MintCream" Margin="570,330,100,48" Click="Button_Click_OK">EDIT</Button>
         <Button Height="25" Width="100" Background="MintCream" Margin="700,330,0,47" Click="Button_Click_CANCEL" HorizontalAlignment="Right">CANCEL</Button>
+
+        <Label x:Name="feedbackMessage" Foreground="Green" FontSize="18" RenderTransformOrigin="-0.358,1.454" Margin="10,383,539,29" Opacity="0">Medicine succesfully edited!</Label>
+        <Button Height="25" Width="100" Background="MintCream" Margin="249,390,451,35" Click="Button_Click_CHOSE">CHOOSE</Button>
+
+        <Label x:Name="errorEmptyFields" Foreground="LightGray" Height="25" Width="170" Margin="564,384,66,41">Enter data in the fieds!</Label>
+
+        <Label x:Name="typeError" Height="25" Width="100" Margin="585,177,115,248" Foreground="LightGray">Invalid type!</Label>
+        <Label x:Name="chooseError" Height="25" Width="180" Margin="249,400,371,0" Foreground="LightGray">Select medicine!</Label>
     </Grid>
 </Page>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 namespace SIMS.Menager
@@ -19,8 +20,8 @@ namespace SIMS.Menager
         {
             roomItem = Menager.UpdateRoomWindow.selectedRoom;
             InitializeComponent();
-            IDInput.Text = roomItem.Id;
-            SizeInput.Text = roomItem.Size.ToString();
+            IDInput.Text = roomItem.Size.ToString();
+            SizeInput.Text = roomItem.Id;
 
 
             if (roomItem.Type.Equals(Model.RoomType.OPPERATING_ROOM))
@@ -57,42 +58,83 @@ namespace SIMS.Menager
             Serialization.Serializer<Model.Room> roomSerializer = new Serialization.Serializer<Model.Room>();
             List<Model.Room> rooms = roomSerializer.fromCSV("Room.txt");
             RoomsList.Rooms = new ObservableCollection<Model.Room>();
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
 
             foreach (Model.Room roomIterator in rooms)
             {
                 RoomsList.Rooms.Add(roomIterator);
             }
-
-            Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
-            if (comboboxField.SelectedIndex == 0)
+            if (SizeInput.Text.Trim().Equals("") || IDInput.Text.Trim().Equals(""))
             {
-                roomType = Model.RoomType.OPPERATING_ROOM;
-            }
-            else if (comboboxField.SelectedIndex == 1)
+                erroeEmpty.Foreground= System.Windows.Media.Brushes.Red;
+            }else if (!regex.IsMatch(IDInput.Text))
             {
-                roomType = Model.RoomType.EXAMINATION_ROOM;
-            }
-            else if (comboboxField.SelectedIndex == 2)
-            {
-                roomType = Model.RoomType.HOSPITAL_ROOM;
+                invalidDataInput.Foreground = System.Windows.Media.Brushes.Red;
             }
             else
             {
-                roomType = Model.RoomType.WAREHOUSE;
+                erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
+                Model.RoomType roomType = Model.RoomType.HOSPITAL_ROOM;
+                if (comboboxField.SelectedIndex == 0)
+                {
+                    roomType = Model.RoomType.OPPERATING_ROOM;
+                }
+                else if (comboboxField.SelectedIndex == 1)
+                {
+                    roomType = Model.RoomType.EXAMINATION_ROOM;
+                }
+                else if (comboboxField.SelectedIndex == 2)
+                {
+                    roomType = Model.RoomType.HOSPITAL_ROOM;
+                }
+                else
+                {
+                    roomType = Model.RoomType.WAREHOUSE;
+                }
+
+
+
+                Model.Room newRoom = (new Model.Room { Id = SizeInput.Text, Size = Double.Parse(IDInput.Text), Type = roomType });
+                RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
+                RoomsList.Rooms.Add(newRoom);
+
+                roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
+
+
+                //    Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
+                //  updateRoomWindow.Show();
+                //this.Close();
+                this.NavigationService.Navigate(new View.Menager.SuccesfullyUpdate());
             }
-
-
-            Model.Room newRoom = (new Model.Room { Id = IDInput.Text, Size = Double.Parse(SizeInput.Text), Type = roomType });
-            RoomsList.Rooms.RemoveAt(Menager.UpdateRoomWindow.indexSelected);
-            RoomsList.Rooms.Add(newRoom);
-
-            roomSerializer.toCSV("Room.txt", RoomsList.Rooms.ToList());
-
-
-            //    Menager.UpdateRoomWindow updateRoomWindow = new UpdateRoomWindow();
-            //  updateRoomWindow.Show();
-            //this.Close();
-            this.NavigationService.Navigate(new View.Menager.SuccesfullyUpdate());
         }
+
+        private void SizeInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+        private void IDInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            erroeEmpty.Foreground = System.Windows.Media.Brushes.LightGray;
+        }
+
+
+        private void IDInput_GotKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            invalidDataInput.Foreground = System.Windows.Media.Brushes.LightGray;
+            
+        }
+
+        private void IDInput_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            Regex regex = new Regex("^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$");
+            if (!regex.IsMatch(IDInput.Text))
+            {
+                invalidDataInput.Foreground = System.Windows.Media.Brushes.Red;
+
+            }
+        }
+
+        
     }
 }

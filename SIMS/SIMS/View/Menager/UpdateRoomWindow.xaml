@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:SIMS.Menager"
         mc:Ignorable="d"
         Title="Hello Clinic" Height="450" Width="800">
+   
+
     <Grid Margin="-2,0,2,0">
 
-        <Grid Margin="0,100,0,113" >
-            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="32,0,29,10">
+        <Grid Margin="0,140,0,102" >
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="37,0,24,10" MouseDoubleClick="DataGridUpdate_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -25,8 +27,14 @@
             </Image.Source>
         </Image>
 
-        <Button x:Name="UpdateBack" Width="80" Height="24" Margin="694,366,26,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
-        <Button x:Name="UpdateOK" Width="80" Height="24" Margin="587,367,133,0" Content="UPDATE" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+        <Label Margin="67,98,438,315" FontSize="18">Choose room who want to update!</Label>
+
+        <Button x:Name="UpdateBack" Width="100" Height="24" Margin="674,366,26,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+        <Button x:Name="UpdateOK" Width="100" Height="24" Margin="565,367,133,0" Content="UPDATE" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
         <Button RenderTransformOrigin="0.481,2.588" Margin="28,366,672,59" Background="MintCream" Height="25" Width="100" Click="Button_Click_TUTORIAL">TUTORIAL</Button>
+
+        <Label x:Name="errorMesage" Height="25" Width="200" Margin="520,396,80,29" Foreground="LightGray">Select room who want to update!</Label>
+        
+        
     </Grid>
 </Page>

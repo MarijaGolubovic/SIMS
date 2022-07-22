@@ -24,7 +24,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>obj\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -184,6 +184,7 @@
     <Compile Include="Model\AppointmentForPatientDTO.cs" />
     <Compile Include="Model\AppointmentsForDoctorDTO.cs" />
     <Compile Include="Model\AppointmentsForSecretaryDTO.cs" />
+    <Compile Include="Model\BeginEndTime.cs" />
     <Compile Include="Model\ChangePassword.cs" />
     <Compile Include="Model\DaysOffRequestDTO.cs" />
     <Compile Include="Model\EmergencyAppointmentsDTO.cs" />
@@ -192,12 +193,15 @@
     <Compile Include="Model\EquipmentDTO.cs" />
     <Compile Include="Model\MedicineStatus.cs" />
     <Compile Include="Model\Meeting.cs" />
+    <Compile Include="Model\MoveRoomEquipmentDTO.cs" />
     <Compile Include="Model\NewPatientDTO.cs" />
     <Compile Include="Model\DoctorForAddAppointmentDTO.cs" />
     <Compile Include="Model\Equpment.cs" />
     <Compile Include="Model\Notificatoin.cs" />
+    <Compile Include="Model\PollDTO.cs" />
     <Compile Include="Model\Polls.cs" />
     <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Model\ReportID.cs" />
     <Compile Include="Model\RequestStatus.cs" />
     <Compile Include="Model\RoomEqupment.cs" />
@@ -260,6 +264,25 @@
     <Compile Include="ViewModel\Doctor\DetailedRequestViewModel.cs" />
     <Compile Include="ViewModel\Doctor\EditAccountViewModel.cs" />
     <Compile Include="ViewModel\Doctor\VacationRequestViewModel.cs" />
+    <Compile Include="ViewModel\Menager\AddMedicine.cs" />
+    <Compile Include="ViewModel\Menager\AddPoll.cs" />
+    <Compile Include="ViewModel\Menager\AddRoom.cs" />
+    <Compile Include="ViewModel\Menager\AddRoomForm.cs" />
+    <Compile Include="ViewModel\Menager\ClassesPageViewModel.cs" />
+    <Compile Include="ViewModel\Menager\CorrectMedicine.cs" />
+    <Compile Include="ViewModel\Menager\DeleteMedicine.cs" />
+    <Compile Include="ViewModel\Menager\DeletePoll.cs" />
+    <Compile Include="ViewModel\Menager\DeleteRoom.cs" />
+    <Compile Include="ViewModel\Menager\DistributeEquipment.cs" />
+    <Compile Include="ViewModel\Menager\EditMedicine.cs" />
+    <Compile Include="ViewModel\Menager\EditRoom.cs" />
+    <Compile Include="ViewModel\Menager\Injector.cs" />
+    <Compile Include="ViewModel\Menager\MainTutorila.cs" />
+    <Compile Include="ViewModel\Menager\MovingEquipment.cs" />
+    <Compile Include="ViewModel\Menager\OrderringEquipment.cs" />
+    <Compile Include="ViewModel\Menager\RoomList.cs" />
+    <Compile Include="ViewModel\Menager\UpdateForm.cs" />
+    <Compile Include="ViewModel\Menager\ViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\BindableBase.cs" />
     <Compile Include="ViewModel\Sekretar\CreateMeetingViewModel.cs" />
     <Compile Include="ViewModel\Sekretar\DaysOffRequestViewModel.cs" />
@@ -336,20 +359,32 @@
     <Compile Include="View\DoctorMVVM\VacationRequestView.xaml.cs">
       <DependentUpon>VacationRequestView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\AddPolls.xaml.cs">
+      <DependentUpon>AddPolls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\CorrectWindow.xaml.cs">
       <DependentUpon>CorrectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\DeleteMedicine.xaml.cs">
+      <DependentUpon>DeleteMedicine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\DeletePools.xaml.cs">
+      <DependentUpon>DeletePools.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\DeleteSuccesfully.xaml.cs">
       <DependentUpon>DeleteSuccesfully.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\DistributionEquipment.xaml.cs">
+      <DependentUpon>DistributionEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\EditMedicine.xaml.cs">
       <DependentUpon>EditMedicine.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Menager\EqupmentPanel.xaml.cs">
-      <DependentUpon>EqupmentPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Menager\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MainTutorial.xaml.cs">
+      <DependentUpon>MainTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\MedecineList.xaml.cs">
       <DependentUpon>MedecineList.xaml</DependentUpon>
@@ -359,6 +394,12 @@
     </Compile>
     <Compile Include="View\Menager\MoveEquipment.xaml.cs">
       <DependentUpon>MoveEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\MyAccount.xaml.cs">
+      <DependentUpon>MyAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\OrderingEquipment.xaml.cs">
+      <DependentUpon>OrderingEquipment.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\RenovateForm.xaml.cs">
       <DependentUpon>RenovateForm.xaml</DependentUpon>
@@ -384,17 +425,44 @@
     <Compile Include="View\Menager\AddMedicine.xaml.cs">
       <DependentUpon>AddMedicine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\AddMedicineTutorial.xaml.cs">
+      <DependentUpon>AddMedicineTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\AddPollTutorial.xaml.cs">
+      <DependentUpon>AddPollTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\AddRoomTutorial.xaml.cs">
       <DependentUpon>AddRoomTutorial.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\Tutorials\DelateRoomTutorial.xaml.cs">
       <DependentUpon>DelateRoomTutorial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\DeleteMedicineTutorial.xaml.cs">
+      <DependentUpon>DeleteMedicineTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\DeletePollTutorial.xaml.cs">
+      <DependentUpon>DeletePollTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\DistributionEquipmentTutorial.xaml.cs">
+      <DependentUpon>DistributionEquipmentTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\MoveEquipmentTutorial.xaml.cs">
+      <DependentUpon>MoveEquipmentTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\Tutorials\OrderingEquipmentTutorial.xaml.cs">
+      <DependentUpon>OrderingEquipmentTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\RenovateRoomTutorial.xaml.cs">
       <DependentUpon>RenovateRoomTutorial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Menager\Tutorials\UpdateMedicineTutorial.xaml.cs">
+      <DependentUpon>UpdateMedicineTutorial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Menager\Tutorials\UpdateRoomTutorial.xaml.cs">
       <DependentUpon>UpdateRoomTutorial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menager\TutorialVideo.xaml.cs">
+      <DependentUpon>TutorialVideo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Menager\UpdateForm.xaml.cs">
       <DependentUpon>UpdateForm.xaml</DependentUpon>
@@ -602,7 +670,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\AddPolls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\CorrectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\DeleteMedicine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\DeletePools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -610,15 +690,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\DistributionEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\EditMedicine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Menager\EqupmentPanel.xaml">
+    <Page Include="View\Menager\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Menager\LogWindow.xaml">
+    <Page Include="View\Menager\MainTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -631,6 +715,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Menager\MoveEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\MyAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\OrderingEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -666,6 +758,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Menager\Tutorials\AddMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\AddPollTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\AddRoomTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -674,11 +774,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\Tutorials\DeleteMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\DeletePollTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\DistributionEquipmentTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\MoveEquipmentTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\Tutorials\OrderingEquipmentTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\RenovateRoomTutorial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Menager\Tutorials\UpdateMedicineTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Menager\Tutorials\UpdateRoomTutorial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Menager\TutorialVideo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -889,6 +1017,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\add_poll_image.png" />
+    <Resource Include="Assets\delete_poll_image.png" />
+    <Resource Include="Assets\distribut_equipment_image.png" />
+    <Resource Include="Assets\ordering_equipment_image.png" />
+    <Resource Include="Assets\moving_equipment_image.png" />
+    <Content Include="Assets\video_tutorial.avi" />
+    <Resource Include="Assets\update_medicine_image.png" />
+    <Resource Include="Assets\update_room_image.png" />
     <Resource Include="Assets\vesti10.png" />
     <Resource Include="Assets\vesti9.png" />
     <Resource Include="Assets\vesti8.png" />
@@ -928,7 +1064,7 @@
     <Resource Include="Assets\renovate_room.png" />
     <Resource Include="Assets\edit_room.png" />
     <Resource Include="Assets\delete_room.png" />
-    <Resource Include="Assets\select_room_image.png" />
+    <Resource Include="Assets\add_room_image.png" />
     <Resource Include="Assets\max_def.png" />
     <Resource Include="Assets\max_mo.png" />
     <Resource Include="Assets\terapija.jpg" />
@@ -943,6 +1079,15 @@
     <Resource Include="Assets\correct_icon.png" />
     <Resource Include="Assets\polls_diagram.png" />
     <Resource Include="Assets\correct.png" />
+    <Resource Include="Assets\png_move_equipment.png" />
+    <Resource Include="Assets\account_icon.png" />
+    <Resource Include="Assets\delete_room_image.png" />
+    <Resource Include="Assets\renovate_room_image.png" />
+    <Resource Include="Assets\add_medicine_image.png" />
+    <Resource Include="Assets\delete_medicine_image.png" />
+    <Resource Include="Assets\ordering_icon.png" />
+    <Resource Include="Assets\distribution_icon.png" />
+    <Content Include="Assets\basketball.avi" />
     <Content Include="Assets\therapy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -980,7 +1125,6 @@
     <Resource Include="Assets\ordering.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\Menager\" />
     <Folder Include="ViewModel\Pacijent\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

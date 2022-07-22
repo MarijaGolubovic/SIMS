@@ -7,10 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SuccesfullyUpdate">
+    <Page.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
+    </Page.Resources>
+
 
     <Grid>
         <Grid Margin="0,24,0,60" >
-            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="65,0,64,100">
+            <DataGrid x:Name="DataGridUpdate" ItemsSource="{Binding Rooms}" AutoGenerateColumns="False" IsReadOnly="True" Background="MintCream"  Margin="65,62,64,81">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                     <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="*"/>
@@ -26,9 +35,15 @@
             </Grid.ColumnDefinitions>
             <Label x:Name="HiddenDeleteLabel"  Foreground="Green" FontSize="18" Grid.Column="0" Width="250" Height="35" Grid.ColumnSpan="2" Margin="80,10,70,95">Room successfullu updated!</Label>
         </Grid>
-        
-        <Button x:Name="UpdateBack" Width="80" Height="24" Margin="690,316,30,0" Content="CANCEL" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
-        <Button x:Name="UpdateOK" Width="80" Height="24" Margin="588,316,132,0" Content="OK" Click="UpdateOK_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+
+        <Button x:Name="UpdateBack" Width="100" Height="24" Margin="670,316,30,0" Content="BACK" Click="UpdateBack_Click" VerticalAlignment="Top" RenderTransformOrigin="0.521,-1.722" Background="MintCream"/>
+
+        <Label  FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="344,24,283,363" FontWeight="Black" Width="173" Height="63" RenderTransformOrigin="0.514,0.7">Update room</Label>
+        <Image RenderTransformOrigin="0.482,0.735" Margin="260,10,456,377">
+            <Image.Source >
+                <BitmapImage  UriSource="/Assets/edit_room.png"  />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Page>

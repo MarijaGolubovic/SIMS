@@ -15,9 +15,9 @@
         </Image>
         <Grid Margin="0,120,0,10">
             <Label Content="Room ID:" FontSize="18" Margin="164,28,529,253"/>
-            <TextBox x:Name="IDInput" Height="30"  Text="" Margin="300,83,269,207" Background="MintCream"/>
+            <TextBox x:Name="IDInput" Height="30"  Text="" Margin="300,83,269,207" Background="MintCream" GotFocus="IDInput_GotFocus" LostKeyboardFocus="IDInput_LostKeyboardFocus" GotKeyboardFocus="IDInput_GotKeyboardFocus"/>
             <Label Content="Size:" Margin="164,77,537,207" FontSize="18" />
-            <TextBox x:Name="SizeInput" Height="30"  Text="" RenderTransformOrigin="0.51,-1.542" Margin="300,28,269,262" Background="MintCream"/>
+            <TextBox x:Name="SizeInput" Height="30"  Text="" RenderTransformOrigin="0.51,-1.542" Margin="300,28,269,262" Background="MintCream" GotFocus="SizeInput_GotFocus"/>
             <Label Content="Type:" FontSize="18" RenderTransformOrigin="0.418,2.509" Margin="164,128,554,148"/>
             <ComboBox  x:Name="comboboxField" Background="MintCream" Margin="300,136,269,156" >
                 <ComboBoxItem>OPPERATING ROOM</ComboBoxItem>
@@ -25,8 +25,12 @@
                 <ComboBoxItem>HOSPITAL ROOM</ComboBoxItem>
                 <ComboBoxItem>WAREHOUSE</ComboBoxItem>
             </ComboBox>
-            <Button x:Name="OK"  Width="80" Height="25" Content="UPDATE" Click="OK_Click" Background="MintCream" Margin="588,235,132,60"/>
-            <Button Width="80" Height="25" Content="CANCEL" Margin="694,235,26,60"  Click="Button_Click_CANCEL"  Background="MintCream" RenderTransformOrigin="0.684,0.522"/>
+            <Button x:Name="OK"  Width="100" Height="25" Content="UPDATE" Click="OK_Click" Background="MintCream" Margin="568,235,132,60"/>
+            <Button Width="100" Height="25" Content="CANCEL" Margin="684,235,0,60"  Click="Button_Click_CANCEL"  Background="MintCream" RenderTransformOrigin="0.684,0.522"/>
+            
+
+            <Label x:Name="erroeEmpty" Height="25" Width="200" Margin="535,265,65,30" Foreground="LightGray">Input data in the empty fields!</Label>
+            <Label x:Name="invalidDataInput" Height="25" Width="200" Margin="536,88,64,207" Foreground="LightGray"> Invalid input type!</Label>
         </Grid>
 
     </Grid>
